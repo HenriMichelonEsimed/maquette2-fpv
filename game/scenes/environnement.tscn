@@ -1,15 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://bhhbfstyssdc6"]
 
 [ext_resource type="Script" path="res://scenes/environnement.gd" id="1_i55gc"]
-[ext_resource type="Material" uid="uid://b4d12u5nqbbs1" path="res://assets/materials/sky.tres" id="1_tse0u"]
+[ext_resource type="Material" uid="uid://b4d12u5nqbbs1" path="res://assets/materials/vfx/sky.tres" id="2_hnno6"]
 
 [sub_resource type="Sky" id="Sky_se1vw"]
-sky_material = ExtResource("1_tse0u")
+sky_material = ExtResource("2_hnno6")
 
 [sub_resource type="Environment" id="Environment_1yhrm"]
 background_mode = 2
 sky = SubResource("Sky_se1vw")
-ambient_light_source = 3
 glow_enabled = true
 glow_intensity = 0.4
 glow_strength = 0.5
@@ -18,8 +17,9 @@ fog_light_energy = 0.1
 
 [node name="Environnement" type="Node3D"]
 script = ExtResource("1_i55gc")
-day_time = 12.5294
+day_time = 14.0
 day_of_year = 240
+clouds_cutoff = 0.5
 time_scale = 0.0
 sun_base_enegry = 1.0
 moon_base_enegry = 0.1
@@ -28,14 +28,14 @@ moon_base_enegry = 0.1
 environment = SubResource("Environment_1yhrm")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.987855, 0, 0.155375, -0.153885, -0.138153, 0.978383, 0.0214656, -0.990411, -0.136475, 0, 0, 0)
+transform = Transform3D(0.987917, 0, 0.154981, -0.134218, -0.5, 0.855562, 0.0774906, -0.866025, -0.493959, 0, 0, 0)
 rotation_order = 4
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 5.0
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.989327, 0, 0.145709, -0.106986, 0.678885, 0.726409, -0.0989193, -0.734245, 0.67164, 0, 0, 0)
+transform = Transform3D(0.957016, 0, 0.290034, -0.126834, 0.899313, 0.41851, -0.260831, -0.437308, 0.860656, 0, 0, 0)
 rotation_order = 4
 light_color = Color(1, 1, 0.6, 1)
 light_energy = 0.1

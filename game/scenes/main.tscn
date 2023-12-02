@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_14vdi"]
 [ext_resource type="PackedScene" uid="uid://bhhbfstyssdc6" path="res://scenes/environnement.tscn" id="1_ptihp"]
-[ext_resource type="PackedScene" uid="uid://6hubfrwk42vj" path="res://zones/level_1/level_1.tscn" id="2_y04qh"]
 [ext_resource type="PackedScene" uid="uid://brxw56b4csscj" path="res://scenes/player.tscn" id="3_s1y03"]
+[ext_resource type="PackedScene" uid="uid://64tbv2fbem8p" path="res://zones/level_2/level_2.tscn" id="4_xf3vx"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_14vdi")
 
 [node name="Environnement" parent="." instance=ExtResource("1_ptihp")]
 
-[node name="Level1" parent="." instance=ExtResource("2_y04qh")]
-
 [node name="Player" parent="." instance=ExtResource("3_s1y03")]
-transform = Transform3D(0.934652, 0, 0.355564, 0, 1, 0, -0.355564, 0, 0.934652, 86.1656, 0.315885, -12.641)
+transform = Transform3D(-0.0268749, 0, 0.999639, 0, 1, 0, -0.999639, 0, -0.0268749, -3.80431, -0.496938, -8.00826)
+
+[node name="Level2" parent="." instance=ExtResource("4_xf3vx")]

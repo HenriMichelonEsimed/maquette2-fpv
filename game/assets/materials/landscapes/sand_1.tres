@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://obqwthy5pc42"]
 
 [ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="1_6f0lm"]
-[ext_resource type="Material" uid="uid://dyg4s7q646uwt" path="res://assets/materials/outline.tres" id="1_tpsru"]
+[ext_resource type="Material" uid="uid://dyg4s7q646uwt" path="res://assets/materials/vfx/outline.tres" id="1_tpsru"]
 
 [resource]
 render_priority = 0

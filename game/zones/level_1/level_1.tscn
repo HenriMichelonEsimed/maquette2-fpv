@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://6hubfrwk42vj"]
+[gd_scene load_steps=5 format=3 uid="uid://6hubfrwk42vj"]
 
 [ext_resource type="PackedScene" uid="uid://cmhqxaps7ag6x" path="res://models/landscapes/dune_1.tscn" id="1_k66sl"]
 [ext_resource type="PackedScene" uid="uid://cv54nj3k16fho" path="res://models/landscapes/lake_1.tscn" id="2_7w4mn"]
+[ext_resource type="PackedScene" uid="uid://bicmprdn203xe" path="res://models/landscapes/mountains_2.tscn" id="4_hrrva"]
+[ext_resource type="PackedScene" uid="uid://m44oab0dx72w" path="res://models/landscapes/mountains_1.tscn" id="4_x3oq6"]
 
 [node name="Level1" type="Node3D"]
 
@@ -10,3 +12,17 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="lake_1" parent="." instance=ExtResource("2_7w4mn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -98.2)
+
+[node name="Limits" type="Node3D" parent="."]
+
+[node name="mountains_1" parent="Limits" instance=ExtResource("4_x3oq6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -294.6)
+
+[node name="mountains_2" parent="Limits" instance=ExtResource("4_x3oq6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 298.6)
+
+[node name="mountains_3" parent="Limits" instance=ExtResource("4_hrrva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -296.7, 0, 0)
+
+[node name="mountains_4" parent="Limits" instance=ExtResource("4_hrrva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298, 0, 0)

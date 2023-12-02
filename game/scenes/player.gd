@@ -2,6 +2,7 @@ class_name Player extends CharacterBody3D
 
 @onready var camera:Camera3D = $Camera3D
 @onready var under_water_filter = $UnderWater/Filter
+@onready var player = $AnimationPlayer
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed:float = 5
