@@ -1,7 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://brxw56b4csscj"]
+[gd_scene load_steps=9 format=3 uid="uid://brxw56b4csscj"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_wfnqh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v6hg3"]
 size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o2dxl"]
+size = Vector3(1, 12.7, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_donio"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u8jjs"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0, 0.886275, 0.886275, 0.52549)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ud15x"]
 
@@ -10,24 +23,45 @@ size = Vector3(1, 2, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_mpryn"]
 
 [node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_wfnqh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_v6hg3")
 
-[node name="ViewPivot" type="Node3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.3)
+
+[node name="UnderWater" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+collision_mask = 2
 
-[node name="Camera3D" type="Camera3D" parent="ViewPivot"]
+[node name="DetectionShape" type="CollisionShape3D" parent="UnderWater"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35, 0)
+shape = SubResource("BoxShape3D_o2dxl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Filter" type="MeshInstance3D" parent="UnderWater"]
+transform = Transform3D(1.867, 0, 0, 0, 2, 0, 0, 0, 1.333, 0, 0, 0)
+visible = false
+mesh = SubResource("SphereMesh_donio")
+surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")
+
+[node name="Body" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 0.7, 0)
 mesh = SubResource("CapsuleMesh_ud15x")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 mesh = SubResource("SphereMesh_u6a1a")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(0.3, 0, 0, 0, -2.62268e-08, 0.3, 0, -0.6, -1.31134e-08, 0.3, 1, -0.7)
 mesh = SubResource("CylinderMesh_mpryn")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="UnderWater" to="." method="_on_under_water_body_entered"]
+[connection signal="body_exited" from="UnderWater" to="." method="_on_under_water_body_exited"]

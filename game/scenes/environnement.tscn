@@ -10,26 +10,32 @@ sky_material = ExtResource("1_tse0u")
 background_mode = 2
 sky = SubResource("Sky_se1vw")
 ambient_light_source = 3
+glow_enabled = true
+glow_intensity = 0.4
+glow_strength = 0.5
+fog_light_color = Color(0.701961, 0.733333, 0.776471, 1)
+fog_light_energy = 0.1
 
 [node name="Environnement" type="Node3D"]
 script = ExtResource("1_i55gc")
 day_time = 12.5294
 day_of_year = 240
+time_scale = 0.0
+sun_base_enegry = 1.0
 moon_base_enegry = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1yhrm")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.987855, 0, 0.155375, -0.153885, -0.138153, 0.978383, 0.0214656, -0.99041, -0.136475, 0, 0, 0)
+transform = Transform3D(0.987855, 0, 0.155375, -0.153885, -0.138153, 0.978383, 0.0214656, -0.990411, -0.136475, 0, 0, 0)
 rotation_order = 4
-light_energy = 0.0
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 5.0
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.989327, 0, 0.145709, -0.106986, 0.678885, 0.726409, -0.0989193, -0.734244, 0.67164, 0, 0, 0)
+transform = Transform3D(0.989327, 0, 0.145709, -0.106986, 0.678885, 0.726409, -0.0989193, -0.734245, 0.67164, 0, 0, 0)
 rotation_order = 4
 light_color = Color(1, 1, 0.6, 1)
 light_energy = 0.1

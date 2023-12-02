@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://coggmsptun84"]
+
+[ext_resource type="Shader" path="res://assets/shaders/cel-shader-water.gdshader" id="1_pi6u1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_pi6u1")
+shader_parameter/ao_light_affect = 0.0
+shader_parameter/color = Color(0.215686, 0.639216, 0.811765, 0.741176)
+shader_parameter/specular = Color(0.0941176, 0.0941176, 0.0941176, 0.501961)
+shader_parameter/fresnel = Color(0.101961, 0.101961, 0.101961, 0.372549)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
