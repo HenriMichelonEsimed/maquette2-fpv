@@ -11,9 +11,29 @@ config_version=5
 [application]
 
 config/name="Aube"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [rendering]
 
 renderer/rendering_method="mobile"
+
+[shader_globals]
+
+specular_smoothness={
+"type": "float",
+"value": 0.05
+}
+fresnel_smoothness={
+"type": "float",
+"value": 0.05
+}
+outline_width={
+"type": "float",
+"value": 4.0
+}
+outline_color={
+"type": "color",
+"value": Color(0.0156863, 0.0156863, 0.0156863, 1)
+}
