@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://b220eqngku3ud"]
+
+[ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_wv738"]
+[ext_resource type="Material" uid="uid://i6210e70wjx" path="res://assets/materials/colors_outline/blue_3.tres" id="2_0jxc2"]
+[ext_resource type="Material" uid="uid://dagexq7kk3gp5" path="res://assets/materials/colors_outline/orange_1.tres" id="3_hoqgb"]
+[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="4_r1oxt"]
+[ext_resource type="Material" uid="uid://58q4qbowjp50" path="res://assets/materials/colors/blue_1.tres" id="5_fldp6"]
+[ext_resource type="Material" uid="uid://cvvlh285oblhu" path="res://assets/materials/colors/grey_1.tres" id="6_p7c7o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tij4"]
+size = Vector3(1, 2.50642, 0.11741)
+
+[sub_resource type="Animation" id="Animation_ju2bl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 1.25, 0), Vector3(0.5, 1.25, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShapeRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.5, 1.25614, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_prrao"]
+resource_name = "use"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightDoor:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 1.25, 0), Vector3(1.4, 1.25, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShapeRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.5, 1.25614, 0), Vector3(1.4, 1.256, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2aydg"]
+_data = {
+"RESET": SubResource("Animation_ju2bl"),
+"use": SubResource("Animation_prrao")
+}
+
+[node name="SlidingDoor1" type="StaticBody3D"]
+script = ExtResource("1_wv738")
+label = "Door"
+
+[node name="RightDoor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.25, 0)
+size = Vector3(1, 2.5, 0.05)
+material = ExtResource("2_0jxc2")
+
+[node name="Handle" type="CSGCylinder3D" parent="RightDoor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.47, 0, 0)
+radius = 0.02
+height = 0.1
+sides = 32
+material = ExtResource("3_hoqgb")
+
+[node name="CollisionShapeRight" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.25614, 0)
+shape = SubResource("BoxShape3D_2tij4")
+
+[node name="Bottom" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.45, 0, 0)
+size = Vector3(1.1, 0.01, 0.2)
+material = ExtResource("4_r1oxt")
+
+[node name="Top" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.625, 0)
+size = Vector3(1.2, 0.35, 0.35)
+material = ExtResource("5_fldp6")
+
+[node name="Right" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05, 1.2, 0)
+size = Vector3(0.1, 2.5, 0.35)
+material = ExtResource("6_p7c7o")
+
+[node name="Right2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 1.2, 0)
+size = Vector3(0.1, 2.5, 0.35)
+material = ExtResource("6_p7c7o")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2aydg")
+}
