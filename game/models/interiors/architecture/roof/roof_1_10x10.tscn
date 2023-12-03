@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdjlm2bx8wgxj"]
 
-[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors/grey_1.tres" id="1_ebtwm"]
+[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="1_ebtwm"]
 
 [node name="Roof1_10x10" type="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)

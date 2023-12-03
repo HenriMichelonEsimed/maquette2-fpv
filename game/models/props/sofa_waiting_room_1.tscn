@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bcotsi5p4ppc8"]
 
-[ext_resource type="Material" uid="uid://dagexq7kk3gp5" path="res://assets/materials/colors/orange_1.tres" id="1_cp86o"]
+[ext_resource type="Material" uid="uid://dagexq7kk3gp5" path="res://assets/materials/colors_outline/orange_1.tres" id="1_cp86o"]
 [ext_resource type="Material" uid="uid://bb8bik4clykcg" path="res://assets/materials/fabric_1.tres" id="2_8wccy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc5sb"]

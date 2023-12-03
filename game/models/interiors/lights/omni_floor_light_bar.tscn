@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://blttosmy6qdp7"]
 
 [ext_resource type="Script" path="res://models/interiors/lights/omni_light_bar.gd" id="1_tl28t"]
-[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors/grey_1.tres" id="2_vpaku"]
+[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="2_vpaku"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_usuwu"]
 albedo_color = Color(1, 1, 1, 0)

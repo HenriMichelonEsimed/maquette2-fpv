@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dootfr4obe6ab"]
+[gd_scene load_steps=8 format=3 uid="uid://dootfr4obe6ab"]
+
+[ext_resource type="Material" uid="uid://cvvlh285oblhu" path="res://assets/materials/colors/grey_1.tres" id="1_2na7b"]
+[ext_resource type="Material" uid="uid://58q4qbowjp50" path="res://assets/materials/colors/blue_1.tres" id="2_rrtos"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7pno"]
 resource_name = "Wall_2_core"
@@ -75,6 +78,8 @@ size = Vector3(10, 3.8, 0.3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.002, 0, 0.2)
 mesh = SubResource("ArrayMesh_ws74o")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_2na7b")
+surface_material_override/1 = ExtResource("2_rrtos")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0.15)

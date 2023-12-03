@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfbmwmgqi6av7"]
+[gd_scene load_steps=8 format=3 uid="uid://dfbmwmgqi6av7"]
+
+[ext_resource type="Material" uid="uid://cvvlh285oblhu" path="res://assets/materials/colors/grey_1.tres" id="1_k6vbg"]
+[ext_resource type="Material" uid="uid://58q4qbowjp50" path="res://assets/materials/colors/blue_1.tres" id="2_hqhkd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_np6jr"]
 resource_name = "Wall_2_core"
@@ -77,6 +80,8 @@ radius = 0.553989
 [node name="Circle" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_0pnr3")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("1_k6vbg")
+surface_material_override/1 = ExtResource("2_hqhkd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
