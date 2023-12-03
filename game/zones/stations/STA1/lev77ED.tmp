@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=22 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
 [ext_resource type="Material" uid="uid://0i03pa3hg4af" path="res://assets/materials/colors/grey_2.tres" id="3_jos5n"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://mdwcscr1ttf5" path="res://models/props/ficus_1.tscn" id="18_qhd46"]
 [ext_resource type="PackedScene" uid="uid://devhm66ws8um7" path="res://models/interiors/architecture/walls/wall_1_10x_2_8.tscn" id="19_4wseb"]
 [ext_resource type="PackedScene" uid="uid://ddy3g0tlo6k8b" path="res://models/interiors/architecture/roof/roof_1_20x10.tscn" id="19_8turt"]
+[ext_resource type="PackedScene" uid="uid://d1wb5ccqhgbfu" path="res://models/interiors/architecture/walls/wall_1_2x_2_8.tscn" id="20_71ugd"]
 [ext_resource type="PackedScene" uid="uid://c0b64m347r4gr" path="res://models/interiors/door_sliding_1.tscn" id="21_rcfv0"]
 [ext_resource type="PackedScene" uid="uid://ixilbup7ytf6" path="res://models/props/modern_coffee_table.tscn" id="21_y1m7c"]
 
@@ -301,17 +302,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 10.15,
 [node name="Wall_1_10x2_10" parent="Admnistration/Walls" instance=ExtResource("19_4wseb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.95, 0, -25.4)
 
+[node name="Wall_1_2x2_8" parent="Admnistration/Walls" instance=ExtResource("20_71ugd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0, -10.5)
+
 [node name="Wall2_2x2_8" parent="Admnistration/Walls" instance=ExtResource("15_x6rim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0, -14.85)
-
-[node name="Wall2_2x2_10" parent="Admnistration/Walls" instance=ExtResource("15_x6rim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 0, -14.85)
-
-[node name="Wall2_2x2_11" parent="Admnistration/Walls" instance=ExtResource("15_x6rim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9, 0, -14.85)
-
-[node name="Wall2_2x2_9" parent="Admnistration/Walls" instance=ExtResource("15_x6rim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0, -14.85)
 
 [node name="Roof" type="Node3D" parent="Admnistration"]
 
@@ -328,4 +323,4 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.8, 2
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.8, 2.75, -22.3)
 
 [node name="SlidingDoor1" parent="Admnistration" instance=ExtResource("21_rcfv0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, -15.0236)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0, -14.7)

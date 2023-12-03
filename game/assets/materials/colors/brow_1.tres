@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://d0kb46n56bp8v"]
+
+[ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="1_wmjjs"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wmjjs")
+shader_parameter/color = Color(0.317647, 0.176471, 0.00784314, 1)
+shader_parameter/specular = Color(0, 0, 0, 0)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

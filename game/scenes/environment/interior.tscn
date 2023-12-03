@@ -14,7 +14,7 @@ glow_strength = 0.5
 fog_light_color = Color(0.701961, 0.733333, 0.776471, 1)
 fog_light_energy = 0.1
 
-[node name="Interior" type="Node3D"]
+[node name="InteriorEnvironment" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fo06h")

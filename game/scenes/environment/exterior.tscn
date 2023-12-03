@@ -15,24 +15,27 @@ glow_strength = 0.5
 fog_light_color = Color(0.701961, 0.733333, 0.776471, 1)
 fog_light_energy = 0.1
 
-[node name="Environnement" type="Node3D"]
+[node name="ExteriorEnvironnement" type="Node3D"]
 script = ExtResource("1_lsyam")
+sun_base_enegry = 1.0
+moon_base_enegry = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1yhrm")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.987917, 0, 0.154981, -0.134218, -0.5, 0.855562, 0.0774906, -0.866025, -0.493959, 0, 0, 0)
+transform = Transform3D(0.920626, 0, -0.390445, -0.390445, -4.37114e-08, -0.920627, -1.70669e-08, 1, -4.02419e-08, 0, 0, 0)
 rotation_order = 4
+light_energy = 0.0
 shadow_enabled = true
 shadow_opacity = 0.75
 shadow_blur = 5.0
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.957016, 0, 0.290034, -0.126834, 0.899313, 0.41851, -0.260831, -0.437308, 0.860656, 0, 0, 0)
+transform = Transform3D(0.995978, 0, 0.0895896, 0.0189377, -0.977404, -0.210533, 0.0875652, 0.211383, -0.973473, 0, 0, 0)
 rotation_order = 4
 light_color = Color(1, 1, 0.6, 1)
-light_energy = 0.1
+light_energy = 0.0
 shadow_enabled = true
 shadow_opacity = 0.25
 shadow_blur = 5.0

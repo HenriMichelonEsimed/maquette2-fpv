@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_wfnqh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_v6hg3"]
-size = Vector3(1, 2, 1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iayoc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mjs45"]
 size = Vector3(1, 1.8, 1)
@@ -26,7 +25,7 @@ script = ExtResource("1_wfnqh")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_v6hg3")
+shape = SubResource("CapsuleShape3D_iayoc")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, -0.336)
