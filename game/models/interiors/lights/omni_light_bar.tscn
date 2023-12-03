@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://4lmengs27td1"]
+[gd_scene load_steps=7 format=3 uid="uid://4lmengs27td1"]
 
 [ext_resource type="Script" path="res://models/interiors/lights/omni_light_bar.gd" id="1_jx0qp"]
+[ext_resource type="Material" uid="uid://dyg4s7q646uwt" path="res://assets/materials/vfx/outline.tres" id="2_otbnw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_teybf"]
+next_pass = ExtResource("2_otbnw")
 albedo_color = Color(0.286275, 0.388235, 0.380392, 1)
 backlight = Color(0.568627, 0.568627, 0.568627, 1)
 grow_amount = -0.582
@@ -15,7 +17,7 @@ albedo_color = Color(1, 1, 1, 0)
 refraction_enabled = true
 refraction_scale = 0.03
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chf5s"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgpku"]
 shading_mode = 0
 
 [node name="OmniLightBar" type="Node3D"]
@@ -38,10 +40,25 @@ material = SubResource("StandardMaterial3D_usuwu")
 
 [node name="Light" type="CSGBox3D" parent="Support/Neon"]
 size = Vector3(0.04, 0.9, 0.04)
-material = SubResource("StandardMaterial3D_chf5s")
+material = SubResource("StandardMaterial3D_mgpku")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Support/Neon/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00967714)
+light_energy = 0.4
 shadow_enabled = true
 distance_fade_begin = 5.0
-omni_range = 6.0
-omni_attenuation = 0.210224
+omni_attenuation = 0.098073
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Support/Neon/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.00967714)
+light_energy = 0.4
+shadow_enabled = true
+distance_fade_begin = 5.0
+omni_attenuation = 0.098073
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Support/Neon/Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.00967714)
+light_energy = 0.4
+shadow_enabled = true
+distance_fade_begin = 5.0
+omni_attenuation = 0.098073

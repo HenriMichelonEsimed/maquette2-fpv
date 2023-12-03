@@ -8,6 +8,6 @@
 script = ExtResource("1_14vdi")
 
 [node name="Player" parent="." instance=ExtResource("3_s1y03")]
-transform = Transform3D(-0.999639, 0, -0.0268749, 0, 1, 0, 0.0268749, 0, -0.999639, -0.00431001, -0.496938, 1.29174)
+transform = Transform3D(0.999639, 0, 0.026875, 0, 1, 0, -0.026875, 0, 0.999639, -0.004, -1.5, 1.292)
 
 [node name="Level2" parent="." instance=ExtResource("4_xf3vx")]

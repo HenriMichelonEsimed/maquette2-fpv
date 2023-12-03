@@ -35,13 +35,23 @@ func _physics_process(delta):
 			rotate_y(-look_dir.x)
 			camera.rotate_x(-look_dir.y)
 			camera.rotation.x = clamp(camera.rotation.x - look_dir.y,  max_camera_angle_down, max_camera_angle_up)
-	velocity.y += -gravity * delta
+	var is_on_floor = is_on_floor_only() 
+	if not is_on_floor:
+		velocity.y += -gravity * delta
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	var movement_dir = transform.basis * Vector3(input.x, 0, input.y)
 	velocity.x = movement_dir.x * speed
 	velocity.z = movement_dir.z * speed
+	if movement_dir != Vector3.ZERO:
+		for index in range(get_slide_collision_count()):
+			var collision = get_slide_collision(index)
+			var collider = collision.get_collider()
+			if collider == null:
+				continue
+			if collider.is_in_group("stairs"):
+				velocity.y = 1.5
 	move_and_slide()
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
+	if is_on_floor and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed
 
 func capture_mouse() -> void:

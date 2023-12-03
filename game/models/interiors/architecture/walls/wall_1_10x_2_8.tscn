@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://devhm66ws8um7"]
 
-[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/architecture/grey.tres" id="1_rlar2"]
-[ext_resource type="Material" uid="uid://d2a76qgl8qtuv" path="res://assets/materials/architecture/blue.tres" id="2_orgoo"]
+[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors/grey_1.tres" id="1_rlar2"]
+[ext_resource type="Material" uid="uid://d2a76qgl8qtuv" path="res://assets/materials/colors/blue_1.tres" id="2_orgoo"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d563v"]
 resource_name = "Wall_2_core"

@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chhv3jnv24qqt"
-path.s3tc="res://.godot/imported/stars.png-bf4d7ebf28fefd22c7b9a50f4ec887de.s3tc.ctex"
-path.etc2="res://.godot/imported/stars.png-bf4d7ebf28fefd22c7b9a50f4ec887de.etc2.ctex"
+path.s3tc="res://.godot/imported/stars.png-f1f3ea9d1e9ad01c712e0e0d163a37c1.s3tc.ctex"
+path.etc2="res://.godot/imported/stars.png-f1f3ea9d1e9ad01c712e0e0d163a37c1.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/stars.png"
-dest_files=["res://.godot/imported/stars.png-bf4d7ebf28fefd22c7b9a50f4ec887de.s3tc.ctex", "res://.godot/imported/stars.png-bf4d7ebf28fefd22c7b9a50f4ec887de.etc2.ctex"]
+source_file="res://assets/textures/vfx/stars.png"
+dest_files=["res://.godot/imported/stars.png-f1f3ea9d1e9ad01c712e0e0d163a37c1.s3tc.ctex", "res://.godot/imported/stars.png-f1f3ea9d1e9ad01c712e0e0d163a37c1.etc2.ctex"]
 
 [params]
 

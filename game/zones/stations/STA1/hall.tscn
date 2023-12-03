@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfi7u556i43cx"]
+
+[ext_resource type="PackedScene" uid="uid://cgxba0fkdftmk" path="res://models/interiors/architecture/floors/floor_1_20x10.tscn" id="1_q4l1p"]
+[ext_resource type="PackedScene" uid="uid://ddy3g0tlo6k8b" path="res://models/interiors/architecture/roof/roof_1_20x10.tscn" id="2_qrohm"]
+[ext_resource type="PackedScene" uid="uid://4lmengs27td1" path="res://models/interiors/lights/omni_light_bar.tscn" id="3_de65l"]
+
+[node name="Hall" type="Node3D"]
+
+[node name="Floor" type="Node3D" parent="."]
+
+[node name="Floor1_20x10" parent="Floor" instance=ExtResource("1_q4l1p")]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="Roof" type="Node3D" parent="."]
+
+[node name="Roof1_20x10" parent="Roof" instance=ExtResource("2_qrohm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
+
+[node name="OmniLightBar" parent="Roof" instance=ExtResource("3_de65l")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.77, 2.1)
+
+[node name="OmniLightBar2" parent="Roof" instance=ExtResource("3_de65l")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 2.77, -1.9)
+
+[node name="OmniLightBar3" parent="Roof" instance=ExtResource("3_de65l")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6, 2.77, 2.1)
+
+[node name="OmniLightBar4" parent="Roof" instance=ExtResource("3_de65l")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6, 2.77, -1.9)
+
+[node name="OmniLightBar5" parent="Roof" instance=ExtResource("3_de65l")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6, 2.77, 2.1)
+
+[node name="OmniLightBar6" parent="Roof" instance=ExtResource("3_de65l")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6, 2.77, -1.9)

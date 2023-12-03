@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b4d12u5nqbbs1"]
 
 [ext_resource type="Shader" path="res://assets/shaders/sky.gdshader" id="1_eytc7"]
-[ext_resource type="Texture2D" uid="uid://chhv3jnv24qqt" path="res://assets/textures/stars.png" id="2_ywbtk"]
+[ext_resource type="Texture2D" uid="uid://chhv3jnv24qqt" path="res://assets/textures/vfx/stars.png" id="2_ywbtk"]
 
 [resource]
 shader = ExtResource("1_eytc7")

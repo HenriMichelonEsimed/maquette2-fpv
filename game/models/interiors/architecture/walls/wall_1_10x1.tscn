@@ -1,8 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://csjk6vsuelqa0"]
 
-[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/architecture/grey.tres" id="1_85cwb"]
+[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors/grey_1.tres" id="1_4afs2"]
 
 [node name="Wall110x1" type="CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.05)
+use_collision = true
 size = Vector3(10, 1, 0.1)
-material = ExtResource("1_85cwb")
+material = ExtResource("1_4afs2")

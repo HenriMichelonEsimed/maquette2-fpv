@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=4 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://ctgi5rn6m4hud" path="res://zones/stations/STA1/entrace.tscn" id="1_0bvpy"]
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
+[ext_resource type="PackedScene" uid="uid://dfi7u556i43cx" path="res://zones/stations/STA1/hall.tscn" id="3_wdh55"]
 
 [node name="Level2" type="Node3D"]
 
 [node name="Interior" parent="." instance=ExtResource("1_o4g0v")]
 
 [node name="Entrace" parent="." instance=ExtResource("1_0bvpy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Hall" parent="." instance=ExtResource("3_wdh55")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
