@@ -1,5 +1,4 @@
-extends StaticBody3D
-class_name Usable
+class_name Usable extends StaticBody3D
 
 signal using(is_used:bool)
 signal unlock(success:bool)
@@ -15,7 +14,7 @@ func _init(_save:bool = true):
 	save = _save
 
 func _ready():
-	set_collision_layer_value(3, true)
+	set_collision_layer_value(Consts.LAYER_USABLE, true)
 	if (label == null): 
 		label = get_path()
 	if $Top/Text != null:

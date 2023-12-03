@@ -1,11 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://brxw56b4csscj"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_wfnqh"]
+[ext_resource type="PackedScene" uid="uid://cuuba17bw8pi7" path="res://scenes/interactions.tscn" id="2_73o8b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iayoc"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_mjs45"]
-size = Vector3(1, 1.8, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2dxl"]
 size = Vector3(1, 12.7, 1)
@@ -30,13 +28,7 @@ shape = SubResource("CapsuleShape3D_iayoc")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, -0.336)
 
-[node name="Interactions" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.8)
-visible = false
-
-[node name="DetectionShape" type="CollisionShape3D" parent="Interactions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0.2)
-shape = SubResource("BoxShape3D_mjs45")
+[node name="Interactions" parent="." instance=ExtResource("2_73o8b")]
 
 [node name="UnderWater" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)

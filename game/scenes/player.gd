@@ -72,4 +72,3 @@ func _on_under_water_body_exited(body):
 func _set_position():
 	position = GameState.player_state.position
 	rotation = GameState.player_state.rotation
-	

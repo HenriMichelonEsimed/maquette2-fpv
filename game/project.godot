@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 StateSaver="*res://lib/tools/state_saver.gd"
-GameState="*res://lib/datas/states/game_state.gd"
+GameState="*res://lib/states/game_state.gd"
 
 [display]
 
@@ -87,8 +87,12 @@ jump={
 
 [layer_names]
 
-3d_physics/layer_1="block"
+3d_physics/layer_1="player"
 3d_physics/layer_2="water"
+3d_physics/layer_3="collect"
+3d_physics/layer_4="use"
+3d_physics/layer_5="trigger"
+3d_physics/layer_6="character"
 
 [rendering]
 
