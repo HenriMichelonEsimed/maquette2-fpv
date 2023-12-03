@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://hd8a5siovkdm"]
+
+[ext_resource type="Material" uid="uid://dyg4s7q646uwt" path="res://assets/materials/vfx/outline.tres" id="1_45pcn"]
+[ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="2_qki8o"]
+[ext_resource type="Texture2D" uid="uid://bq4w8t87otar2" path="res://assets/textures/tiles/tiles_1/Tiles071_1K-JPG_Color.jpg" id="3_xaej3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sl8xk"]
+render_priority = 0
+next_pass = ExtResource("1_45pcn")
+shader = ExtResource("2_qki8o")
+shader_parameter/color = Color(0.666667, 0.666667, 0.666667, 0.501961)
+shader_parameter/specular = Color(0, 0, 0, 0.501961)
+shader_parameter/fresnel = Color(0.109804, 0.109804, 0.109804, 0.498039)
+shader_parameter/base_texture = ExtResource("3_xaej3")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Floor1_2x2" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+size = Vector3(2, 0.1, 2)
+material = SubResource("ShaderMaterial_sl8xk")

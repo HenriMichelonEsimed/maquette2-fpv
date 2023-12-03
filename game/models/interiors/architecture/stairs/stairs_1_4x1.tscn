@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://di32jih3lkq5r"]
+
+[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/architecture/grey.tres" id="1_7tq85"]
+[ext_resource type="PackedScene" uid="uid://kykx4y023uqr" path="res://models/interiors/architecture/stairs/stairs_1_4x1.glb" id="1_c1bsf"]
+[ext_resource type="Material" uid="uid://dyg4s7q646uwt" path="res://assets/materials/vfx/outline.tres" id="3_brnra"]
+[ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="4_cf25i"]
+[ext_resource type="Texture2D" uid="uid://bq4w8t87otar2" path="res://assets/textures/tiles/tiles_1/Tiles071_1K-JPG_Color.jpg" id="5_yqarf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42eb6"]
+render_priority = 0
+next_pass = ExtResource("3_brnra")
+shader = ExtResource("4_cf25i")
+shader_parameter/color = Color(0.666667, 0.666667, 0.666667, 0.501961)
+shader_parameter/specular = Color(0, 0, 0, 0.501961)
+shader_parameter/fresnel = Color(0.109804, 0.109804, 0.109804, 0.498039)
+shader_parameter/base_texture = ExtResource("5_yqarf")
+shader_parameter/uv_scale = Vector2(8, 2)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="stairs_1_4x1" instance=ExtResource("1_c1bsf")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("1_7tq85")
+surface_material_override/1 = SubResource("ShaderMaterial_42eb6")

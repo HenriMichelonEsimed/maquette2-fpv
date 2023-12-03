@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0gkievars6dd"]
+
+[ext_resource type="Material" uid="uid://b4d12u5nqbbs1" path="res://assets/materials/vfx/sky.tres" id="1_m4n6u"]
+
+[sub_resource type="Sky" id="Sky_se1vw"]
+sky_material = ExtResource("1_m4n6u")
+
+[sub_resource type="Environment" id="Environment_fo06h"]
+background_mode = 1
+sky = SubResource("Sky_se1vw")
+glow_enabled = true
+glow_intensity = 0.4
+glow_strength = 0.5
+fog_light_color = Color(0.701961, 0.733333, 0.776471, 1)
+fog_light_energy = 0.1
+
+[node name="Interior" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fo06h")

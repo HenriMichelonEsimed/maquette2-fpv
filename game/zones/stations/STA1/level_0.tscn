@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://64tbv2fbem8p"]
+
+[ext_resource type="PackedScene" uid="uid://ctgi5rn6m4hud" path="res://zones/stations/STA1/entrace.tscn" id="1_0bvpy"]
+[ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
+
+[node name="Level2" type="Node3D"]
+
+[node name="Interior" parent="." instance=ExtResource("1_o4g0v")]
+
+[node name="Entrace" parent="." instance=ExtResource("1_0bvpy")]
