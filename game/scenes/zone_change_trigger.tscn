@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://btdkocrw70s4u"]
+
+[ext_resource type="Script" path="res://scenes/zone_change_trigger.gd" id="1_birtx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4vug"]
+size = Vector3(4.02476, 1.47008, 0.297535)
+
+[node name="ZoneChangeTrigger" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_birtx")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("BoxShape3D_o4vug")

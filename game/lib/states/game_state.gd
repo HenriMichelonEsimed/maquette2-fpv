@@ -7,6 +7,7 @@ signal loading_end()
 
 var player_state:PlayerState = PlayerState.new()
 var player:Player
+var current_tool:ItemTool
 
 func _ready():
 	loadGame(StateSaver.get_last())

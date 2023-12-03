@@ -2,6 +2,8 @@ class_name Player extends CharacterBody3D
 
 @onready var camera:Camera3D = $Camera3D
 @onready var under_water_filter = $UnderWater/Filter
+@onready var interactions:Interactions = $Interactions
+@onready var anim:AnimationPlayer = $Character.anim
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var speed:float = 5
@@ -17,6 +19,7 @@ var camera_y_axis_inverted:bool = true
 func _ready():
 	if (GameState.player_state.position != Vector3.ZERO):
 		_set_position()
+	interactions.player = self
 	if (camera_y_axis_inverted):
 		look_up_action = "look_down"
 		look_down_action = "look_up"
@@ -40,10 +43,17 @@ func _physics_process(delta):
 	if not is_on_floor:
 		velocity.y += -gravity * delta
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
-	var movement_dir = transform.basis * Vector3(input.x, 0, input.y)
-	velocity.x = movement_dir.x * speed
-	velocity.z = movement_dir.z * speed
-	if movement_dir != Vector3.ZERO:
+	var direction = transform.basis * Vector3(input.x, 0, input.y)
+	velocity.x = direction.x * speed
+	velocity.z = direction.z * speed
+	if direction != Vector3.ZERO:
+		if Input.is_action_pressed("modifier"):
+			if (anim.current_animation != "running"):
+				anim.play("running")
+		else:
+			anim.play("walking")
+		if !anim.is_playing():
+			anim.play()
 		for index in range(get_slide_collision_count()):
 			var collision = get_slide_collision(index)
 			var collider = collision.get_collider()
@@ -51,6 +61,8 @@ func _physics_process(delta):
 				continue
 			if collider.is_in_group("stairs"):
 				velocity.y = 1.5
+	else:
+		anim.play("standing")
 	move_and_slide()
 	if is_on_floor and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed
@@ -72,3 +84,9 @@ func _on_under_water_body_exited(body):
 func _set_position():
 	position = GameState.player_state.position
 	rotation = GameState.player_state.rotation
+
+func look_at_node(node:Node3D):
+	if (not interactions.overlaps_body(node)):
+		var pos:Vector3 = node.global_position
+		pos.y = position.y
+		look_at(pos)

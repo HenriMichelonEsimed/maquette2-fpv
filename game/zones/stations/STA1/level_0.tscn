@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=22 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
+[ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_s3ubj"]
 [ext_resource type="Material" uid="uid://0i03pa3hg4af" path="res://assets/materials/colors/grey_2.tres" id="3_jos5n"]
 [ext_resource type="PackedScene" uid="uid://cdjlm2bx8wgxj" path="res://models/interiors/architecture/roof/roof_1_10x10.tscn" id="3_ywahf"]
 [ext_resource type="PackedScene" uid="uid://4lmengs27td1" path="res://models/interiors/lights/omni_light_bar.tscn" id="4_31ois"]
@@ -18,10 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://mdwcscr1ttf5" path="res://models/props/ficus_1.tscn" id="18_qhd46"]
 [ext_resource type="PackedScene" uid="uid://devhm66ws8um7" path="res://models/interiors/architecture/walls/wall_1_10x_2_8.tscn" id="19_4wseb"]
 [ext_resource type="PackedScene" uid="uid://ddy3g0tlo6k8b" path="res://models/interiors/architecture/roof/roof_1_20x10.tscn" id="19_8turt"]
-[ext_resource type="PackedScene" uid="uid://c0b64m347r4gr" path="res://models/interiors/door_sliding_1.tscn" id="21_rcfv0"]
+[ext_resource type="PackedScene" uid="uid://c0b64m347r4gr" path="res://models/interiors/doors/door_sliding_1.tscn" id="20_srb27"]
 [ext_resource type="PackedScene" uid="uid://ixilbup7ytf6" path="res://models/props/modern_coffee_table.tscn" id="21_y1m7c"]
 
-[node name="Level2" type="Node3D"]
+[node name="Level0" type="Node3D"]
+script = ExtResource("1_s3ubj")
 
 [node name="InteriorEnvironment" parent="." instance=ExtResource("1_o4g0v")]
 
@@ -33,6 +35,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Roof1_10x11" parent="Entrace/Roof" instance=ExtResource("3_ywahf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.85, 0)
+visible = false
 material = ExtResource("3_jos5n")
 
 [node name="OmniLightBar9" parent="Entrace/Roof" instance=ExtResource("4_31ois")]
@@ -245,6 +248,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 6, 2.7
 
 [node name="RoofStairs" type="CSGBox3D" parent="Hall/Roof"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9, 3.85, -0.0500001)
+visible = false
 size = Vector3(4.2, 0.1, 6.7)
 material = ExtResource("3_jos5n")
 
@@ -255,16 +259,16 @@ size = Vector3(34.2, 0.1, 19.1)
 material = ExtResource("3_jos5n")
 
 [node name="sofa_waiting_room_1" parent="Hall" instance=ExtResource("9_tefkb")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.9, 0, -8.6)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.9, 0, -8.5)
 
 [node name="sofa_waiting_room_4" parent="Hall" instance=ExtResource("9_tefkb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 0, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 0, -12.1)
 
 [node name="sofa_waiting_room_5" parent="Hall" instance=ExtResource("9_tefkb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -12.1)
 
 [node name="sofa_waiting_room_3" parent="Hall" instance=ExtResource("9_tefkb")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.9, 0, -8.6)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 6.9, 0, -8.4)
 
 [node name="modern_coffee_table" parent="Hall" instance=ExtResource("21_y1m7c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, -10.3)
@@ -327,5 +331,5 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.8, 2
 [node name="OmniLightBar4" parent="Admnistration/Roof" instance=ExtResource("4_31ois")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.8, 2.75, -22.3)
 
-[node name="SlidingDoor1" parent="Admnistration" instance=ExtResource("21_rcfv0")]
+[node name="SlidingDoor1" parent="Admnistration" instance=ExtResource("20_srb27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0, -15.0236)

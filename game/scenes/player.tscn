@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_wfnqh"]
 [ext_resource type="PackedScene" uid="uid://cuuba17bw8pi7" path="res://scenes/interactions.tscn" id="2_73o8b"]
+[ext_resource type="PackedScene" uid="uid://dboialknk0g54" path="res://models/chars/player/player.tscn" id="3_3fts5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iayoc"]
+radius = 0.375312
+height = 1.84745
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2dxl"]
 size = Vector3(1, 12.7, 1)
@@ -16,17 +19,15 @@ cull_mode = 2
 shading_mode = 0
 albedo_color = Color(0, 0.886275, 0.886275, 0.52549)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_24gkk"]
-
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_wfnqh")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933684, 0)
 shape = SubResource("CapsuleShape3D_iayoc")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, -0.336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78169, -0.172818)
 
 [node name="Interactions" parent="." instance=ExtResource("2_73o8b")]
 
@@ -46,12 +47,8 @@ visible = false
 mesh = SubResource("SphereMesh_donio")
 surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")
 
-[node name="Body" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-mesh = SubResource("CapsuleMesh_24gkk")
+[node name="Character" parent="." instance=ExtResource("3_3fts5")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="body_entered" from="UnderWater" to="." method="_on_under_water_body_entered"]
 [connection signal="body_exited" from="UnderWater" to="." method="_on_under_water_body_exited"]

@@ -56,7 +56,7 @@ func transfert_to(coll:ItemsCollection, type:int, key:String):
 		coll.add(item.duplicate())
 		remove(item)
 
-func getall() -> Array:
+func getall() -> Array[Item]:
 	return _items
 	
 func getall_bytype(type:Item.ItemType) -> Array:

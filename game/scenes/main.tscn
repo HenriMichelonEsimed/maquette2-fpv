@@ -13,5 +13,6 @@ transform = Transform3D(0.999639, 0, 0.026875, 0, 1, 0, -0.026875, 0, 0.999639, 
 
 [node name="Level2" parent="." instance=ExtResource("4_xf3vx")]
 
-[node name="Main" parent="." instance=ExtResource("4_g84p1")]
+[node name="Main" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_g84p1")]
 mouse_filter = 2
+player = NodePath("../Player")
