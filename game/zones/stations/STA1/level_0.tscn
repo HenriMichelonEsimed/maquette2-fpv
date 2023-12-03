@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=26 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_s3ubj"]
@@ -15,12 +15,13 @@
 [ext_resource type="PackedScene" uid="uid://dfbmwmgqi6av7" path="res://models/interiors/architecture/walls/wall_2_pillard.tscn" id="14_x521u"]
 [ext_resource type="PackedScene" uid="uid://cixb1jt7qcb77" path="res://models/interiors/architecture/walls/wall_2_2x2_8.tscn" id="15_x6rim"]
 [ext_resource type="PackedScene" uid="uid://dfy80mwn63d2v" path="res://models/interiors/architecture/walls/wall_2_2x_3_8.tscn" id="16_dp03r"]
-[ext_resource type="Material" uid="uid://d2a76qgl8qtuv" path="res://assets/materials/colors_outline/blue_1.tres" id="17_f83it"]
+[ext_resource type="Material" uid="uid://d2a76qgl8qtuv" path="res://assets/materials/colors_outline/grey_2.tres" id="16_f8m8e"]
 [ext_resource type="PackedScene" uid="uid://mdwcscr1ttf5" path="res://models/props/ficus_1.tscn" id="18_qhd46"]
 [ext_resource type="PackedScene" uid="uid://devhm66ws8um7" path="res://models/interiors/architecture/walls/wall_1_10x_2_8.tscn" id="19_4wseb"]
 [ext_resource type="PackedScene" uid="uid://ddy3g0tlo6k8b" path="res://models/interiors/architecture/roof/roof_1_20x10.tscn" id="19_8turt"]
 [ext_resource type="PackedScene" uid="uid://blttosmy6qdp7" path="res://models/interiors/lights/omni_floor_light_bar.tscn" id="20_l6js3"]
 [ext_resource type="PackedScene" uid="uid://c0b64m347r4gr" path="res://models/interiors/doors/door_sliding_1.tscn" id="20_srb27"]
+[ext_resource type="PackedScene" uid="uid://cj4tayx320w1f" path="res://models/props/trash_bin_1.tscn" id="21_s810a"]
 [ext_resource type="PackedScene" uid="uid://ixilbup7ytf6" path="res://models/props/modern_coffee_table.tscn" id="21_y1m7c"]
 [ext_resource type="PackedScene" uid="uid://d1wb5ccqhgbfu" path="res://models/interiors/architecture/walls/wall_1_2x_2_8.tscn" id="22_j3b0x"]
 [ext_resource type="PackedScene" uid="uid://b220eqngku3ud" path="res://models/interiors/doors/door_sliding_2.tscn" id="23_f0jhi"]
@@ -232,7 +233,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0
 [node name="Wall_Stairs" type="CSGBox3D" parent="Hall/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85, 3.35, -1.19209e-07)
 size = Vector3(0.1, 0.9, 6.6)
-material = ExtResource("17_f83it")
+material = ExtResource("16_f8m8e")
 
 [node name="wall_2_pillard8" parent="Hall/Walls" instance=ExtResource("14_x521u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2592, 0, 2.02565)
@@ -277,9 +278,9 @@ size = Vector3(4.2, 0.1, 6.7)
 material = ExtResource("3_jos5n")
 
 [node name="Roof1_20x10" parent="Hall/Roof" instance=ExtResource("19_8turt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, 2.85, -4.55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, 2.85, -5.2)
 visible = false
-size = Vector3(34.2, 0.1, 19.1)
+size = Vector3(34.2, 0.1, 20.4)
 material = ExtResource("3_jos5n")
 
 [node name="sofa_waiting_room_1" parent="Hall" instance=ExtResource("9_tefkb")]
@@ -327,6 +328,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22, -0
 [node name="OmniFloorLightBar4" parent="Hall" instance=ExtResource("20_l6js3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, -0.05, -10.2)
 
+[node name="trash_bin_1" parent="Hall" instance=ExtResource("21_s810a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, -14.6512)
+
 [node name="Admnistration" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0, 10.2)
 
@@ -372,6 +376,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 7.8, 2
 
 [node name="SlidingDoor1" parent="Admnistration" instance=ExtResource("20_srb27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6, 0, -15.0236)
+label = "Administration"
 
 [node name="Canteen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, -15.2)
@@ -419,9 +424,11 @@ transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 21.5, 0, 5.1)
 
 [node name="SlidingDoor2" parent="Canteen" instance=ExtResource("20_srb27")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.05, 0, 12.33)
+label = "Canteen"
 
 [node name="SlidingDoor1" parent="Canteen" instance=ExtResource("23_f0jhi")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.7, 0, 2.9)
+label = "Storage"
 
 [node name="OmniLightBar5" parent="Canteen" instance=ExtResource("4_31ois")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 9.25, 2.75, 7.7)
@@ -434,3 +441,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 13.65,
 
 [node name="OmniLightBar8" parent="Canteen" instance=ExtResource("4_31ois")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 13.65, 2.75, 3.1)
+
+[node name="OmniFloorLightBar" parent="Canteen" instance=ExtResource("20_l6js3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 2.2)
+
+[node name="OmniFloorLightBar2" parent="Canteen" instance=ExtResource("20_l6js3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 6.2)

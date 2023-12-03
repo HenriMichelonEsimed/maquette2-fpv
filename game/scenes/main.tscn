@@ -11,7 +11,7 @@ script = ExtResource("1_14vdi")
 [node name="Player" parent="." instance=ExtResource("3_s1y03")]
 transform = Transform3D(0.999639, 0, 0.026875, 0, 1, 0, -0.026875, 0, 0.999639, -0.104, -1, 11.392)
 
-[node name="Level2" parent="." instance=ExtResource("4_xf3vx")]
+[node name="Level" parent="." instance=ExtResource("4_xf3vx")]
 
 [node name="Main" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_g84p1")]
 mouse_filter = 2
