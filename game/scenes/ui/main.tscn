@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc25hf7gi6i13"]
+
+[ext_resource type="Script" path="res://scenes/ui/main.gd" id="1_ghhs3"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="1_ni5mw"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="2_ur2r2"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ghhs3")
+
+[node name="LabelSaving" type="Label" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 48
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_ur2r2")
+icon_size = 48
+icon_name = "download"
+
+[node name="Timer" type="Timer" parent="LabelSaving"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]

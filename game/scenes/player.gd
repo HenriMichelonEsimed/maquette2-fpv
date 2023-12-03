@@ -16,6 +16,8 @@ var look_down_action:String = "look_down"
 var camera_y_axis_inverted:bool = true
 
 func _ready():
+	if (GameState.player_state.position != Vector3.ZERO):
+		_set_position()
 	if (camera_y_axis_inverted):
 		look_up_action = "look_down"
 		look_down_action = "look_up"
@@ -67,3 +69,8 @@ func _on_under_water_body_entered(body):
 
 func _on_under_water_body_exited(body):
 	under_water_filter.visible = false
+
+func _set_position():
+	position = GameState.player_state.position
+	rotation = GameState.player_state.rotation
+	

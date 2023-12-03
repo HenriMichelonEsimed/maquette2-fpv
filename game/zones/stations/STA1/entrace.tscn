@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.25)
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="Wall110x1" parent="Walls" instance=ExtResource("2_vuga8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.495, -4.95)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49, -4.95)
 
 [node name="OmniLightBar1" parent="Walls" instance=ExtResource("6_5cwxb")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 1.55, 4.8)
