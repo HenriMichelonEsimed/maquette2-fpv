@@ -4,6 +4,7 @@ signal using(is_used:bool)
 signal unlock(success:bool)
 
 @export var label:String
+@export var title:String
 
 var save:bool
 var is_used:bool = false
@@ -18,7 +19,7 @@ func _ready():
 	if (label == null): 
 		label = get_path()
 	if $Top/Text != null:
-		$Top/Text.text = label
+		$Top/Text.text = title
 	_animation = find_child("AnimationPlayer")
 	if (_animation != null):
 		_animation.connect("animation_finished", _on_animation_finished)

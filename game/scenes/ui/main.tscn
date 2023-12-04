@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc25hf7gi6i13"]
+[gd_scene load_steps=7 format=3 uid="uid://cc25hf7gi6i13"]
 
 [ext_resource type="Script" path="res://scenes/ui/main.gd" id="1_ghhs3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="1_ni5mw"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="2_ur2r2"]
 [ext_resource type="StyleBox" uid="uid://nrorpnbiv20c" path="res://assets/styles/info_label.tres" id="4_rpld4"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_utbrf"]
+[ext_resource type="StyleBox" uid="uid://cxtrro0p5q00e" path="res://assets/styles/menu_button.tres" id="5_vw41v"]
 
 [node name="Main" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +17,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ghhs3")
 
-[node name="LabelSaving" type="Label" parent="."]
+[node name="HUD" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LabelSaving" type="Label" parent="HUD"]
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
@@ -23,8 +31,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -23.0
+offset_left = 1096.0
+offset_top = 496.0
+offset_right = 1160.0
+offset_bottom = 560.0
 grow_horizontal = 0
 grow_vertical = 0
 auto_translate = false
@@ -40,18 +50,18 @@ script = ExtResource("2_ur2r2")
 icon_size = 48
 icon_name = "download"
 
-[node name="Timer" type="Timer" parent="LabelSaving"]
+[node name="Timer" type="Timer" parent="HUD/LabelSaving"]
 wait_time = 0.5
 one_shot = true
 
-[node name="LabelInfo" type="Label" parent="."]
+[node name="LabelInfo" type="Label" parent="HUD"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 21.0
+offset_left = 536.0
+offset_right = 624.0
+offset_bottom = 54.0
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -65,4 +75,120 @@ text = "Infos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="timeout" from="LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -98.0
+offset_right = 240.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="MainMenu" type="HBoxContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="ButtonInventory" type="Button" parent="Menu/MainMenu"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("5_vw41v")
+text = ""
+script = ExtResource("5_utbrf")
+icon_size = 48
+icon_name = "toolbox"
+
+[node name="ButtonTerminal" type="Button" parent="Menu/MainMenu"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("5_vw41v")
+text = ""
+script = ExtResource("5_utbrf")
+icon_size = 48
+icon_name = "mobile"
+
+[node name="SubMenu" type="HBoxContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="ButtonSave" type="Button" parent="Menu/SubMenu"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_vw41v")
+text = ""
+script = ExtResource("5_utbrf")
+icon_size = 40
+icon_name = "download"
+
+[node name="ButtonLoad" type="Button" parent="Menu/SubMenu"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_vw41v")
+text = ""
+script = ExtResource("5_utbrf")
+icon_size = 40
+icon_name = "upload"
+
+[node name="ButtonSettings" type="Button" parent="Menu/SubMenu"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_vw41v")
+text = ""
+script = ExtResource("5_utbrf")
+icon_size = 40
+icon_name = "sliders"
+
+[node name="ButtonKeymaps" type="Button" parent="Menu/SubMenu"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_vw41v")
+text = ""
+script = ExtResource("5_utbrf")
+icon_size = 40
+icon_name = "keyboard"
+
+[node name="ButtonQuit" type="Button" parent="Menu/SubMenu"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_vw41v")
+text = ""
+script = ExtResource("5_utbrf")
+icon_size = 40
+icon_name = "person-walking-arrow-right"
+
+[connection signal="timeout" from="HUD/LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
+[connection signal="pressed" from="Menu/MainMenu/ButtonInventory" to="." method="inventory_open"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonSave" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonLoad" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonSettings" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonKeymaps" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]

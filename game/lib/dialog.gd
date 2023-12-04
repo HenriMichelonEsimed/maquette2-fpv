@@ -13,4 +13,4 @@ func close():
 	get_tree().paused = false
 	if (_on_close != null):
 		_on_close.call(self)
-	visible = false
+	queue_free()

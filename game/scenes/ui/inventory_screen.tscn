@@ -1,0 +1,329 @@
+[gd_scene load_steps=8 format=3 uid="uid://bamoxutsna6sx"]
+
+[ext_resource type="Script" path="res://scenes/ui/inventory_screen.gd" id="1_0hce1"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_q3qwn"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_p36nm"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="9_tll54"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
+font_size = 34
+
+[sub_resource type="Environment" id="Environment_tvhn7"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="World3D" id="World3D_tt1eo"]
+environment = SubResource("Environment_tvhn7")
+
+[node name="InventoryScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -350.0
+offset_right = 316.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0hce1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_right = -18.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="MarginContainer" parent="Panel/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Content/Top"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/Content/Top/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Content/Top/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory"
+label_settings = SubResource("LabelSettings_gicgb")
+horizontal_alignment = 1
+
+[node name="ButtonBack" type="Button" parent="Panel/Content/Top/HBoxContainer"]
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Close"
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "xmark"
+
+[node name="Body" type="MarginContainer" parent="Panel/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="HBoxContainer" parent="Panel/Content/Body"]
+layout_mode = 2
+
+[node name="Tabs" type="TabContainer" parent="Panel/Content/Body/Content"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Tools" type="Control" parent="Panel/Content/Body/Content/Tabs"]
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Content/Body/Content/Tabs/Tools"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Consumables" type="Control" parent="Panel/Content/Body/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Content/Body/Content/Tabs/Consumables"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Miscellaneous" type="Control" parent="Panel/Content/Body/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Content/Body/Content/Tabs/Miscellaneous"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quests" type="Control" parent="Panel/Content/Body/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Content/Body/Content/Tabs/Quests"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelItem" type="PanelContainer" parent="Panel/Content/Body/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Content" type="VBoxContainer" parent="Panel/Content/Body/Content/PanelItem"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/Content/Body/Content/PanelItem/Content"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="ViewContent" type="SubViewportContainer" parent="Panel/Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="3DView" type="SubViewport" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent"]
+own_world_3d = true
+world_3d = SubResource("World3D_tt1eo")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 310)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, -8.35189e-23, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, 0, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
+visible = false
+size = Vector3(100, 0.1, 100)
+
+[node name="InsertPoint" type="Node3D" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, 0, 0, 0)
+
+[node name="Actions" type="HBoxContainer" parent="Panel/Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Drop" type="Button" parent="Panel/Content/Body/Content/PanelItem/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Drop"
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "arrow-up-from-bracket"
+
+[node name="Use" type="Button" parent="Panel/Content/Body/Content/PanelItem/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Use"
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "hand-back-fist"
+
+[node name="Craft" type="Button" parent="Panel/Content/Body/Content/PanelItem/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Craft"
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "screwdriver-wrench"
+
+[node name="PanelCrafting" type="PanelContainer" parent="Panel/Content/Body/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Content" type="VBoxContainer" parent="Panel/Content/Body/Content/PanelCrafting"]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="Panel/Content/Body/Content/PanelCrafting/Content"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/Content/Body/Content/PanelCrafting/Content/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+text = "Crafting"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonStopCraft" type="Button" parent="Panel/Content/Body/Content/PanelCrafting/Content/Top"]
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Cancel"
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "xmark"
+
+[node name="ListCraft" type="ItemList" parent="Panel/Content/Body/Content/PanelCrafting/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Content/Body/Content/PanelCrafting/Content"]
+layout_mode = 2
+
+[node name="FontAwesome" type="Label" parent="Panel/Content/Body/Content/PanelCrafting/Content/VBoxContainer"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 24
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_tll54")
+icon_size = 24
+icon_name = "down-long"
+
+[node name="LabelRecipe" type="Label" parent="Panel/Content/Body/Content/PanelCrafting/Content/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Actions" type="HBoxContainer" parent="Panel/Content/Body/Content/PanelCrafting/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="DropCraft" type="Button" parent="Panel/Content/Body/Content/PanelCrafting/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Remove"
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "ban"
+
+[node name="Craft" type="Button" parent="Panel/Content/Body/Content/PanelCrafting/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Make"
+theme_override_fonts/font = ExtResource("3_q3qwn")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_p36nm")
+icon_size = 32
+icon_name = "screwdriver-wrench"
+
+[connection signal="pressed" from="Panel/Content/Top/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="tab_changed" from="Panel/Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
+[connection signal="tab_selected" from="Panel/Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/Tabs/Tools/List" to="." method="_on_list_tools_item_selected"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/Tabs/Consumables/List" to="." method="_on_list_item_consumable_selected"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/Tabs/Quests/List" to="." method="_on_list_item_quest_selected"]
+[connection signal="pressed" from="Panel/Content/Body/Content/PanelItem/Content/Actions/Drop" to="." method="_on_drop_pressed"]
+[connection signal="pressed" from="Panel/Content/Body/Content/PanelItem/Content/Actions/Use" to="." method="_on_use_pressed"]
+[connection signal="pressed" from="Panel/Content/Body/Content/PanelItem/Content/Actions/Craft" to="." method="_on_craft_pressed"]
+[connection signal="pressed" from="Panel/Content/Body/Content/PanelCrafting/Content/Top/ButtonStopCraft" to="." method="_on_button_stop_craft_pressed"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/PanelCrafting/Content/ListCraft" to="." method="_on_list_craft_item_selected"]
+[connection signal="pressed" from="Panel/Content/Body/Content/PanelCrafting/Content/Actions/DropCraft" to="." method="_on_drop_craft_pressed"]
+[connection signal="pressed" from="Panel/Content/Body/Content/PanelCrafting/Content/Actions/Craft" to="." method="_on_crafting_pressed"]

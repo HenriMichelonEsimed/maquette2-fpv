@@ -1,14 +1,22 @@
 extends Object
 class_name Tools
 
-const DIALOG_SELECT_QANTITY = "select_quantity_dialog"
-const DIALOG_TRANSFERT_ITEMS = "items_transfert_dialog"
+const DIALOG_SELECT_QANTITY = "select_quantity"
+const DIALOG_TRANSFERT_ITEMS = "items_transfert"
+const SCREEN_INVENTORY = "inventory"
 
 static func load_dialog(parent:Node, dialog:String, on_close = null) -> Dialog:
-	var scene = load("res://scenes/ui/dialogs/" + dialog + ".tscn").instantiate()
+	var scene = load("res://scenes/ui/dialogs/" + dialog + "_dialog.tscn").instantiate()
 	parent.add_child(scene)
 	if (on_close != null): 
-		scene.connect("on_close", on_close)
+		scene._on_close = on_close
+	return scene
+
+static func load_screen(parent:Node, screen:String, on_close = null) -> Dialog:
+	var scene = load("res://scenes/ui/" + screen + "_screen.tscn").instantiate()
+	parent.add_child(scene)
+	if (on_close != null): 
+		scene._on_close = on_close
 	return scene
 
 static func show_item(item:Item, node_3d:Node3D):
