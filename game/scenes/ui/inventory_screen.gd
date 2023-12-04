@@ -47,6 +47,7 @@ var crafting_recipe = null
 var crafting_target = null
 
 func open():
+	super._open()
 	_resize()
 	StateSaver.loadState(state)
 	_refresh()

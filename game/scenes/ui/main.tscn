@@ -17,12 +17,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ghhs3")
 
-[node name="HUD" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="LabelSaving" type="Label" parent="HUD"]
+[node name="LabelSaving" type="Label" parent="."]
 visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
@@ -31,10 +26,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1096.0
-offset_top = 496.0
-offset_right = 1160.0
-offset_bottom = 560.0
+offset_left = -64.0
+offset_top = -64.0
 grow_horizontal = 0
 grow_vertical = 0
 auto_translate = false
@@ -50,9 +43,14 @@ script = ExtResource("2_ur2r2")
 icon_size = 48
 icon_name = "download"
 
-[node name="Timer" type="Timer" parent="HUD/LabelSaving"]
+[node name="Timer" type="Timer" parent="LabelSaving"]
 wait_time = 0.5
 one_shot = true
+
+[node name="HUD" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="LabelInfo" type="Label" parent="HUD"]
 layout_mode = 1
@@ -185,10 +183,10 @@ script = ExtResource("5_utbrf")
 icon_size = 40
 icon_name = "person-walking-arrow-right"
 
-[connection signal="timeout" from="HUD/LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
+[connection signal="timeout" from="LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
 [connection signal="pressed" from="Menu/MainMenu/ButtonInventory" to="." method="inventory_open"]
-[connection signal="pressed" from="Menu/SubMenu/ButtonSave" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="Menu/SubMenu/ButtonLoad" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="Menu/SubMenu/ButtonSettings" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="Menu/SubMenu/ButtonKeymaps" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Menu/MainMenu/ButtonTerminal" to="." method="terminal_open"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonSave" to="." method="savegame_open"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonLoad" to="." method="load_savegame_open"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonSettings" to="." method="settings_open"]
 [connection signal="pressed" from="Menu/SubMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]

@@ -8,7 +8,6 @@ signal quantity(quantity:int)
 @onready var buttonDrop:Button =$Content/Body/Buttons/ButtonDrop
 
 var _slide_pressed:int = 0
-var _just_opened:bool = true
 var func_quantity:Callable
 
 func _unhandled_input(event):
@@ -35,7 +34,7 @@ func _unhandled_input(event):
 			_slide_pressed = 0
 
 func open(item:Item, all:bool, label:String="Transfert", func_qty=_quantity):
-	_just_opened = true
+	super._open()
 	buttonDrop.text = tr(label)
 	labelName.text = tr(item.label)
 	func_quantity = func_qty

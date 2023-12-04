@@ -2,8 +2,8 @@ extends Control
 
 @export var player:Player
 
-@onready var label_saving:Label = $HUD/LabelSaving
-@onready var time_saving:Timer = $HUD/LabelSaving/Timer
+@onready var label_saving:Label = $LabelSaving
+@onready var time_saving:Timer = $LabelSaving/Timer
 @onready var label_info:Label = $HUD/LabelInfo
 @onready var menu = $Menu
 @onready var hud = $HUD
@@ -47,6 +47,36 @@ func menu_close(_dummy=null):
 func inventory_open():
 	_current_screen = Tools.load_screen(self, Tools.SCREEN_INVENTORY, menu_close)
 	_current_screen.open()
+
+func terminal_open():
+	_current_screen = Tools.load_screen(self, Tools.SCREEN_TERMINAL, menu_close)
+	_current_screen.open()
+
+func load_savegame_open():
+	_current_screen = Tools.load_dialog(self, Tools.DIALOG_LOAD_SAVEGAME, menu_close)
+	_current_screen.open()
+
+func settings_open():
+	_current_screen = Tools.load_dialog(self, Tools.DIALOG_SETTINGS, menu_close)
+	_current_screen.open()
+
+func savegame_open():
+	_current_screen = Tools.load_dialog(self, Tools.DIALOG_INPUT, menu_close)
+	_current_screen.open("Save game", StateSaver.get_last_savegame(), _on_savegame_input)
+
+func _on_savegame_input(savegame):
+	if (savegame != null):
+		if (StateSaver.savegame_exists(savegame)):
+			GameState.savegame_name = savegame
+			var dlg = Tools.load_dialog(self, Tools.DIALOG_CONFIRM, menu_close)
+			dlg.open("Save game", "Overwrite existing save?", _on_savegame_confirm)
+		else:
+			GameState.saveGame(savegame)
+
+func _on_savegame_confirm(overwrite:bool):
+	if (overwrite):
+		GameState.saveGame(GameState.savegame_name)
+		menu_close()
 
 func _on_saving_start():
 	label_saving.visible = true

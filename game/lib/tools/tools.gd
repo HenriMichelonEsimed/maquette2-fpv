@@ -3,7 +3,12 @@ class_name Tools
 
 const DIALOG_SELECT_QANTITY = "select_quantity"
 const DIALOG_TRANSFERT_ITEMS = "items_transfert"
+const DIALOG_LOAD_SAVEGAME = "load_savegame"
+const DIALOG_SETTINGS = "settings"
+const DIALOG_INPUT = "input"
+const DIALOG_CONFIRM = "confirm"
 const SCREEN_INVENTORY = "inventory"
+const SCREEN_TERMINAL = "terminal"
 
 static func load_dialog(parent:Node, dialog:String, on_close = null) -> Dialog:
 	var scene = load("res://scenes/ui/dialogs/" + dialog + "_dialog.tscn").instantiate()
