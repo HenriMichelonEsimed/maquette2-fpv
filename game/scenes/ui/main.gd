@@ -7,11 +7,13 @@ extends Control
 @onready var label_info:Label = $HUD/LabelInfo
 @onready var menu = $Menu
 @onready var hud = $HUD
+@onready var blur = $Blur
 
 var _displayed_node:Node
 var _current_screen = null
 
 func _ready():
+	blur.visible = false
 	label_saving.visible = false
 	label_info.visible = false
 	menu.visible = false
@@ -37,12 +39,14 @@ func menu_open():
 	menu.visible = true
 	hud.visible = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	blur.visible = true
 
 func menu_close(_dummy=null):
 	get_tree().paused = false
 	menu.visible = false
 	hud.visible = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	blur.visible = false
 
 func inventory_open():
 	_current_screen = Tools.load_screen(self, Tools.SCREEN_INVENTORY, menu_close)
@@ -106,4 +110,11 @@ func _on_hide_info():
 	label_info.text = ''
 
 func _on_button_quit_pressed():
+	_current_screen = Tools.load_dialog(self, Tools.DIALOG_CONFIRM, menu_close)
+	_current_screen.open("Save ?", "Save game before exiting ?", _on_save_before_qui_confirm)
+
+func _on_save_before_qui_confirm(save:bool):
+	if (save): 
+		GameState.saveGame()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().quit()

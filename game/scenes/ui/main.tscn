@@ -1,11 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://cc25hf7gi6i13"]
+[gd_scene load_steps=11 format=3 uid="uid://cc25hf7gi6i13"]
 
 [ext_resource type="Script" path="res://scenes/ui/main.gd" id="1_ghhs3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="1_ni5mw"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="2_ur2r2"]
+[ext_resource type="Texture2D" uid="uid://dd2v4so67fbe3" path="res://assets/textures/white.png" id="3_8s7j6"]
 [ext_resource type="StyleBox" uid="uid://nrorpnbiv20c" path="res://assets/styles/info_label.tres" id="4_rpld4"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_utbrf"]
 [ext_resource type="StyleBox" uid="uid://cxtrro0p5q00e" path="res://assets/styles/menu_button.tres" id="5_vw41v"]
+[ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="7_4jbex"]
+[ext_resource type="StyleBox" uid="uid://dkldklw6dth8q" path="res://assets/styles/menu_button_hover.tres" id="8_5gish"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6dah"]
+shader = ExtResource("7_4jbex")
+shader_parameter/amount = 2.0
 
 [node name="Main" type="Control"]
 process_mode = 3
@@ -16,6 +23,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ghhs3")
+
+[node name="Blur" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_f6dah")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_8s7j6")
+expand_mode = 1
 
 [node name="LabelSaving" type="Label" parent="."]
 visible = false
@@ -101,6 +119,9 @@ localize_numeral_system = false
 theme_override_fonts/font = ExtResource("1_ni5mw")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("5_vw41v")
+theme_override_styles/hover = ExtResource("8_5gish")
+theme_override_styles/pressed = ExtResource("8_5gish")
+theme_override_styles/focus = ExtResource("8_5gish")
 text = ""
 script = ExtResource("5_utbrf")
 icon_size = 48
@@ -113,6 +134,9 @@ localize_numeral_system = false
 theme_override_fonts/font = ExtResource("1_ni5mw")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("5_vw41v")
+theme_override_styles/hover = ExtResource("8_5gish")
+theme_override_styles/pressed = ExtResource("8_5gish")
+theme_override_styles/focus = ExtResource("8_5gish")
 text = ""
 script = ExtResource("5_utbrf")
 icon_size = 48
@@ -130,6 +154,9 @@ localize_numeral_system = false
 theme_override_fonts/font = ExtResource("1_ni5mw")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("5_vw41v")
+theme_override_styles/hover = ExtResource("8_5gish")
+theme_override_styles/pressed = ExtResource("8_5gish")
+theme_override_styles/focus = ExtResource("8_5gish")
 text = ""
 script = ExtResource("5_utbrf")
 icon_size = 40
@@ -142,6 +169,9 @@ localize_numeral_system = false
 theme_override_fonts/font = ExtResource("1_ni5mw")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("5_vw41v")
+theme_override_styles/hover = ExtResource("8_5gish")
+theme_override_styles/pressed = ExtResource("8_5gish")
+theme_override_styles/focus = ExtResource("8_5gish")
 text = ""
 script = ExtResource("5_utbrf")
 icon_size = 40
@@ -154,6 +184,9 @@ localize_numeral_system = false
 theme_override_fonts/font = ExtResource("1_ni5mw")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("5_vw41v")
+theme_override_styles/hover = ExtResource("8_5gish")
+theme_override_styles/pressed = ExtResource("8_5gish")
+theme_override_styles/focus = ExtResource("8_5gish")
 text = ""
 script = ExtResource("5_utbrf")
 icon_size = 40
@@ -166,6 +199,9 @@ localize_numeral_system = false
 theme_override_fonts/font = ExtResource("1_ni5mw")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("5_vw41v")
+theme_override_styles/hover = ExtResource("8_5gish")
+theme_override_styles/pressed = ExtResource("8_5gish")
+theme_override_styles/focus = ExtResource("8_5gish")
 text = ""
 script = ExtResource("5_utbrf")
 icon_size = 40
@@ -178,6 +214,9 @@ localize_numeral_system = false
 theme_override_fonts/font = ExtResource("1_ni5mw")
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("5_vw41v")
+theme_override_styles/hover = ExtResource("8_5gish")
+theme_override_styles/pressed = ExtResource("8_5gish")
+theme_override_styles/focus = ExtResource("8_5gish")
 text = ""
 script = ExtResource("5_utbrf")
 icon_size = 40
