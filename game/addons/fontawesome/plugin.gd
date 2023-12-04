@@ -12,14 +12,12 @@ func _enter_tree():
 	get_editor_interface().get_base_control().add_child(finder)
 	add_tool_menu_item("FontAwesome Icons", _on_finder_pressed)
 
-
 func _exit_tree():
 	remove_custom_type("FontAwesome")
 	remove_custom_type("FontAwesomeButton")
 	remove_tool_menu_item("FontAwesome Icons")
 	if is_instance_valid(finder):
 		finder.queue_free()
-
 
 func _on_finder_pressed():
 	finder.show_window()

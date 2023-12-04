@@ -81,10 +81,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_neighbor_right = NodePath("../../Right/ListInventory")
 focus_next = NodePath("../../Right/ListInventory")
-item_count = 3
-item_0/text = "Item1"
-item_1/text = "Item2"
-item_2/text = ""
 
 [node name="Buttons" type="VBoxContainer" parent="Content/VBoxContainer/Lists"]
 layout_mode = 2
@@ -142,12 +138,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_neighbor_left = NodePath("../../Left/ListContainer")
 focus_next = NodePath("../../Left/ListContainer")
-item_count = 4
-item_0/text = "Item1"
-item_1/text = "Item2"
-item_2/text = "Item3"
-item_2/disabled = true
-item_3/text = ""
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
