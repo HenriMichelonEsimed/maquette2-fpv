@@ -12,12 +12,6 @@ func _ready():
 	var zone = $Level
 	_change_zone(zone)
 
-func _input(event):
-	if (event is InputEventKey):
-		if (event.physical_keycode == KEY_Z) and (Input.is_key_pressed(KEY_CTRL)):
-			GameState.saveGame()
-			_quit()
-
 func _change_zone(zone:Zone):
 	if (GameState.current_zone != null):
 		for node:Node in GameState.current_zone.find_children("*", "Storage", true, true):

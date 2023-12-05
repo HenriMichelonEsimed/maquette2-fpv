@@ -1,14 +1,14 @@
 extends Dialog
 
-signal load_savegame(savegame:String)
-
 @onready var listSaves = $Panel/Content/VBoxContainer/ListSavegames
 
 var saves = {}
 var savegame = null
 var delete_confirm_dlg = null
+var _on_load_savegame:Callable
 
-func open():
+func open(on_load_savegame):
+	_on_load_savegame = on_load_savegame
 	super._open()
 	listSaves.clear()
 	for dir in StateSaver.get_savegames():
@@ -32,8 +32,8 @@ func _on_list_savegames_item_selected(index):
 
 func _on_button_load_pressed():
 	if (savegame != null): 
-		load_savegame.emit(savegame)
 		close()
+		_on_load_savegame.call(savegame)
 
 func _on_button_delete_pressed():
 	if (savegame != null): 

@@ -3,6 +3,7 @@ class_name MainUI extends Control
 @export var player:Player
 
 @onready var label_saving:Label = $LabelSaving
+@onready var label_loading:Label = $LabelLoading
 @onready var time_saving:Timer = $LabelSaving/Timer
 @onready var label_info:Label = $HUD/LabelInfo
 @onready var menu = $Menu
@@ -15,6 +16,7 @@ var _current_screen = null
 func _ready():
 	blur.visible = false
 	label_saving.visible = false
+	label_loading.visible = false
 	label_info.visible = false
 	menu.visible = false
 	GameState.connect("saving_start", _on_saving_start)
@@ -30,7 +32,9 @@ func _unhandled_input(event):
 			menu_close()
 		else:
 			menu_open()
-	if (label_info.visible):
+	elif (Input.is_action_just_pressed("quit")):
+		_on_save_before_quit_confirm(true)
+	elif (label_info.visible):
 		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
 			_label_info_position()
 
@@ -60,7 +64,7 @@ func terminal_open():
 
 func load_savegame_open():
 	_current_screen = Tools.load_dialog(self, Tools.DIALOG_LOAD_SAVEGAME, menu_close)
-	_current_screen.open()
+	_current_screen.open(_on_load_savegame)
 
 func settings_open():
 	_current_screen = Tools.load_dialog(self, Tools.DIALOG_SETTINGS, menu_close)
@@ -69,7 +73,14 @@ func settings_open():
 func savegame_open():
 	_current_screen = Tools.load_dialog(self, Tools.DIALOG_INPUT, menu_close)
 	_current_screen.open("Save game", StateSaver.get_last_savegame(), _on_savegame_input)
-
+	
+func _on_load_savegame(savegame:String):
+	menu.visible = false
+	label_loading.visible = true
+	GameState.load_game(savegame)
+	label_loading.visible = false
+	get_tree().reload_current_scene()
+	
 func _on_savegame_input(savegame):
 	if (savegame != null):
 		if (StateSaver.savegame_exists(savegame)):
@@ -77,11 +88,11 @@ func _on_savegame_input(savegame):
 			var dlg = Tools.load_dialog(self, Tools.DIALOG_CONFIRM, menu_close)
 			dlg.open("Save game", "Overwrite existing save?", _on_savegame_confirm)
 		else:
-			GameState.saveGame(savegame)
+			GameState.save_game(savegame)
 
 func _on_savegame_confirm(overwrite:bool):
 	if (overwrite):
-		GameState.saveGame(GameState.savegame_name)
+		GameState.save_game(GameState.savegame_name)
 		menu_close()
 
 func _on_saving_start():
@@ -113,10 +124,10 @@ func _on_hide_info():
 
 func _on_button_quit_pressed():
 	_current_screen = Tools.load_dialog(self, Tools.DIALOG_CONFIRM, menu_close)
-	_current_screen.open("Save ?", "Save game before exiting ?", _on_save_before_qui_confirm)
+	_current_screen.open("Save ?", "Save game before exiting ?", _on_save_before_quit_confirm)
 
-func _on_save_before_qui_confirm(save:bool):
+func _on_save_before_quit_confirm(save:bool):
 	if (save): 
-		GameState.saveGame()
+		GameState.save_game()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().quit()

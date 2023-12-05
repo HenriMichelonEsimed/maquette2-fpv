@@ -16,6 +16,7 @@ shader_parameter/amount = 2.0
 
 [node name="Main" type="Control"]
 process_mode = 3
+process_priority = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +37,6 @@ texture = ExtResource("3_8s7j6")
 expand_mode = 1
 
 [node name="LabelSaving" type="Label" parent="."]
-visible = false
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 3
@@ -64,6 +64,33 @@ icon_name = "download"
 [node name="Timer" type="Timer" parent="LabelSaving"]
 wait_time = 0.5
 one_shot = true
+
+[node name="LabelLoading" type="Label" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 128
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_ur2r2")
+icon_size = 128
+icon_name = "spinner"
 
 [node name="HUD" type="Control" parent="."]
 anchors_preset = 0
