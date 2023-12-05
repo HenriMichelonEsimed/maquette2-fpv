@@ -5,6 +5,7 @@ class_name MainUI extends Control
 @onready var label_saving:Label = $LabelSaving
 @onready var time_saving:Timer = $LabelSaving/Timer
 @onready var label_info:Label = $HUD/LabelInfo
+@onready var focused_button:Button = $Menu/MainMenu/ButtonInventory
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
@@ -22,7 +23,7 @@ func _ready():
 	player.interactions.connect("display_info", _on_display_info)
 	player.interactions.connect("hide_info", _on_hide_info)
 
-func _unhandled_input(event):
+func _input(event):
 	if (Input.is_action_just_pressed("menu")):
 		if (_current_screen != null):
 			_current_screen = null
@@ -30,6 +31,8 @@ func _unhandled_input(event):
 			menu_close()
 		else:
 			menu_open()
+	elif (Input.is_action_just_pressed("cancel") and menu.visible):
+		menu_close()
 	elif (Input.is_action_just_pressed("quit")):
 		_on_save_before_quit_confirm(true)
 	elif (label_info.visible):
@@ -47,6 +50,7 @@ func resume_game():
 func menu_open():
 	GameState.pause_game()
 	menu.visible = true
+	focused_button.grab_focus()
 
 func menu_close(_dummy=null):
 	GameState.resume_game()
@@ -73,7 +77,7 @@ func savegame_open():
 	_current_screen.open("Save game", StateSaver.get_last_savegame(), _on_savegame_input)
 
 func display_keymaps():
-	_current_screen = Tools.load_screen(self, Tools.CONTROLLER_KEYBOARD, menu_close)
+	_current_screen = Tools.load_screen(self, Tools.SCREEN_CONTROLLER, menu_close)
 	_current_screen.open()
 
 func _on_load_savegame(savegame:String):

@@ -14,8 +14,10 @@ var ui:MainUI
 var current_tool:ItemTool
 var current_zone:Zone
 var savegame_name:String
+var use_joypad:bool = false
 
 func _ready():
+	use_joypad = Input.get_connected_joypads().size() > 0
 	load_game(StateSaver.get_last())
 
 func save_game(savegame = null):

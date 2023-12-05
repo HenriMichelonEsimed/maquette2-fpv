@@ -7,9 +7,11 @@ const DIALOG_LOAD_SAVEGAME = "load_savegame"
 const DIALOG_SETTINGS = "settings"
 const DIALOG_INPUT = "input"
 const DIALOG_CONFIRM = "confirm"
-const CONTROLLER_KEYBOARD = "controllers/keyboard"
 const SCREEN_INVENTORY = "inventory"
 const SCREEN_TERMINAL = "terminal"
+const SCREEN_CONTROLLER = "controller"
+const CONTROLLER_KEYBOARD = "keyboard"
+const CONTROLLER_XBOX = "xbox"
 
 static func load_dialog(parent:Node, dialog:String, on_close = null) -> Dialog:
 	var scene = load("res://scenes/ui/dialogs/" + dialog + "_dialog.tscn").instantiate()
@@ -24,6 +26,9 @@ static func load_screen(parent:Node, screen:String, on_close = null) -> Dialog:
 	if (on_close != null): 
 		scene._on_close = on_close
 	return scene
+
+static func load_controller_texture(controller:String) -> Texture2D:
+	return load("res://assets/textures/controllers/" + controller + ".png")
 
 static func show_item(item:Item, node_3d:Node3D):
 	for c in node_3d.get_children():
