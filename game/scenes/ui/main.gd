@@ -1,4 +1,4 @@
-extends Control
+class_name MainUI extends Control
 
 @export var player:Player
 
@@ -22,8 +22,8 @@ func _ready():
 	player.interactions.connect("display_info", _on_display_info)
 	player.interactions.connect("hide_info", _on_hide_info)
 
-func _input(event):
-	if (Input.is_action_just_pressed("cancel")):
+func _unhandled_input(event):
+	if (Input.is_action_just_pressed("menu")):
 		if (_current_screen != null):
 			_current_screen = null
 		if (menu.visible):
@@ -34,19 +34,21 @@ func _input(event):
 		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
 			_label_info_position()
 
-func menu_open():
-	get_tree().paused = true
-	menu.visible = true
+func pause_game():
 	hud.visible = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	blur.visible = true
 
-func menu_close(_dummy=null):
-	get_tree().paused = false
-	menu.visible = false
+func resume_game():
 	hud.visible = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	blur.visible = false
+
+func menu_open():
+	GameState.pause_game()
+	menu.visible = true
+
+func menu_close(_dummy=null):
+	GameState.resume_game()
+	menu.visible = false
 
 func inventory_open():
 	_current_screen = Tools.load_screen(self, Tools.SCREEN_INVENTORY, menu_close)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=38 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_s3ubj"]
@@ -14,8 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://c1smsmhu0un7p" path="res://models/interiors/architecture/walls/wall_2_corner_2_8.tscn" id="13_igti6"]
 [ext_resource type="PackedScene" uid="uid://dfbmwmgqi6av7" path="res://models/interiors/architecture/walls/wall_2_pillard.tscn" id="14_x521u"]
 [ext_resource type="PackedScene" uid="uid://cixb1jt7qcb77" path="res://models/interiors/architecture/walls/wall_2_2x2_8.tscn" id="15_x6rim"]
+[ext_resource type="Material" uid="uid://d2a76qgl8qtuv" path="res://assets/materials/colors_outline/blue_4.tres" id="16_1de6f"]
 [ext_resource type="PackedScene" uid="uid://dfy80mwn63d2v" path="res://models/interiors/architecture/walls/wall_2_2x_3_8.tscn" id="16_dp03r"]
-[ext_resource type="Material" uid="uid://d2a76qgl8qtuv" path="res://assets/materials/colors_outline/grey_2.tres" id="16_f8m8e"]
 [ext_resource type="PackedScene" uid="uid://mdwcscr1ttf5" path="res://models/props/ficus_1.tscn" id="18_qhd46"]
 [ext_resource type="PackedScene" uid="uid://devhm66ws8um7" path="res://models/interiors/architecture/walls/wall_1_10x_2_8.tscn" id="19_4wseb"]
 [ext_resource type="PackedScene" uid="uid://ddy3g0tlo6k8b" path="res://models/interiors/architecture/roof/roof_1_20x10.tscn" id="19_8turt"]
@@ -32,6 +32,11 @@
 [ext_resource type="PackedScene" uid="uid://bk8gadpr7iaj7" path="res://models/props/desk_chair_2.tscn" id="28_te4h3"]
 [ext_resource type="PackedScene" uid="uid://bl25do6qg02af" path="res://models/props/round_table_1.tscn" id="29_npyne"]
 [ext_resource type="PackedScene" uid="uid://daegqicibf13j" path="res://models/props/floor_lamp_1.tscn" id="30_n172y"]
+[ext_resource type="PackedScene" uid="uid://cs1slnus8qlda" path="res://models/props/monitor_1.tscn" id="31_hnpak"]
+[ext_resource type="Texture2D" uid="uid://33epdrquccqs" path="res://assets/textures/wallpapers/85762_1200x674.jpg" id="32_bmn0t"]
+[ext_resource type="Texture2D" uid="uid://dydi27v5offp7" path="res://assets/textures/wallpapers/CDE-6.png" id="33_uc51l"]
+[ext_resource type="Texture2D" uid="uid://bygyi3pwj7w2f" path="res://assets/textures/wallpapers/wp12411160-landscape-1920x1080-wallpapers.jpg" id="34_ilatr"]
+[ext_resource type="Texture2D" uid="uid://4kjcdks486g5" path="res://assets/textures/wallpapers/e9aecad89fb215b864e64007c546056f48ade01c.jpeg" id="35_2ve3f"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_s3ubj")
@@ -240,7 +245,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11, 0
 [node name="Wall_Stairs" type="CSGBox3D" parent="Hall/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.85, 3.35, -1.19209e-07)
 size = Vector3(0.1, 0.9, 6.6)
-material = ExtResource("16_f8m8e")
+material = ExtResource("16_1de6f")
 
 [node name="wall_2_pillard8" parent="Hall/Walls" instance=ExtResource("14_x521u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2592, 0, 2.02565)
@@ -312,9 +317,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10.3)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.7, 0, -10)
 
 [node name="Floor" type="CSGBox3D" parent="Hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.17208, -0.05, -15.5618)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.68561, -0.05, -15.3865)
 use_collision = true
-size = Vector3(36.4, 0.1, 20.4)
+size = Vector3(37.4271, 0.1, 20.7507)
 material = ExtResource("8_neqyu")
 
 [node name="ficus_1" parent="Hall" instance=ExtResource("18_qhd46")]
@@ -438,7 +443,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, -20.2)
 transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 3.18359, 0, -16.4386)
 
 [node name="Desk_chair_3" parent="Admnistration" instance=ExtResource("28_te4h3")]
-transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 3.38359, 0, -19.0386)
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 3.08589, 0, -19.0386)
 
 [node name="Desk_chair_4" parent="Admnistration" instance=ExtResource("28_te4h3")]
 transform = Transform3D(-0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, -0.258819, 2.68359, 0, -21.3386)
@@ -463,6 +468,22 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 
 [node name="Floor_lamp_2" parent="Admnistration" instance=ExtResource("30_n172y")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0.9, 0, -15.8)
+
+[node name="monitor_1" parent="Admnistration" instance=ExtResource("31_hnpak")]
+transform = Transform3D(-0.669442, 0, -0.742864, 0, 1, 0, 0.742864, 0, -0.669442, 3.68766, 0.805597, -15.6193)
+wallpaper = ExtResource("32_bmn0t")
+
+[node name="monitor_2" parent="Admnistration" instance=ExtResource("31_hnpak")]
+transform = Transform3D(-0.203454, 0, -0.979085, 0, 1, 0, 0.979085, 0, -0.203454, 3.79513, 0.805597, -18.926)
+wallpaper = ExtResource("33_uc51l")
+
+[node name="monitor_4" parent="Admnistration" instance=ExtResource("31_hnpak")]
+transform = Transform3D(-0.917644, 0, 0.397404, 0, 1, 0, -0.397404, 0, -0.917644, 6.56371, 0.805597, -22.4996)
+wallpaper = ExtResource("34_ilatr")
+
+[node name="monitor_3" parent="Admnistration" instance=ExtResource("31_hnpak")]
+transform = Transform3D(-0.999785, 0, 0.0207505, 0, 1, 0, -0.0207505, 0, -0.999785, 3.16928, 0.632259, -20.4208)
+wallpaper = ExtResource("35_2ve3f")
 
 [node name="Canteen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, -15.2)

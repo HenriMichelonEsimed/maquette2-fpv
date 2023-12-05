@@ -109,10 +109,14 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0tej5")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ai3cx"]
-height = 1.4
-radius = 0.151963
+height = 1.40306
+radius = 0.294089
 
-[node name="ficus_1" type="StaticBody3D"]
+[node name="ficus_1" type="RigidBody3D"]
+collision_layer = 64
+collision_mask = 577
+mass = 20.0
+can_sleep = false
 
 [node name="Animated indoor ficus in a concrete pot" type="Node3D" parent="."]
 

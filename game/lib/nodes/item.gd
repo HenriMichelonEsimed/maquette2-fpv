@@ -1,4 +1,4 @@
-class_name Item extends CharacterBody3D
+class_name Item extends StaticBody3D
 
 enum ItemType {
 	ITEM_TOOLS			= 0,

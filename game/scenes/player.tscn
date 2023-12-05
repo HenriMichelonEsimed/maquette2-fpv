@@ -20,6 +20,7 @@ shading_mode = 0
 albedo_color = Color(0, 0.886275, 0.886275, 0.52549)
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 512
 script = ExtResource("1_wfnqh")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]

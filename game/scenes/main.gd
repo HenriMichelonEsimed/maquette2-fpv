@@ -3,11 +3,12 @@ extends Node3D
 @onready var player:Player = $Player
 
 func _ready():
+	GameState.player = player
+	GameState.ui = $MainUI
 	if get_viewport().size.x > 1920:
 		get_viewport().content_scale_factor = 2.2
 	elif get_viewport().size.x >= 7680 :
 		get_viewport().content_scale_factor = 3
-	GameState.player = player
 	var zone = $Level
 	_change_zone(zone)
 

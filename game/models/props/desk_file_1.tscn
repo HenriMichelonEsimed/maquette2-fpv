@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq5b3de1egts"]
+[gd_scene load_steps=9 format=3 uid="uid://bq5b3de1egts"]
 
-[ext_resource type="Material" uid="uid://dgj4d53hwhbvp" path="res://assets/materials/colors_outline/brown_1.tres" id="1_541bp"]
 [ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="1_q06u8"]
+[ext_resource type="Material" uid="uid://cq2sd4g3v3kwd" path="res://assets/materials/colors_outline/green_1.tres" id="1_y0jl5"]
+[ext_resource type="Material" uid="uid://casjkarc5j360" path="res://assets/materials/colors_outline/grey_2.tres" id="3_8lksv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iiy4l"]
 resource_name = "desk_file_handles"
@@ -107,9 +108,9 @@ size = Vector3(0.453613, 0.707275, 0.456421)
 [node name="File Mobile White" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_x3i45")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("1_q06u8")
-surface_material_override/1 = ExtResource("1_541bp")
-surface_material_override/2 = ExtResource("1_541bp")
+surface_material_override/0 = ExtResource("1_y0jl5")
+surface_material_override/1 = ExtResource("1_q06u8")
+surface_material_override/2 = ExtResource("3_8lksv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00317383, 0.356736, 0.231384)

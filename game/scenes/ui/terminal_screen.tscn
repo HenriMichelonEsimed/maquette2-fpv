@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ui/terminal_screen.gd" id="2_q88ae"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="4_8e451"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="5_21y4x"]
-[ext_resource type="StyleBox" path="res://assets/button_terminal_style.tres" id="5_gyggl"]
+[ext_resource type="StyleBox" uid="uid://ch6npjih63qbm" path="res://assets/button_terminal_style.tres" id="5_gyggl"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="6_i6hcg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s55tc"]

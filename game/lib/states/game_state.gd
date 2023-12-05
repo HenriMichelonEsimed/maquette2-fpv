@@ -10,14 +10,15 @@ var inventory = ItemsCollection.new()
 var settings = SettingsState.new()
 
 var player:Player
+var ui:MainUI
 var current_tool:ItemTool
 var current_zone:Zone
 var savegame_name:String
 
 func _ready():
-	loadGame(StateSaver.get_last())
+	load_game(StateSaver.get_last())
 
-func saveGame(savegame = null):
+func save_game(savegame = null):
 	saving_start.emit()
 	StateSaver.set_path(savegame)
 	player_state.position = player.position
@@ -27,13 +28,23 @@ func saveGame(savegame = null):
 	StateSaver.saveState(settings)
 	saving_end.emit()
 	
-func loadGame(savegame = null):
+func load_game(savegame = null):
 	loading_start.emit()
 	StateSaver.set_path(savegame)
 	StateSaver.loadState(player_state)
 	StateSaver.loadState(InventoryState.new(inventory))
 	StateSaver.loadState(settings)
 	loading_end.emit()
+
+func pause_game():
+	get_tree().paused = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	ui.pause_game()
+
+func resume_game(_dummy=null):
+	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	ui.resume_game()
 
 class InventoryState extends State:
 	var inventory:ItemsCollection
