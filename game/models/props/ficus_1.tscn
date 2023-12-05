@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://d0kb46n56bp8v" path="res://assets/materials/colors/brow_1.tres" id="1_josl2"]
 [ext_resource type="Material" uid="uid://cq2sd4g3v3kwd" path="res://assets/materials/colors_outline/green_1.tres" id="2_xmc3f"]
-[ext_resource type="Material" uid="uid://0i03pa3hg4af" path="res://assets/materials/colors/grey_2.tres" id="3_qxjxd"]
+[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_1.tres" id="3_gdkfd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ku7o"]
 vertex_color_use_as_albedo = true
@@ -133,7 +133,7 @@ surface_material_override/0 = ExtResource("2_xmc3f")
 [node name="pot_001" type="MeshInstance3D" parent="Animated indoor ficus in a concrete pot"]
 mesh = SubResource("ArrayMesh_f473j")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("3_qxjxd")
+surface_material_override/0 = ExtResource("3_gdkfd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)

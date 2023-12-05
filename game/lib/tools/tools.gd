@@ -7,6 +7,7 @@ const DIALOG_LOAD_SAVEGAME = "load_savegame"
 const DIALOG_SETTINGS = "settings"
 const DIALOG_INPUT = "input"
 const DIALOG_CONFIRM = "confirm"
+const CONTROLLER_KEYBOARD = "controllers/keyboard"
 const SCREEN_INVENTORY = "inventory"
 const SCREEN_TERMINAL = "terminal"
 

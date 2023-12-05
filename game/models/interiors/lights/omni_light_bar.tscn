@@ -17,7 +17,7 @@ albedo_color = Color(1, 1, 1, 0)
 refraction_enabled = true
 refraction_scale = 0.03
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4h1a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1qkt"]
 shading_mode = 0
 
 [node name="OmniLightBar" type="Node3D"]
@@ -40,7 +40,7 @@ material = SubResource("StandardMaterial3D_usuwu")
 
 [node name="Light" type="CSGBox3D" parent="Support/Neon"]
 size = Vector3(0.04, 0.9, 0.04)
-material = SubResource("StandardMaterial3D_q4h1a")
+material = SubResource("StandardMaterial3D_o1qkt")
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Support/Neon/Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0.00967714)

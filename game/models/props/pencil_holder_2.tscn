@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bf21ju5rbssrj"]
+
+[ext_resource type="PackedScene" uid="uid://bt1llq7qh0auu" path="res://models/props/pencil_holder_1.glb" id="1_3affe"]
+[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_1.tres" id="2_1x0wy"]
+[ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="3_7s1g5"]
+[ext_resource type="Material" uid="uid://boknkcbacjt07" path="res://assets/materials/colors_outline/yellow_2.tres" id="4_kki5w"]
+[ext_resource type="Material" uid="uid://dqeyitaryys6i" path="res://assets/materials/colors_outline/red_1.tres" id="6_g33ns"]
+[ext_resource type="Material" uid="uid://dagexq7kk3gp5" path="res://assets/materials/colors_outline/orange_1.tres" id="7_fhlpj"]
+[ext_resource type="Material" uid="uid://dq4v8yn1sitj4" path="res://assets/materials/colors_outline/green_2.tres" id="7_t67sc"]
+
+[node name="pencil_holder_1" instance=ExtResource("1_3affe")]
+
+[node name="cup_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00167079, 0)
+surface_material_override/0 = ExtResource("2_1x0wy")
+
+[node name="pencil_001" parent="cup_001" index="0"]
+surface_material_override/0 = ExtResource("3_7s1g5")
+surface_material_override/1 = ExtResource("4_kki5w")
+surface_material_override/2 = ExtResource("3_7s1g5")
+
+[node name="pencil_019" parent="cup_001" index="1"]
+visible = false
+surface_material_override/0 = ExtResource("6_g33ns")
+surface_material_override/1 = ExtResource("4_kki5w")
+surface_material_override/2 = ExtResource("6_g33ns")
+
+[node name="pencil_020" parent="cup_001" index="2"]
+visible = false
+surface_material_override/0 = ExtResource("7_t67sc")
+surface_material_override/1 = ExtResource("4_kki5w")
+surface_material_override/2 = ExtResource("7_t67sc")
+
+[node name="pencil_021" parent="cup_001" index="3"]
+surface_material_override/0 = ExtResource("7_fhlpj")
+surface_material_override/1 = ExtResource("4_kki5w")
+surface_material_override/2 = ExtResource("7_fhlpj")

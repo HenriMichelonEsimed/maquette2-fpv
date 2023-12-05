@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dsqaigcbrm284"]
+
+[ext_resource type="Material" uid="uid://dyg4s7q646uwt" path="res://assets/materials/vfx/outline.tres" id="1_sv752"]
+[ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="2_0cvuc"]
+[ext_resource type="Texture2D" uid="uid://bo6s5oh47ru3m" path="res://models/props/keyboard_1_KB-color.png" id="3_id0a6"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_sv752")
+shader = ExtResource("2_0cvuc")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.0901961, 0.0901961, 0.0901961, 1)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/base_texture = ExtResource("3_id0a6")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

@@ -81,7 +81,7 @@ mass = 2.0
 can_sleep = false
 
 [node name="Chair" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00372134, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00806191, 0)
 mesh = SubResource("ArrayMesh_s6xm4")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_epa6l")

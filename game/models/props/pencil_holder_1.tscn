@@ -1,0 +1,36 @@
+[gd_scene load_steps=9 format=3 uid="uid://ika8gek6xjh5"]
+
+[ext_resource type="PackedScene" uid="uid://bt1llq7qh0auu" path="res://models/props/pencil_holder_1.glb" id="1_3knjf"]
+[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_1.tres" id="2_bm8f5"]
+[ext_resource type="Material" uid="uid://i6210e70wjx" path="res://assets/materials/colors_outline/blue_3.tres" id="3_2s07n"]
+[ext_resource type="Material" uid="uid://dqeyitaryys6i" path="res://assets/materials/colors_outline/red_1.tres" id="4_dj5gv"]
+[ext_resource type="Material" uid="uid://boknkcbacjt07" path="res://assets/materials/colors_outline/yellow_2.tres" id="4_iml1c"]
+[ext_resource type="Material" uid="uid://di3tmuc2aihqt" path="res://assets/materials/colors_outline/pink_1.tres" id="4_trorn"]
+[ext_resource type="Material" uid="uid://d2a76qgl8qtuv" path="res://assets/materials/colors_outline/blue_4.tres" id="5_kucc5"]
+[ext_resource type="Material" uid="uid://dq4v8yn1sitj4" path="res://assets/materials/colors_outline/green_2.tres" id="5_rq23m"]
+
+[node name="pencil_holder_1" instance=ExtResource("1_3knjf")]
+
+[node name="cup_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00148376, 0)
+surface_material_override/0 = ExtResource("2_bm8f5")
+
+[node name="pencil_001" parent="cup_001" index="0"]
+surface_material_override/0 = ExtResource("3_2s07n")
+surface_material_override/1 = ExtResource("4_iml1c")
+surface_material_override/2 = ExtResource("5_kucc5")
+
+[node name="pencil_019" parent="cup_001" index="1"]
+surface_material_override/0 = ExtResource("4_dj5gv")
+surface_material_override/1 = ExtResource("4_iml1c")
+surface_material_override/2 = ExtResource("4_dj5gv")
+
+[node name="pencil_020" parent="cup_001" index="2"]
+surface_material_override/0 = ExtResource("5_rq23m")
+surface_material_override/1 = ExtResource("4_iml1c")
+surface_material_override/2 = ExtResource("5_rq23m")
+
+[node name="pencil_021" parent="cup_001" index="3"]
+surface_material_override/0 = ExtResource("4_trorn")
+surface_material_override/1 = ExtResource("4_iml1c")
+surface_material_override/2 = ExtResource("4_trorn")

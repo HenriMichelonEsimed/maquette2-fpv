@@ -10,6 +10,10 @@ func _ready():
 	elif get_viewport().size.x >= 7680 :
 		get_viewport().content_scale_factor = 3
 	var zone = $Level
+	if not GameState.settings.keyboard_controller_shown:
+		GameState.ui.display_keymaps()
+		GameState.settings.keyboard_controller_shown = true
+		GameState.save_game()
 	_change_zone(zone)
 
 func _change_zone(zone:Zone):
@@ -19,6 +23,7 @@ func _change_zone(zone:Zone):
 	GameState.current_zone = zone
 	for node:Node in GameState.current_zone.find_children("*", "Storage", true, true):
 		node.connect("open", _on_storage_open)
+	GameState.current_zone.visible = true
 
 func _on_storage_open(node:Storage):
 	Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS).open(node, _on_storage_close)

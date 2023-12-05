@@ -102,10 +102,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vejqv")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvmor"]
-resource_name = "Stick"
-cull_mode = 2
-metallic = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sx42w"]
+albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eo4rq"]
 _surfaces = [{
@@ -129,7 +127,7 @@ _surfaces = [{
 "format": 34896613431,
 "index_count": 6,
 "index_data": PackedByteArray(0, 0, 3, 0, 2, 0, 0, 0, 1, 0, 3, 0),
-"material": SubResource("StandardMaterial3D_qvmor"),
+"material": SubResource("StandardMaterial3D_sx42w"),
 "name": "Stick",
 "primitive": 3,
 "uv_scale": Vector4(2.0341, 2.03487, 1.17296, 1.17296),

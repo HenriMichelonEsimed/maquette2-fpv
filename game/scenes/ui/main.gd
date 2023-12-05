@@ -3,7 +3,6 @@ class_name MainUI extends Control
 @export var player:Player
 
 @onready var label_saving:Label = $LabelSaving
-@onready var label_loading:Label = $LabelLoading
 @onready var time_saving:Timer = $LabelSaving/Timer
 @onready var label_info:Label = $HUD/LabelInfo
 @onready var menu = $Menu
@@ -16,7 +15,6 @@ var _current_screen = null
 func _ready():
 	blur.visible = false
 	label_saving.visible = false
-	label_loading.visible = false
 	label_info.visible = false
 	menu.visible = false
 	GameState.connect("saving_start", _on_saving_start)
@@ -73,12 +71,14 @@ func settings_open():
 func savegame_open():
 	_current_screen = Tools.load_dialog(self, Tools.DIALOG_INPUT, menu_close)
 	_current_screen.open("Save game", StateSaver.get_last_savegame(), _on_savegame_input)
-	
+
+func display_keymaps():
+	_current_screen = Tools.load_screen(self, Tools.CONTROLLER_KEYBOARD, menu_close)
+	_current_screen.open()
+
 func _on_load_savegame(savegame:String):
 	menu.visible = false
-	label_loading.visible = true
 	GameState.load_game(savegame)
-	label_loading.visible = false
 	get_tree().reload_current_scene()
 	
 func _on_savegame_input(savegame):

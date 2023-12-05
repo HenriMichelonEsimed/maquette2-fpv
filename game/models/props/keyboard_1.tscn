@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdlm5rgtvrj1o"]
+
+[ext_resource type="PackedScene" uid="uid://smyrmg2t3gtq" path="res://models/props/keyboard_1.glb" id="1_5l05h"]
+[ext_resource type="Material" uid="uid://dsqaigcbrm284" path="res://assets/materials/keyboard_1.tres" id="2_eicd4"]
+
+[node name="keyboard_1" instance=ExtResource("1_5l05h")]
+
+[node name="Blender keyboard" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_eicd4")

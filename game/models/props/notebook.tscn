@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpglxylk7xxus"]
+
+[ext_resource type="PackedScene" uid="uid://dht6uhxg1yh12" path="res://models/props/notebook.glb" id="1_rllhy"]
+[ext_resource type="Material" uid="uid://casjkarc5j360" path="res://assets/materials/colors_outline/grey_2.tres" id="2_efbby"]
+[ext_resource type="Material" uid="uid://dwtq3adoi2sy2" path="res://assets/materials/colors_outline/blue_2.tres" id="3_1n87b"]
+
+[node name="notebook" instance=ExtResource("1_rllhy")]
+
+[node name="16734_notebook_v1_NEW" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_efbby")
+surface_material_override/1 = ExtResource("3_1n87b")
