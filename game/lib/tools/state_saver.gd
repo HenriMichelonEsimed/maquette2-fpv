@@ -101,10 +101,6 @@ func saveState(res:State):
 			file.store_8(STATE_ITEMS)
 			file.store_pascal_string(prop.name)
 			value.saveState(file)
-		#elif value is EventsQueue:
-		#	file.store_8(STATE_EVENTS)
-		#	file.store_pascal_string(prop.name)
-		#	value.saveState(file)
 		elif value is MessagesList:
 			file.store_8(STATE_MESSAGES)
 			file.store_pascal_string(prop.name)
@@ -113,6 +109,10 @@ func saveState(res:State):
 			file.store_8(STATE_QUEST)
 			file.store_pascal_string(prop.name)
 			value.saveState(file)
+			#elif value is EventsQueue:
+		#	file.store_8(STATE_EVENTS)
+		#	file.store_pascal_string(prop.name)
+		#	value.saveState(file)
 	file.close()
 	return true
 	
@@ -139,14 +139,14 @@ func loadState(res:State):
 		elif (entry_type == STATE_ITEMS):
 			var items:ItemsCollection = res.get(entry_name)
 			items.loadState(file)
-		#elif (entry_type == STATE_EVENTS):
-		#	var queue:EventsQueue = res.get(entry_name)
-		#	queue.loadState(file)
 		elif (entry_type == STATE_MESSAGES):
 			var queue:MessagesList = res.get(entry_name)
 			queue.loadState(file)
 		elif (entry_type == STATE_QUEST):
 			var queue:QuestsManager = res.get(entry_name)
 			queue.loadState(file)
+		#elif (entry_type == STATE_EVENTS):
+		#	var queue:EventsQueue = res.get(entry_name)
+		#	queue.loadState(file)
 	file.close()
 

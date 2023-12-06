@@ -1,7 +1,7 @@
 class_name Consts extends Node
 
 enum {
-	LAYER_PLAYER = 1,
+	LAYER_WORLD = 1,
 	LAYER_WATER = 2,
 	LAYER_ITEM = 3,
 	LAYER_USABLE = 4,

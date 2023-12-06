@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://cvfca1h5vcphl"]
+[gd_resource type="Theme" load_steps=14 format=3 uid="uid://cvfca1h5vcphl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8vy2c"]
 content_margin_left = 8.0
@@ -120,10 +120,10 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 0.807843)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mb2ni"]
 bg_color = Color(0, 0, 0, 0.152941)
@@ -154,6 +154,17 @@ shadow_color = Color(0, 0, 0, 0.141176)
 shadow_size = 8
 shadow_offset = Vector2(8, 8)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a7k4q"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0, 0, 0, 0.34902)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
 Button/colors/font_disabled_color = Color(1, 1, 1, 0.184314)
@@ -181,3 +192,4 @@ ItemList/styles/panel = SubResource("StyleBoxFlat_dvbo2")
 ItemList/styles/selected = SubResource("StyleBoxFlat_mb2ni")
 ItemList/styles/selected_focus = SubResource("StyleBoxFlat_psbjt")
 Panel/styles/panel = SubResource("StyleBoxFlat_e7pqn")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_a7k4q")

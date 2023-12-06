@@ -51,5 +51,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")
 [node name="Character" parent="." instance=ExtResource("3_3fts5")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
+[node name="RayCastToFloor" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116028, 0)
+
 [connection signal="body_entered" from="UnderWater" to="." method="_on_under_water_body_entered"]
 [connection signal="body_exited" from="UnderWater" to="." method="_on_under_water_body_exited"]

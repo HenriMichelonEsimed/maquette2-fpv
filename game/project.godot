@@ -179,7 +179,7 @@ locale/translations=PackedStringArray("res://assets/i18n/items.fr.translation", 
 
 3d_physics/layer_1="world"
 3d_physics/layer_2="water"
-3d_physics/layer_3="collect"
+3d_physics/layer_3="item"
 3d_physics/layer_4="use"
 3d_physics/layer_5="trigger"
 3d_physics/layer_6="character"

@@ -5,22 +5,22 @@ signal change_zone(trigger:ZoneChangeTrigger)
 
 @export var zone_name:String
 
-var _state:ZoneState = null
+var state:ZoneState = null
 
-func _init(state:ZoneState=null):
+func _init(_state:ZoneState=null):
 	if (state != null): 
-		self.state = _state.new(self)
+		state = _state.new(self)
 
 func _ready():
 	for node:Node in find_children("Roof*", "", true, true):
 		node.visible = true
-	if (_state == null) : 
-		_state = ZoneState.new(zone_name, self)
-	StateSaver.loadState(_state)
-	for i:int in range(_state.items_removed.size()):
-		var item = get_node(_state.items_removed[i])
+	if (state == null) : 
+		state = ZoneState.new(zone_name, self)
+	StateSaver.loadState(state)
+	for i:int in range(state.items_removed.size()):
+		var item = get_node(state.items_removed[i])
 		if (item != null): item.queue_free()
-	for item:Item in _state.items_added.getall(): 
+	for item:Item in state.items_added.getall(): 
 		if item.has_meta("storage_path"):
 			var path:String = item.get_meta("storage_path").replace(str(get_path()) + "/", '')
 			var parent:Node = get_node(path)
@@ -70,7 +70,7 @@ func on_item_dropped(item:Item, quantity:int):
 		new_item.global_position = GameState.player.get_floor_collision()
 		add_child(new_item)
 		new_item.enable()
-	_state.items_added.add(new_item)
+	state.items_added.add(new_item)
 
 func on_item_collected(item:Item, quantity:int, force = false):
 	if (not force) and (not item.collect()):
@@ -83,15 +83,15 @@ func on_item_collected(item:Item, quantity:int, force = false):
 		var old_item:Item = item.duplicate()
 		old_item.quantity -= quantity
 		if (item.owner != null):
-			_state.items_removed.append(item.get_path())
-		_state.items_added.add(old_item)
+			state.items_removed.append(item.get_path())
+		state.items_added.add(old_item)
 		if (item.has_meta("storage")):
 			item.get_meta("storage").add_child(old_item)
 		else:
 			add_child(old_item)
 	else:
 		if (item.owner != null): # items from scene
-			_state.items_removed.append(item.get_path())
+			state.items_removed.append(item.get_path())
 	if (item.get_parent() != null): item.get_parent().remove_child(item)
-	_state.items_added.remove(item)
+	state.items_added.remove(item)
 	GameState.inventory.add(new_item)

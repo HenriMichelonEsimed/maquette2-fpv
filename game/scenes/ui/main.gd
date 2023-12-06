@@ -26,7 +26,7 @@ func _ready():
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
 	player.interactions.connect("display_info", _on_display_info)
-	player.interactions.connect("hide_info", _on_hide_info)
+	player.interactions.connect("hide_info", hide_info)
 
 func _input(event):
 	if (_current_screen != null):
@@ -165,7 +165,7 @@ func _on_display_info(node:Node3D):
 	_label_info_position()
 	label_info.visible = true
 
-func _on_hide_info():
+func hide_info():
 	label_info.visible = false
 	label_info.text = ''
 

@@ -6,7 +6,6 @@ enum ItemType {
 	ITEM_MISCELLANEOUS	= 2,
 	ITEM_QUEST			= 3
 }
-const scenes_path = [ 'tools', 'consum', 'misc', 'quest']
 
 @export var key:String
 @export var label:String
@@ -16,14 +15,8 @@ const scenes_path = [ 'tools', 'consum', 'misc', 'quest']
 
 func _ready():
 	label = tr(label)
-	set_collision_layer_value(Consts.LAYER_PLAYER, false)
+	set_collision_layer_value(Consts.LAYER_WORLD, true)
 	set_collision_layer_value(Consts.LAYER_ITEM, true)
-	
-static func load(type:int,_name:String):
-	var item = load("res://models/items/" + Item.scenes_path[type] + "/" + _name + ".tscn")
-	if (item != null):
-		return item.instantiate()
-	return null
 
 func collect():
 	return true

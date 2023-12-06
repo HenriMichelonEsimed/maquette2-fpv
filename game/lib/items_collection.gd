@@ -20,7 +20,7 @@ func getitem(type:Item.ItemType, key:String) -> Item:
 	return null
 
 func new(type:int,_name:String, qty:int=1):
-	var item = Item.load(type, _name)
+	var item = Tools.load_item(type, _name)
 	if (item != null):
 		if (qty == 1):
 			add(item)
@@ -102,12 +102,10 @@ func loadState(file:FileAccess):
 	for i in range(file.get_64()):
 		var type = file.get_8()
 		var key = file.get_pascal_string()
-		var path = 'res://models/items/' + Item.scenes_path[type] + '/' + key + '.tscn'
-		var packed_scene = load(path)
-		if (packed_scene == null):
+		var item = Tools.load_item(type, key)
+		if (item == null):
 			_skip_item(file, type)
 			continue
-		var item = packed_scene.instantiate()
 		var is_stored = file.get_8() == 1
 		if (is_stored):
 			item.set_meta("storage_path", file.get_pascal_string())

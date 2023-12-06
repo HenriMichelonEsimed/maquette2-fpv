@@ -13,7 +13,14 @@ const SCREEN_CONTROLLER = "controller"
 const SCREEN_NPC_TALK = "talk"
 const CONTROLLER_KEYBOARD = "keyboard"
 const CONTROLLER_XBOX = "xbox"
+const ITEMS_PATH = [ 'tools', 'consum', 'misc', 'quest']
 
+static func load_item(type:int,name:String):
+	var item = load("res://models/items/" + ITEMS_PATH[type] + "/" + name + ".tscn")
+	if (item != null):
+		return item.instantiate()
+	return null
+	
 static func load_zone(zone_name:String):
 	var zone_path = "res://zones/" + zone_name + ".tscn"
 	var _dummy = []

@@ -4,6 +4,7 @@ class_name Player extends CharacterBody3D
 @onready var under_water_filter = $UnderWater/Filter
 @onready var interactions:Interactions = $Interactions
 @onready var anim:AnimationPlayer = $Character.anim
+@onready var raycast_to_floor:RayCast3D = $RayCastToFloor
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var walking_speed:float = 5
@@ -75,7 +76,11 @@ func _physics_process(delta):
 func move(pos:Vector3, rot:Vector3):
 	position = pos
 	rotation = rot
-	
+
+func get_floor_collision():
+	raycast_to_floor.force_raycast_update()
+	return raycast_to_floor.get_collision_point()
+
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true

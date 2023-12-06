@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://2trbhug7jt37"]
+[gd_scene load_steps=17 format=3 uid="uid://2trbhug7jt37"]
 
-[ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_o3w50"]
+[ext_resource type="Script" path="res://lib/nodes/storage.gd" id="1_6dtt3"]
 [ext_resource type="Material" uid="uid://dagexq7kk3gp5" path="res://assets/materials/colors_outline/orange_1.tres" id="2_gi8a5"]
 [ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="3_er1eo"]
 [ext_resource type="Material" uid="uid://i6210e70wjx" path="res://assets/materials/colors_outline/blue_3.tres" id="4_8bo4s"]
@@ -144,8 +144,45 @@ shadow_mesh = SubResource("ArrayMesh_6xrnq")
 [sub_resource type="BoxShape3D" id="BoxShape3D_u45s2"]
 size = Vector3(0.4, 1.8, 0.481689)
 
+[sub_resource type="Animation" id="Animation_fpehf"]
+resource_name = "use"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("School Locker/Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(1.5708, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gixnu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("School Locker/Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tugro"]
+_data = {
+"RESET": SubResource("Animation_gixnu"),
+"use": SubResource("Animation_fpehf")
+}
+
 [node name="locker_1" type="StaticBody3D"]
-script = ExtResource("1_o3w50")
+script = ExtResource("1_6dtt3")
+label = "Locker"
 
 [node name="School Locker" type="Node3D" parent="."]
 
@@ -156,7 +193,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_gi8a5")
 
 [node name="Door" type="MeshInstance3D" parent="School Locker"]
-transform = Transform3D(0.85281, 0, 0, 0, 0, -0.85281, 0, 0.961863, 0, 0.169167, 0.90509, 0.224974)
+transform = Transform3D(0.85281, 0, 0, 0, -4.20444e-08, -0.85281, 0, 0.961863, -3.72775e-08, 0.169167, 0.90509, 0.224974)
 mesh = SubResource("ArrayMesh_yeqsr")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_er1eo")
@@ -170,3 +207,11 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0.9, 0.0155321)
 shape = SubResource("BoxShape3D_u45s2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tugro")
+}
+
+[node name="DropPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0914917, 0)

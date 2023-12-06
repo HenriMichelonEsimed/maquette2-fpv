@@ -33,7 +33,7 @@ func _change_zone(zone_name:String, spawnpoint_key:String):
 			_previous_zone.queue_free()
 		new_zone = Tools.load_zone(zone_name).instantiate()
 	if (GameState.current_zone != null): 
-		GameState.player.disconnect("item_collected", GameState.current_zone.on_item_collected)
+		GameState.player.interactions.disconnect("item_collected", GameState.current_zone.on_item_collected)
 		GameState.current_zone.disconnect("change_zone", _on_change_zone)
 		for node in GameState.current_zone.find_children("*", "Storage", true, true):
 			node.disconnect("open", _on_storage_open)
@@ -47,7 +47,7 @@ func _change_zone(zone_name:String, spawnpoint_key:String):
 	GameState.current_zone = new_zone
 	GameState.player_state.zone_name = zone_name
 	GameState.current_zone.connect("change_zone", _on_change_zone)
-	GameState.player.connect("item_collected", GameState.current_zone.on_item_collected)
+	GameState.player.interactions.connect("item_collected", GameState.current_zone.on_item_collected)
 	add_child(GameState.current_zone)
 	_spawn_player(spawnpoint_key)
 	for node in GameState.current_zone.find_children("*", "Storage", true, true):

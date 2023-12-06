@@ -1,6 +1,6 @@
 extends Dialog
 
-signal quantity(quantity:int)
+
 
 @onready var sliderQuantity:Slider = $Content/Body/SliderQuantity
 @onready var labelQuantity:Label = $Content/Body/LabelQuantity
@@ -8,7 +8,8 @@ signal quantity(quantity:int)
 @onready var buttonDrop:Button =$Content/Body/Buttons/ButtonDrop
 
 var _slide_pressed:int = 0
-var func_quantity:Callable
+var quantity_tostring:Callable
+var quantity:Callable
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("cancel"):
@@ -33,26 +34,27 @@ func _unhandled_input(event):
 			sliderQuantity.value += 1
 			_slide_pressed = 0
 
-func open(item:Item, all:bool, label:String="Transfert", func_qty=_quantity):
+func open(item:Item, all:bool, qty:Callable, label:String="Transfert", qty_str:Callable=_quantity_tostring):
 	super._open()
 	buttonDrop.text = tr(label)
 	labelName.text = tr(item.label)
-	func_quantity = func_qty
+	quantity_tostring = qty_str
+	quantity = qty
 	sliderQuantity.max_value = item.quantity
 	sliderQuantity.value = item.quantity if all else 1
-	labelQuantity.text = func_quantity.call(sliderQuantity.value)
+	labelQuantity.text = quantity_tostring.call(sliderQuantity.value)
 	sliderQuantity.grab_focus()
 	
-func _quantity(value) -> String:
+func _quantity_tostring(value) -> String:
 	return str(value)
 
 func _on_slider_quantity_value_changed(value):
-	labelQuantity.text = func_quantity.call(value)
+	labelQuantity.text = quantity_tostring.call(value)
 
 func _on_button_cancel_pressed():
 	close()
 
 func _on_button_drop_pressed():
-	quantity.emit(sliderQuantity.value)
+	quantity.call(sliderQuantity.value)
 	close()
 

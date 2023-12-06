@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=59 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_s3ubj"]
@@ -57,9 +57,11 @@
 [ext_resource type="PackedScene" uid="uid://3ubktv3j1wt3" path="res://models/props/bar_1.tscn" id="55_fq460"]
 [ext_resource type="PackedScene" uid="uid://hk7id6pyns8i" path="res://models/props/fridge_1.tscn" id="56_abo7c"]
 [ext_resource type="PackedScene" uid="uid://2trbhug7jt37" path="res://models/props/locker_1.tscn" id="57_2yflh"]
+[ext_resource type="PackedScene" uid="uid://db6k76u3mvdmk" path="res://models/items/misc/credit.tscn" id="58_bi45f"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_s3ubj")
+zone_name = "sta1_level_0"
 
 [node name="InteriorEnvironment" parent="." instance=ExtResource("1_o4g0v")]
 
@@ -703,7 +705,7 @@ color = Color(1, 1, 0.792157, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 2.2)
 
 [node name="OmniFloorLightBar2" parent="Canteen" instance=ExtResource("20_l6js3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 6.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 8.1)
 
 [node name="Signboard_3" parent="Canteen" instance=ExtResource("47_86l52")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5.49824, 0.95001, 6.55796)
@@ -781,7 +783,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.35, 0, 0.7)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.5217, 0, -11.2)
 
 [node name="locker_3" parent="." instance=ExtResource("57_2yflh")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.5217, 0, -10.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.5217, 0, -10.4)
 
 [node name="locker_4" parent="." instance=ExtResource("57_2yflh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.5217, 0, -12)
+
+[node name="credit" parent="locker_4" instance=ExtResource("58_bi45f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="credit" parent="." instance=ExtResource("58_bi45f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1.2, -11)

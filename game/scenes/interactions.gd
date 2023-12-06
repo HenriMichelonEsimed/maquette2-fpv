@@ -22,6 +22,7 @@ func action_use():
 	elif (item_to_collect != null):
 		player.look_at_node(item_to_collect)
 		item_collected.emit(item_to_collect, -1)
+		hide_info.emit()
 	elif (char_to_talk != null):
 		player.look_at_node(char_to_talk)
 		char_to_talk.interact()

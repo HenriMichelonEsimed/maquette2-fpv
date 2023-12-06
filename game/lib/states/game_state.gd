@@ -38,6 +38,8 @@ func save_game(savegame = null):
 	StateSaver.saveState(settings)
 	StateSaver.saveState(MessagesState.new(messages))
 	StateSaver.saveState(QuestsState.new(quests))
+	
+	StateSaver.saveState(current_zone.state)
 	saving_end.emit()
 	
 func load_game(savegame = null):
