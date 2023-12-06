@@ -6,18 +6,22 @@ class_name MainUI extends Control
 @onready var time_saving:Timer = $LabelSaving/Timer
 @onready var label_info:Label = $HUD/LabelInfo
 @onready var focused_button:Button = $Menu/MainMenu/ButtonInventory
+@onready var label_notif:Label = $HUD/LabelNotification
+@onready var timer_notif:Timer = $HUD/LabelNotification/Timer
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
 
 var _displayed_node:Node
 var _current_screen = null
+var _restart_timer_notif:bool = false
 
 func _ready():
 	blur.visible = false
 	label_saving.visible = false
 	label_info.visible = false
 	menu.visible = false
+	label_notif.visible = false
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
 	player.interactions.connect("display_info", _on_display_info)
@@ -46,14 +50,21 @@ func _input(event):
 	elif  Input.is_action_just_pressed("terminal"):
 		terminal_open()
 
-func pause_game():
+func pause_game(blur_screen:bool=true):
+	if (not timer_notif.is_stopped()):
+		timer_notif.stop()
+		_restart_timer_notif = true
 	hud.visible = false
-	blur.visible = true
+	if (blur_screen):
+		blur.visible = true
 
 func resume_game(_dummy=null):
 	hud.visible = true
 	blur.visible = false
 	_current_screen = null
+	if( _restart_timer_notif):
+		timer_notif.start()
+		_restart_timer_notif = false
 
 func menu_open():
 	GameState.pause_game()
@@ -64,7 +75,14 @@ func menu_close(_dummy=null):
 	GameState.resume_game()
 	menu.visible = false
 	
-
+func npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
+	_current_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
+	_current_screen.open(char, phrase, answers)
+	
+func npc_end_talk():
+	_current_screen.close()
+	resume_game()
+	
 func storage_open(node:Storage, on_storage_close:Callable):
 	_current_screen = Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS, resume_game)
 	_current_screen.open(node, on_storage_close)
@@ -76,6 +94,7 @@ func inventory_open():
 func terminal_open():
 	_current_screen = Tools.load_screen(self, Tools.SCREEN_TERMINAL, menu_close)
 	_current_screen.open()
+	_on_timer_notif_timeout()
 
 func load_savegame_open():
 	_current_screen = Tools.load_dialog(self, Tools.DIALOG_LOAD_SAVEGAME, menu_close)
@@ -92,6 +111,12 @@ func savegame_open():
 func display_keymaps():
 	_current_screen = Tools.load_screen(self, Tools.SCREEN_CONTROLLER, menu_close)
 	_current_screen.open()
+
+func display_notification(message:String):
+	timer_notif.stop()
+	label_notif.text = message
+	label_notif.visible = true
+	timer_notif.start()
 
 func _on_load_savegame(savegame:String):
 	menu.visible = false
@@ -148,3 +173,6 @@ func _on_save_before_quit_confirm(save:bool):
 		GameState.save_game()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().quit()
+
+func _on_timer_notif_timeout():
+	label_notif.visible = false

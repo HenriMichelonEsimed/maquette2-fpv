@@ -11,10 +11,10 @@ enum {
 	STATE_USABLE 		= 1,
 	STATE_FUNCTIONAL	= 2,
 	STATE_STRINGARRAY 	= 3,
-	#STATE_ITEMS			= 4,
+	STATE_ITEMS			= 4,
 	#STATE_EVENTS		= 5,
-	#STATE_MESSAGES		= 6,
-	#STATE_QUEST			= 7
+	STATE_MESSAGES		= 6,
+	STATE_QUEST			= 7
 }
 
 var _last = null
@@ -97,22 +97,22 @@ func saveState(res:State):
 			file.store_8(STATE_STRINGARRAY)
 			file.store_pascal_string(prop.name)
 			file.store_var(value)
-		#elif value is ItemsCollection:
-		#	file.store_8(STATE_ITEMS)
-		#	file.store_pascal_string(prop.name)
-		#	value.saveState(file)
+		elif value is ItemsCollection:
+			file.store_8(STATE_ITEMS)
+			file.store_pascal_string(prop.name)
+			value.saveState(file)
 		#elif value is EventsQueue:
 		#	file.store_8(STATE_EVENTS)
 		#	file.store_pascal_string(prop.name)
 		#	value.saveState(file)
-		#elif value is MessagesList:
-		#	file.store_8(STATE_MESSAGES)
-		#	file.store_pascal_string(prop.name)
-		#	value.saveState(file)
-		#elif value is QuestsManager:
-		#	file.store_8(STATE_QUEST)
-		#	file.store_pascal_string(prop.name)
-		#	value.saveState(file)
+		elif value is MessagesList:
+			file.store_8(STATE_MESSAGES)
+			file.store_pascal_string(prop.name)
+			value.saveState(file)
+		elif value is QuestsManager:
+			file.store_8(STATE_QUEST)
+			file.store_pascal_string(prop.name)
+			value.saveState(file)
 	file.close()
 	return true
 	
@@ -136,17 +136,17 @@ func loadState(res:State):
 				if is_used: 
 					usable.use(false, true)
 				usable.unlocked = unlocked
-		#elif (entry_type == STATE_ITEMS):
-		#	var items:ItemsCollection = res.get(entry_name)
-		#	items.loadState(file)
+		elif (entry_type == STATE_ITEMS):
+			var items:ItemsCollection = res.get(entry_name)
+			items.loadState(file)
 		#elif (entry_type == STATE_EVENTS):
 		#	var queue:EventsQueue = res.get(entry_name)
 		#	queue.loadState(file)
-		#elif (entry_type == STATE_MESSAGES):
-		#	var queue:MessagesList = res.get(entry_name)
-		#	queue.loadState(file)
-		#elif (entry_type == STATE_QUEST):
-		#	var queue:QuestsManager = res.get(entry_name)
-		#	queue.loadState(file)
+		elif (entry_type == STATE_MESSAGES):
+			var queue:MessagesList = res.get(entry_name)
+			queue.loadState(file)
+		elif (entry_type == STATE_QUEST):
+			var queue:QuestsManager = res.get(entry_name)
+			queue.loadState(file)
 	file.close()
 

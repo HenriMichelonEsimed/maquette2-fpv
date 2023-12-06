@@ -10,6 +10,7 @@ const DIALOG_CONFIRM = "confirm"
 const SCREEN_INVENTORY = "inventory"
 const SCREEN_TERMINAL = "terminal"
 const SCREEN_CONTROLLER = "controller"
+const SCREEN_NPC_TALK = "talk"
 const CONTROLLER_KEYBOARD = "keyboard"
 const CONTROLLER_XBOX = "xbox"
 

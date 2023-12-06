@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cc25hf7gi6i13"]
+[gd_scene load_steps=12 format=3 uid="uid://cc25hf7gi6i13"]
 
 [ext_resource type="Script" path="res://scenes/ui/main.gd" id="1_ghhs3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="1_ni5mw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_utbrf"]
 [ext_resource type="StyleBox" uid="uid://cxtrro0p5q00e" path="res://assets/styles/menu_button.tres" id="5_vw41v"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="7_4jbex"]
+[ext_resource type="StyleBox" uid="uid://37edqfqkfson" path="res://assets/styles/notif_label.tres" id="7_esqke"]
 [ext_resource type="StyleBox" uid="uid://dkldklw6dth8q" path="res://assets/styles/menu_button_hover.tres" id="8_5gish"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f6dah"]
@@ -26,6 +27,7 @@ grow_vertical = 2
 script = ExtResource("1_ghhs3")
 
 [node name="Blur" type="TextureRect" parent="."]
+process_mode = 4
 material = SubResource("ShaderMaterial_f6dah")
 layout_mode = 1
 anchors_preset = 15
@@ -37,6 +39,7 @@ texture = ExtResource("3_8s7j6")
 expand_mode = 1
 
 [node name="LabelSaving" type="Label" parent="."]
+process_mode = 4
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 1
 anchors_preset = 3
@@ -62,23 +65,31 @@ icon_size = 48
 icon_name = "download"
 
 [node name="Timer" type="Timer" parent="LabelSaving"]
+process_mode = 3
 wait_time = 0.5
 one_shot = true
 
 [node name="HUD" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+process_mode = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="LabelInfo" type="Label" parent="HUD"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = 536.0
-offset_right = 624.0
-offset_bottom = 54.0
+anchor_bottom = 1.0
+offset_left = -45.5
+offset_top = -54.0
+offset_right = 45.5
 grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 1
@@ -91,7 +102,34 @@ text = "Infos"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="LabelNotification" type="Label" parent="HUD"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.5
+offset_right = 46.5
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("7_esqke")
+text = "Notif"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="HUD/LabelNotification"]
+process_mode = 1
+wait_time = 5.0
+one_shot = true
+
 [node name="Menu" type="VBoxContainer" parent="."]
+process_mode = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -248,6 +286,7 @@ icon_size = 40
 icon_name = "person-walking-arrow-right"
 
 [connection signal="timeout" from="LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
+[connection signal="timeout" from="HUD/LabelNotification/Timer" to="." method="_on_timer_notif_timeout"]
 [connection signal="pressed" from="Menu/MainMenu/ButtonInventory" to="." method="inventory_open"]
 [connection signal="pressed" from="Menu/MainMenu/ButtonTerminal" to="." method="terminal_open"]
 [connection signal="pressed" from="Menu/SubMenu/ButtonSave" to="." method="savegame_open"]

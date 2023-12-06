@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 StateSaver="*res://lib/tools/state_saver.gd"
 GameState="*res://lib/states/game_state.gd"
+NotificationManager="*res://lib/notification_manager.gd"
 
 [display]
 
