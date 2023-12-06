@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://dyg4s7q646uwt" path="res://assets/materials/vfx/outline.tres" id="1_xmb3m"]
 [ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="2_vjbvv"]
-[ext_resource type="Texture2D" uid="uid://cq3apx85umf8t" path="res://assets/textures/fabric_1.jpg" id="3_wwhu3"]
+[ext_resource type="Texture2D" uid="uid://cq3apx85umf8t" path="res://assets/textures/props/fabric_1.jpg" id="3_wwhu3"]
 
 [resource]
 render_priority = 0
