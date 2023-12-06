@@ -15,8 +15,9 @@ func open(on_load_savegame):
 		listSaves.add_item(tr("[Auto save]") if dir==StateSaver.autosave_path else dir)
 		listSaves.set_item_metadata(listSaves.item_count-1, dir)
 	listSaves.grab_focus()
-	listSaves.select(0)
-	_on_list_savegames_item_selected(0)
+	if (listSaves.item_count > 0):
+		listSaves.select(0)
+		_on_list_savegames_item_selected(0)
 
 func _unhandled_input(event):
 	if not visible or delete_confirm_dlg != null : return

@@ -73,6 +73,12 @@ vertical_alignment = 1
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Cancel"
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../SliderQuantity")
+focus_next = NodePath("../../Buttons/ButtonDrop")
+focus_previous = NodePath("../../SliderQuantity")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
@@ -92,6 +98,10 @@ text = "How many ?"
 
 [node name="SliderQuantity" type="HSlider" parent="Content/Body"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../Top/ButtonCancel")
+focus_neighbor_bottom = NodePath("../Buttons/ButtonDrop")
+focus_next = NodePath("../Buttons/ButtonDrop")
+focus_previous = NodePath("../Top/ButtonCancel")
 min_value = 1.0
 value = 1.0
 
@@ -108,6 +118,12 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Apply"
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../SliderQuantity")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../../Top/ButtonCancel")
+focus_previous = NodePath("../../SliderQuantity")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)

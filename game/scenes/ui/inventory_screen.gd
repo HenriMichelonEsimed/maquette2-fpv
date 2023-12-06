@@ -56,7 +56,7 @@ func open():
 		tabs.current_tab = state.tab
 	connect("item_dropped", GameState.current_zone.on_item_dropped)
 	
-func _unhandled_input(event):
+func _input(event):
 	#if select_dialog != null: return
 	if Input.is_action_just_pressed("cancel") and panel_crafting.visible:
 		_on_button_stop_craft_pressed()
@@ -67,7 +67,7 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("delete"):
 		_on_drop_pressed()
 		return
-	if Input.is_action_just_pressed("player_use_nomouse"):
+	if Input.is_action_just_pressed("ui_accept"):
 		_on_use_pressed()
 		return
 	if Input.is_action_just_pressed("craft"):

@@ -24,6 +24,8 @@ func _ready():
 	player.interactions.connect("hide_info", _on_hide_info)
 
 func _input(event):
+	if (_current_screen != null):
+		return
 	if (Input.is_action_just_pressed("menu")):
 		if (_current_screen != null):
 			_current_screen = null
@@ -43,9 +45,10 @@ func pause_game():
 	hud.visible = false
 	blur.visible = true
 
-func resume_game():
+func resume_game(_dummy=null):
 	hud.visible = true
 	blur.visible = false
+	_current_screen = null
 
 func menu_open():
 	GameState.pause_game()
@@ -55,11 +58,16 @@ func menu_open():
 func menu_close(_dummy=null):
 	GameState.resume_game()
 	menu.visible = false
+	
+
+func storage_open(node:Storage, on_storage_close:Callable):
+	_current_screen = Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS, resume_game)
+	_current_screen.open(node, on_storage_close)
 
 func inventory_open():
 	_current_screen = Tools.load_screen(self, Tools.SCREEN_INVENTORY, menu_close)
 	_current_screen.open()
-
+	
 func terminal_open():
 	_current_screen = Tools.load_screen(self, Tools.SCREEN_TERMINAL, menu_close)
 	_current_screen.open()

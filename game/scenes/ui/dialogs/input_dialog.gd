@@ -17,6 +17,7 @@ func open(title:String, text:String, on_savegame_input):
 	$Panel/Content/VBoxContainer/Top/Label.text = tr(title)
 	$Panel/Content/VBoxContainer/Edit.text = tr(text)
 	$Panel/Content/VBoxContainer/Edit.select_all()
+	$Panel/Content/VBoxContainer/Bottom/ButtonOk.grab_focus()
 
 func _on_button_ok_pressed():
 	close()

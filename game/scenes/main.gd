@@ -15,6 +15,7 @@ func _ready():
 		GameState.settings.keyboard_controller_shown = true
 		GameState.save_game()
 	_change_zone(zone)
+	GameState.ui.inventory_open()
 
 func _change_zone(zone:Zone):
 	if (GameState.current_zone != null):
@@ -26,7 +27,7 @@ func _change_zone(zone:Zone):
 	GameState.current_zone.visible = true
 
 func _on_storage_open(node:Storage):
-	Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS).open(node, _on_storage_close)
+	GameState.ui.storage_open(node, _on_storage_close)
 	
 func _on_storage_close(node:Storage):
 	node.use()
