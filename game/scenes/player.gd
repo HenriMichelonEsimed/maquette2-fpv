@@ -6,7 +6,8 @@ class_name Player extends CharacterBody3D
 @onready var anim:AnimationPlayer = $Character.anim
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var speed:float = 5
+var walking_speed:float = 5
+var running_speed:float = 8
 var jump_speed:float = 5
 var mouse_sensitivity:float = 0.002
 var mouse_captured:bool = false
@@ -15,6 +16,7 @@ var max_camera_angle_down:float = -deg_to_rad(40)
 var look_up_action:String = "look_up"
 var look_down_action:String = "look_down"
 var camera_y_axis_inverted:bool = true
+var run:bool = false
 
 func _ready():
 	if (GameState.player_state.position != Vector3.ZERO):
@@ -30,6 +32,8 @@ func _unhandled_input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
 		camera.rotation.x = clampf(camera.rotation.x, max_camera_angle_down, max_camera_angle_up)
+	elif event is InputEventKey or event is InputEventJoypadButton:
+		run = Input.is_action_just_pressed("run")
 
 func _physics_process(delta):
 	if mouse_captured:
@@ -44,10 +48,11 @@ func _physics_process(delta):
 		velocity.y += -gravity * delta
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	var direction = transform.basis * Vector3(input.x, 0, input.y)
+	var speed = running_speed if run else walking_speed
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	if direction != Vector3.ZERO:
-		if Input.is_action_pressed("modifier"):
+		if run:
 			if (anim.current_animation != "running"):
 				anim.play("running")
 		else:
@@ -66,7 +71,11 @@ func _physics_process(delta):
 	move_and_slide()
 	if is_on_floor and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed
-
+		
+func move(pos:Vector3, rot:Vector3):
+	position = pos
+	rotation = rot
+	
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	mouse_captured = true

@@ -13,6 +13,13 @@ const SCREEN_CONTROLLER = "controller"
 const CONTROLLER_KEYBOARD = "keyboard"
 const CONTROLLER_XBOX = "xbox"
 
+static func load_zone(zone_name:String):
+	var zone_path = "res://zones/" + zone_name + ".tscn"
+	var _dummy = []
+	if (ResourceLoader.load_threaded_get_status(zone_path, _dummy) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE):
+		ResourceLoader.load_threaded_request(zone_path)
+	return ResourceLoader.load_threaded_get(zone_path)
+
 static func load_dialog(parent:Node, dialog:String, on_close = null) -> Dialog:
 	var scene = load("res://scenes/ui/dialogs/" + dialog + "_dialog.tscn").instantiate()
 	parent.add_child(scene)

@@ -1,19 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://02506fnkrcu3"]
+[gd_scene load_steps=4 format=3 uid="uid://02506fnkrcu3"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_14vdi"]
 [ext_resource type="PackedScene" uid="uid://brxw56b4csscj" path="res://scenes/player.tscn" id="3_s1y03"]
 [ext_resource type="PackedScene" uid="uid://cc25hf7gi6i13" path="res://scenes/ui/main.tscn" id="4_g84p1"]
-[ext_resource type="PackedScene" uid="uid://64tbv2fbem8p" path="res://zones/stations/STA1/level_0.tscn" id="4_xf3vx"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_14vdi")
 
 [node name="Player" parent="." instance=ExtResource("3_s1y03")]
-transform = Transform3D(0.999639, 0, 0.026875, 0, 1, 0, -0.026875, 0, 0.999639, -3.504, -1, 21.692)
-
-[node name="Level" parent="." instance=ExtResource("4_xf3vx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91362, 0, 8.74087)
-visible = false
+transform = Transform3D(0.999639, 0, 0.026875, 0, 1, 0, -0.026875, 0, 0.999639, 0, 0, 0)
 
 [node name="MainUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_g84p1")]
 mouse_filter = 2
