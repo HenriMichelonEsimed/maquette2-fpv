@@ -18,6 +18,7 @@ var current_zone:Zone
 var savegame_name:String
 var use_joypad:bool = false
 
+
 func _ready():
 	use_joypad = Input.get_connected_joypads().size() > 0
 	var os_lang = OS.get_locale_language()

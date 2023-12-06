@@ -6,13 +6,15 @@ extends Dialog
 
 var talking_char:InteractiveCharacter
 
-func open(char:InteractiveCharacter, phrase:String, answers:Array):
+func open():
 	super._open(false)
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
 	size.x = vsize.x / (3 if vsize.x > 1200 else 2.5)
 	size.y =  vsize.y / (3 if vsize.y > 1200 else 2.5)
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y - 50)
+
+func talk(char:InteractiveCharacter, phrase:String, answers:Array):
 	talking_char = char
 	npc_name.text = str(char)
 	npc_text.text = tr(phrase)

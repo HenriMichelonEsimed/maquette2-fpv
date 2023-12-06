@@ -15,6 +15,7 @@ class_name MainUI extends Control
 var _displayed_node:Node
 var _current_screen = null
 var _restart_timer_notif:bool = false
+var _talking:bool = false
 
 func _ready():
 	blur.visible = false
@@ -76,11 +77,15 @@ func menu_close(_dummy=null):
 	menu.visible = false
 	
 func npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
-	_current_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
-	_current_screen.open(char, phrase, answers)
+	if (not _talking):
+		_current_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
+		_current_screen.open()
+		_talking = true
+	_current_screen.talk(char, phrase, answers)
 	
 func npc_end_talk():
 	_current_screen.close()
+	_talking = false
 	resume_game()
 	
 func storage_open(node:Storage, on_storage_close:Callable):
