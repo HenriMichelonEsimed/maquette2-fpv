@@ -1,26 +1,30 @@
 extends Dialog
 
-@onready var listMessages = $Borders/Screen/Content/Content/Body/MarginContainer/ListMessages
+@onready var listMessages:ItemList = $Borders/Screen/Content/Content/Body/MarginContainer/ListMessages
 @onready var labelMessage = $Borders/Screen/Content/Content/Body/MarginContainer/LabelMessage
 @onready var listQuests = $Borders/Screen/Content/Content/Body/MarginContainer/ListQuests
 @onready var labelCurrent = $Borders/Screen/Content/Content/Label
-@onready var buttonQuests = $Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonQuests
-@onready var buttonMessages = $Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonMessages
+@onready var buttonQuests:Button = $Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonQuests
+@onready var buttonMessages:Button = $Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonMessages
 @onready var label_left = $Borders/Screen/Content/MarginContainer/HBoxContainer/LabelLeft
 @onready var label_right = $Borders/Screen/Content/MarginContainer/HBoxContainer/LabelRight
+@onready var label_hour = $Borders/Screen/Content/Top/LabelHour
 
 var currentButton:Button
 var displayMessage = false
 
 func open():
+	super._open()
 	var ratio = size.y / size.x
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
 	size.y = vsize.y - 20
 	size.x = size.y / ratio
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
-	#label_left.visible = GameState.use_joypad != null
-	#label_right.visible = GameState.use_joypad != null
+	label_left.visible = GameState.use_joypad
+	label_right.visible = GameState.use_joypad
+	var time = Time.get_time_dict_from_system()
+	label_hour.text = "%02d:%02d" % [ time.hour, time.minute ]
 	_update()
 	_on_button_quests_pressed()
 	
@@ -63,6 +67,14 @@ func _hide_all():
 	labelCurrent.visible = false
 	displayMessage = false
 
+func _on_button_quests_pressed():
+	_hide_all()
+	labelCurrent.text = tr("Quests")
+	currentButton = buttonQuests
+	listQuests.visible = true
+	labelCurrent.visible = true
+	currentButton.grab_focus()
+
 func _on_button_list_messages_pressed():
 	_hide_all()
 	labelCurrent.text = tr("Messages")
@@ -94,9 +106,3 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	_update()
 	displayMessage = true
 
-func _on_button_quests_pressed():
-	_hide_all()
-	labelCurrent.text = tr("Quests")
-	currentButton = buttonQuests
-	listQuests.visible = true
-	labelCurrent.visible = true

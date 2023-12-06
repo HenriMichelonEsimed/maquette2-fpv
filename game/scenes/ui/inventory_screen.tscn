@@ -163,7 +163,7 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_neighbor_top = NodePath("../..")
 focus_neighbor_bottom = NodePath(".")
-focus_next = NodePath("../../Tools/List")
+focus_next = NodePath("../../../PanelItem/Content/Actions/Drop")
 focus_previous = NodePath("../../Miscellaneous/List")
 
 [node name="PanelItem" type="PanelContainer" parent="Panel/Content/Body/Content"]

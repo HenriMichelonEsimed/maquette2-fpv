@@ -1,0 +1,269 @@
+[gd_scene load_steps=8 format=3 uid="uid://dn3v6w3a48xbr"]
+
+[ext_resource type="Script" path="res://scenes/ui/trade_screen.gd" id="1_ixb2b"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_kn1xy"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="5_114mb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gicgb"]
+font_size = 34
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k6qyf"]
+content_margin_top = 4.0
+bg_color = Color(0, 0, 0, 0.188235)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Environment" id="Environment_f1hi3"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="World3D" id="World3D_tt1eo"]
+environment = SubResource("Environment_f1hi3")
+
+[node name="TradingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -350.0
+offset_right = 316.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ixb2b")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_right = -18.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="MarginContainer" parent="Panel/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Content/Top"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Panel/Content/Top/HBoxContainer"]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Content/Top/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+text = "Trading"
+label_settings = SubResource("LabelSettings_gicgb")
+horizontal_alignment = 1
+
+[node name="ButtonBack" type="Button" parent="Panel/Content/Top/HBoxContainer"]
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Close"
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../Body/Content/Tabs")
+focus_next = NodePath("../../../Body/Content/Tabs/Tools/List")
+focus_previous = NodePath("../../../Body/Content/PanelItem/Content/Actions/Buy")
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_kn1xy")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_114mb")
+icon_size = 32
+icon_name = "xmark"
+
+[node name="Body" type="MarginContainer" parent="Panel/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 34
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="HBoxContainer" parent="Panel/Content/Body"]
+layout_mode = 2
+
+[node name="Tabs" type="TabContainer" parent="Panel/Content/Body/Content"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/outline_size = 1
+
+[node name="Tools" type="Control" parent="Panel/Content/Body/Content/Tabs"]
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Content/Body/Content/Tabs/Tools"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../../Consumables/List")
+focus_previous = NodePath("../../../../../Top/HBoxContainer/ButtonBack")
+
+[node name="Consumables" type="Control" parent="Panel/Content/Body/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Content/Body/Content/Tabs/Consumables"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../../Miscellaneous/List")
+focus_previous = NodePath("../../Tools/List")
+
+[node name="Miscellaneous" type="Control" parent="Panel/Content/Body/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Content/Body/Content/Tabs/Miscellaneous"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../../Quests/List")
+focus_previous = NodePath("../../Consumables/List")
+
+[node name="Quests" type="Control" parent="Panel/Content/Body/Content/Tabs"]
+visible = false
+layout_mode = 2
+
+[node name="List" type="ItemList" parent="Panel/Content/Body/Content/Tabs/Quests"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_next = NodePath("../../../PanelItem/Content/Actions/Buy")
+focus_previous = NodePath("../../Miscellaneous/List")
+
+[node name="PanelItem" type="PanelContainer" parent="Panel/Content/Body/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Content" type="VBoxContainer" parent="Panel/Content/Body/Content/PanelItem"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/Content/Body/Content/PanelItem/Content"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_k6qyf")
+text = "Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1
+
+[node name="LabelPrice" type="Label" parent="Panel/Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+text = "Unit price :"
+
+[node name="ViewContent" type="SubViewportContainer" parent="Panel/Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="3DView" type="SubViewport" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent"]
+own_world_3d = true
+world_3d = SubResource("World3D_tt1eo")
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(516, 312)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, -8.35189e-23, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, 0, -4.37114e-08, 4.37114e-08, 1.91069e-15, 1, 0, -1, 1.91069e-15, 0, 1, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
+visible = false
+size = Vector3(100, 0.1, 100)
+
+[node name="InsertPoint" type="Node3D" parent="Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView"]
+transform = Transform3D(0.866025, -0.5, 0, 0.433013, 0.75, 0.5, -0.25, -0.433013, 0.866025, 0, 0, 0)
+
+[node name="Actions" type="HBoxContainer" parent="Panel/Content/Body/Content/PanelItem/Content"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Buy" type="Button" parent="Panel/Content/Body/Content/PanelItem/Content/Actions"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Buy	"
+focus_neighbor_top = NodePath("../../../../../../Top/HBoxContainer/ButtonBack")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../../../../../../Top/HBoxContainer/ButtonBack")
+focus_previous = NodePath("../../../../Tabs/Quests/List")
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("3_kn1xy")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("5_114mb")
+icon_size = 32
+icon_name = "coins"
+
+[node name="Bottom" type="MarginContainer" parent="Panel/Content"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Menu" type="HBoxContainer" parent="Panel/Content/Bottom"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Panel/Content/Bottom/Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Wallet
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/Content/Top/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="tab_changed" from="Panel/Content/Body/Content/Tabs" to="." method="_on_tabs_tab_changed"]
+[connection signal="tab_selected" from="Panel/Content/Body/Content/Tabs" to="." method="_on_tabs_tab_selected"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/Tabs/Tools/List" to="." method="_on_list_tools_item_selected"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/Tabs/Consumables/List" to="." method="_on_list_item_consumable_selected"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/Tabs/Miscellaneous/List" to="." method="_on_list_miscellaneous_item_selected"]
+[connection signal="item_selected" from="Panel/Content/Body/Content/Tabs/Quests/List" to="." method="_on_list_item_quest_selected"]
+[connection signal="pressed" from="Panel/Content/Body/Content/PanelItem/Content/Actions/Buy" to="." method="_on_buy_pressed"]

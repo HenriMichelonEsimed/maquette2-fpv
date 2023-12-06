@@ -1,13 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtwgsm4sfuneh"]
+[gd_scene load_steps=11 format=3 uid="uid://dtwgsm4sfuneh"]
 
+[ext_resource type="FontFile" uid="uid://m4i7q63fedws" path="res://addons/fontawesome/fonts/fa-regular-400.woff2" id="2_adlcu"]
 [ext_resource type="Script" path="res://scenes/ui/terminal_screen.gd" id="2_q88ae"]
+[ext_resource type="FontFile" uid="uid://dhj15njph7i8m" path="res://addons/fontawesome/fonts/fa-brands-400.woff2" id="2_xbv7o"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="4_8e451"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesome.gd" id="5_21y4x"]
 [ext_resource type="StyleBox" uid="uid://ch6npjih63qbm" path="res://assets/button_terminal_style.tres" id="5_gyggl"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="6_i6hcg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s55tc"]
-bg_color = Color(0.290196, 0.494118, 0.647059, 0.533333)
+bg_color = Color(0, 0, 0, 0.501961)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+border_blend = true
 corner_radius_top_left = 24
 corner_radius_top_right = 24
 corner_radius_bottom_right = 24
@@ -68,10 +76,73 @@ text = "12:58"
 
 [node name="Control" type="Control" parent="Borders/Screen/Content/Top"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Borders/Screen/Content/Top"]
+[node name="LabelMute" type="Label" parent="Borders/Screen/Content/Top"]
 layout_mode = 2
-text = "X Y Z"
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("2_adlcu")
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_21y4x")
+icon_type = "regular"
+icon_name = "bell-slash"
+
+[node name="LabelBT" type="Label" parent="Borders/Screen/Content/Top"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("2_xbv7o")
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_21y4x")
+icon_type = "brands"
+icon_name = "bluetooth"
+
+[node name="LabelWifi" type="Label" parent="Borders/Screen/Content/Top"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("4_8e451")
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_21y4x")
+icon_name = "wifi"
+
+[node name="LabelSignal" type="Label" parent="Borders/Screen/Content/Top"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("4_8e451")
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_21y4x")
+icon_name = "signal"
+
+[node name="LabelBattery" type="Label" parent="Borders/Screen/Content/Top"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("4_8e451")
+theme_override_font_sizes/font_size = 16
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_21y4x")
+icon_name = "battery-three-quarters"
+
+[node name="LabelBatteryPercent" type="Label" parent="Borders/Screen/Content/Top"]
+layout_mode = 2
+text = "82%"
 
 [node name="Content" type="VBoxContainer" parent="Borders/Screen/Content"]
 layout_mode = 2
@@ -97,6 +168,10 @@ theme_override_constants/margin_bottom = 18
 
 [node name="ListMessages" type="ItemList" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../../MarginContainer/HBoxContainer/ButtonMessages")
+focus_next = NodePath("../../../../MarginContainer/HBoxContainer/ButtonMessages")
+focus_previous = NodePath("../../../../MarginContainer/HBoxContainer/ButtonMessages")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hovered_color = Color(0.603922, 0.815686, 0.972549, 1)
 theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
@@ -107,11 +182,19 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_conkj")
 [node name="ListQuests" type="RichTextLabel" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
 visible = false
 layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../../MarginContainer/HBoxContainer/ButtonQuests")
+focus_next = NodePath("../../../../MarginContainer/HBoxContainer/ButtonQuests")
+focus_previous = NodePath("../../../../MarginContainer/HBoxContainer/ButtonQuests")
 theme_override_constants/line_separation = 4
 
 [node name="LabelMessage" type="RichTextLabel" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
 visible = false
 layout_mode = 2
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath("../../../../MarginContainer/HBoxContainer/ButtonMessages")
+focus_next = NodePath("../../../../MarginContainer/HBoxContainer/ButtonMessages")
+focus_previous = NodePath("../../../../MarginContainer/HBoxContainer/ButtonMessages")
 theme_override_constants/line_separation = 4
 bbcode_enabled = true
 text = "[b]Objet du message[/b]
@@ -146,6 +229,9 @@ custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Quests"
+focus_neighbor_top = NodePath("../../../Content/Body/MarginContainer/ListQuests")
+focus_next = NodePath("../ButtonMessages")
+focus_previous = NodePath("../../../MarginContainer2/HBoxContainer2/ButtonHomeTerm")
 theme_override_colors/font_color = Color(0.121569, 0.298039, 0.313726, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
@@ -170,6 +256,9 @@ custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Messages"
+focus_neighbor_top = NodePath("../../../Content/Body/MarginContainer/ListMessages")
+focus_next = NodePath("../../../MarginContainer2/HBoxContainer2/ButtonHomeTerm")
+focus_previous = NodePath("../ButtonQuests")
 theme_override_colors/font_color = Color(0.321569, 0.227451, 0.337255, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
@@ -214,6 +303,10 @@ alignment = 1
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Close"
+focus_neighbor_top = NodePath("../../../MarginContainer/HBoxContainer/ButtonQuests")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../../../MarginContainer/HBoxContainer/ButtonQuests")
+focus_previous = NodePath("../../../MarginContainer/HBoxContainer/ButtonMessages")
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("4_8e451")
 theme_override_font_sizes/font_size = 48

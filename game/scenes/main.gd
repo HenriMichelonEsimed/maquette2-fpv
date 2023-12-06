@@ -15,7 +15,6 @@ func _ready():
 		GameState.settings.keyboard_controller_shown = true
 		GameState.save_game()
 	_change_zone(zone)
-	GameState.ui.inventory_open()
 
 func _change_zone(zone:Zone):
 	if (GameState.current_zone != null):
