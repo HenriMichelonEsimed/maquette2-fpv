@@ -61,7 +61,7 @@ func _input(event):
 	if Input.is_action_just_pressed("cancel") and panel_crafting.visible:
 		_on_button_stop_craft_pressed()
 		return
-	elif Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_inventory"):
+	elif Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
 	if Input.is_action_just_pressed("delete"):

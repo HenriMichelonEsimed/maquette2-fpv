@@ -29,7 +29,7 @@ func open():
 	_on_button_quests_pressed()
 	
 func _unhandled_input(event):
-	if Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_terminal"):
+	if Input.is_action_just_pressed("cancel"):
 		if (displayMessage):
 			_on_button_list_messages_pressed()
 		else:

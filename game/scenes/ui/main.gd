@@ -26,6 +26,10 @@ func _ready():
 func _input(event):
 	if (_current_screen != null):
 		return
+	if (label_info.visible):
+		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
+			_label_info_position()
+			return
 	if (Input.is_action_just_pressed("menu")):
 		if (_current_screen != null):
 			_current_screen = null
@@ -37,9 +41,10 @@ func _input(event):
 		menu_close()
 	elif (Input.is_action_just_pressed("quit")):
 		_on_save_before_quit_confirm(true)
-	elif (label_info.visible):
-		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
-			_label_info_position()
+	elif Input.is_action_just_pressed("inventory"):
+		inventory_open()
+	elif  Input.is_action_just_pressed("terminal"):
+		terminal_open()
 
 func pause_game():
 	hud.visible = false
