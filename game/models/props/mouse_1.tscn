@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="1_e2nvm"]
 [ext_resource type="Material" uid="uid://casjkarc5j360" path="res://assets/materials/colors_outline/grey_2.tres" id="2_mo58e"]
-[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_1.tres" id="3_mclc3"]
+[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_spec_1.tres" id="3_mclc3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxdfr"]
 resource_name = "Mouse - Shiny Grey"

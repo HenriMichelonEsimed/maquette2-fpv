@@ -1,6 +1,7 @@
 class_name InteractiveCharacter extends CharacterBody3D
 
 @export var label:String
+
 signal trade(char:InteractiveCharacter)
 signal talk(char:InteractiveCharacter,phrase:String, answers:Array)
 signal end_talk()

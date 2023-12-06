@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bf21ju5rbssrj"]
 
 [ext_resource type="PackedScene" uid="uid://bt1llq7qh0auu" path="res://models/props/pencil_holder_1.glb" id="1_3affe"]
-[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_1.tres" id="2_1x0wy"]
+[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_spec_1.tres" id="2_1x0wy"]
 [ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="3_7s1g5"]
 [ext_resource type="Material" uid="uid://boknkcbacjt07" path="res://assets/materials/colors_outline/yellow_2.tres" id="4_kki5w"]
 [ext_resource type="Material" uid="uid://dqeyitaryys6i" path="res://assets/materials/colors_outline/red_1.tres" id="6_g33ns"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dt086g63ee6se"]
 
-[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_1.tres" id="1_us4o7"]
+[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_spec_1.tres" id="1_us4o7"]
 [ext_resource type="Material" uid="uid://h5xroi25g83t" path="res://assets/materials/colors_outline/transparent_grey.tres" id="2_646mg"]
 [ext_resource type="Material" uid="uid://d2a76qgl8qtuv" path="res://assets/materials/colors_outline/blue_4.tres" id="3_5bshp"]
 [ext_resource type="Material" uid="uid://cvvlh285oblhu" path="res://assets/materials/colors/grey_1.tres" id="4_628un"]

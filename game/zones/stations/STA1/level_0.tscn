@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=46 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_s3ubj"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://bwfbqnywcibmm" path="res://models/props/pencil_holder_empty_1.tscn" id="42_tia48"]
 [ext_resource type="PackedScene" uid="uid://bf21ju5rbssrj" path="res://models/props/pencil_holder_2.tscn" id="43_h4hvl"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="44_868w6"]
+[ext_resource type="PackedScene" uid="uid://c4eqftgcmvgyw" path="res://models/chars/administrator_1/administrator_1.tscn" id="45_3n4n5"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_s3ubj")
@@ -618,3 +619,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 2.2)
 
 [node name="OmniFloorLightBar2" parent="Canteen" instance=ExtResource("20_l6js3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 6.2)
+
+[node name="administrator_1" parent="." instance=ExtResource("45_3n4n5")]
+transform = Transform3D(0.979385, 0, -0.202001, 0, 1, 0, 0.202001, 0, 0.979385, 1.65671, 0, -12.9473)

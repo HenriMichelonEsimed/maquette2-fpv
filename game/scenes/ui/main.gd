@@ -123,9 +123,9 @@ func _on_saving_timer_timeout():
 	
 func _label_info_position():
 	var pos:Vector3 = _displayed_node.global_position
-	#pos.y = player.global_position.y + 1.5
+	pos.y = player.global_position.y + 1.5
 	label_info.position = player.camera.unproject_position(pos)
-	label_info.position.y = (size.y - label_info.size.y)/2
+	#label_info.position.y = (size.y - label_info.size.y)/2
 	
 func _on_display_info(node:Node3D):
 	_displayed_node = node
