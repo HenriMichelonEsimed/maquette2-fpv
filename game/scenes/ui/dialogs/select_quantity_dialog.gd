@@ -11,11 +11,11 @@ var _slide_pressed:int = 0
 var quantity_tostring:Callable
 var quantity:Callable
 
-func _unhandled_input(event):
+func _input(event):
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_cancel_pressed()
 		return
-	elif Input.is_action_just_pressed("use"):
+	elif Input.is_action_just_pressed("ui_accept"):
 		_on_button_drop_pressed()
 		return
 	if sliderQuantity.has_focus():

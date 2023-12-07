@@ -78,8 +78,7 @@ func menu_close(_dummy=null):
 	menu.visible = false
 	
 func npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
-	if (_trading):
-		return
+	if (_trading): return
 	if (not _talking):
 		_current_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
 		_current_screen.open()
@@ -91,6 +90,7 @@ func npc_end_talk():
 	_talking = false
 
 func npc_trade(char:InteractiveCharacter):
+	if (_trading): return
 	_trading = true
 	var trade_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TRADE)
 	trade_screen.open(char, npc_trade_end)

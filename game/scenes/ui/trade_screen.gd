@@ -64,9 +64,9 @@ func _input(event):
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
-	#elif Input.is_action_just_pressed("ui_accept"):
-	#	_on_buy_pressed()
-	#	return
+	elif Input.is_action_just_pressed("ui_accept"):
+		_on_buy_pressed()
+		return
 	state.tab = tabs.current_tab
 	if Input.is_action_just_pressed("ui_left"):
 		_prev_tab()
