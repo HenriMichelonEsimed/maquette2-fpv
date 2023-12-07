@@ -1,7 +1,7 @@
 extends Dialog
 
 func _unhandled_input(event):
-	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("player_use_nomouse")):
+	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("ui_accept")):
 		close()
 		
 func open(title:String,message:String,free=true):

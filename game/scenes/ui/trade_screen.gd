@@ -16,8 +16,6 @@ class TradeScreenState extends State:
 @onready var node_3d = $"Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 @onready var label_credits = $Panel/Content/Bottom/Menu/Label
 
-var alert_dialog = null
-var select_dialog = null
 var on_trade_end:Callable
 
 const tab_order = [
@@ -44,8 +42,8 @@ var item_credits:ItemMiscellaneous
 var prev_tab = -1
 
 func open(char:InteractiveCharacter, on_trade_end):
-	self.on_trade_end = on_trade_end
 	super._open()
+	self.on_trade_end = on_trade_end
 	var ratio = size.x / size.y
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
 	size.x = vsize.x / (1.5 if vsize.x > 1200 else 1.2)
@@ -62,14 +60,13 @@ func open(char:InteractiveCharacter, on_trade_end):
 	_refresh()
 	_hide_empty_tabs()
 
-func _process(_delta):
-	if select_dialog != null or alert_dialog != null: return
+func _input(event):
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
-	elif Input.is_action_just_pressed("player_use_nomouse"):
-		_on_buy_pressed()
-		return
+	#elif Input.is_action_just_pressed("ui_accept"):
+	#	_on_buy_pressed()
+	#	return
 	state.tab = tabs.current_tab
 	if Input.is_action_just_pressed("ui_left"):
 		_prev_tab()
@@ -77,6 +74,7 @@ func _process(_delta):
 		_next_tab()
 
 func _on_button_back_pressed():
+	close()
 	on_trade_end.call()
 
 func _on_list_tools_item_selected(index):
@@ -125,8 +123,8 @@ func _prev_tab():
 
 func _fill_list(idx: int, type:Item.ItemType, list:ItemList):
 	list.clear()
-	for item in trader.items.getall_bytype(type):
-		list.add_item(tr(str(item)))
+	for trade_item in trader.items.getall_bytype(type):
+		list.add_item(tr(str(trade_item)))
 	if (list.item_count == 0):
 		tabs.set_tab_hidden(idx, true)
 		
@@ -154,22 +152,16 @@ func _buy_quanity(value):
 func _on_buy_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		select_dialog = Tools.load_dialog(self, "dialogs/select_quantity_dialog")
-		select_dialog.open(item, false, tr("Buy"), _buy_quanity)
-		select_dialog.connect("quantity", _buy)
-		select_dialog.connect("close", _on_select_close)
+		var select_dialog = Tools.load_dialog(self, Tools.DIALOG_SELECT_QANTITY, _focus_current_tab)
+		select_dialog.open(item, false, _buy, "Buy")
 	else:
 		_buy()
 
 func _buy(quantity:int=0):
-	if (select_dialog != null):
-		select_dialog.queue_free()
-		select_dialog = null
 	var price = quantity * item.price
 	if price > credits:
-		alert_dialog = Tools.load_dialog(self, "dialogs/alert_dialog")
+		var alert_dialog = Tools.load_dialog(self, Tools.DIALOG_ALERT, _focus_current_tab)
 		alert_dialog.open("Buy", "You don't have enough credits")
-		alert_dialog.connect("close", _on_alert_close)
 		return
 	if (price > 0):
 		credits -= price
@@ -184,17 +176,8 @@ func _buy(quantity:int=0):
 		buy_item = item
 	GameState.inventory.add(buy_item)
 	trader.items.remove(buy_item)
-	#GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_BUY, item.key)
+	GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_BUY, item.key)
 	_refresh()
-
-func _on_select_close(node):
-	select_dialog.queue_free()
-	select_dialog = null
-	_focus_current_tab()
-
-func _on_alert_close(node):
-	alert_dialog = null
-	_focus_current_tab()
 
 func _focus_current_tab():
 	list = list_content[tab_order[tabs.current_tab]]

@@ -14,6 +14,10 @@ func open():
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y - 50)
 
+#func _unhandled_input(event):
+#	if Input.is_action_just_pressed("ui_accept") and (player_text_list.get_selected_items().size() > 0):
+#		_on_player_talk_item_clicked(player_text_list.get_selected_items()[0], null, null)
+
 func talk(char:InteractiveCharacter, phrase:String, answers:Array):
 	talking_char = char
 	npc_name.text = str(char)
@@ -32,5 +36,4 @@ func talk(char:InteractiveCharacter, phrase:String, answers:Array):
 		player_text_list.select(0)
 
 func _on_player_talk_item_clicked(index, at_position, mouse_button_index):
-	#if trading: return
 	talking_char.answer(player_text_list.get_item_metadata(index))

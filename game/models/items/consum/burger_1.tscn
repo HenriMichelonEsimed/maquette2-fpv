@@ -275,8 +275,7 @@ script = ExtResource("1_wwggc")
 key = "burger_1"
 label = "Burger"
 price = 3.0
-type = 2
-preview_scale = 3.0
+type = 1
 
 [node name="Burger" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.184354, 0)

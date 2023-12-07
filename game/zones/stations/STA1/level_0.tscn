@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=63 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_s3ubj"]
@@ -61,6 +61,7 @@
 [ext_resource type="PackedScene" uid="uid://b0mut5bx87cmk" path="res://models/props/box_package_1.tscn" id="59_hvysj"]
 [ext_resource type="PackedScene" uid="uid://c3qxk416q6e8v" path="res://models/props/shelf_1.tscn" id="60_4q0m3"]
 [ext_resource type="PackedScene" uid="uid://b06w3wkgfoh6i" path="res://models/items/tools/crowbar_1.tscn" id="61_osb82"]
+[ext_resource type="PackedScene" uid="uid://c8wn77ggokgp5" path="res://zones/stations/STA1/waiter_1.tscn" id="62_8vcw3"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_s3ubj")
@@ -398,7 +399,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 19, -0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6, 0, -14.6512)
 
 [node name="trash_bin_2" parent="Hall" instance=ExtResource("21_s810a")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.6701, 0, -21.0512)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.6059, 0, -21.0512)
 
 [node name="trash_bin_3" parent="Hall" instance=ExtResource("21_s810a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1466, 0, -24.878)
@@ -632,7 +633,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.863, 0.809, -20.429)
 transform = Transform3D(0.894521, 0, 0.447025, 0, 1, 0, -0.447025, 0, 0.894521, 7.84, 0.809444, -22.376)
 
 [node name="administrator_1" parent="Administration" instance=ExtResource("45_3n4n5")]
-transform = Transform3D(0.979385, 0, -0.202001, 0, 1, 0, 0.202001, 0, 0.979385, 7.05671, 0, -23.1473)
+transform = Transform3D(-0.979385, 0, 0.202001, 0, 1, 0, -0.202001, 0, -0.979385, 7.05671, 0, -23.1473)
 
 [node name="Canteen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, -15.2)
@@ -711,11 +712,11 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 19.1, 
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 19.1, 2.84136, 8.1)
 
 [node name="Signboard_3" parent="Canteen" instance=ExtResource("47_86l52")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5.49824, 0.95001, 6.55796)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5.39824, 0.95001, 6.55796)
 sign = ExtResource("51_h3gf3")
 
 [node name="Signboard_4" parent="Canteen" instance=ExtResource("47_86l52")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.5587, 0.95001, 6.55796)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.638, 0.95001, 6.55796)
 sign = ExtResource("52_hn45d")
 
 [node name="Signboard_5" parent="Canteen" instance=ExtResource("47_86l52")]
@@ -818,5 +819,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.85,
 [node name="shelf_2" parent="Canteen" instance=ExtResource("60_4q0m3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.55, 0, 9.9)
 
-[node name="crowbar_1" parent="." instance=ExtResource("61_osb82")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19, 1.00871, -5.35137)
+[node name="crowbar_1" parent="Canteen" instance=ExtResource("61_osb82")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.45, 1.00871, 9.84863)
+
+[node name="waiter_1" parent="Canteen" instance=ExtResource("62_8vcw3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.15, 0, 2.3)

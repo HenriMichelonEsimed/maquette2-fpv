@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://o6pho0x3sagl"
+path.s3tc="res://.godot/imported/waiter_1_Remy_Body_Gloss.png-b55df173d7af4fc9ba7e6da987b93dfd.s3tc.ctex"
+path.etc2="res://.godot/imported/waiter_1_Remy_Body_Gloss.png-b55df173d7af4fc9ba7e6da987b93dfd.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={}
+
+[deps]
+
+source_file="res://models/chars/waiter_1/waiter_1_Remy_Body_Gloss.png"
+dest_files=["res://.godot/imported/waiter_1_Remy_Body_Gloss.png-b55df173d7af4fc9ba7e6da987b93dfd.s3tc.ctex", "res://.godot/imported/waiter_1_Remy_Body_Gloss.png-b55df173d7af4fc9ba7e6da987b93dfd.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

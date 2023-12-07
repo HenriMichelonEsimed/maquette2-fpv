@@ -24,7 +24,7 @@ func action_use():
 		item_collected.emit(item_to_collect, -1)
 		hide_info.emit()
 	elif (char_to_talk != null):
-		player.look_at_node(char_to_talk)
+		player.look_at_char(char_to_talk)
 		char_to_talk.interact()
 
 func _on_collect_item_aera_body_entered(node:Node):

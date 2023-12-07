@@ -8,6 +8,8 @@ var _last_spawnpoint:String
 func _ready():
 	GameState.player = player
 	GameState.ui = $MainUI
+	if get_viewport().size.x < 1600:
+		get_viewport().content_scale_factor = 0.75
 	if get_viewport().size.x > 1920:
 		get_viewport().content_scale_factor = 2.2
 	elif get_viewport().size.x >= 7680 :
@@ -40,6 +42,7 @@ func _change_zone(zone_name:String, spawnpoint_key:String):
 		#for node in GameState.current_zone.find_children("*", "Usable", true, true):
 		#	node.disconnect("unlock", _on_usable_unlock)
 		for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
+			node.disconnect("trade", GameState.ui.npc_trade)
 			node.disconnect("talk", GameState.ui.npc_talk)
 			node.disconnect("end_talk", GameState.ui.npc_end_talk)
 		remove_child(GameState.current_zone)
@@ -55,7 +58,7 @@ func _change_zone(zone_name:String, spawnpoint_key:String):
 	#for node in GameState.current_zone.find_children("*", "Usable", true, true):
 	#	node.connect("unlock", _on_usable_unlock)
 	for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
-		#node.connect("trade", _on_npc_trade)
+		node.connect("trade", GameState.ui.npc_trade)
 		node.connect("talk", GameState.ui.npc_talk)
 		node.connect("end_talk", GameState.ui.npc_end_talk)
 	GameState.current_zone.visible = true

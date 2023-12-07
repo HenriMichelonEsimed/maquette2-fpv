@@ -61,7 +61,11 @@ size = Vector3(0.312915, 0.112976, 0.191803)
 
 [node name="bread_1" type="StaticBody3D"]
 script = ExtResource("1_bvpog")
+key = "bread_1"
+label = "Bread"
+price = 1.0
 type = 1
+preview_scale = 3.0
 
 [node name="Loaf of Bread" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_44gi7")

@@ -22,8 +22,6 @@ signal item_use(item:Item)
 @onready var button_craft = $Panel/Content/Body/Content/PanelCrafting/Content/Actions/Craft
 @onready var label_recipe = $Panel/Content/Body/Content/PanelCrafting/Content/VBoxContainer/LabelRecipe
 
-var select_dialog = null
-
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
 	Item.ItemType.ITEM_CONSUMABLES,
@@ -57,7 +55,6 @@ func open():
 	connect("item_dropped", GameState.current_zone.on_item_dropped)
 	
 func _input(event):
-	#if select_dialog != null: return
 	if Input.is_action_just_pressed("cancel") and panel_crafting.visible:
 		_on_button_stop_craft_pressed()
 		return
@@ -145,18 +142,15 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 func _on_drop_pressed():
 	if (item == null): return
 	if (item is ItemMultiple) and (item.quantity > 1):
-		select_dialog = Tools.load_dialog(self, Tools.DIALOG_SELECT_QANTITY, _on_select_close)
+		var select_dialog = Tools.load_dialog(self, Tools.DIALOG_SELECT_QANTITY, _on_select_close)
 		select_dialog.open(item, false, _drop, tr("Drop"))
 	else:
 		_drop()
 
 func _on_select_close(node):
-	select_dialog = null
 	_focus_current_tab()
 
 func _drop(quantity:int=1):
-	if (select_dialog != null):
-		select_dialog = null
 	item_dropped.emit(item, quantity)
 	_refresh()
 

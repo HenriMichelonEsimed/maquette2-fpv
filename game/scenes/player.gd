@@ -100,7 +100,14 @@ func _set_position():
 	rotation = GameState.player_state.rotation
 
 func look_at_node(node:Node3D):
-	if (not interactions.overlaps_body(node)):
-		var pos:Vector3 = node.global_position
-		pos.y = position.y
-		look_at(pos)
+	var pos:Vector3 = node.global_position
+	pos.y = position.y
+	look_at(pos)
+
+func look_at_char(char:CharacterBody3D):
+	var pos:Vector3 = char.global_position
+	pos.y = position.y
+	look_at(pos)
+	pos = global_position
+	pos.y = position.y
+	char.look_at(pos)

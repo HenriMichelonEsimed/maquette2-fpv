@@ -16,6 +16,7 @@ var _displayed_node:Node
 var _current_screen = null
 var _restart_timer_notif:bool = false
 var _talking:bool = false
+var _trading:bool = false
 
 func _ready():
 	blur.visible = false
@@ -77,17 +78,28 @@ func menu_close(_dummy=null):
 	menu.visible = false
 	
 func npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
+	if (_trading):
+		return
 	if (not _talking):
 		_current_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
 		_current_screen.open()
 		_talking = true
 	_current_screen.talk(char, phrase, answers)
-	
+
 func npc_end_talk():
 	_current_screen.close()
 	_talking = false
-	resume_game()
-	
+
+func npc_trade(char:InteractiveCharacter):
+	_trading = true
+	var trade_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TRADE)
+	trade_screen.open(char, npc_trade_end)
+	_current_screen.release_focus()
+
+func npc_trade_end():
+	_trading = false	
+	_current_screen.player_text_list.grab_focus()
+
 func storage_open(node:Storage, on_storage_close:Callable):
 	_current_screen = Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS, resume_game)
 	_current_screen.open(node, on_storage_close)

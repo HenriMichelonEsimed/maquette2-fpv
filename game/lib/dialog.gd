@@ -16,5 +16,5 @@ func close():
 	if (_resume):
 		GameState.resume_game()
 	if (_on_close != null):
-		_on_close.call(self)
+		_on_close.call()
 	queue_free()

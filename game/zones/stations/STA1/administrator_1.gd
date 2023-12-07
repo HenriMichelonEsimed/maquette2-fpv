@@ -70,7 +70,7 @@ var r2b = [ "Where is my sandwitch ?", r2c]
 
 func r2d():
 	pass
-	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2_pickels")
+	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_pickles_1")
 	if item != null:
 		GameState.quests.finish_advpoint("main","lvl0_admin_woman_want_sandwitch_with_pickles")
 		return [tr("[Give %s]") % tr(item.label),
@@ -89,7 +89,7 @@ func r2f():
 	return null
 	
 func r2f1():
-	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
+	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "grilled_ham_sandwich_1")
 	if item != null:
 		return [tr("[Give %s]") % tr(item.label),
 			["It's not a sandwich but a croque monsieur", r2c]
@@ -97,7 +97,7 @@ func r2f1():
 	return null
 	
 func r2f2():
-	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2")
+	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
 	if item != null:
 		GameState.quests.advpoint("main","lvl0_admin_woman_want_sandwitch_with_pickles")
 		return [tr("[Give %s]") % tr(item.label),
