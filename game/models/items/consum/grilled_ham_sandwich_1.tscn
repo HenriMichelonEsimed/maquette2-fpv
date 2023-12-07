@@ -64,6 +64,7 @@ key = "grilled_ham_sandwich_1"
 label = "Grilled ham sandwich"
 price = 2.0
 type = 1
+preview_scale = 6.0
 
 [node name="13931_Reuben_Sandwich_on_Plate_v2_L1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.00666555, 0)

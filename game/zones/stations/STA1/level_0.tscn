@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=62 format=3 uid="uid://64tbv2fbem8p"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_s3ubj"]
@@ -59,6 +59,8 @@
 [ext_resource type="PackedScene" uid="uid://2trbhug7jt37" path="res://models/props/locker_1.tscn" id="57_2yflh"]
 [ext_resource type="PackedScene" uid="uid://db6k76u3mvdmk" path="res://models/items/misc/credit.tscn" id="58_bi45f"]
 [ext_resource type="PackedScene" uid="uid://b0mut5bx87cmk" path="res://models/props/box_package_1.tscn" id="59_hvysj"]
+[ext_resource type="PackedScene" uid="uid://c3qxk416q6e8v" path="res://models/props/shelf_1.tscn" id="60_4q0m3"]
+[ext_resource type="PackedScene" uid="uid://b06w3wkgfoh6i" path="res://models/items/tools/crowbar_1.tscn" id="61_osb82"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_s3ubj")
@@ -342,9 +344,9 @@ size = Vector3(6.4, 0.1, 6.7)
 material = ExtResource("3_jos5n")
 
 [node name="Roof1_20x10" parent="Hall/Roof" instance=ExtResource("19_8turt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, 2.85, -5.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, 2.85, -5.45)
 visible = false
-size = Vector3(34.2, 0.1, 20.4)
+size = Vector3(34.2, 0.1, 20.9)
 material = ExtResource("3_jos5n")
 
 [node name="sofa_waiting_room_1" parent="Hall" instance=ExtResource("9_tefkb")]
@@ -703,10 +705,10 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 13.65,
 color = Color(1, 1, 0.792157, 1)
 
 [node name="OmniFloorLightBar" parent="Canteen" instance=ExtResource("20_l6js3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 2.2)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 19.1, 2.84136, 2.2)
 
 [node name="OmniFloorLightBar2" parent="Canteen" instance=ExtResource("20_l6js3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3, -0.05, 8.1)
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 19.1, 2.84136, 8.1)
 
 [node name="Signboard_3" parent="Canteen" instance=ExtResource("47_86l52")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5.49824, 0.95001, 6.55796)
@@ -781,31 +783,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.35, 0, 3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.35, 0, 0.7)
 
 [node name="locker_2" parent="Canteen" instance=ExtResource("57_2yflh")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 4)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 4.3)
 
 [node name="locker_3" parent="Canteen" instance=ExtResource("57_2yflh")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 4.8)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 5.1)
 
 [node name="locker_4" parent="Canteen" instance=ExtResource("57_2yflh")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 3.2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 3.5)
 
 [node name="credit" parent="Canteen/locker_4" instance=ExtResource("58_bi45f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 
-[node name="box_package_1" parent="." instance=ExtResource("59_hvysj")]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 18.1, 0, -14.5)
+[node name="box_package_1" parent="Canteen" instance=ExtResource("59_hvysj")]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 18.55, 0, 0.7)
 
-[node name="box_package_2" parent="." instance=ExtResource("59_hvysj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 0, -14.5)
+[node name="box_package_2" parent="Canteen" instance=ExtResource("59_hvysj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.25, 0, 0.7)
 
-[node name="box_package_4" parent="." instance=ExtResource("59_hvysj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6, 0, -14.5)
+[node name="box_package_5" parent="Canteen" instance=ExtResource("59_hvysj")]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 20.85, 0, 8.3)
 
-[node name="box_package_5" parent="." instance=ExtResource("59_hvysj")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 20.4, 0, -14.5)
+[node name="box_package_6" parent="Canteen" instance=ExtResource("59_hvysj")]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 20.85, 0, 9)
 
-[node name="box_package_6" parent="." instance=ExtResource("59_hvysj")]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, 20.4, 0, -13.3)
+[node name="box_package_3" parent="Canteen" instance=ExtResource("59_hvysj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.15, 0.5, 0.7)
 
-[node name="box_package_3" parent="." instance=ExtResource("59_hvysj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.7, 0.5, -14.5)
+[node name="shelf_1" parent="Canteen" instance=ExtResource("60_4q0m3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.85, 0, 6.7)
+
+[node name="shelf_3" parent="Canteen" instance=ExtResource("60_4q0m3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.85, 0, 1.8)
+
+[node name="shelf_2" parent="Canteen" instance=ExtResource("60_4q0m3")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.55, 0, 9.9)
+
+[node name="crowbar_1" parent="." instance=ExtResource("61_osb82")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19, 1.00871, -5.35137)

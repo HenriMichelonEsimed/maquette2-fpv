@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0mut5bx87cmk"]
+[gd_scene load_steps=10 format=3 uid="uid://b0mut5bx87cmk"]
 
+[ext_resource type="Script" path="res://lib/nodes/storage.gd" id="1_c1eea"]
 [ext_resource type="Texture2D" uid="uid://be8dm4bj2rmoq" path="res://models/props/box_package_1_caixa-de-papel_o-para-transporte-e-mudan_a_n.jpg" id="1_h8lua"]
 [ext_resource type="Material" uid="uid://dyg4s7q646uwt" path="res://assets/materials/vfx/outline.tres" id="2_2xfgv"]
 [ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="3_j3liu"]
@@ -59,6 +60,8 @@ shader_parameter/uv_offset = Vector2(0, 0)
 size = Vector3(0.517676, 0.5, 0.511816)
 
 [node name="box_package_1" type="StaticBody3D"]
+script = ExtResource("1_c1eea")
+label = "Box"
 
 [node name="Box Packaging" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.24, 0, 0, 0, 0.15, 0, 0, 0, 0.24, 0, 0, 0)
