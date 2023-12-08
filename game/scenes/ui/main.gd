@@ -5,10 +5,15 @@ class_name MainUI extends Control
 @onready var label_saving:Label = $LabelSaving
 @onready var time_saving:Timer = $LabelSaving/Timer
 @onready var label_info:Label = $HUD/LabelInfo
+@onready var panel_info:Label = $HUD/LabelInfo
 @onready var focused_button:Button = $Menu/MainMenu/ButtonInventory
 @onready var label_notif:Label = $HUD/LabelNotification
 @onready var timer_notif:Timer = $HUD/LabelNotification/Timer
-@onready var label_menu:Button = $HUD/Menu/LabelMenu
+@onready var icon_menu_open = $HUD/MenuIcon
+@onready var icon_menu_close = $MenuIcon
+@onready var icon_use = $HUD/LabelInfo/Icon
+@onready var button_iventory = $Menu/MainMenu/ButtonInventory
+@onready var button_terminal = $Menu/MainMenu/ButtonTerminal
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
@@ -22,14 +27,28 @@ var _talk_screen:Dialog
 func _ready():
 	blur.visible = false
 	label_saving.visible = false
-	label_info.visible = false
+	panel_info.visible = false
 	menu.visible = false
 	label_notif.visible = false
+	icon_menu_close.visible = false
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
 	player.interactions.connect("display_info", _on_display_info)
 	player.interactions.connect("hide_info", hide_info)
-	Tools.set_shortcut_icon(label_menu, Tools.SHORTCUT_MENU)
+	Input.connect("joy_connection_changed", _on_joypad_connection_changed)
+	set_shortcuts()
+
+func set_shortcuts():
+	Tools.set_shortcut_icon(icon_use, Tools.SHORTCUT_USE)
+	Tools.set_shortcut_icon(icon_menu_open, Tools.SHORTCUT_MENU)
+	Tools.set_shortcut_icon(icon_menu_close, Tools.SHORTCUT_CANCEL)
+	Tools.set_shortcut_icon(button_iventory, Tools.SHORTCUT_INVENTORY)
+	Tools.set_shortcut_icon(button_terminal, Tools.SHORTCUT_TERMINAL)
+
+func _on_joypad_connection_changed(id,connected):
+	GameState.use_joypad = connected
+	set_shortcuts()
+	Dialog.refresh_shortcuts()
 
 func _unhandled_input(event):
 	if (not Dialog.dialogs_stack.is_empty()): return
@@ -69,10 +88,14 @@ func resume_game(_dummy=null):
 func menu_open():
 	GameState.pause_game()
 	menu.visible = true
+	icon_menu_close.visible = true
+	icon_menu_open.visible = false
 	focused_button.grab_focus()
 
 func menu_close(_dummy=null):
 	menu.visible = false
+	icon_menu_close.visible = false
+	icon_menu_open.visible = true
 	GameState.resume_game()
 	
 func npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
@@ -165,7 +188,7 @@ func _on_saving_timer_timeout():
 func _label_info_position():
 	var pos:Vector3 = _displayed_node.global_position
 	pos.y = player.global_position.y + 1.5
-	label_info.position = player.camera.unproject_position(pos)
+	panel_info.position = player.camera.unproject_position(pos)
 	#label_info.position.y = (size.y - label_info.size.y)/2
 	
 func _on_display_info(node:Node3D):
@@ -174,10 +197,10 @@ func _on_display_info(node:Node3D):
 	if (label.is_empty()): return
 	label_info.text = label
 	_label_info_position()
-	label_info.visible = true
+	panel_info.visible = true
 
 func hide_info():
-	label_info.visible = false
+	panel_info.visible = false
 	label_info.text = ''
 
 func _on_button_quit_pressed():

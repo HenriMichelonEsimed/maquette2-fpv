@@ -1,7 +1,7 @@
 extends Object
 class_name Tools
 
-const DIALOG_SELECT_QANTITY = "select_quantity"
+const DIALOG_SELECT_QUANTITY = "select_quantity"
 const DIALOG_TRANSFERT_ITEMS = "items_transfert"
 const DIALOG_LOAD_SAVEGAME = "load_savegame"
 const DIALOG_SETTINGS = "settings"
@@ -27,14 +27,13 @@ const SHORTCUT_DECLINE = "decline"
 const SHORTCUT_MENU = "menu"
 const SHORTCUT_TERMINAL = "terminal"
 const SHORTCUT_USE = "use"
-const SHORTCUT_TALK = "use"
-const SHORTCUT_TRADE = "use"
-const SHORTCUT_COLLECT = "use"
-const SHORTCUT_ACCEPT = "use"
+const SHORTCUT_ALL = "all"
+const SHORTCUT_ACCEPT = "accept"
 
 const ITEMS_PATH = [ 'tools', 'consum', 'misc', 'quest']
 
-static func load_shortcut_icon(controller:String,name:String):
+static func load_shortcut_icon(name:String):
+	var controller = CONTROLLER_XBOX if GameState.use_joypad else CONTROLLER_KEYBOARD
 	return load("res://assets/textures/controllers/buttons/" + controller + "/" + name + ".png")
 	
 static func load_item(type:int,name:String):
@@ -76,6 +75,10 @@ static func show_item(item:Item, node_3d:Node3D):
 	clone.rotation = Vector3.ZERO
 	clone.scale = clone.scale * clone.preview_scale * 1.2
 
-static func set_shortcut_icon(button:Button, name:String):
-	var controller = CONTROLLER_XBOX if GameState.use_joypad else CONTROLLER_KEYBOARD
-	button.icon = load_shortcut_icon(controller, name)
+static func set_shortcut_icon(button:Control, name:String):
+	if (button is Button):
+		button.icon = load_shortcut_icon(name)
+	elif (button is TextureRect):
+		button.texture = load_shortcut_icon(name)
+		
+

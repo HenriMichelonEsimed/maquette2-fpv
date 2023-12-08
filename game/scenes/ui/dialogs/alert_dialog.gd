@@ -12,4 +12,6 @@ func open(title:String,message:String,free=true):
 	$Panel/Content/VBoxContainer/Top/Label.text = tr(title)
 	$Panel/Content/VBoxContainer/Label.text = tr(message)
 	$Panel/Content/VBoxContainer/Bottom/ButtonCancel.grab_focus()
+
+func set_shortcuts():
 	Tools.set_shortcut_icon(button_ok, Tools.SHORTCUT_ACCEPT)

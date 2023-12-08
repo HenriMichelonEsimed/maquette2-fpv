@@ -54,7 +54,7 @@ func on_item_dropped(item:Item, quantity:int):
 	var new_item:Item = item.duplicate()
 	new_item.position = GameState.player.global_position
 	if (item is ItemMultiple):
-		new_item.quantity = quantity
+		new_item.quantity = item.quantity if quantity==-1 else quantity
 		GameState.inventory.remove(new_item)
 	else:
 		GameState.inventory.remove(item)
@@ -92,6 +92,7 @@ func on_item_collected(item:Item, quantity:int, force = false):
 	else:
 		if (item.owner != null): # items from scene
 			state.items_removed.append(item.get_path())
-	if (item.get_parent() != null): item.get_parent().remove_child(item)
+	if (item.get_parent() != null): 
+		item.get_parent().remove_child(item)
 	state.items_added.remove(item)
 	GameState.inventory.add(new_item)

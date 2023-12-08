@@ -23,6 +23,8 @@ func open(title:String, text:String, on_confirm):
 	label_title.text = tr(title)
 	label_message.text = tr(text)
 	button_yes.grab_focus()
+
+func set_shortcuts():
 	Tools.set_shortcut_icon(button_yes, Tools.SHORTCUT_ACCEPT)
 	Tools.set_shortcut_icon(button_cancel, Tools.SHORTCUT_CANCEL)
 	Tools.set_shortcut_icon(button_no, Tools.SHORTCUT_DECLINE)

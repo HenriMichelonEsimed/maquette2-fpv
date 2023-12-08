@@ -1,6 +1,8 @@
 extends Dialog
 
 @onready var i18n = $Background/Borders/Content/Panel/Borders/Settings/i18n/OptionButton
+@onready var button_close = $Background/Borders/Content/Top/ButtonClose
+@onready var button_save = $Background/Borders/Content/Panel/Borders/Settings/Bottom/ButtonSave
 
 func _unhandled_input(event):
 	if (ignore_input()): return
@@ -13,6 +15,9 @@ func open():
 		if (Settings.langs[GameState.settings.lang] == i18n.get_item_text(i)):
 			i18n.select(i)
 	i18n.grab_focus()
+
+func set_shortcuts():
+	Tools.set_shortcut_icon(button_close, Tools.SHORTCUT_CANCEL)
 
 func _on_button_save_pressed():
 	var item = i18n.get_item_text(i18n.selected)

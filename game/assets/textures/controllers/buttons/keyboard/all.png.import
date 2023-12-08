@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6kafwm66404p"
-path="res://.godot/imported/inventory.png-cd168d3343bd61a2c1269a483d0c4dea.ctex"
+uid="uid://b2ya8ulfgjv4r"
+path="res://.godot/imported/all.png-83d5b115a0de42550b9a0e64f8e4e80b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/controllers/buttons/xbox/inventory.png"
-dest_files=["res://.godot/imported/inventory.png-cd168d3343bd61a2c1269a483d0c4dea.ctex"]
+source_file="res://assets/textures/controllers/buttons/keyboard/all.png"
+dest_files=["res://.godot/imported/all.png-83d5b115a0de42550b9a0e64f8e4e80b.ctex"]
 
 [params]
 

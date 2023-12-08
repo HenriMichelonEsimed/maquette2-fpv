@@ -143,7 +143,7 @@ func _fill_list(type:Item.ItemType, list:ItemList):
 func _on_drop_pressed():
 	if (item == null): return
 	if (item is ItemMultiple) and (item.quantity > 1):
-		var select_dialog = Tools.load_dialog(self, Tools.DIALOG_SELECT_QANTITY, _on_select_close)
+		var select_dialog = Tools.load_dialog(self, Tools.DIALOG_SELECT_QUANTITY, _on_select_close)
 		select_dialog.open(item, false, _drop, tr("Drop"))
 	else:
 		_drop()

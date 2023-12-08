@@ -13,6 +13,8 @@ func open(on_load_savegame):
 	_on_load_savegame = on_load_savegame
 	super._open()
 	_refresh()
+
+func set_shortcuts():
 	Tools.set_shortcut_icon(button_delete, Tools.SHORTCUT_DELETE)
 	Tools.set_shortcut_icon(button_load, Tools.SHORTCUT_ACCEPT)
 	Tools.set_shortcut_icon(button_cancel, Tools.SHORTCUT_CANCEL)

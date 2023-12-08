@@ -6,6 +6,7 @@ signal item_dropped(item:Item, quantity:int)
 @onready var button_drop:Button = $Content/VBoxContainer/Lists/Buttons/Middle/ButtonDrop
 @onready var button_pick:Button = $Content/VBoxContainer/Lists/Buttons/Middle/ButtonPick
 @onready var button_close:Button = $Content/VBoxContainer/HBoxContainer/ButtonClose
+@onready var button_all:Button = $Content/VBoxContainer/Lists/Buttons/ButtonAll
 @onready var label:Label = $Content/VBoxContainer/Lists/Left/Label
 @onready var list_container:ItemList = $Content/VBoxContainer/Lists/Left/ListContainer
 @onready var list_inventory:ItemList = $Content/VBoxContainer/Lists/Right/ListInventory
@@ -15,37 +16,34 @@ var storage:Storage
 var transfered_item:Item
 var on_storage_close:Callable
 
+func _unhandled_input(event):
+	if (ignore_input()): return
+	if Input.is_action_just_pressed("cancel"):
+		close()
+	elif Input.is_action_just_pressed("accept") and (list_container.has_focus() or list_inventory.has_focus()):
+		_transfert()
+	elif Input.is_action_just_pressed("collect_all") and (list_container.has_focus() or list_inventory.has_focus()):
+		_on_button_all_pressed()
+
 func open(node:Storage, on_storage_close):
 	super._open()
 	self.on_storage_close = on_storage_close
 	label.text = tr(str(node))
 	storage = node
 	current_list = list_container
+	connect("item_dropped", GameState.current_zone.on_item_dropped)
+	connect("item_collected", GameState.current_zone.on_item_collected)
 	_refresh()
-	
+
+func set_shortcuts():
+	Tools.set_shortcut_icon(button_close, Tools.SHORTCUT_CANCEL)
+	Tools.set_shortcut_icon(button_pick, Tools.SHORTCUT_ACCEPT)
+	Tools.set_shortcut_icon(button_drop, Tools.SHORTCUT_ACCEPT)
+	Tools.set_shortcut_icon(button_all, Tools.SHORTCUT_ALL)
+
 func close():
 	on_storage_close.call(storage)
 	super.close()
-	
-func _on_child_entered_tree(_node):
-	#connect("item_dropped", GameState.current_zone.on_item_dropped)
-	#connect("item_collected", GameState.current_zone.on_item_collected)
-	pass
-
-func _on_child_exiting_tree(_node):
-	#disconnect("item_dropped", GameState.current_zone.on_item_dropped)
-	#disconnect("item_collected", GameState.current_zone.on_item_collected)
-	pass
-
-func _unhandled_input(event):
-	if (ignore_input()): return
-	#if (selectQtyDialog.visible): return
-	if Input.is_action_just_pressed("cancel"):
-		close()
-	elif Input.is_action_just_pressed("use"):
-		_transfert()
-	elif Input.is_action_just_pressed("collect_all"):
-		_on_button_all_pressed()
 
 func _transfert():
 	if (current_list == list_container):
@@ -72,13 +70,14 @@ func _on_button_all_pressed():
 
 func open_select_quantity(item:Item):
 	transfered_item = item
-	Tools.load_dialog(self, Tools.DIALOG_SELECT_QANTITY).open(item, true)
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_SELECT_QUANTITY)
+	dlg.open(item, true, _on_select_quantity_dialog_quantity)
 
 func _on_select_quantity_dialog_quantity(quantity):
 	if (current_list == list_container):
-		container_to_inventory(transfered_item,quantity)
+		container_to_inventory(transfered_item, quantity)
 	else:
-		inventory_to_container(transfered_item,quantity)
+		inventory_to_container(transfered_item, quantity)
 
 func inventory_to_container(item:Item,quantity:int=-1,refresh:bool=true):
 	item.set_meta("storage", storage)
@@ -104,15 +103,15 @@ func _refresh():
 		current_list.select(0)
 
 func _on_list_container_focus_entered():
-	#if (selectQtyDialog.visible): 
-	#	list_inventory.grab_focus()
-	#	return
 	current_list = list_container
+	if (current_list.item_count > 0):
+		current_list.select(0)
 	button_drop.visible = false
 	button_pick.visible = true
 	
 func _on_list_inventory_focus_entered():
-	#if (selectQtyDialog.visible): return
 	current_list = list_inventory
+	if (current_list.item_count > 0):
+		current_list.select(0)
 	button_drop.visible = true
 	button_pick.visible = false

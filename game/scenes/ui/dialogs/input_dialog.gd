@@ -23,6 +23,8 @@ func open(title:String, text:String, on_savegame_input):
 	edit.text = tr(text)
 	edit.select_all()
 	edit.grab_focus()
+
+func set_shortcuts():
 	Tools.set_shortcut_icon(button_cancel, Tools.SHORTCUT_CANCEL)
 	Tools.set_shortcut_icon(button_ok, Tools.SHORTCUT_ACCEPT)
 

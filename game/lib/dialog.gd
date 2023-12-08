@@ -7,6 +7,12 @@ static var _ignore_input:bool = false
 
 func _ready():
 	process_mode = PROCESS_MODE_WHEN_PAUSED
+	
+func set_shortcuts():
+	pass
+	
+static func refresh_shortcuts():
+	dialogs_stack.all(func(dlg): dlg.set_shortcuts())
 
 func _open(blur_screen:bool=true):
 	if (dialogs_stack.is_empty()):
@@ -14,6 +20,7 @@ func _open(blur_screen:bool=true):
 	else:
 		dialogs_stack.back().process_mode = PROCESS_MODE_DISABLED
 	dialogs_stack.push_back(self)
+	set_shortcuts()
 
 func close():
 	dialogs_stack.pop_back()
