@@ -153,7 +153,7 @@ func _buy_quanity(value):
 func _on_buy_pressed():
 	if (item == null): return
 	if (item is ItemMultiple):
-		var select_dialog = Tools.load_dialog(self, Tools.DIALOG_SELECT_QANTITY, _focus_current_tab)
+		var select_dialog = Tools.load_dialog(self, Tools.DIALOG_SELECT_QUANTITY, _focus_current_tab)
 		select_dialog.open(item, false, _buy, "Buy")
 	else:
 		_buy()

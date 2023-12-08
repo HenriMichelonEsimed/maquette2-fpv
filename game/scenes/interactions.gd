@@ -17,10 +17,10 @@ func _unhandled_input(event):
 
 func action_use():
 	if (node_to_use != null):
-		player.look_at_node(node_to_use)
+		#player.look_at_node(node_to_use)
 		node_to_use.use(true)
 	elif (item_to_collect != null):
-		player.look_at_node(item_to_collect)
+		#player.look_at_node(item_to_collect)
 		item_collected.emit(item_to_collect, -1)
 		hide_info.emit()
 	elif (char_to_talk != null):
