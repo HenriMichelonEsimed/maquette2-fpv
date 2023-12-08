@@ -4,6 +4,7 @@ class_name Player extends CharacterBody3D
 @onready var under_water_filter = $UnderWater/Filter
 @onready var interactions:Interactions = $Interactions
 @onready var anim:AnimationPlayer = $Character.anim
+@onready var skel:Skeleton3D = $Character.skel
 @onready var raycast_to_floor:RayCast3D = $RayCastToFloor
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -72,11 +73,22 @@ func _physics_process(delta):
 	move_and_slide()
 	if is_on_floor and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed
-		
+
 func move(pos:Vector3, rot:Vector3):
 	position = pos
 	rotation = rot
 
+func handle_item(item):
+	item.global_position = get_hand_position()
+	add_child(item)
+	pass
+	
+func get_hand_position():
+	var bone_idx : int = skel.find_bone("mixamorig_RightHand")
+	var local_bone_transform : Transform3D = skel.get_bone_global_pose(bone_idx)
+	var global_bone_pos : Vector3 = skel.to_global(local_bone_transform.origin)
+	return global_bone_pos
+	
 func get_floor_collision():
 	raycast_to_floor.force_raycast_update()
 	return raycast_to_floor.get_collision_point()

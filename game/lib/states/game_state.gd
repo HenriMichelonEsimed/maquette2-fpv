@@ -68,10 +68,12 @@ func _resume_game():
 	
 func item_use(item:Item):
 	item_unuse()
-	current_item= item.duplicate()
+	current_item = item.duplicate()
 	if (item is ItemMultiple):
 		current_item.quantity = 1
 	inventory.remove(current_item)
+	current_item.enable()
+	player.handle_item(current_item)
 
 func item_unuse():
 	if (current_item == null): return

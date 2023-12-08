@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933684, 0)
 shape = SubResource("CapsuleShape3D_iayoc")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78169, -0.172818)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00655448, 1.78169, -0.160045)
 
 [node name="Interactions" parent="." instance=ExtResource("2_73o8b")]
 
@@ -48,11 +48,11 @@ visible = false
 mesh = SubResource("SphereMesh_donio")
 surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")
 
-[node name="Character" parent="." instance=ExtResource("3_3fts5")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
-
 [node name="RayCastToFloor" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116028, 0)
+
+[node name="Character" parent="." instance=ExtResource("3_3fts5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="body_entered" from="UnderWater" to="." method="_on_under_water_body_entered"]
 [connection signal="body_exited" from="UnderWater" to="." method="_on_under_water_body_exited"]
