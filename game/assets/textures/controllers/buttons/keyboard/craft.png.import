@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bepaiwjf3kr2k"
-path="res://.godot/imported/jump.png-4cdf2da48a802cf678fe6e6771fe4cbd.ctex"
+uid="uid://cixdcpb6vlc0n"
+path="res://.godot/imported/craft.png-ac365bdacd20a7a113d24fe9edf531d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/controllers/buttons/xbox/jump.png"
-dest_files=["res://.godot/imported/jump.png-4cdf2da48a802cf678fe6e6771fe4cbd.ctex"]
+source_file="res://assets/textures/controllers/buttons/keyboard/craft.png"
+dest_files=["res://.godot/imported/craft.png-ac365bdacd20a7a113d24fe9edf531d7.ctex"]
 
 [params]
 

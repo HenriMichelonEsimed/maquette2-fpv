@@ -20,15 +20,11 @@ const CONTROLLER_XBOX = "xbox"
 
 const SHORTCUT_DROP = "drop"
 const SHORTCUT_DELETE = "drop"
-const SHORTCUT_CAMERA = "camera"
 const SHORTCUT_CANCEL = "cancel"
 const SHORTCUT_INVENTORY = "inventory"
-const SHORTCUT_JUMP = "jump"
-const SHORTCUT_CRAFT = "jump"
-const SHORTCUT_DECLINE = "jump"
+const SHORTCUT_CRAFT = "craft"
+const SHORTCUT_DECLINE = "decline"
 const SHORTCUT_MENU = "menu"
-const SHORTCUT_RUN = "modifier"
-const SHORTCUT_MOVE = "player"
 const SHORTCUT_TERMINAL = "terminal"
 const SHORTCUT_USE = "use"
 const SHORTCUT_TALK = "use"
@@ -81,5 +77,5 @@ static func show_item(item:Item, node_3d:Node3D):
 	clone.scale = clone.scale * clone.preview_scale * 1.2
 
 static func set_shortcut_icon(button:Button, name:String):
-	if (GameState.use_joypad):
-		button.icon = load_shortcut_icon(CONTROLLER_XBOX, name)
+	var controller = CONTROLLER_XBOX if GameState.use_joypad else CONTROLLER_KEYBOARD
+	button.icon = load_shortcut_icon(controller, name)

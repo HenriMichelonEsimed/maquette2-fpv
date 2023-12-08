@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpyjjcr333but"
-path="res://.godot/imported/modifier.png-e5bf141a57e4f63234ece9221381e90e.ctex"
+uid="uid://cgqgqk6p717x1"
+path="res://.godot/imported/decline.png-7c3da7eeb46b036fb9c541ca9770f282.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/controllers/buttons/xbox/modifier.png"
-dest_files=["res://.godot/imported/modifier.png-e5bf141a57e4f63234ece9221381e90e.ctex"]
+source_file="res://assets/textures/controllers/buttons/keyboard/decline.png"
+dest_files=["res://.godot/imported/decline.png-7c3da7eeb46b036fb9c541ca9770f282.ctex"]
 
 [params]
 

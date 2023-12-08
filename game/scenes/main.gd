@@ -21,10 +21,6 @@ func _ready():
 	_change_zone(GameState.player_state.zone_name, "default")
 	if (GameState.player_state.position != Vector3.ZERO):
 		player.move(GameState.player_state.position, GameState.player_state.rotation)
-	if not GameState.settings.keyboard_controller_shown:
-		GameState.ui.display_keymaps()
-		GameState.settings.keyboard_controller_shown = true
-		GameState.save_game()
 
 func _change_zone(zone_name:String, spawnpoint_key:String):
 	var new_zone:Zone

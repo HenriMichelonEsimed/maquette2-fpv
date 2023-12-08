@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc0mt7o7401wp"
-path="res://.godot/imported/camera.png-99a8759ab1a40fedcca683d3a1f66f1f.ctex"
+uid="uid://bpirky61xsd0f"
+path="res://.godot/imported/cancel.png-df5e4f82155b64e300743d49b728cbdf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/controllers/buttons/xbox/camera.png"
-dest_files=["res://.godot/imported/camera.png-99a8759ab1a40fedcca683d3a1f66f1f.ctex"]
+source_file="res://assets/textures/controllers/buttons/keyboard/cancel.png"
+dest_files=["res://.godot/imported/cancel.png-df5e4f82155b64e300743d49b728cbdf.ctex"]
 
 [params]
 

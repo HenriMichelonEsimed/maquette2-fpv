@@ -8,6 +8,7 @@ class_name MainUI extends Control
 @onready var focused_button:Button = $Menu/MainMenu/ButtonInventory
 @onready var label_notif:Label = $HUD/LabelNotification
 @onready var timer_notif:Timer = $HUD/LabelNotification/Timer
+@onready var label_menu:Button = $HUD/Menu/LabelMenu
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
@@ -28,6 +29,7 @@ func _ready():
 	GameState.connect("saving_end", _on_saving_end)
 	player.interactions.connect("display_info", _on_display_info)
 	player.interactions.connect("hide_info", hide_info)
+	Tools.set_shortcut_icon(label_menu, Tools.SHORTCUT_MENU)
 
 func _unhandled_input(event):
 	if (not Dialog.dialogs_stack.is_empty()): return
