@@ -14,6 +14,7 @@ class_name MainUI extends Control
 @onready var icon_use = $HUD/LabelInfo/Icon
 @onready var button_iventory = $Menu/MainMenu/ButtonInventory
 @onready var button_terminal = $Menu/MainMenu/ButtonTerminal
+@onready var panel_item = $HUD/PanelTool
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
@@ -31,6 +32,7 @@ func _ready():
 	menu.visible = false
 	label_notif.visible = false
 	icon_menu_close.visible = false
+	panel_item.visible = false
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
 	player.interactions.connect("display_info", _on_display_info)

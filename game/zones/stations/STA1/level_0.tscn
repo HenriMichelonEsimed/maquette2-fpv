@@ -750,3 +750,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.55,
 
 [node name="crowbar_1" parent="Canteen" instance=ExtResource("61_osb82")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.45, 1.00871, 9.84863)
+
+[node name="crowbar_1" parent="." instance=ExtResource("61_osb82")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.28297, -1.67638e-07, -4.23513)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dwuj22bnecspn"]
+[gd_scene load_steps=24 format=3 uid="uid://dwuj22bnecspn"]
 
 [ext_resource type="Script" path="res://lib/nodes/item_consumable.gd" id="1_wwggc"]
 [ext_resource type="Texture2D" uid="uid://dh63mib0e63pw" path="res://models/items/consum/burger_1_Burger.jpg" id="2_3l7tg"]
@@ -8,6 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://bxcj2hda7y6iq" path="res://models/items/consum/burger_1_Onion.jpg" id="6_6e8cv"]
 [ext_resource type="Texture2D" uid="uid://bs6008i4djh3t" path="res://models/items/consum/burger_1_Pickle.jpg" id="7_vyuh1"]
 [ext_resource type="Texture2D" uid="uid://0trdv4gu0jxc" path="res://models/items/consum/burger_1_Cheese.jpg" id="8_qc7e5"]
+[ext_resource type="Material" uid="uid://d0tv48xiixsfg" path="res://assets/materials/vfx/outline_fine.tres" id="9_jkp0b"]
+[ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="10_rwrt6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vaoc4"]
 resource_name = "Burger"
@@ -231,6 +233,39 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fwhx4")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lwbju"]
+render_priority = 0
+next_pass = ExtResource("9_jkp0b")
+shader = ExtResource("10_rwrt6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.164706, 0.164706, 0.164706, 0.501961)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/base_texture = ExtResource("2_3l7tg")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovbn4"]
+render_priority = 0
+next_pass = ExtResource("9_jkp0b")
+shader = ExtResource("10_rwrt6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.164706, 0.164706, 0.164706, 0.501961)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/base_texture = ExtResource("3_qs46v")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2du2m"]
+render_priority = 0
+next_pass = ExtResource("9_jkp0b")
+shader = ExtResource("10_rwrt6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.164706, 0.164706, 0.164706, 0.501961)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/base_texture = ExtResource("8_qc7e5")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ygjjo"]
 height = 0.0906442
 radius = 0.0860986
@@ -241,12 +276,15 @@ key = "burger_1"
 label = "Burger"
 price = 3.0
 type = 1
-preview_scale = 3.0
+preview_scale = 4.0
 
 [node name="Burger" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0363573, 0)
 mesh = SubResource("ArrayMesh_1jemi")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_lwbju")
+surface_material_override/1 = SubResource("ShaderMaterial_ovbn4")
+surface_material_override/6 = SubResource("ShaderMaterial_2du2m")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0428319, 0)

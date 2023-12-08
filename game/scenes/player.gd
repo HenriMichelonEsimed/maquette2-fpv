@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody3D
 
-@onready var camera:Camera3D = $Character/RootNode/Skeleton3D/HeadAttachement/AttachmentPoint/Camera3D
-@onready var camera_pivot:Node3D = $Character/RootNode/Skeleton3D/HeadAttachement/AttachmentPoint
+@onready var camera:Camera3D = $Camera3D
+@onready var camera_pivot:Node3D = $Camera3D
 @onready var under_water_filter = $UnderWater/Filter
 @onready var interactions:Interactions = $Interactions
 @onready var raycast_to_floor:RayCast3D = $RayCastToFloor
@@ -18,7 +18,7 @@ var max_camera_angle_up:float = deg_to_rad(60)
 var max_camera_angle_down:float = -deg_to_rad(40)
 var look_up_action:String = "look_up"
 var look_down_action:String = "look_down"
-var camera_y_axis_inverted:bool = false
+var camera_y_axis_inverted:bool = true
 var run:bool = false
 
 func _ready():
