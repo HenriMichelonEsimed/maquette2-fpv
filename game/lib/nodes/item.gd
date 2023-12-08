@@ -15,8 +15,18 @@ enum ItemType {
 
 func _ready():
 	label = tr(label)
-	set_collision_layer_value(Consts.LAYER_WORLD, true)
-	set_collision_layer_value(Consts.LAYER_ITEM, true)
+	set_collision_layer_value(Consts.LAYER_WORLD, false)
+	enable()
+
+func use():
+	disable()
+	position = Vector3.ZERO
+	rotate_y(deg_to_rad(180))
+
+func unuse():
+	position = Vector3.ZERO
+	rotation = Vector3.ZERO
+	enable()
 
 func collect():
 	return true
@@ -26,7 +36,6 @@ func disable():
 	
 func enable():
 	set_collision_layer_value(Consts.LAYER_ITEM, true)
-	scale = Vector3(1.0, 1.0, 1.0)
 	
 func _to_string():
 	return label

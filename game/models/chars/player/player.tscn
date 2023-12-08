@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dboialknk0g54"]
+[gd_scene load_steps=20 format=3 uid="uid://dboialknk0g54"]
 
 [ext_resource type="Script" path="res://models/chars/player/player.gd" id="1_0h6jp"]
 [ext_resource type="Texture2D" uid="uid://hn1mjnguw62i" path="res://models/chars/player/textures/casual_man_color.png" id="1_plyj3"]
@@ -8,9 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://diuniscdtbrvp" path="res://models/chars/player/textures/casual_man_roughness.png" id="5_4g1ow"]
 [ext_resource type="Animation" uid="uid://b5jhaqbrmqssc" path="res://models/chars/player/anims/crouched_walking.anim" id="6_ixqyf"]
 [ext_resource type="Animation" uid="uid://df72se2biys48" path="res://models/chars/player/anims/dying_backwards.anim" id="7_1724f"]
-[ext_resource type="Material" uid="uid://d0tv48xiixsfg" path="res://assets/materials/vfx/outline_fine.tres" id="7_f3uvv"]
+[ext_resource type="Material" uid="uid://dvll43fob3gnl" path="res://models/chars/player/player.tres" id="7_erkw0"]
 [ext_resource type="Animation" uid="uid://it5wl4qs8n0w" path="res://models/chars/player/anims/jumping.anim" id="8_2blhu"]
-[ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="8_3d1p8"]
 [ext_resource type="Animation" uid="uid://cwxji78smnel6" path="res://models/chars/player/anims/running.anim" id="9_ybvom"]
 [ext_resource type="Animation" uid="uid://di0jtcbwxbr8b" path="res://models/chars/player/anims/standing.res" id="10_5it34"]
 [ext_resource type="Animation" uid="uid://ds1csqxlw26wr" path="res://models/chars/player/anims/t-pose.anim" id="11_mvd17"]
@@ -213,17 +212,6 @@ bind/50/pose = Transform3D(-0.0435159, -0.0411696, 0.166822, -0.0982989, -0.1351
 bind/51/name = &"mixamorig_RightHandPinky3"
 bind/51/bone = -1
 bind/51/pose = Transform3D(-0.0435159, -0.0411696, 0.166822, -0.087666, -0.142686, -0.0580811, 0.14778, -0.0967668, 0.0146681, 0.141044, 0.475047, 1.29587)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ye03u"]
-render_priority = 0
-next_pass = ExtResource("7_f3uvv")
-shader = ExtResource("8_3d1p8")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/specular = Color(0, 0, 0, 0.501961)
-shader_parameter/fresnel = Color(0, 0, 0, 0.301961)
-shader_parameter/base_texture = ExtResource("1_plyj3")
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_prdsq"]
 length = 0.001
@@ -1160,7 +1148,23 @@ bones/64/scale = Vector3(1, 1, 1)
 [node name="casual_male" type="MeshInstance3D" parent="RootNode/Skeleton3D"]
 mesh = SubResource("ArrayMesh_o5efn")
 skin = SubResource("Skin_6l8r3")
-surface_material_override/0 = SubResource("ShaderMaterial_ye03u")
+surface_material_override/0 = ExtResource("7_erkw0")
+
+[node name="HandAttachment" type="BoneAttachment3D" parent="RootNode/Skeleton3D"]
+transform = Transform3D(0.0997269, -0.0543836, 0.993528, -0.00551705, -0.99852, -0.0541032, 0.995, -8.57738e-05, -0.0998793, -0.291155, 0.852092, -0.0229876)
+bone_name = "mixamorig_RightHandMiddle1"
+bone_idx = 43
+
+[node name="AttachmentPoint" type="Node3D" parent="RootNode/Skeleton3D/HandAttachment"]
+transform = Transform3D(1, -6.02085e-08, 0, 5.60467e-08, 1, -1.3576e-08, 4.47035e-08, -3.64835e-08, 1, -0.0093032, -0.00014466, 0.0375062)
+
+[node name="HeadAttachement" type="BoneAttachment3D" parent="RootNode/Skeleton3D"]
+transform = Transform3D(0.998739, 0.0499842, 0.00468255, -0.0497603, 0.973255, 0.224274, 0.00665283, -0.224224, 0.974515, 0.00881309, 1.88731, -0.000270737)
+bone_name = "mixamorig_HeadTop_End"
+bone_idx = 6
+
+[node name="AttachmentPoint" type="Node3D" parent="RootNode/Skeleton3D/HeadAttachement"]
+transform = Transform3D(1, 1.07102e-08, 4.65661e-09, 4.88944e-08, 1, -1.93715e-07, 1.07102e-08, -2.23517e-07, 1, 0.00282602, -0.139415, 0.0891328)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false

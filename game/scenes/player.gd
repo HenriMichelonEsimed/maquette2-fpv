@@ -1,23 +1,24 @@
 class_name Player extends CharacterBody3D
 
-@onready var camera:Camera3D = $Camera3D
+@onready var camera:Camera3D = $Character/RootNode/Skeleton3D/HeadAttachement/AttachmentPoint/Camera3D
+@onready var camera_pivot:Node3D = $Character/RootNode/Skeleton3D/HeadAttachement/AttachmentPoint
 @onready var under_water_filter = $UnderWater/Filter
 @onready var interactions:Interactions = $Interactions
-@onready var anim:AnimationPlayer = $Character.anim
-@onready var skel:Skeleton3D = $Character.skel
 @onready var raycast_to_floor:RayCast3D = $RayCastToFloor
+@onready var anim:AnimationPlayer = $Character/AnimationPlayer
+@onready var attach_item:Node3D = $Character/RootNode/Skeleton3D/HandAttachment/AttachmentPoint
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var walking_speed:float = 5
 var running_speed:float = 8
 var jump_speed:float = 5
-var mouse_sensitivity:float = 0.002
+var mouse_sensitivity:float = 0.001
 var mouse_captured:bool = false
 var max_camera_angle_up:float = deg_to_rad(60)
 var max_camera_angle_down:float = -deg_to_rad(40)
 var look_up_action:String = "look_up"
 var look_down_action:String = "look_down"
-var camera_y_axis_inverted:bool = true
+var camera_y_axis_inverted:bool = false
 var run:bool = false
 
 func _ready():
@@ -27,13 +28,14 @@ func _ready():
 	if (camera_y_axis_inverted):
 		look_up_action = "look_down"
 		look_down_action = "look_up"
+	anim.play("standing")
 	capture_mouse()
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		camera.rotate_x(-event.relative.y * mouse_sensitivity)
-		camera.rotation.x = clampf(camera.rotation.x, max_camera_angle_down, max_camera_angle_up)
+		camera_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+		camera_pivot.rotation.x = clampf(camera_pivot.rotation.x, max_camera_angle_down, max_camera_angle_up)
 	elif event is InputEventKey or event is InputEventJoypadButton:
 		run = Input.is_action_just_pressed("run")
 
@@ -79,15 +81,10 @@ func move(pos:Vector3, rot:Vector3):
 	rotation = rot
 
 func handle_item(item):
-	item.global_position = get_hand_position()
-	add_child(item)
-	pass
-	
-func get_hand_position():
-	var bone_idx : int = skel.find_bone("mixamorig_RightHand")
-	var local_bone_transform : Transform3D = skel.get_bone_global_pose(bone_idx)
-	var global_bone_pos : Vector3 = skel.to_global(local_bone_transform.origin)
-	return global_bone_pos
+	attach_item.add_child(item)
+
+func unhandle_item(item):
+	attach_item.remove_child(item)
 	
 func get_floor_collision():
 	raycast_to_floor.force_raycast_update()

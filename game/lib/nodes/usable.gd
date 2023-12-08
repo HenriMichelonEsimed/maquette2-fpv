@@ -38,7 +38,7 @@ func _check_tool_use(message:String, tools_to_use:Array) -> bool:
 	return check
 	
 func _check_use():
-	if (GameState.current_tool != null):
+	if (GameState.current_item != null):
 		unlock.emit(false)
 		return false
 	return true

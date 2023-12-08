@@ -72,11 +72,13 @@ func item_use(item:Item):
 	if (item is ItemMultiple):
 		current_item.quantity = 1
 	inventory.remove(current_item)
-	current_item.enable()
 	player.handle_item(current_item)
+	current_item.use()
 
 func item_unuse():
 	if (current_item == null): return
+	player.unhandle_item(current_item)
+	current_item.unuse()
 	inventory.add(current_item.duplicate())
 	current_item = null
 
