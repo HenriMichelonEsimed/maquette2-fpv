@@ -8,15 +8,39 @@ const DIALOG_SETTINGS = "settings"
 const DIALOG_INPUT = "input"
 const DIALOG_CONFIRM = "confirm"
 const DIALOG_ALERT = "alert"
+
 const SCREEN_INVENTORY = "inventory"
 const SCREEN_TERMINAL = "terminal"
 const SCREEN_CONTROLLER = "controller"
 const SCREEN_NPC_TALK = "talk"
 const SCREEN_NPC_TRADE = "trade"
+
 const CONTROLLER_KEYBOARD = "keyboard"
 const CONTROLLER_XBOX = "xbox"
+
+const SHORTCUT_DROP = "drop"
+const SHORTCUT_DELETE = "drop"
+const SHORTCUT_CAMERA = "camera"
+const SHORTCUT_CANCEL = "cancel"
+const SHORTCUT_INVENTORY = "inventory"
+const SHORTCUT_JUMP = "jump"
+const SHORTCUT_CRAFT = "jump"
+const SHORTCUT_DECLINE = "jump"
+const SHORTCUT_MENU = "menu"
+const SHORTCUT_RUN = "modifier"
+const SHORTCUT_MOVE = "player"
+const SHORTCUT_TERMINAL = "terminal"
+const SHORTCUT_USE = "use"
+const SHORTCUT_TALK = "use"
+const SHORTCUT_TRADE = "use"
+const SHORTCUT_COLLECT = "use"
+const SHORTCUT_ACCEPT = "use"
+
 const ITEMS_PATH = [ 'tools', 'consum', 'misc', 'quest']
 
+static func load_shortcut_icon(controller:String,name:String):
+	return load("res://assets/textures/controllers/buttons/" + controller + "/" + name + ".png")
+	
 static func load_item(type:int,name:String):
 	var item = load("res://models/items/" + ITEMS_PATH[type] + "/" + name + ".tscn")
 	if (item != null):
@@ -55,3 +79,7 @@ static func show_item(item:Item, node_3d:Node3D):
 	clone.position = Vector3.ZERO
 	clone.rotation = Vector3.ZERO
 	clone.scale = clone.scale * clone.preview_scale * 1.2
+
+static func set_shortcut_icon(button:Button, name:String):
+	if (GameState.use_joypad):
+		button.icon = load_shortcut_icon(CONTROLLER_XBOX, name)

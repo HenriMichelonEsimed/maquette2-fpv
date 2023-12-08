@@ -118,7 +118,7 @@ func settings_open():
 	dlg.open()
 
 func savegame_open():
-	var dlg = Tools.load_dialog(self, Tools.DIALOG_INPUT, menu_close)
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_INPUT)
 	dlg.open("Save game", StateSaver.get_last_savegame(), _on_savegame_input)
 
 func display_keymaps():
@@ -144,6 +144,7 @@ func _on_savegame_input(savegame):
 			dlg.open("Save game", "Overwrite existing save?", _on_savegame_confirm)
 		else:
 			GameState.save_game(savegame)
+			menu_close()
 
 func _on_savegame_confirm(overwrite:bool):
 	if (overwrite):

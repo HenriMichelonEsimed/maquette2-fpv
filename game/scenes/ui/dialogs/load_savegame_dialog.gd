@@ -1,6 +1,9 @@
 extends Dialog
 
-@onready var listSaves = $Panel/Content/VBoxContainer/ListSavegames
+@onready var list_saves = $Panel/Content/VBoxContainer/ListSavegames
+@onready var button_cancel = $Panel/Content/VBoxContainer/Top/ButtonCancel
+@onready var button_delete = $Panel/Content/VBoxContainer/Bottom/ButtonDelete
+@onready var button_load = $Panel/Content/VBoxContainer/Bottom/ButtonLoad
 
 var saves = {}
 var savegame = null
@@ -10,28 +13,31 @@ func open(on_load_savegame):
 	_on_load_savegame = on_load_savegame
 	super._open()
 	_refresh()
+	Tools.set_shortcut_icon(button_delete, Tools.SHORTCUT_DELETE)
+	Tools.set_shortcut_icon(button_load, Tools.SHORTCUT_ACCEPT)
+	Tools.set_shortcut_icon(button_cancel, Tools.SHORTCUT_CANCEL)
 	
 func _refresh():
-	listSaves.clear()
+	list_saves.clear()
 	for dir in StateSaver.get_savegames():
-		listSaves.add_item(tr("[Auto save]") if dir==StateSaver.autosave_path else dir)
-		listSaves.set_item_metadata(listSaves.item_count-1, dir)
-	listSaves.grab_focus()
-	if (listSaves.item_count > 0):
-		listSaves.select(0)
+		list_saves.add_item(tr("[Auto save]") if dir==StateSaver.autosave_path else dir)
+		list_saves.set_item_metadata(list_saves.item_count-1, dir)
+	list_saves.grab_focus()
+	if (list_saves.item_count > 0):
+		list_saves.select(0)
 		_on_list_savegames_item_selected(0)
 
 func _unhandled_input(event):
 	if (ignore_input()): return
 	if (Input.is_action_just_pressed("cancel")):
 		close()
-	elif (Input.is_action_just_pressed("accept") and listSaves.has_focus()):
+	elif (Input.is_action_just_pressed("accept") and list_saves.has_focus()):
 		_on_button_load_pressed()
-	elif (Input.is_action_just_pressed("delete") and listSaves.has_focus()):
+	elif (Input.is_action_just_pressed("delete") and list_saves.has_focus()):
 		_on_button_delete_pressed()
 
 func _on_list_savegames_item_selected(index):
-	savegame = listSaves.get_item_metadata(index)
+	savegame = list_saves.get_item_metadata(index)
 
 func _on_button_load_pressed():
 	if (savegame != null): 
@@ -44,7 +50,7 @@ func _on_button_delete_pressed():
 		delete_confirm_dlg.open("Delete ?", tr("Delete saved game ' %s' ?") % savegame, _on_confirm_delete)
 		
 func _on_confirm_close():
-	listSaves.grab_focus()
+	list_saves.grab_focus()
 	
 func _on_confirm_delete(confirm:bool):
 	if confirm:

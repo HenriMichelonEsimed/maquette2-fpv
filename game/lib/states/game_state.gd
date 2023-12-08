@@ -59,6 +59,9 @@ func pause_game(blur_screen:bool=true):
 
 func resume_game():
 	if (ui.menu.visible): return
+	call_deferred("_resume_game")
+	
+func _resume_game():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	ui.resume_game()

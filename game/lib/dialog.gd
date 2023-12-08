@@ -18,7 +18,8 @@ func _open(blur_screen:bool=true):
 func close():
 	dialogs_stack.pop_back()
 	if (dialogs_stack.is_empty()):
-		GameState.resume_game()
+		if (not GameState.ui.menu.visible):
+			GameState.resume_game()
 	else:
 		dialogs_stack.back().process_mode = PROCESS_MODE_WHEN_PAUSED
 	_ignore_input = true

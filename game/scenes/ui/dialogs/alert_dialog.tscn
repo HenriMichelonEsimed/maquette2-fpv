@@ -77,7 +77,7 @@ vertical_alignment = 1
 layout_mode = 2
 alignment = 1
 
-[node name="ButtonCancel" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
+[node name="ButtonOk" type="Button" parent="Panel/Content/VBoxContainer/Bottom"]
 layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Ok"
@@ -96,4 +96,4 @@ icon_name = "check"
 
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
-[connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonCancel" to="." method="close"]
+[connection signal="pressed" from="Panel/Content/VBoxContainer/Bottom/ButtonOk" to="." method="close"]
