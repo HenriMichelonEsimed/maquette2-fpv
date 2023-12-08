@@ -21,6 +21,11 @@ signal item_use(item:Item)
 @onready var button_dropcraft = $Panel/Content/Body/Content/PanelCrafting/Content/Actions/DropCraft
 @onready var button_craft = $Panel/Content/Body/Content/PanelCrafting/Content/Actions/Craft
 @onready var label_recipe = $Panel/Content/Body/Content/PanelCrafting/Content/VBoxContainer/LabelRecipe
+@onready var button_close = $Panel/Content/Top/HBoxContainer/ButtonBack
+@onready var button_drop = $Panel/Content/Body/Content/PanelItem/Content/Actions/Drop
+@onready var button_addcraft = $Panel/Content/Body/Content/PanelItem/Content/Actions/Craft
+@onready var button_use = $Panel/Content/Body/Content/PanelItem/Content/Actions/Use
+@onready var button_stopcraft = $Panel/Content/Body/Content/PanelCrafting/Content/Top/ButtonStopCraft
 
 const tab_order = [ 
 	Item.ItemType.ITEM_TOOLS, 
@@ -53,19 +58,27 @@ func open():
 	if list_content[state.tab].item_count > 0:
 		tabs.current_tab = state.tab
 	connect("item_dropped", GameState.current_zone.on_item_dropped)
-	
+
+func set_shortcuts():
+	Tools.set_shortcut_icon(button_close, Tools.SHORTCUT_CANCEL)
+	Tools.set_shortcut_icon(button_drop, Tools.SHORTCUT_DROP)
+	Tools.set_shortcut_icon(button_use, Tools.SHORTCUT_USE)
+	Tools.set_shortcut_icon(button_addcraft, Tools.SHORTCUT_CRAFT)
+	Tools.set_shortcut_icon(button_craft, Tools.SHORTCUT_CRAFT)
+	Tools.set_shortcut_icon(button_stopcraft, Tools.SHORTCUT_CANCEL)
+
 func _unhandled_input(event):
 	if (ignore_input()): return
-	if Input.is_action_just_pressed("cancel") and panel_crafting.visible:
-		_on_button_stop_craft_pressed()
-		return
-	elif Input.is_action_just_pressed("cancel"):
-		_on_button_back_pressed()
+	if Input.is_action_just_pressed("cancel"):
+		if panel_crafting.visible:
+			_on_button_stop_craft_pressed()
+		else:
+			_on_button_back_pressed()
 		return
 	if Input.is_action_just_pressed("delete"):
 		_on_drop_pressed()
 		return
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("accept"):
 		_on_use_pressed()
 		return
 	if Input.is_action_just_pressed("craft"):
@@ -74,13 +87,15 @@ func _unhandled_input(event):
 		else:
 			_on_craft_pressed()
 		return
-	state.tab = tabs.current_tab
+
+func _input(event):
 	if Input.is_action_just_pressed("ui_left"):
-		state.tab -= 1
-		_set_tab()
+		_set_tab(-1)
 	elif Input.is_action_just_pressed("ui_right"):
-		state.tab += 1
-		_set_tab()
+		_set_tab(1)
+
+func list_focused():
+	return list_consumables.has_focus() or list_tools.has_focus() or list_miscellaneous.has_focus() or list_quest.has_focus()
 
 func _resize(with_crafting = false):
 	panel_crafting.visible = with_crafting
@@ -128,7 +143,9 @@ func _item_details(_item:Item, index):
 	Tools.show_item(_item, node_3d)
 	item_content.visible = true
 
-func _set_tab():
+func _set_tab(diff:int):
+	state.tab = tabs.current_tab
+	state.tab += diff
 	if (state.tab < 0):
 		state.tab = 3
 	elif (state.tab > 3):

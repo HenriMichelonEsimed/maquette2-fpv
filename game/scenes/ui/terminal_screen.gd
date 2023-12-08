@@ -12,6 +12,7 @@ extends Dialog
 @onready var label_right = $Borders/Screen/Content/MarginContainer/HBoxContainer/LabelRight
 @onready var label_hour = $Borders/Screen/Content/Top/LabelHour
 @onready var label_message2 = $Borders/Screen/Content/Top/LabelMessage
+@onready var button_home = $Borders/Screen/Content/HBoxContainer2/ButtonHomeTerm
 @onready var icon_mail_read = load("res://assets/textures/mail_read.png")
 @onready var icon_mail_unread = load("res://assets/textures/mail_unread.png")
 
@@ -26,14 +27,15 @@ func open():
 	size.x = size.y / ratio
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
-	label_left.visible = GameState.use_joypad
-	label_right.visible = GameState.use_joypad
 	var time = Time.get_time_dict_from_system()
 	label_hour.text = "%02d:%02d" % [ time.hour, time.minute ]
 	label_message2.visible = GameState.messages.have_unread()
 	_update()
 	_on_button_quests_pressed()
-	
+
+func set_shortcuts():
+	Tools.set_shortcut_icon(button_home, Tools.SHORTCUT_CANCEL)
+
 func _unhandled_input(event):
 	if (ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
@@ -124,5 +126,6 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	message.read = true
 	label_message.visible = true
 	GameState.quests.event_all(Quest.QuestEventType.QUESTEVENT_READMESSAGE, message.key)
+	label_message2.visible = GameState.messages.have_unread()
 	_update()
 	displayMessage = true

@@ -1,13 +1,14 @@
 extends Node3D
 
 @onready var player:Player = $Player
+@onready var ui:MainUI = $MainUI
 
 var _previous_zone:Zone
 var _last_spawnpoint:String
 
 func _ready():
 	GameState.player = player
-	GameState.ui = $MainUI
+	GameState.ui = ui
 	if get_viewport().size.x < 1600:
 		get_viewport().content_scale_factor = 0.75
 	if get_viewport().size.x > 1920:
@@ -21,6 +22,7 @@ func _ready():
 	_change_zone(GameState.player_state.zone_name, "default")
 	if (GameState.player_state.position != Vector3.ZERO):
 		player.move(GameState.player_state.position, GameState.player_state.rotation)
+	ui.inventory_open()
 
 func _change_zone(zone_name:String, spawnpoint_key:String):
 	var new_zone:Zone

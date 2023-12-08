@@ -13,7 +13,7 @@ var quests = QuestsManager.new()
 
 var player:Player
 var ui:MainUI
-var current_tool:ItemTool
+var current_item:Item
 var current_zone:Zone
 var savegame_name:String
 var use_joypad:bool = false
@@ -65,6 +65,18 @@ func _resume_game():
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	ui.resume_game()
+	
+func item_use(item:Item):
+	item_unuse()
+	current_item= item.duplicate()
+	if (item is ItemMultiple):
+		current_item.quantity = 1
+	inventory.remove(current_item)
+
+func item_unuse():
+	if (current_item == null): return
+	inventory.add(current_item.duplicate())
+	current_item = null
 
 class InventoryState extends State:
 	var inventory:ItemsCollection

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bamoxutsna6sx"]
+[gd_scene load_steps=9 format=3 uid="uid://bamoxutsna6sx"]
 
 [ext_resource type="Script" path="res://scenes/ui/inventory_screen.gd" id="1_0hce1"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="3_q3qwn"]
@@ -16,6 +16,18 @@ ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="World3D" id="World3D_tt1eo"]
 environment = SubResource("Environment_tvhn7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5vnv"]
+bg_color = Color(0, 0, 0, 0.501961)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="InventoryScreen" type="Control"]
 layout_mode = 3
@@ -102,7 +114,6 @@ layout_mode = 2
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-focus_neighbor_top = NodePath("../../../Top/HBoxContainer/ButtonBack")
 
 [node name="Tools" type="Control" parent="Panel/Content/Body/Content/Tabs"]
 layout_mode = 2
@@ -317,6 +328,7 @@ icon_name = "down-long"
 [node name="LabelRecipe" type="Label" parent="Panel/Content/Body/Content/PanelCrafting/Content/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_v5vnv")
 text = "-"
 horizontal_alignment = 1
 vertical_alignment = 1
