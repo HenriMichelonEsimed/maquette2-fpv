@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://6hubfrwk42vj"]
+[gd_scene load_steps=8 format=3 uid="uid://6hubfrwk42vj"]
 
 [ext_resource type="PackedScene" uid="uid://cmhqxaps7ag6x" path="res://models/landscapes/dune_1.tscn" id="1_k66sl"]
+[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_slhny"]
 [ext_resource type="PackedScene" uid="uid://cv54nj3k16fho" path="res://models/landscapes/lake_1.tscn" id="2_7w4mn"]
+[ext_resource type="PackedScene" uid="uid://bhhbfstyssdc6" path="res://scenes/environment/exterior.tscn" id="2_ijih0"]
 [ext_resource type="PackedScene" uid="uid://bicmprdn203xe" path="res://models/landscapes/mountains_2.tscn" id="4_hrrva"]
 [ext_resource type="PackedScene" uid="uid://m44oab0dx72w" path="res://models/landscapes/mountains_1.tscn" id="4_x3oq6"]
+[ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="6_dbbhk"]
 
 [node name="Level1" type="Node3D"]
+script = ExtResource("1_slhny")
+zone_name = "ext1_level1"
+
+[node name="ExteriorEnvironnement" parent="." instance=ExtResource("2_ijih0")]
+day_time = 14.0
 
 [node name="dune_1" parent="." instance=ExtResource("1_k66sl")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 100)
@@ -26,3 +34,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -296.7, 0, 0)
 
 [node name="mountains_4" parent="Limits" instance=ExtResource("4_hrrva")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298, 0, 0)
+
+[node name="SpawnPointDefault" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.4, 0.1, -73.4)
+script = ExtResource("6_dbbhk")
+key = "default"

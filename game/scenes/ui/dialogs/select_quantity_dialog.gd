@@ -11,7 +11,8 @@ var _slide_pressed:int = 0
 var quantity_tostring:Callable
 var quantity:Callable
 
-func _input(event):
+func _unhandled_input(event):
+	if (ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_cancel_pressed()
 		return

@@ -3,6 +3,7 @@ extends Dialog
 @onready var i18n = $Background/Borders/Content/Panel/Borders/Settings/i18n/OptionButton
 
 func _unhandled_input(event):
+	if (ignore_input()): return
 	if (Input.is_action_just_pressed("cancel")):
 		close()
 

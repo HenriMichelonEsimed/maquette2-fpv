@@ -34,7 +34,8 @@ func open():
 	_update()
 	_on_button_quests_pressed()
 	
-func _input(event):
+func _unhandled_input(event):
+	if (ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
 		if (displayMessage):
 			_on_button_list_messages_pressed()

@@ -15,6 +15,7 @@ func open():
 	position.y = (vsize.y - size.y - 50)
 
 func _unhandled_input(event):
+	if (ignore_input()): return
 	if Input.is_action_just_pressed("ui_accept") and (player_text_list.get_selected_items().size() > 0):
 		_on_player_talk_item_clicked(player_text_list.get_selected_items()[0], null, null)
 

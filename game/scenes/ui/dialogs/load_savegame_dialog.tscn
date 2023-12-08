@@ -72,13 +72,14 @@ icon_name = "xmark"
 layout_mode = 2
 size_flags_vertical = 3
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../Top/ButtonCancel")
+focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
-focus_neighbor_bottom = NodePath("../Bottom/ButtonLoad")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../Bottom/ButtonLoad")
 focus_previous = NodePath("../Top/ButtonCancel")
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
+allow_search = false
 
 [node name="Bottom" type="HBoxContainer" parent="Panel/Content/VBoxContainer"]
 layout_mode = 2

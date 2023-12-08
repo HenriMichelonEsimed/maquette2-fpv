@@ -4,12 +4,14 @@ extends Dialog
 
 var saves = {}
 var savegame = null
-var delete_confirm_dlg = null
 var _on_load_savegame:Callable
 
 func open(on_load_savegame):
 	_on_load_savegame = on_load_savegame
 	super._open()
+	_refresh()
+	
+func _refresh():
 	listSaves.clear()
 	for dir in StateSaver.get_savegames():
 		listSaves.add_item(tr("[Auto save]") if dir==StateSaver.autosave_path else dir)
@@ -20,12 +22,12 @@ func open(on_load_savegame):
 		_on_list_savegames_item_selected(0)
 
 func _unhandled_input(event):
-	if not visible or delete_confirm_dlg != null : return
+	if (ignore_input()): return
 	if (Input.is_action_just_pressed("cancel")):
 		close()
-	elif (Input.is_action_just_pressed("player_use_nomouse")):
+	elif (Input.is_action_just_pressed("accept") and listSaves.has_focus()):
 		_on_button_load_pressed()
-	elif (Input.is_action_just_pressed("delete")):
+	elif (Input.is_action_just_pressed("delete") and listSaves.has_focus()):
 		_on_button_delete_pressed()
 
 func _on_list_savegames_item_selected(index):
@@ -38,18 +40,15 @@ func _on_button_load_pressed():
 
 func _on_button_delete_pressed():
 	if (savegame != null): 
-		delete_confirm_dlg = Tools.load_dialog(self, "dialogs/confirm_dialog")
-		delete_confirm_dlg.connect("confirm", _on_confirm_delete)
-		delete_confirm_dlg.connect("close", _on_confirm_close)
-		delete_confirm_dlg.open("Delete ?", tr("Delete saved game ' %s' ?") % savegame)
+		var delete_confirm_dlg = Tools.load_dialog(self, Tools.DIALOG_CONFIRM, _on_confirm_close)
+		delete_confirm_dlg.open("Delete ?", tr("Delete saved game ' %s' ?") % savegame, _on_confirm_delete)
 		
-func _on_confirm_close(node):
+func _on_confirm_close():
 	listSaves.grab_focus()
 	
 func _on_confirm_delete(confirm:bool):
-	delete_confirm_dlg = false
 	if confirm:
 		StateSaver.delete(savegame)
-		_ready()
+		_refresh()
 	else:
-		_on_confirm_close(null)
+		_on_confirm_close()

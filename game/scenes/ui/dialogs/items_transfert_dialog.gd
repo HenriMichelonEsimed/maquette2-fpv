@@ -38,6 +38,7 @@ func _on_child_exiting_tree(_node):
 	pass
 
 func _unhandled_input(event):
+	if (ignore_input()): return
 	#if (selectQtyDialog.visible): return
 	if Input.is_action_just_pressed("cancel"):
 		close()

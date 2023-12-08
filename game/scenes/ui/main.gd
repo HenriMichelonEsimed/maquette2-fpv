@@ -13,10 +13,10 @@ class_name MainUI extends Control
 @onready var blur = $Blur
 
 var _displayed_node:Node
-var _current_screen = null
 var _restart_timer_notif:bool = false
 var _talking:bool = false
 var _trading:bool = false
+var _talk_screen:Dialog
 
 func _ready():
 	blur.visible = false
@@ -29,16 +29,13 @@ func _ready():
 	player.interactions.connect("display_info", _on_display_info)
 	player.interactions.connect("hide_info", hide_info)
 
-func _input(event):
-	if (_current_screen != null):
-		return
+func _unhandled_input(event):
+	if (not Dialog.dialogs_stack.is_empty()): return
 	if (label_info.visible):
 		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
 			_label_info_position()
 			return
 	if (Input.is_action_just_pressed("menu")):
-		if (_current_screen != null):
-			_current_screen = null
 		if (menu.visible):
 			menu_close()
 		else:
@@ -63,7 +60,6 @@ func pause_game(blur_screen:bool=true):
 func resume_game(_dummy=null):
 	hud.visible = true
 	blur.visible = false
-	_current_screen = null
 	if( _restart_timer_notif):
 		timer_notif.start()
 		_restart_timer_notif = false
@@ -74,19 +70,19 @@ func menu_open():
 	focused_button.grab_focus()
 
 func menu_close(_dummy=null):
-	GameState.resume_game()
 	menu.visible = false
+	GameState.resume_game()
 	
 func npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
 	if (_trading): return
 	if (not _talking):
-		_current_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
-		_current_screen.open()
+		_talk_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
+		_talk_screen.open()
 		_talking = true
-	_current_screen.talk(char, phrase, answers)
+	_talk_screen.talk(char, phrase, answers)
 
 func npc_end_talk():
-	_current_screen.close()
+	_talk_screen.close()
 	_talking = false
 
 func npc_trade(char:InteractiveCharacter):
@@ -94,40 +90,40 @@ func npc_trade(char:InteractiveCharacter):
 	_trading = true
 	var trade_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TRADE)
 	trade_screen.open(char, npc_trade_end)
-	_current_screen.release_focus()
+	_talk_screen.release_focus()
 
 func npc_trade_end():
 	_trading = false	
-	_current_screen.player_text_list.grab_focus()
+	_talk_screen.player_text_list.grab_focus()
 
 func storage_open(node:Storage, on_storage_close:Callable):
-	_current_screen = Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS, resume_game)
-	_current_screen.open(node, on_storage_close)
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS, resume_game)
+	dlg.open(node, on_storage_close)
 
 func inventory_open():
-	_current_screen = Tools.load_screen(self, Tools.SCREEN_INVENTORY, menu_close)
-	_current_screen.open()
+	var dlg = Tools.load_screen(self, Tools.SCREEN_INVENTORY, menu_close)
+	dlg.open()
 	
 func terminal_open():
-	_current_screen = Tools.load_screen(self, Tools.SCREEN_TERMINAL, menu_close)
-	_current_screen.open()
+	var dlg = Tools.load_screen(self, Tools.SCREEN_TERMINAL, menu_close)
+	dlg.open()
 	_on_timer_notif_timeout()
 
 func load_savegame_open():
-	_current_screen = Tools.load_dialog(self, Tools.DIALOG_LOAD_SAVEGAME, menu_close)
-	_current_screen.open(_on_load_savegame)
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_LOAD_SAVEGAME, menu_close)
+	dlg.open(_on_load_savegame)
 
 func settings_open():
-	_current_screen = Tools.load_dialog(self, Tools.DIALOG_SETTINGS, menu_close)
-	_current_screen.open()
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_SETTINGS, menu_close)
+	dlg.open()
 
 func savegame_open():
-	_current_screen = Tools.load_dialog(self, Tools.DIALOG_INPUT, menu_close)
-	_current_screen.open("Save game", StateSaver.get_last_savegame(), _on_savegame_input)
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_INPUT, menu_close)
+	dlg.open("Save game", StateSaver.get_last_savegame(), _on_savegame_input)
 
 func display_keymaps():
-	_current_screen = Tools.load_screen(self, Tools.SCREEN_CONTROLLER, menu_close)
-	_current_screen.open()
+	var dlg = Tools.load_screen(self, Tools.SCREEN_CONTROLLER, menu_close)
+	dlg.open()
 
 func display_notification(message:String):
 	timer_notif.stop()
@@ -182,8 +178,8 @@ func hide_info():
 	label_info.text = ''
 
 func _on_button_quit_pressed():
-	_current_screen = Tools.load_dialog(self, Tools.DIALOG_CONFIRM, menu_close)
-	_current_screen.open("Save ?", "Save game before exiting ?", _on_save_before_quit_confirm)
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_CONFIRM, menu_close)
+	dlg.open("Save ?", "Save game before exiting ?", _on_save_before_quit_confirm)
 
 func _on_save_before_quit_confirm(save:bool):
 	if (save): 

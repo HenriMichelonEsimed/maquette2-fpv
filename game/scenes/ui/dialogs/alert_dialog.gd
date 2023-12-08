@@ -1,6 +1,7 @@
 extends Dialog
 
-func _input(event):
+func _unhandled_input(event):
+	if (ignore_input()): return
 	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("ui_accept")):
 		close()
 		

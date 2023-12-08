@@ -60,7 +60,8 @@ func open(char:InteractiveCharacter, on_trade_end):
 	_refresh()
 	_hide_empty_tabs()
 
-func _input(event):
+func _unhandled_input(event):
+	if (ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
