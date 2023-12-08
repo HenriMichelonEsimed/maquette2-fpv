@@ -708,7 +708,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933684, 0)
 shape = SubResource("CapsuleShape3D_iayoc")
 
 [node name="Interactions" parent="." instance=ExtResource("2_73o8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90177, -0.214329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90177, -0.314329)
 
 [node name="UnderWater" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
@@ -729,7 +729,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116028, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00478035, 1.49961, -0.136006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00478035, 1.69961, -0.136006)
 near = 0.2
 
 [node name="Character" type="Node3D" parent="."]
