@@ -18,6 +18,10 @@ func _ready():
 	NotificationManager.connect("new_notification", GameState.ui.display_notification)
 	GameState.messages.connect("new_message", _on_new_message)
 	TranslationServer.set_locale(GameState.settings.lang)
+	if (GameState.current_item != null):
+		var item = GameState.current_item
+		GameState.current_item = null
+		GameState.item_use(item)
 	GameState.quests.start("main")
 	_change_zone(GameState.player_state.zone_name, "default")
 	if (GameState.player_state.position != Vector3.ZERO):

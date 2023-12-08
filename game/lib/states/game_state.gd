@@ -32,6 +32,9 @@ func save_game(savegame = null):
 	StateSaver.set_path(savegame)
 	player_state.position = player.position
 	player_state.rotation = player.rotation
+	if (current_item != null):
+		player_state.current_item_type = current_item.type
+		player_state.current_item_key = current_item.key
 	StateSaver.saveState(player_state)
 	StateSaver.saveState(InventoryState.new(inventory))
 	StateSaver.saveState(settings)
@@ -45,6 +48,8 @@ func load_game(savegame = null):
 	loading_start.emit()
 	StateSaver.set_path(savegame)
 	StateSaver.loadState(player_state)
+	if (player_state.current_item_type != -1):
+		current_item = Tools.load_item(player_state.current_item_type, player_state.current_item_key)
 	StateSaver.loadState(InventoryState.new(inventory))
 	StateSaver.loadState(settings)
 	StateSaver.loadState(MessagesState.new(messages))
