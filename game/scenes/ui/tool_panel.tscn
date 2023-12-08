@@ -83,3 +83,14 @@ horizontal_alignment = 1
 vertical_alignment = 2
 autowrap_mode = 1
 justification_flags = 161
+
+[node name="IconUnuse" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -46.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 46.0
+grow_horizontal = 0

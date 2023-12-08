@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://64tbv2fbem8p"]
+[gd_scene load_steps=59 format=3 uid="uid://caacwon6hc85o"]
 
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="1_o4g0v"]
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_s3ubj"]
@@ -52,6 +52,7 @@
 [ext_resource type="Texture2D" uid="uid://lw013fxnjxfl" path="res://assets/textures/signs/retro_space_princess_ai_render_by_torbk_dfkehcw-pre.jpg" id="49_irg3j"]
 [ext_resource type="Texture2D" uid="uid://b7gbvcip7pxvo" path="res://assets/textures/signs/BULLIT.jpg" id="51_h3gf3"]
 [ext_resource type="Texture2D" uid="uid://fksis578hvpt" path="res://assets/textures/signs/retro scifi women.jpg" id="52_hn45d"]
+[ext_resource type="Script" path="res://zones/stations/STA1/locker_1.gd" id="54_c6t5f"]
 [ext_resource type="PackedScene" uid="uid://2trbhug7jt37" path="res://models/props/locker_1.tscn" id="57_2yflh"]
 [ext_resource type="PackedScene" uid="uid://db6k76u3mvdmk" path="res://models/items/misc/credit.tscn" id="58_bi45f"]
 [ext_resource type="PackedScene" uid="uid://b0mut5bx87cmk" path="res://models/props/box_package_1.tscn" id="59_hvysj"]
@@ -719,10 +720,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8284, 0.95001, 0.293608)
 sign = ExtResource("27_0b7qq")
 
 [node name="locker_4" parent="Canteen" instance=ExtResource("57_2yflh")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 3.5)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 3.4)
+script = ExtResource("54_c6t5f")
+label = ""
 
 [node name="credit" parent="Canteen/locker_4" instance=ExtResource("58_bi45f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="locker_5" parent="Canteen" instance=ExtResource("57_2yflh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 4.2)
+
+[node name="locker_6" parent="Canteen" instance=ExtResource("57_2yflh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.9717, 0, 5)
 
 [node name="box_package_1" parent="Canteen" instance=ExtResource("59_hvysj")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 18.55, 0, 0.7)
@@ -743,13 +752,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.15, 0.5, 0.7)
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.85, 0, 6.7)
 
 [node name="shelf_3" parent="Canteen" instance=ExtResource("60_4q0m3")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.85, 0, 1.8)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.85, 0, 1.7)
 
 [node name="shelf_2" parent="Canteen" instance=ExtResource("60_4q0m3")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 19.55, 0, 9.9)
 
 [node name="crowbar_1" parent="Canteen" instance=ExtResource("61_osb82")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.45, 1.00871, 9.84863)
-
-[node name="crowbar_1" parent="." instance=ExtResource("61_osb82")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.28297, -1.67638e-07, -4.23513)

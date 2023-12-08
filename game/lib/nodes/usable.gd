@@ -24,16 +24,16 @@ func _ready():
 	if (_animation != null):
 		_animation.connect("animation_finished", _on_animation_finished)
 
-func _check_tool_use(message:String, tools_to_use:Array) -> bool:
+func _check_item_use(message:String, tools_to_use:Array) -> bool:
 	if (unlocked): return true
 	var check = false
-	if (GameState.current_tool != null):
+	if (GameState.current_item != null):
 		for tool in tools_to_use:
-			if (tool[0] == GameState.current_tool.type) and (tool[1] == GameState.current_tool.key):
+			if (tool[0] == GameState.current_item.type) and (tool[1] == GameState.current_item.key):
 				unlocked = true
 				unlock.emit(true)
 				return true
-	#NotifManager.notif(message)
+	NotificationManager.notif(message)
 	unlock.emit(false)
 	return check
 	

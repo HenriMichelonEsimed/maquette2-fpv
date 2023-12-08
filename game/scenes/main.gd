@@ -40,8 +40,8 @@ func _change_zone(zone_name:String, spawnpoint_key:String):
 		GameState.current_zone.disconnect("change_zone", _on_change_zone)
 		for node in GameState.current_zone.find_children("*", "Storage", true, true):
 			node.disconnect("open", _on_storage_open)
-		#for node in GameState.current_zone.find_children("*", "Usable", true, true):
-		#	node.disconnect("unlock", _on_usable_unlock)
+		for node in GameState.current_zone.find_children("*", "Usable", true, true):
+			node.disconnect("unlock", _on_usable_unlock)
 		for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
 			node.disconnect("trade", GameState.ui.npc_trade)
 			node.disconnect("talk", GameState.ui.npc_talk)
@@ -56,8 +56,8 @@ func _change_zone(zone_name:String, spawnpoint_key:String):
 	_spawn_player(spawnpoint_key)
 	for node in GameState.current_zone.find_children("*", "Storage", true, true):
 		node.connect("open", _on_storage_open)
-	#for node in GameState.current_zone.find_children("*", "Usable", true, true):
-	#	node.connect("unlock", _on_usable_unlock)
+	for node in GameState.current_zone.find_children("*", "Usable", true, true):
+		node.connect("unlock", _on_usable_unlock)
 	for node in GameState.current_zone.find_children("*", "InteractiveCharacter", true, true):
 		node.connect("trade", GameState.ui.npc_trade)
 		node.connect("talk", GameState.ui.npc_talk)
@@ -88,6 +88,12 @@ func _on_storage_open(node:Storage):
 
 func _on_storage_close(node:Storage):
 	node.use()
+
+func _on_usable_unlock(success:bool):
+	if (success):
+		GameState.item_unuse()
+	elif (GameState.current_item != null):
+		NotificationManager.notif(tr("Nothing happens with '%s'") % tr(str(GameState.current_item)))
 
 func _quit():
 	get_tree().quit()

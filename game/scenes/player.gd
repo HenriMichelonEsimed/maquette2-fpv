@@ -80,11 +80,11 @@ func move(pos:Vector3, rot:Vector3):
 	position = pos
 	rotation = rot
 
-func handle_item(item):
-	attach_item.add_child(item)
+func handle_item():
+	attach_item.add_child(GameState.current_item)
 
-func unhandle_item(item):
-	attach_item.remove_child(item)
+func unhandle_item():
+	attach_item.remove_child(GameState.current_item)
 	
 func get_floor_collision():
 	raycast_to_floor.force_raycast_update()

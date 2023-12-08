@@ -41,6 +41,7 @@ func _ready():
 	set_shortcuts()
 
 func set_shortcuts():
+	panel_item.set_shortcuts()
 	Tools.set_shortcut_icon(icon_use, Tools.SHORTCUT_USE)
 	Tools.set_shortcut_icon(icon_menu_open, Tools.SHORTCUT_MENU)
 	Tools.set_shortcut_icon(icon_menu_close, Tools.SHORTCUT_CANCEL)
@@ -71,6 +72,8 @@ func _unhandled_input(event):
 		inventory_open()
 	elif  Input.is_action_just_pressed("terminal"):
 		terminal_open()
+	elif  Input.is_action_just_pressed("unuse"):
+		GameState.item_unuse()
 
 func pause_game(blur_screen:bool=true):
 	if (not timer_notif.is_stopped()):
