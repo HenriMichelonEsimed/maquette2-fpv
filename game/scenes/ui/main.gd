@@ -102,8 +102,8 @@ func npc_talk(_char:InteractiveCharacter, phrase:String, answers:Array):
 	if (_talk_screen != null and _talk_screen.trading): return
 	if (_talk_screen == null):
 		_talk_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
-		_talk_screen.open()
-	_talk_screen.talk(_char, phrase, answers)
+		_talk_screen.open(_char)
+	_talk_screen.talk(phrase, answers)
 
 func npc_end_talk():
 	if (_talk_screen != null):

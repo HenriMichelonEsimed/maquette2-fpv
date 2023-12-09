@@ -177,7 +177,7 @@ script = ExtResource("1_eu10t")
 key = "access_card_1"
 label = "Access Card"
 type = 3
-preview_scale = 3.0
+preview_scale = 8.0
 
 [node name="Cube" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0294618, 0, 0, 0, -0.000211513, 0, 0, 0, 0.0184695, -0.000931501, 0.00221191, -0.00309155)

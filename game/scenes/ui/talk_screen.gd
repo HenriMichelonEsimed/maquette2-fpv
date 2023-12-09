@@ -9,13 +9,16 @@ var talking_char:InteractiveCharacter
 var default_answer:int = -1
 var trading:bool = false
 
-func open():
+func open(_char:InteractiveCharacter):
+	talking_char = _char
 	super._open()
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
 	size.x = vsize.x / (2.0 if vsize.x > 1200 else 1.5)
 	size.y =  vsize.y / (2.0 if vsize.y > 1200 else 1.5)
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y - 50)
+	Tools.show_character(talking_char, insert_point)
+	npc_name.text = str(_char)
 
 func _unhandled_input(_event):
 	if (Dialog.ignore_input() or trading): return
@@ -24,10 +27,7 @@ func _unhandled_input(_event):
 	elif Input.is_action_just_pressed("accept") and (player_text_list.get_selected_items().size() > 0):
 		_on_player_talk_item_clicked(player_text_list.get_selected_items()[0], null, null)
 
-func talk(_char:InteractiveCharacter, phrase:String, answers:Array):
-	talking_char = _char
-	Tools.show_character(talking_char, insert_point)
-	npc_name.text = str(_char)
+func talk(phrase:String, answers:Array):
 	npc_text.text = tr(phrase)
 	player_text_list.clear()
 	default_answer = -1

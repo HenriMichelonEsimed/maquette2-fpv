@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://b4qb1w1k508q8"]
+[gd_scene load_steps=71 format=3 uid="uid://b4qb1w1k508q8"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_nhnkb"]
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="2_da5ug"]
@@ -65,6 +65,11 @@
 [ext_resource type="PackedScene" uid="uid://c8wn77ggokgp5" path="res://zones/stations/STA1/waiter_1.tscn" id="62_ilvco"]
 [ext_resource type="PackedScene" uid="uid://vju5kp1qm4fi" path="res://models/items/quest/ring_1.tscn" id="64_os7uw"]
 [ext_resource type="Script" path="res://zones/stations/STA1/ring_1.gd" id="65_40728"]
+[ext_resource type="PackedScene" uid="uid://bgp436njebcpd" path="res://models/items/consum/soft_drink_1.tscn" id="66_lg42s"]
+[ext_resource type="PackedScene" uid="uid://vl2uhbpvfq5d" path="res://models/props/plate_1.tscn" id="67_gyirs"]
+[ext_resource type="PackedScene" uid="uid://bwtx063iwvcwk" path="res://models/items/consum/pizza_1.tscn" id="68_gv5xe"]
+[ext_resource type="PackedScene" uid="uid://jwsc6s8f34c" path="res://models/items/consum/orange_1.tscn" id="69_55hf5"]
+[ext_resource type="PackedScene" uid="uid://b46p0edylt8ri" path="res://models/items/consum/pickle_1.tscn" id="70_n5n7h"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_nhnkb")
@@ -833,3 +838,27 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.45,
 
 [node name="waiter_1" parent="Canteen" instance=ExtResource("62_ilvco")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.15, 0, 2.3)
+
+[node name="soft_drink_1" parent="Canteen" instance=ExtResource("66_lg42s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2473, 0.763703, 4.64566)
+
+[node name="soft_drink_2" parent="Canteen" instance=ExtResource("66_lg42s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3465, 0.763703, 7.25035)
+
+[node name="plate_1" parent="Canteen" instance=ExtResource("67_gyirs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6363, 0.764, 7.05491)
+
+[node name="plate_2" parent="Canteen" instance=ExtResource("67_gyirs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4449, 0.764, 7.6148)
+
+[node name="pizza_1" parent="Canteen" instance=ExtResource("68_gv5xe")]
+transform = Transform3D(0.917002, -0.0572504, 0.394753, 0.0718443, 0.997167, -0.0222751, -0.392359, 0.0487871, 0.918517, 14.6923, 0.779026, 7.07366)
+
+[node name="orange_1" parent="Canteen" instance=ExtResource("69_55hf5")]
+transform = Transform3D(0.999853, 0, 0.0171208, 0, 1, 0, -0.0171208, 0, 0.999853, 14.7297, 0.76244, 7.5193)
+
+[node name="pickles_1" parent="." instance=ExtResource("70_n5n7h")]
+transform = Transform3D(0.942204, 0, -0.33504, 0, 1, 0, 0.33504, 0, 0.942204, 14.046, 0.779158, -7.53269)
+
+[node name="pickles_2" parent="." instance=ExtResource("70_n5n7h")]
+transform = Transform3D(0.827982, 0, 0.560755, 0, 1, 0, -0.560755, 0, 0.827982, 13.9573, 0.780134, -7.5456)

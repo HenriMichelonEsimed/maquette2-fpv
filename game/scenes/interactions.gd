@@ -17,12 +17,10 @@ func _unhandled_input(event):
 
 func action_use():
 	if (node_to_use != null):
-		#player.look_at_node(node_to_use)
 		node_to_use.use(true)
 	elif (item_to_collect != null):
-		#player.look_at_node(item_to_collect)
 		item_collected.emit(item_to_collect, -1)
-		hide_info.emit()
+		_next_body()
 	elif (char_to_talk != null):
 		player.look_at_char(char_to_talk)
 		char_to_talk.interact()
@@ -48,7 +46,8 @@ func _on_collect_item_aera_body_exited(node:Node):
 	if (node == char_to_talk):
 		char_to_talk = null
 	hide_info.emit()
+
+func _next_body():
 	if (has_overlapping_bodies()):
 		var next = get_overlapping_bodies()[0]
-		if (next != node):
-			_on_collect_item_aera_body_entered(next)
+		_on_collect_item_aera_body_entered(next)

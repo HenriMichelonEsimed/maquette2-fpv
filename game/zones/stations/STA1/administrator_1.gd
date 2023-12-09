@@ -21,7 +21,7 @@ func ring_action():
 var d1 = []
 
 func r3():
-	if GameState.quests.current("main").key > "QMain0":
+	if GameState.quests.current().key > "QMain0":
 		return [ "[Show message on phone]",
 			[
 				["Oh ok I see. But I am very hungry and very busy. If you can bring me a sandwich or a burger with ham I could help you", a3], [
@@ -69,7 +69,6 @@ var r2b = [ "Where is my sandwitch ?", r2c]
 	
 
 func r2d():
-	pass
 	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_pickles_1")
 	if item != null:
 		GameState.quests.finish_advpoint("lvl0_admin_woman_want_sandwitch_with_pickles")

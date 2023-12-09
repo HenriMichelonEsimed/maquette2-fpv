@@ -166,7 +166,7 @@ func _on_drop_pressed():
 	else:
 		_drop()
 
-func _on_select_close(node):
+func _on_select_close():
 	_focus_current_tab()
 
 func _drop(quantity:int=1):
@@ -210,7 +210,7 @@ func _clear_crafting():
 func _on_craft_pressed():
 	if (item == null) or crafting_items.find(item) != -1: return
 	var craft_item = item.duplicate()
-	if item is ItemMultiple:
+	if item is ItemUnique:
 		item_content.visible = false
 	else:
 		craft_item.quantity = 1
@@ -224,21 +224,21 @@ func _on_craft_pressed():
 	for i in crafting_items:
 		ingredients.push_back(i.key)
 	ingredients.sort()
-#	for i in CraftingRecipes.ingredients:
-#		if (item.key == i):
-#			var targets = CraftingRecipes.ingredients[i]
-##			for target in targets:
-#				var target_ingredients = CraftingRecipes.recipes[target][1]
-#				var have_recipe = target_ingredients == ingredients
-#				button_craft.disabled = not have_recipe
-#				label_recipe.text = "-"
-#				if have_recipe:
-#					crafting_target = Item.load(CraftingRecipes.recipes[target][0], target)
-#					if (crafting_target != null):
-#						crafting_recipe = target
-#						label_recipe.text = tr(str(crafting_target))
-#					else:
-#						button_craft.disabled = true
+	for i in CraftingRecipes.ingredients:
+		if (item.key == i):
+			var targets = CraftingRecipes.ingredients[i]
+			for target in targets:
+				var target_ingredients = CraftingRecipes.recipes[target][1]
+				var have_recipe = target_ingredients == ingredients
+				button_craft.disabled = not have_recipe
+				label_recipe.text = "-"
+				if have_recipe:
+					crafting_target = Tools.load_item(CraftingRecipes.recipes[target][0], target)
+					if (crafting_target != null):
+						crafting_recipe = target
+						label_recipe.text = tr(str(crafting_target))
+					else:
+						button_craft.disabled = true
 	_focus_current_tab()
 
 func _on_button_stop_craft_pressed():

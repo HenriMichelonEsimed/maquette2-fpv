@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://vl2uhbpvfq5d"]
+
+[ext_resource type="PackedScene" uid="uid://cwa6qjyekuu7e" path="res://models/props/plate_1.glb" id="1_xp7dr"]
+[ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_spec_1.tres" id="2_4aqu3"]
+
+[node name="plate_1" instance=ExtResource("1_xp7dr")]
+
+[node name="13931_Reuben_Sandwich_on_Plate_v2_L1" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_4aqu3")

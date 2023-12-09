@@ -128,6 +128,7 @@ focus_neighbor_top = NodePath("../..")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../Consumables/List")
 focus_previous = NodePath("../../../../../Top/HBoxContainer/ButtonBack")
+allow_search = false
 
 [node name="Consumables" type="Control" parent="Panel/Content/Body/Content/Tabs"]
 visible = false
@@ -144,6 +145,7 @@ focus_neighbor_top = NodePath("../..")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../Miscellaneous/List")
 focus_previous = NodePath("../../Tools/List")
+allow_search = false
 
 [node name="Miscellaneous" type="Control" parent="Panel/Content/Body/Content/Tabs"]
 visible = false
@@ -159,6 +161,7 @@ grow_vertical = 2
 focus_neighbor_top = NodePath("../..")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../Quests/List")
+allow_search = false
 
 [node name="Quests" type="Control" parent="Panel/Content/Body/Content/Tabs"]
 visible = false
@@ -175,6 +178,7 @@ focus_neighbor_top = NodePath("../..")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../../PanelItem/Content/Actions/Drop")
 focus_previous = NodePath("../../Miscellaneous/List")
+allow_search = false
 
 [node name="PanelItem" type="PanelContainer" parent="Panel/Content/Body/Content"]
 layout_mode = 2
