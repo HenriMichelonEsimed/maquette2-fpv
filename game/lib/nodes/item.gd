@@ -13,10 +13,12 @@ enum ItemType {
 @export var price:float = 0.0
 @export var type:ItemType
 @export var preview_scale:float = 1.0
+var original_rotation:Vector3
 
 func _ready():
 	label = tr(label)
 	set_collision_layer_value(Consts.LAYER_WORLD, false)
+	original_rotation = rotation
 	enable()
 
 func use():
@@ -36,6 +38,7 @@ func disable():
 	set_collision_layer_value(Consts.LAYER_ITEM, false)
 	
 func enable():
+	rotation = original_rotation
 	set_collision_layer_value(Consts.LAYER_ITEM, true)
 	
 func _to_string():

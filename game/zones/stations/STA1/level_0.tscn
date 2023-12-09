@@ -796,6 +796,7 @@ script = ExtResource("54_c6t5f")
 
 [node name="credit" parent="Canteen/locker_4" instance=ExtResource("58_ljrtx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+quantity = 4
 
 [node name="box_package_1" parent="Canteen" instance=ExtResource("59_ndp7w")]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 18.55, 0, 0.7)

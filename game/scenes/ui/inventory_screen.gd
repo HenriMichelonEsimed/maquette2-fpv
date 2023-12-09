@@ -63,7 +63,7 @@ func open():
 func set_shortcuts():
 	Tools.set_shortcut_icon(button_close, Tools.SHORTCUT_CANCEL)
 	Tools.set_shortcut_icon(button_drop, Tools.SHORTCUT_DROP)
-	Tools.set_shortcut_icon(button_use, Tools.SHORTCUT_USE)
+	Tools.set_shortcut_icon(button_use, Tools.SHORTCUT_ACCEPT)
 	Tools.set_shortcut_icon(button_addcraft, Tools.SHORTCUT_CRAFT)
 	Tools.set_shortcut_icon(button_craft, Tools.SHORTCUT_CRAFT)
 	Tools.set_shortcut_icon(button_stopcraft, Tools.SHORTCUT_CANCEL)

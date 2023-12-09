@@ -51,7 +51,7 @@ func check_quest_advance():
 	pass
 
 func on_item_dropped(item:Item, quantity:int):
-	var new_item:Item = item.duplicate()
+	var new_item = item.duplicate()
 	new_item.position = GameState.player.global_position
 	if (item is ItemMultiple):
 		new_item.quantity = item.quantity if quantity==-1 else quantity
@@ -69,6 +69,7 @@ func on_item_dropped(item:Item, quantity:int):
 	else:
 		new_item.global_position = GameState.player.get_floor_collision()
 		add_child(new_item)
+		new_item.original_rotation = item.original_rotation
 		new_item.enable()
 	state.items_added.add(new_item)
 
@@ -95,4 +96,5 @@ func on_item_collected(item:Item, quantity:int, force = false):
 	if (item.get_parent() != null): 
 		item.get_parent().remove_child(item)
 	state.items_added.remove(item)
+	new_item.original_rotation = item.original_rotation
 	GameState.inventory.add(new_item)
