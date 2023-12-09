@@ -18,23 +18,33 @@ var max_camera_angle_up:float = deg_to_rad(60)
 var max_camera_angle_down:float = -deg_to_rad(40)
 var look_up_action:String = "look_up"
 var look_down_action:String = "look_down"
-var camera_y_axis_inverted:bool = true
+var mouse_y_axis:int = -1
 var run:bool = false
 
 func _ready():
 	if (GameState.player_state.position != Vector3.ZERO):
 		_set_position()
 	interactions.player = self
-	if (camera_y_axis_inverted):
-		look_up_action = "look_down"
-		look_down_action = "look_up"
+	set_y_axis()
 	anim.play("standing")
 	capture_mouse()
+
+func set_y_axis():
+	if (GameState.settings.mouse_y_axis_inverted):
+		mouse_y_axis = 1
+	else:
+		mouse_y_axis = -1
+	if (GameState.settings.joypad_y_axis_inverted):
+		look_up_action = "look_down"
+		look_down_action = "look_up"
+	else:
+		look_up_action = "look_up"
+		look_down_action = "look_down"
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		camera_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+		camera_pivot.rotate_x(event.relative.y * mouse_sensitivity * mouse_y_axis)
 		camera_pivot.rotation.x = clampf(camera_pivot.rotation.x, max_camera_angle_down, max_camera_angle_up)
 	elif event is InputEventKey or event is InputEventJoypadButton:
 		run = Input.is_action_just_pressed("run")

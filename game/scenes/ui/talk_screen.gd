@@ -44,6 +44,7 @@ func talk(_char:InteractiveCharacter, phrase:String, answers:Array):
 			icon = Tools.load_shortcut_icon(Tools.SHORTCUT_CANCEL)
 		player_text_list.add_item(tr(answer[0]), icon)
 		player_text_list.set_item_metadata(index, i)
+		player_text_list.set_item_tooltip_enabled(index, false)
 	player_text_list.grab_focus()
 	if (player_text_list.item_count > 0):
 		player_text_list.select(0)

@@ -134,6 +134,54 @@ popup/item_2/text = "French"
 popup/item_2/icon = ExtResource("6_3fah8")
 popup/item_2/id = 0
 
+[node name="yaxis" type="HBoxContainer" parent="Background/Borders/Content/Panel/Borders/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/Borders/Content/Panel/Borders/Settings/yaxis"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Joypad and keyboard
+vertical axis"
+
+[node name="OptionButton" type="OptionButton" parent="Background/Borders/Content/Panel/Borders/Settings/yaxis"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../../../Top/ButtonClose")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Bottom/ButtonSave")
+focus_next = NodePath("../../Bottom/ButtonSave")
+focus_previous = NodePath("../../../../../Top/ButtonClose")
+item_count = 2
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Inverted"
+popup/item_1/id = 1
+
+[node name="myaxis" type="HBoxContainer" parent="Background/Borders/Content/Panel/Borders/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/Borders/Content/Panel/Borders/Settings/myaxis"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Mouse
+vertical axis"
+
+[node name="OptionButton" type="OptionButton" parent="Background/Borders/Content/Panel/Borders/Settings/myaxis"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../../../Top/ButtonClose")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Bottom/ButtonSave")
+focus_next = NodePath("../../Bottom/ButtonSave")
+focus_previous = NodePath("../../../../../Top/ButtonClose")
+item_count = 2
+popup/item_0/text = "Normal"
+popup/item_0/id = 0
+popup/item_1/text = "Inverted"
+popup/item_1/id = 1
+
 [node name="Control" type="Control" parent="Background/Borders/Content/Panel/Borders/Settings"]
 layout_mode = 2
 size_flags_vertical = 3
