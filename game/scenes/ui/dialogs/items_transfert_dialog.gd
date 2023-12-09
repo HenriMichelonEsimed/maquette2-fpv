@@ -17,7 +17,7 @@ var transfered_item:Item
 var on_storage_close:Callable
 
 func _unhandled_input(event):
-	if (ignore_input()): return
+	if (Dialog.ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
 		close()
 	elif Input.is_action_just_pressed("accept") and (list_container.has_focus() or list_inventory.has_focus()):

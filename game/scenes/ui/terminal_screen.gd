@@ -13,6 +13,7 @@ extends Dialog
 @onready var label_hour = $Borders/Screen/Content/Top/LabelHour
 @onready var label_message2 = $Borders/Screen/Content/Top/LabelMessage
 @onready var button_home = $Borders/Screen/Content/HBoxContainer2/ButtonHomeTerm
+@onready var icon_close_message = $Borders/Screen/Content/Content/Body/MarginContainer/LabelMessage/IconClose
 @onready var icon_mail_read = load("res://assets/textures/mail_read.png")
 @onready var icon_mail_unread = load("res://assets/textures/mail_unread.png")
 
@@ -35,9 +36,10 @@ func open():
 
 func set_shortcuts():
 	Tools.set_shortcut_icon(button_home, Tools.SHORTCUT_CANCEL)
+	Tools.set_shortcut_icon(icon_close_message, Tools.SHORTCUT_CANCEL)
 
 func _unhandled_input(event):
-	if (ignore_input()): return
+	if (Dialog.ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
 		if (displayMessage):
 			_on_button_list_messages_pressed()
@@ -129,3 +131,8 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	label_message2.visible = GameState.messages.have_unread()
 	_update()
 	displayMessage = true
+
+
+func _on_icon_close_pressed():
+	if (displayMessage):
+		_on_button_list_messages_pressed()

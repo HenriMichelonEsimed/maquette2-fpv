@@ -10,7 +10,7 @@ func _init(_k = "", _label = ""):
 
 func saveState(file:FileAccess):
 	file.store_pascal_string(key)
-	file.store_8(finished if 1 else 0)
+	file.store_8(1 if finished else 0)
 
 func loadState(file:FileAccess):
 	key = file.get_pascal_string()

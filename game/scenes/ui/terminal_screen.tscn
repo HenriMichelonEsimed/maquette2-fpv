@@ -214,7 +214,6 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_conkj")
 allow_search = false
 
 [node name="LabelMessage" type="RichTextLabel" parent="Borders/Screen/Content/Content/Body/MarginContainer"]
-visible = false
 layout_mode = 2
 focus_neighbor_top = NodePath(".")
 focus_neighbor_bottom = NodePath("../../../../MarginContainer/HBoxContainer/ButtonMessages")
@@ -225,6 +224,22 @@ bbcode_enabled = true
 text = "[b]Objet du message[/b]
 Hello, bonjour !
 "
+
+[node name="IconClose" type="Button" parent="Borders/Screen/Content/Content/Body/MarginContainer/LabelMessage"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 24.0
+grow_horizontal = 0
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("4_8e451")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("6_i6hcg")
+icon_size = 32
+icon_name = "xmark"
 
 [node name="MarginContainer" type="MarginContainer" parent="Borders/Screen/Content"]
 layout_mode = 2
@@ -376,6 +391,7 @@ alignment = 1
 
 [connection signal="item_clicked" from="Borders/Screen/Content/Content/Body/MarginContainer/ListMessages" to="." method="_on_list_messages_item_clicked"]
 [connection signal="item_clicked" from="Borders/Screen/Content/Content/Body/MarginContainer/ListNotifications" to="." method="_on_list_notifications_item_clicked"]
+[connection signal="pressed" from="Borders/Screen/Content/Content/Body/MarginContainer/LabelMessage/IconClose" to="." method="_on_icon_close_pressed"]
 [connection signal="focus_entered" from="Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonQuests" to="." method="_on_button_quests_pressed"]
 [connection signal="focus_entered" from="Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonMessages" to="." method="_on_button_list_messages_pressed"]
 [connection signal="focus_entered" from="Borders/Screen/Content/MarginContainer/HBoxContainer/ButtonNotifications" to="." method="_on_button_notifications_pressed"]

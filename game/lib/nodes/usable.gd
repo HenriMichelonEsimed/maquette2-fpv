@@ -18,8 +18,9 @@ func _ready():
 	set_collision_layer_value(Consts.LAYER_USABLE, true)
 	if (label == null): 
 		label = get_path()
-	if $Top/Text != null:
-		$Top/Text.text = title
+	var text = find_child("Top/Text")
+	if text != null:
+		text.text = title
 	_animation = find_child("AnimationPlayer")
 	if (_animation != null):
 		_animation.connect("animation_finished", _on_animation_finished)

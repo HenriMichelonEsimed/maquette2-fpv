@@ -47,8 +47,8 @@ func _physics_process(delta):
 			rotate_y(-look_dir.x)
 			camera.rotate_x(-look_dir.y)
 			camera.rotation.x = clamp(camera.rotation.x - look_dir.y,  max_camera_angle_down, max_camera_angle_up)
-	var is_on_floor = is_on_floor_only() 
-	if not is_on_floor:
+	var on_floor = is_on_floor_only() 
+	if not on_floor:
 		velocity.y += -gravity * delta
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	var direction = transform.basis * Vector3(input.x, 0, input.y)
@@ -73,7 +73,7 @@ func _physics_process(delta):
 	else:
 		anim.play("standing")
 	move_and_slide()
-	if is_on_floor and Input.is_action_just_pressed("jump"):
+	if on_floor and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed
 
 func move(pos:Vector3, rot:Vector3):
@@ -98,10 +98,10 @@ func release_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	mouse_captured = false
 
-func _on_under_water_body_entered(body):
+func _on_under_water_body_entered(_body):
 	under_water_filter.visible = true
 
-func _on_under_water_body_exited(body):
+func _on_under_water_body_exited(_body):
 	under_water_filter.visible = false
 
 func _set_position():
@@ -113,10 +113,10 @@ func look_at_node(node:Node3D):
 	pos.y = position.y
 	look_at(pos)
 
-func look_at_char(char:CharacterBody3D):
-	var pos:Vector3 = char.global_position
+func look_at_char(_char:CharacterBody3D):
+	var pos:Vector3 = _char.global_position
 	pos.y = position.y
 	look_at(pos)
 	pos = global_position
 	pos.y = position.y
-	char.look_at(pos)
+	_char.look_at(pos)

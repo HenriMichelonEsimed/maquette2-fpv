@@ -425,15 +425,15 @@ material = ExtResource("10_wwvca")
 
 [node name="Signboard_1" parent="Hall" instance=ExtResource("24_xq45a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.73183, 0.95001, -14.9922)
-sign = ExtResource("25_ghrw3")
+texture = ExtResource("25_ghrw3")
 
 [node name="Signboard_2" parent="Hall" instance=ExtResource("24_xq45a")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 13.8887, 0.95001, -7.95977)
-sign = ExtResource("26_iiffu")
+texture = ExtResource("26_iiffu")
 
 [node name="Signboard_3" parent="Hall" instance=ExtResource("24_xq45a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8887, 0.95001, -12.9584)
-sign = ExtResource("27_14h1j")
+texture = ExtResource("27_14h1j")
 
 [node name="Administration" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0, 10.2)
@@ -714,15 +714,15 @@ transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 19.1, 
 
 [node name="Signboard_3" parent="Canteen" instance=ExtResource("24_xq45a")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 5.49824, 0.95001, 6.55796)
-sign = ExtResource("51_xe0iv")
+texture = ExtResource("51_xe0iv")
 
 [node name="Signboard_4" parent="Canteen" instance=ExtResource("24_xq45a")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17.5587, 0.95001, 6.55796)
-sign = ExtResource("52_uyhdk")
+texture = ExtResource("52_uyhdk")
 
 [node name="Signboard_5" parent="Canteen" instance=ExtResource("24_xq45a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8284, 0.95001, 0.293608)
-sign = ExtResource("27_14h1j")
+texture = ExtResource("27_14h1j")
 
 [node name="table_1" parent="Canteen" instance=ExtResource("53_c2tme")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.68691, 0, 7.80102)

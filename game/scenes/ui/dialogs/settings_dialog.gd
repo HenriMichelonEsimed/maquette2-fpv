@@ -5,7 +5,7 @@ extends Dialog
 @onready var button_save = $Background/Borders/Content/Panel/Borders/Settings/Bottom/ButtonSave
 
 func _unhandled_input(event):
-	if (ignore_input()): return
+	if (Dialog.ignore_input()): return
 	if (Input.is_action_just_pressed("cancel")):
 		close()
 

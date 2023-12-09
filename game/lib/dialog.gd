@@ -34,7 +34,7 @@ func close():
 	if (_on_close != null):
 		_on_close.call()
 
-func ignore_input() -> bool:
+static func ignore_input() -> bool:
 	var ignore = _ignore_input
 	_ignore_input = false
 	return ignore

@@ -53,8 +53,8 @@ func set_path(savegame = null):
 	_last = autosave_path if savegame == null else _format_name(savegame)
 	_path = default_path + _last
 
-func _format_name(name:String) -> String:
-	return name.replace("/", "_").replace(":", "_").replace("%", "_").replace("'", "_").replace("\"", "_")
+func _format_name(text:String) -> String:
+	return text.replace("/", "_").replace(":", "_").replace("%", "_").replace("'", "_").replace("\"", "_")
 	
 func saveState(res:State):
 	DirAccess.make_dir_recursive_absolute(_path)

@@ -111,6 +111,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_neighbor_top = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 theme_override_constants/outline_size = 1
 
 [node name="Tools" type="Control" parent="Panel/Content/Body/Content/Tabs"]
@@ -123,6 +125,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../Consumables/List")
 focus_previous = NodePath("../../../../../Top/HBoxContainer/ButtonBack")
 
@@ -137,6 +143,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../Miscellaneous/List")
 focus_previous = NodePath("../../Tools/List")
 
@@ -151,6 +161,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../Quests/List")
 focus_previous = NodePath("../../Consumables/List")
 
@@ -165,6 +179,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../../PanelItem/Content/Actions/Buy")
 focus_previous = NodePath("../../Miscellaneous/List")
 

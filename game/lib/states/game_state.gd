@@ -35,6 +35,8 @@ func save_game(savegame = null):
 	if (current_item != null):
 		player_state.current_item_type = current_item.type
 		player_state.current_item_key = current_item.key
+	else:
+		player_state.current_item_type = Item.ItemType.ITEM_UNKNOWN
 	StateSaver.saveState(player_state)
 	StateSaver.saveState(InventoryState.new(inventory))
 	StateSaver.saveState(settings)
@@ -48,7 +50,7 @@ func load_game(savegame = null):
 	loading_start.emit()
 	StateSaver.set_path(savegame)
 	StateSaver.loadState(player_state)
-	if (player_state.current_item_type != -1):
+	if (player_state.current_item_type != Item.ItemType.ITEM_UNKNOWN):
 		current_item = Tools.load_item(player_state.current_item_type, player_state.current_item_key)
 	StateSaver.loadState(InventoryState.new(inventory))
 	StateSaver.loadState(settings)
@@ -91,9 +93,9 @@ func item_unuse():
 
 class InventoryState extends State:
 	var inventory:ItemsCollection
-	func _init(inventory):
+	func _init(_inventory):
 		super("inventory")
-		self.inventory = inventory
+		self.inventory = _inventory
 
 class MessagesState extends State:
 	var messages:MessagesList
@@ -103,6 +105,6 @@ class MessagesState extends State:
 
 class QuestsState extends State:
 	var quests:QuestsManager
-	func _init(quests):
+	func _init(_quests):
 		super("quests")
-		self.quests = quests
+		self.quests = _quests

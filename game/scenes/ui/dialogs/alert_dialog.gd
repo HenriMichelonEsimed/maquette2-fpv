@@ -1,17 +1,19 @@
 extends Dialog
 
-@onready var button_ok = $Panel/Content/VBoxContainer/Bottom/ButtonOk
+@onready var button_ok:Button = $Panel/Content/VBoxContainer/Bottom/ButtonOk
+@onready var title:Label = $Panel/Content/VBoxContainer/Top/Label
+@onready var message:Label = $Panel/Content/VBoxContainer/Label
 
 func _unhandled_input(event):
-	if (ignore_input()): return
+	if (Dialog.ignore_input()): return
 	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("ui_accept")):
 		close()
 		
-func open(title:String,message:String,free=true):
+func open(_title:String, _message:String, _free=true):
 	super._open()
-	$Panel/Content/VBoxContainer/Top/Label.text = tr(title)
-	$Panel/Content/VBoxContainer/Label.text = tr(message)
-	$Panel/Content/VBoxContainer/Bottom/ButtonCancel.grab_focus()
+	title.text = tr(_title)
+	message.text = tr(_message)
+	button_ok.grab_focus()
 
 func set_shortcuts():
 	Tools.set_shortcut_icon(button_ok, Tools.SHORTCUT_ACCEPT)

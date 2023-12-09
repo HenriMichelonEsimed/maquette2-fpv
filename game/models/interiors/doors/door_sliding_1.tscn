@@ -130,7 +130,7 @@ title = "Door"
 
 [node name="LeftDoor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.25, 0)
-size = Vector3(1, 2.5, 0.05)
+size = Vector3(1, 2.5, 0.04)
 material = ExtResource("2_s45qj")
 
 [node name="Handle" type="CSGCylinder3D" parent="LeftDoor"]
@@ -146,7 +146,7 @@ shape = SubResource("BoxShape3D_2tij4")
 
 [node name="RightDoor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.25, 0)
-size = Vector3(1, 2.5, 0.05)
+size = Vector3(1, 2.5, 0.04)
 material = ExtResource("2_s45qj")
 
 [node name="Handle" type="CSGCylinder3D" parent="RightDoor"]

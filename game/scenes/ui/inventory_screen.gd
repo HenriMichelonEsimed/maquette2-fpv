@@ -69,7 +69,7 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_stopcraft, Tools.SHORTCUT_CANCEL)
 
 func _unhandled_input(event):
-	if (ignore_input()): return
+	if (Dialog.ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
 		if panel_crafting.visible:
 			_on_button_stop_craft_pressed()

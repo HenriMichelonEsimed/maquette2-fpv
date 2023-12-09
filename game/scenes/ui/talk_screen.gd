@@ -9,19 +9,19 @@ var talking_char:InteractiveCharacter
 func open():
 	super._open(false)
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
-	size.x = vsize.x / (3 if vsize.x > 1200 else 2.5)
-	size.y =  vsize.y / (3 if vsize.y > 1200 else 2.5)
+	size.x = vsize.x / (3.0 if vsize.x > 1200 else 2.5)
+	size.y =  vsize.y / (3.0 if vsize.y > 1200 else 2.5)
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y - 50)
 
-func _unhandled_input(event):
-	if (ignore_input()): return
+func _unhandled_input(_event):
+	if (Dialog.ignore_input()): return
 	if Input.is_action_just_pressed("ui_accept") and (player_text_list.get_selected_items().size() > 0):
 		_on_player_talk_item_clicked(player_text_list.get_selected_items()[0], null, null)
 
-func talk(char:InteractiveCharacter, phrase:String, answers:Array):
-	talking_char = char
-	npc_name.text = str(char)
+func talk(_char:InteractiveCharacter, phrase:String, answers:Array):
+	talking_char = _char
+	npc_name.text = str(_char)
 	npc_text.text = tr(phrase)
 	player_text_list.clear()
 	for i in range(0, answers.size()):
@@ -36,5 +36,5 @@ func talk(char:InteractiveCharacter, phrase:String, answers:Array):
 	if (player_text_list.item_count > 0):
 		player_text_list.select(0)
 
-func _on_player_talk_item_clicked(index, at_position, mouse_button_index):
+func _on_player_talk_item_clicked(index, _at_position, _mouse_button_index):
 	talking_char.answer(player_text_list.get_item_metadata(index))

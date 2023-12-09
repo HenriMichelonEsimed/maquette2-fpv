@@ -15,6 +15,8 @@ class TradeScreenState extends State:
 @onready var price_value = $Panel/Content/Body/Content/PanelItem/Content/LabelPrice
 @onready var node_3d = $"Panel/Content/Body/Content/PanelItem/Content/ViewContent/3DView/InsertPoint"
 @onready var label_credits = $Panel/Content/Bottom/Menu/Label
+@onready var button_back = $Panel/Content/Top/HBoxContainer/ButtonBack
+@onready var button_buy = $Panel/Content/Body/Content/PanelItem/Content/Actions/Buy
 
 var on_trade_end:Callable
 
@@ -41,9 +43,9 @@ var credits = 0
 var item_credits:ItemMiscellaneous
 var prev_tab = -1
 
-func open(char:InteractiveCharacter, on_trade_end):
+func open(_char:InteractiveCharacter, _on_trade_end):
 	super._open()
-	self.on_trade_end = on_trade_end
+	self.on_trade_end = _on_trade_end
 	var ratio = size.x / size.y
 	var vsize = get_viewport().size / get_viewport().content_scale_factor
 	size.x = vsize.x / (1.5 if vsize.x > 1200 else 1.2)
@@ -53,15 +55,19 @@ func open(char:InteractiveCharacter, on_trade_end):
 	tabs.custom_minimum_size.x = size.x/2
 	StateSaver.loadState(state)
 	item_content.visible = false
-	trader = char
+	trader = _char
 	item_credits = GameState.inventory.get_credits()
 	if (item_credits != null):
 		credits = item_credits.quantity
 	_refresh()
 	_hide_empty_tabs()
 
-func _unhandled_input(event):
-	if (ignore_input()): return
+func set_shortcuts():
+	Tools.set_shortcut_icon(button_buy, Tools.SHORTCUT_ACCEPT)
+	Tools.set_shortcut_icon(button_back, Tools.SHORTCUT_CANCEL)
+
+func _input(_event):
+	if (Dialog.ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
 		_on_button_back_pressed()
 		return
@@ -115,6 +121,7 @@ func _next_tab():
 		if not tabs.is_tab_hidden(idx):
 			tabs.current_tab = idx
 			return
+	pass
 
 func _prev_tab():
 	for idx in range(tabs.current_tab-1, -1, -1):
@@ -122,11 +129,11 @@ func _prev_tab():
 			tabs.current_tab = idx
 			return
 
-func _fill_list(idx: int, type:Item.ItemType, list:ItemList):
-	list.clear()
+func _fill_list(idx: int, type:Item.ItemType, _list:ItemList):
+	_list.clear()
 	for trade_item in trader.items.getall_bytype(type):
-		list.add_item(tr(str(trade_item)))
-	if (list.item_count == 0):
+		_list.add_item(tr(str(trade_item)))
+	if (_list.item_count == 0):
 		tabs.set_tab_hidden(idx, true)
 		
 func _hide_empty_tabs():

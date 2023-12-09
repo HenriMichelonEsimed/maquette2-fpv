@@ -49,7 +49,7 @@ func add_advpoint(adv_key:String):
 func get_advpoints():
 	return advancementPoints.filter(func(adv): return not adv.finished)
 
-func _on_new_quest_event(type:Quest.QuestEventType, event_key:String):
+func _on_new_quest_event(_type:Quest.QuestEventType, _event_key:String):
 	pass
 
 func on_new_quest_event(type:Quest.QuestEventType, event_key:String):

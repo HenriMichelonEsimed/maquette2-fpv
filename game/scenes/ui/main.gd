@@ -48,13 +48,13 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_iventory, Tools.SHORTCUT_INVENTORY)
 	Tools.set_shortcut_icon(button_terminal, Tools.SHORTCUT_TERMINAL)
 
-func _on_joypad_connection_changed(id,connected):
+func _on_joypad_connection_changed(_id,connected):
 	GameState.use_joypad = connected
 	set_shortcuts()
 	Dialog.refresh_shortcuts()
 
 func _unhandled_input(event):
-	if (not Dialog.dialogs_stack.is_empty()): return
+	if (not Dialog.dialogs_stack.is_empty()) or Dialog.ignore_input(): return
 	if (label_info.visible):
 		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
 			_label_info_position()
@@ -103,23 +103,23 @@ func menu_close(_dummy=null):
 	icon_menu_open.visible = true
 	GameState.resume_game()
 	
-func npc_talk(char:InteractiveCharacter, phrase:String, answers:Array):
+func npc_talk(_char:InteractiveCharacter, phrase:String, answers:Array):
 	if (_trading): return
 	if (not _talking):
 		_talk_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
 		_talk_screen.open()
 		_talking = true
-	_talk_screen.talk(char, phrase, answers)
+	_talk_screen.talk(_char, phrase, answers)
 
 func npc_end_talk():
 	_talk_screen.close()
 	_talking = false
 
-func npc_trade(char:InteractiveCharacter):
+func npc_trade(_char:InteractiveCharacter):
 	if (_trading): return
 	_trading = true
 	var trade_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TRADE)
-	trade_screen.open(char, npc_trade_end)
+	trade_screen.open(_char, npc_trade_end)
 	_talk_screen.release_focus()
 
 func npc_trade_end():

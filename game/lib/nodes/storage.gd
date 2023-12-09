@@ -2,7 +2,7 @@ class_name Storage extends Usable
 
 signal open(node:Storage)
 
-func _init(save:bool=false):
+func _init(_save:bool=false):
 	super(true)
 	
 func get_items() -> Array:

@@ -30,7 +30,7 @@ func _refresh():
 		_on_list_savegames_item_selected(0)
 
 func _unhandled_input(event):
-	if (ignore_input()): return
+	if (Dialog.ignore_input()): return
 	if (Input.is_action_just_pressed("cancel")):
 		close()
 	elif (Input.is_action_just_pressed("accept") and list_saves.has_focus()):

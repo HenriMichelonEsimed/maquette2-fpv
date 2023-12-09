@@ -3,8 +3,8 @@ class_name ItemsCollection extends Node
 var _items:Array[Item] = []
 var add_multiples:bool = true
 
-func _init(add_multiples:bool=true):
-	self.add_multiples = add_multiples
+func _init(_add_multiples:bool=true):
+	self.add_multiples = _add_multiples
 	
 func have(type:Item.ItemType, key:String) -> bool:
 	var result = _items.filter(func(it) : return it.type == type and it.key == key)

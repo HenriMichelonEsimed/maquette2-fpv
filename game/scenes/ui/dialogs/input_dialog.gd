@@ -10,7 +10,7 @@ signal input(text)
 var _on_savegame_input:Callable
 
 func _unhandled_input(event):
-	if (ignore_input()): return
+	if (Dialog.ignore_input()): return
 	if Input.is_action_just_pressed("cancel"):
 		close()
 	elif Input.is_action_just_pressed("accept"):
