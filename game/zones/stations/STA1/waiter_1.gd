@@ -13,14 +13,14 @@ func d1():
 	return ["Hello", [
 			["Hey, what's on the menu ?", _trade],
 			r1,
-			["Bye", _end]
+			["Bye", _end, true]
 		]]
 
 var r2 = []
 
 var r5 = [
 	["I'll look it up", _end],
-	["Nevermind", d1]
+	["Nevermind", d1, true]
 ]
 
 func d2():
@@ -33,7 +33,7 @@ func d3():
 
 func r1():
 	var credits = GameState.inventory.get_credits_quantity()
-	var item = items.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2")
+	var item = items.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
 	if (item != null) and (credits < item.price) and GameState.quests.have_advpoint("main", "lvl0_make_first_purchase") and GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
 		return [ "Is there any way to negotiate?", d2]
 	return null
@@ -87,5 +87,5 @@ func _init():
 			]
 		]])
 	r2.push_back(["Can we barter?", d3])
-	r2.push_back(["Nevermind", d1])
+	r2.push_back(["Nevermind", d1, true])
 

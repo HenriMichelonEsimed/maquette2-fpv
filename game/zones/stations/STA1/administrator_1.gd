@@ -154,6 +154,6 @@ func _init():
 			"I am the administrator of this station", [["Nice to meet you", d1]]
 		]],
 		r4,
-		["Bye", _end]
+		["Bye", _end, true]
 	]])
 	super(d1)

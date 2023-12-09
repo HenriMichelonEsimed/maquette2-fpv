@@ -5,6 +5,7 @@ extends Dialog
 @onready var player_text_list = $Panel/VBoxContainer/Player
 
 var talking_char:InteractiveCharacter
+var default_answer:int = -1
 
 func open():
 	super._open(false)
@@ -16,7 +17,9 @@ func open():
 
 func _unhandled_input(_event):
 	if (Dialog.ignore_input()): return
-	if Input.is_action_just_pressed("ui_accept") and (player_text_list.get_selected_items().size() > 0):
+	if (Input.is_action_just_pressed("cancel") and default_answer != -1):
+		_on_player_talk_item_clicked(default_answer, null, null)
+	elif Input.is_action_just_pressed("accept") and (player_text_list.get_selected_items().size() > 0):
 		_on_player_talk_item_clicked(player_text_list.get_selected_items()[0], null, null)
 
 func talk(_char:InteractiveCharacter, phrase:String, answers:Array):
@@ -30,8 +33,13 @@ func talk(_char:InteractiveCharacter, phrase:String, answers:Array):
 		if (answer is Callable):
 			answer = answer.call()
 			if (answer == null): continue
-		player_text_list.add_item(tr(answer[0]))
-		player_text_list.set_item_metadata(player_text_list.item_count-1, i)
+		var icon = null
+		var index = player_text_list.item_count
+		if (answer.size() == 3):
+			default_answer = index
+			icon = Tools.load_shortcut_icon(Tools.SHORTCUT_CANCEL)
+		player_text_list.add_item(tr(answer[0]), icon)
+		player_text_list.set_item_metadata(index, i)
 	player_text_list.grab_focus()
 	if (player_text_list.item_count > 0):
 		player_text_list.select(0)
