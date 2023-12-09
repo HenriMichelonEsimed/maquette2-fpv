@@ -1,7 +1,7 @@
 extends InteractiveCharacter
 
 func _start_talking():
-	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
+	if GameState.quests.have_advpoint("lvl0_admin_woman_want_sandwitch"):
 		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "grilled_ham_sandwich_1"):
 			items.new(Item.ItemType.ITEM_CONSUMABLES, "grilled_ham_sandwich_1")
 		if not items.have(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1"):
@@ -24,7 +24,7 @@ var r5 = [
 ]
 
 func d2():
-	if GameState.quests.have_advpoint("main", "lvl0_waiter_want_is_ring"):
+	if GameState.quests.have_advpoint("lvl0_waiter_want_is_ring"):
 		return ["Did you find my ring?", r4()]
 	return [ "I've got oranges for 1 credit if you're poor", r2 ]
 
@@ -32,9 +32,10 @@ func d3():
 	return	[["Someone stole my ring if you bring it back I can give you a ham sandwich", a1], r5]
 
 func r1():
+	if GameState.quests.finished_advpoint("lvl0_waiter_want_is_ring"): return
 	var credits = GameState.inventory.get_credits_quantity()
 	var item = items.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
-	if (item != null) and (credits < item.price) and GameState.quests.have_advpoint("main", "lvl0_make_first_purchase") and GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
+	if (item != null) and (credits < item.price) and GameState.quests.have_advpoint("lvl0_make_first_purchase") and GameState.quests.have_advpoint("lvl0_admin_woman_want_sandwitch"):
 		return [ "Is there any way to negotiate?", d2]
 	return null
 	
@@ -57,12 +58,12 @@ func r4():
 		return r5
 	
 func a1(): 
-	GameState.quests.advpoint("main","lvl0_waiter_want_is_ring")
+	GameState.quests.advpoint("lvl0_waiter_want_is_ring")
 
 func a2(item):
 	GameState.inventory.remove(item)
-	items.transfert_to(GameState.inventory, Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_2")
-	GameState.quests.finish_advpoint("main", "lvl0_waiter_want_is_ring")
+	items.transfert_to(GameState.inventory, Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
+	GameState.quests.finish_advpoint("lvl0_waiter_want_is_ring")
 
 func _init():
 	super(d1(),

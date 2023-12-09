@@ -4,16 +4,16 @@ var _quests = {
 	"main": MainQuest.new()
 }
 
-func start(quest:String):
+func start(quest:String="main"):
 	_quests[quest].start()
 	
-func label(quest:String) -> String:
+func label(quest:String="main") -> String:
 	return _quests[quest].label
 	
-func current(quest:String) -> QuestGoal:
+func current(quest:String="main") -> QuestGoal:
 	return _quests[quest].current
 
-func event(quest:String, type:Quest.QuestEventType, event_key:String):
+func event(type:Quest.QuestEventType, event_key:String, quest:String="main"):
 	_quests[quest].on_new_quest_event(type, event_key)
 	GameState.current_zone.check_quest_advance()
 
@@ -22,16 +22,19 @@ func event_all(type:Quest.QuestEventType, event_key:String):
 		_quests[quest].on_new_quest_event(type, event_key)
 	GameState.current_zone.check_quest_advance()
 
-func advpoint(quest:String, key:String):
+func advpoint(key:String, quest:String="main"):
 	_quests[quest].add_advpoint(key)
 	
-func have_advpoint(quest: String, key:String) -> bool:
+func have_advpoint(key:String, quest:String="main") -> bool:
 	return _quests[quest].have_advpoint(key)
 
-func get_advpoints(quest: String):
+func finished_advpoint(key:String, quest:String="main") -> bool:
+	return _quests[quest].finished_advpoint(key)
+
+func get_advpoints(quest:String="main"):
 	return _quests[quest].get_advpoints()
 
-func finish_advpoint(quest: String, adv_key:String):
+func finish_advpoint(adv_key:String, quest:String="main"):
 	var adv = _quests[quest].get_advpoint(adv_key)
 	if (adv != null):
 		adv.finished = true

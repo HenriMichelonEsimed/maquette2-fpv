@@ -49,4 +49,6 @@ func _on_collect_item_aera_body_exited(node:Node):
 		char_to_talk = null
 	hide_info.emit()
 	if (has_overlapping_bodies()):
-		_on_collect_item_aera_body_entered(get_overlapping_bodies()[0])
+		var next = get_overlapping_bodies()[0]
+		if (next != node):
+			_on_collect_item_aera_body_entered(next)

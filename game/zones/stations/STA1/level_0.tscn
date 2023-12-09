@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://b4qb1w1k508q8"]
+[gd_scene load_steps=66 format=3 uid="uid://b4qb1w1k508q8"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_nhnkb"]
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="2_da5ug"]
@@ -63,6 +63,8 @@
 [ext_resource type="PackedScene" uid="uid://c3qxk416q6e8v" path="res://models/props/shelf_1.tscn" id="60_8lmcx"]
 [ext_resource type="PackedScene" uid="uid://b06w3wkgfoh6i" path="res://models/items/tools/crowbar_1.tscn" id="61_q1mra"]
 [ext_resource type="PackedScene" uid="uid://c8wn77ggokgp5" path="res://zones/stations/STA1/waiter_1.tscn" id="62_ilvco"]
+[ext_resource type="PackedScene" uid="uid://vju5kp1qm4fi" path="res://models/items/quest/ring_1.tscn" id="64_os7uw"]
+[ext_resource type="Script" path="res://zones/stations/STA1/ring_1.gd" id="65_40728"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_nhnkb")
@@ -635,6 +637,10 @@ transform = Transform3D(0.894521, 0, 0.447025, 0, 1, 0, -0.447025, 0, 0.894521, 
 
 [node name="administrator_1" parent="Administration" instance=ExtResource("48_0d22e")]
 transform = Transform3D(-0.979385, 0, 0.202001, 0, 1, 0, -0.202001, 0, -0.979385, 7.05671, 0, -23.1473)
+
+[node name="ring_1" parent="Administration" instance=ExtResource("64_os7uw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.1, 0.715537, -24.7)
+script = ExtResource("65_40728")
 
 [node name="Canteen" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.45, 0, -15.2)

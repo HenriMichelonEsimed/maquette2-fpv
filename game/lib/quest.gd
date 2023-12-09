@@ -29,6 +29,12 @@ func have_advpoint(adv_key:String) -> bool:
 			return true
 	return false
 
+func finished_advpoint(adv_key:String) -> bool:
+	for adv in advancementPoints:
+		if (adv.key == adv_key):
+			return adv.finished
+	return false
+	
 func get_advpoint(adv_key:String):
 	for adv in advancementPoints:
 		if (adv.key == adv_key):

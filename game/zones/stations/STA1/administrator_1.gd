@@ -4,7 +4,7 @@ var ring:ItemQuest
 
 func ring_discussion(item:ItemQuest):
 	ring = item
-	var can_collect = GameState.quests.have_advpoint("main", "lvl0_waiter_want_is_ring")
+	var can_collect = GameState.quests.have_advpoint("lvl0_waiter_want_is_ring")
 	return [ "Hey, DON'T touch that ring !", [
 		["Ok ! Calm down...", _end],
 		["Isn't this ring the waiter's?", [
@@ -72,7 +72,7 @@ func r2d():
 	pass
 	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_pickles_1")
 	if item != null:
-		GameState.quests.finish_advpoint("main","lvl0_admin_woman_want_sandwitch_with_pickles")
+		GameState.quests.finish_advpoint("lvl0_admin_woman_want_sandwitch_with_pickles")
 		return [tr("[Give %s]") % tr(item.label),
 		[
 			["Thank you ! Here is the access card", a1, item], [
@@ -99,7 +99,7 @@ func r2f1():
 func r2f2():
 	var item = GameState.inventory.getitem(Item.ItemType.ITEM_CONSUMABLES, "ham_sandwich_1")
 	if item != null:
-		GameState.quests.advpoint("main","lvl0_admin_woman_want_sandwitch_with_pickles")
+		GameState.quests.advpoint("lvl0_admin_woman_want_sandwitch_with_pickles")
 		return [tr("[Give %s]") % tr(item.label),
 		[
 			"This sandwich is appetizing but I prefer it with pickles", [
@@ -109,7 +109,7 @@ func r2f2():
 	return null
 
 func r2e():
-	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
+	if GameState.quests.have_advpoint("lvl0_admin_woman_want_sandwitch"):
 		return r2b
 	return r2a
 
@@ -128,21 +128,21 @@ var r1 = ["How can I access the restricted area ?",
 func a1(item): 
 	GameState.inventory.remove(item)
 	GameState.inventory.new(Item.ItemType.ITEM_QUEST, "access_card_1")
-	GameState.quests.advpoint("main", "lvl0_use_access_card")
+	GameState.quests.advpoint("lvl0_use_access_card")
 
 func a2(): 
-	GameState.quests.advpoint("main","lvl0_admin_woman_have_access_card")
+	GameState.quests.advpoint("lvl0_admin_woman_have_access_card")
 
 func a3(): 
-	GameState.quests.advpoint("main","lvl0_admin_woman_want_sandwitch")
+	GameState.quests.advpoint("lvl0_admin_woman_want_sandwitch")
 
 func r4():
-	if not GameState.quests.have_advpoint("main", "lvl0_door_to_restricted_area_access_card"):
+	if not GameState.quests.have_advpoint("lvl0_door_to_restricted_area_access_card"):
 		return null
-	if GameState.quests.have_advpoint("main", "lvl0_admin_woman_have_access_card"):
-		if GameState.quests.have_advpoint("main", "lvl0_use_access_card"):
+	if GameState.quests.have_advpoint("lvl0_admin_woman_have_access_card"):
+		if GameState.quests.have_advpoint("lvl0_use_access_card"):
 			return null
-		elif GameState.quests.have_advpoint("main", "lvl0_admin_woman_want_sandwitch"):
+		elif GameState.quests.have_advpoint("lvl0_admin_woman_want_sandwitch"):
 			return ["About the access card...", r2e]
 		else:
 			return r2
