@@ -21,9 +21,8 @@ class_name MainUI extends Control
 
 var _displayed_node:Node
 var _restart_timer_notif:bool = false
-var _talking:bool = false
-var _trading:bool = false
 var _talk_screen:Dialog
+var _trade_screen:Dialog
 
 func _ready():
 	blur.visible = false
@@ -48,7 +47,7 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_iventory, Tools.SHORTCUT_INVENTORY)
 	Tools.set_shortcut_icon(button_terminal, Tools.SHORTCUT_TERMINAL)
 
-func _on_joypad_connection_changed(_id,connected):
+func _on_joypad_connection_changed(_id, connected):
 	GameState.use_joypad = connected
 	set_shortcuts()
 	Dialog.refresh_shortcuts()
@@ -59,11 +58,8 @@ func _unhandled_input(event):
 		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
 			_label_info_position()
 			return
-	if (Input.is_action_just_pressed("menu")):
-		if (menu.visible):
-			menu_close()
-		else:
-			menu_open()
+	if (Input.is_action_just_pressed("menu") and not menu.visible):
+		menu_open()
 	elif (Input.is_action_just_pressed("cancel") and menu.visible):
 		menu_close()
 	elif (Input.is_action_just_pressed("quit")):
@@ -75,13 +71,12 @@ func _unhandled_input(event):
 	elif  Input.is_action_just_pressed("unuse"):
 		GameState.item_unuse()
 
-func pause_game(blur_screen:bool=true):
+func pause_game():
 	if (not timer_notif.is_stopped()):
 		timer_notif.stop()
 		_restart_timer_notif = true
 	hud.visible = false
-	if (blur_screen):
-		blur.visible = true
+	blur.visible = true
 
 func resume_game(_dummy=null):
 	hud.visible = true
@@ -104,27 +99,28 @@ func menu_close(_dummy=null):
 	GameState.resume_game()
 	
 func npc_talk(_char:InteractiveCharacter, phrase:String, answers:Array):
-	if (_trading): return
-	if (not _talking):
+	if (_talk_screen != null and _talk_screen.trading): return
+	if (_talk_screen == null):
 		_talk_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TALK)
 		_talk_screen.open()
-		_talking = true
 	_talk_screen.talk(_char, phrase, answers)
 
 func npc_end_talk():
-	_talk_screen.close()
-	_talking = false
+	if (_talk_screen != null):
+		_talk_screen.close()
+		_talk_screen = null
 
 func npc_trade(_char:InteractiveCharacter):
-	if (_trading): return
-	_trading = true
-	var trade_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TRADE)
-	trade_screen.open(_char, npc_trade_end)
+	if (_talk_screen.trading): return
+	_talk_screen.trading = true
+	_trade_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TRADE)
+	_trade_screen.open(_char, npc_trade_end)
 	_talk_screen.release_focus()
 
 func npc_trade_end():
-	_trading = false	
+	_talk_screen.trading = false
 	_talk_screen.player_text_list.grab_focus()
+	_trade_screen.close()
 
 func storage_open(node:Storage, on_storage_close:Callable):
 	var dlg = Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS, resume_game)

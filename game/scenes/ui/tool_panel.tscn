@@ -7,14 +7,14 @@ bg_color = Color(0, 0, 0, 0.313726)
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_right = 32
 
-[sub_resource type="Environment" id="Environment_f1hi3"]
+[sub_resource type="Environment" id="Environment_ghn0y"]
 background_mode = 1
 background_color = Color(1, 1, 1, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 
 [sub_resource type="World3D" id="World3D_1egif"]
-environment = SubResource("Environment_f1hi3")
+environment = SubResource("Environment_ghn0y")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wb7bd"]
 transparency = 1

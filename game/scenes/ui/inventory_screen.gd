@@ -111,8 +111,8 @@ func _resize(with_crafting = false):
 	tabs.custom_minimum_size.x = size.x/(3 if with_crafting else 2)
 
 func _on_button_back_pressed():
-	_clear_crafting()
 	close()
+	_clear_crafting()
 
 func _on_list_tools_item_selected(index):
 	list_consumables.deselect_all()

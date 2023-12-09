@@ -30,10 +30,10 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_no, Tools.SHORTCUT_DECLINE)
 
 func _on_button_yes_pressed():
-	_on_confirm.call(true)
 	close()
+	_on_confirm.call(true)
 
 func _on_button_no_pressed():
-	_on_confirm.call(false)
 	close()
+	_on_confirm.call(false)
 

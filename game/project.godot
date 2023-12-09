@@ -24,9 +24,9 @@ NotificationManager="*res://lib/notification_manager.gd"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=600
-window/size/mode=3
+window/size/viewport_width=1600
+window/size/viewport_height=900
+window/size/mode=4
 window/size/initial_position_type=0
 
 [editor_plugins]

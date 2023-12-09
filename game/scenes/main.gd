@@ -9,8 +9,10 @@ var _last_spawnpoint:String
 func _ready():
 	GameState.player = player
 	GameState.ui = ui
-	if get_viewport().size.x < 1600:
-		get_viewport().content_scale_factor = 0.75
+	if get_viewport().size.x <= 1280:
+		get_viewport().content_scale_factor = 0.6
+	elif get_viewport().size.x <= 1680:
+		get_viewport().content_scale_factor = 0.8
 	if get_viewport().size.x > 1920:
 		get_viewport().content_scale_factor = 2.2
 	elif get_viewport().size.x >= 7680 :

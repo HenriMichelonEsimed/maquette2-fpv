@@ -59,6 +59,5 @@ func _on_button_cancel_pressed():
 	close()
 
 func _on_button_drop_pressed():
-	quantity.call(slider_quantity.value)
 	close()
-
+	quantity.call(slider_quantity.value)

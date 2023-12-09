@@ -42,8 +42,8 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_all, Tools.SHORTCUT_ALL)
 
 func close():
-	on_storage_close.call(storage)
 	super.close()
+	on_storage_close.call(storage)
 
 func _transfert():
 	if (current_list == list_container):

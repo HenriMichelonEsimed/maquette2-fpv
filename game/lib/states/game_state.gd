@@ -58,11 +58,11 @@ func load_game(savegame = null):
 	StateSaver.loadState(QuestsState.new(quests))
 	loading_end.emit()
 
-func pause_game(blur_screen:bool=true):
+func pause_game():
 	if (ui.menu.visible): return
 	get_tree().paused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	ui.pause_game(blur_screen)
+	if (not use_joypad): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	ui.pause_game()
 
 func resume_game():
 	if (ui.menu.visible): return
@@ -70,7 +70,7 @@ func resume_game():
 	
 func _resume_game():
 	get_tree().paused = false
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	if (not use_joypad): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	ui.resume_game()
 	
 func item_use(item:Item):

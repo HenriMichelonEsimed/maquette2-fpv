@@ -6,9 +6,9 @@ extends Dialog
 
 func _unhandled_input(event):
 	if (Dialog.ignore_input()): return
-	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("ui_accept")):
+	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("accept")):
 		close()
-		
+
 func open(_title:String, _message:String, _free=true):
 	super._open()
 	title.text = tr(_title)

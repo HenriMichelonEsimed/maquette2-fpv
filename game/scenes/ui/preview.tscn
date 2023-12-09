@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4yjrj7cn3ss6"]
+
+[ext_resource type="PackedScene" uid="uid://c4eqftgcmvgyw" path="res://zones/stations/STA1/administrator_1.tscn" id="1_sdmyb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ououg"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 3.6, -5.8)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.866025, -0.12941, 0.482963, -2.26267e-08, 0.965926, 0.258819, -0.5, 0.224144, -0.836516, 0.9, 1.7, -2)
+keep_aspect = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
+size = Vector3(100, 0.1, 100)
+material = SubResource("StandardMaterial3D_ououg")
+
+[node name="InsertPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="administrator_1" parent="InsertPoint" instance=ExtResource("1_sdmyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

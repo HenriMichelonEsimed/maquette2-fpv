@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://c3qxk416q6e8v"]
 
 [ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="2_pcqo8"]
+[ext_resource type="Material" uid="uid://dmgsfacf0ibm0" path="res://assets/materials/colors_outline/brown_2.tres" id="3_fnstm"]
 [ext_resource type="Material" uid="uid://dushpwnfsy7nv" path="res://assets/materials/colors_outline/grey_3.tres" id="3_uas7p"]
-[ext_resource type="Material" uid="uid://d0ebk85p2hdpd" path="res://assets/materials/colors_outline/wood_48.tres" id="4_3jfro"]
 [ext_resource type="Material" uid="uid://casjkarc5j360" path="res://assets/materials/colors_outline/grey_2.tres" id="4_l61i1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts7sv"]
@@ -158,7 +158,7 @@ surface_material_override/0 = ExtResource("3_uas7p")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0436375, 0)
 mesh = SubResource("ArrayMesh_4ydcv")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_3jfro")
+surface_material_override/0 = ExtResource("3_fnstm")
 
 [node name="Support" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.0436375, 0)

@@ -14,16 +14,16 @@ func set_shortcuts():
 static func refresh_shortcuts():
 	dialogs_stack.all(func(dlg): dlg.set_shortcuts())
 
-func _open(blur_screen:bool=true):
+func _open():
 	if (dialogs_stack.is_empty()):
-		GameState.pause_game(blur_screen)
+		GameState.pause_game()
 	else:
 		dialogs_stack.back().process_mode = PROCESS_MODE_DISABLED
 	dialogs_stack.push_back(self)
 	set_shortcuts()
 
 func close():
-	dialogs_stack.pop_back()
+	var back = dialogs_stack.pop_back()
 	if (dialogs_stack.is_empty()):
 		if (not GameState.ui.menu.visible):
 			GameState.resume_game()

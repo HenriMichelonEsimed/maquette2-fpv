@@ -69,11 +69,21 @@ static func load_controller_texture(controller:String) -> Texture2D:
 static func show_item(item:Item, node_3d:Node3D):
 	for c in node_3d.get_children():
 		c.queue_free()
-	var clone = item.duplicate()
+	var scale = item.preview_scale
+	var clone = item.duplicate(0)
 	node_3d.add_child(clone)
 	clone.position = Vector3.ZERO
 	clone.rotation = Vector3.ZERO
-	clone.scale = clone.scale * clone.preview_scale * 1.2
+	clone.scale = clone.scale * scale * 1.2
+
+static func show_character(_char:InteractiveCharacter, node_3d:Node3D):
+	for c in node_3d.get_children():
+		c.queue_free()
+	var clone = _char.duplicate(0)
+	node_3d.add_child(clone)
+	clone.position = Vector3.ZERO
+	clone.rotation = Vector3.ZERO
+	clone.scale = Vector3(1.0, 1.0, 1.0)
 
 static func set_shortcut_icon(button:Control, name:String):
 	if (button is Button):
