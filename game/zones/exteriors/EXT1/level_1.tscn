@@ -1,16 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://6hubfrwk42vj"]
+[gd_scene load_steps=15 format=3 uid="uid://6hubfrwk42vj"]
 
 [ext_resource type="PackedScene" uid="uid://cmhqxaps7ag6x" path="res://models/landscapes/dune_1.tscn" id="1_k66sl"]
-[ext_resource type="Script" path="res://lib/nodes/zone.gd" id="1_slhny"]
+[ext_resource type="Script" path="res://zones/exteriors/EXT1/level_1.gd" id="1_l6sw2"]
 [ext_resource type="PackedScene" uid="uid://cv54nj3k16fho" path="res://models/landscapes/lake_1.tscn" id="2_7w4mn"]
 [ext_resource type="PackedScene" uid="uid://bhhbfstyssdc6" path="res://scenes/environment/exterior.tscn" id="2_ijih0"]
 [ext_resource type="PackedScene" uid="uid://bicmprdn203xe" path="res://models/landscapes/mountains_2.tscn" id="4_hrrva"]
 [ext_resource type="PackedScene" uid="uid://m44oab0dx72w" path="res://models/landscapes/mountains_1.tscn" id="4_x3oq6"]
 [ext_resource type="Script" path="res://lib/nodes/spawn_point.gd" id="6_dbbhk"]
+[ext_resource type="PackedScene" uid="uid://da3qfvxkca5dj" path="res://zones/exteriors/EXT1/mysterious_man_1.tscn" id="8_ni65h"]
+[ext_resource type="PackedScene" uid="uid://dootfr4obe6ab" path="res://models/interiors/architecture/walls/wall_1_10x_3_8.tscn" id="9_tym4s"]
+[ext_resource type="PackedScene" uid="uid://cgpwdawl5p1g3" path="res://models/interiors/doors/door_1.tscn" id="10_u1uqv"]
+[ext_resource type="PackedScene" uid="uid://dfbmwmgqi6av7" path="res://models/interiors/architecture/walls/wall_2_pillard.tscn" id="11_65xtt"]
+[ext_resource type="Script" path="res://zones/exteriors/EXT1/door_to_station_1.gd" id="12_e2p8r"]
+[ext_resource type="Material" uid="uid://cvvlh285oblhu" path="res://assets/materials/colors/grey_1.tres" id="12_lnoe6"]
+[ext_resource type="PackedScene" uid="uid://c0b64m347r4gr" path="res://models/interiors/doors/door_sliding_1.tscn" id="13_tke80"]
 
 [node name="Level1" type="Node3D"]
-script = ExtResource("1_slhny")
-zone_name = "ext1_level1"
+script = ExtResource("1_l6sw2")
 
 [node name="ExteriorEnvironnement" parent="." instance=ExtResource("2_ijih0")]
 day_time = 14.0
@@ -36,6 +42,66 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -296.7, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298, 0, 0)
 
 [node name="SpawnPointDefault" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4, 25.1844, -79.6)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 197.314, 0.168, -73.5358)
 script = ExtResource("6_dbbhk")
 key = "default"
+
+[node name="mysterious_man_1" parent="." instance=ExtResource("8_ni65h")]
+transform = Transform3D(8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, 161.272, 0.168427, -73.2998)
+
+[node name="Entrace" type="Node3D" parent="."]
+
+[node name="wall_1_10x3_8" parent="Entrace" instance=ExtResource("9_tym4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 203.9, -0.173359, -75.5)
+
+[node name="wall_1_10x3_9" parent="Entrace" instance=ExtResource("9_tym4s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 193.9, -0.173359, -75.5)
+
+[node name="wall_1_10x3_10" parent="Entrace" instance=ExtResource("9_tym4s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 193.9, -0.173359, -71.1)
+
+[node name="wall_1_10x3_11" parent="Entrace" instance=ExtResource("9_tym4s")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 203.9, -0.173359, -71.1)
+
+[node name="wall_2_pillard3" parent="Entrace" instance=ExtResource("11_65xtt")]
+transform = Transform3D(1.002, 0, 0, 0, 1.38, 0, 0, 0, 1.002, 198.25, -0.240198, -71.7739)
+
+[node name="wall_2_pillard4" parent="Entrace" instance=ExtResource("11_65xtt")]
+transform = Transform3D(1.002, 0, 0, 0, 1.38, 0, 0, 0, 1.002, 198.25, -0.240198, -74.9285)
+
+[node name="Door1" parent="Entrace" instance=ExtResource("10_u1uqv")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 198.2, 0.00803912, -73.3)
+script = ExtResource("12_e2p8r")
+label = "Station entrance"
+title = "Station"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Entrace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.232, 3.21595, -73.3298)
+material_override = ExtResource("12_lnoe6")
+size = Vector3(0.4, 0.818359, 2.3)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Entrace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 189.032, 3.1598, -73.2798)
+material_override = ExtResource("12_lnoe6")
+size = Vector3(0.4, 0.930664, 4.4)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Entrace"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 189.032, 1.22739, -74.9241)
+material_override = ExtResource("12_lnoe6")
+size = Vector3(0.4, 1.11373, 3)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Entrace"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 189.032, 1.22739, -71.6376)
+material_override = ExtResource("12_lnoe6")
+size = Vector3(0.4, 1.11373, 3)
+
+[node name="SlidingDoor1" parent="Entrace" instance=ExtResource("13_tke80")]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 189.1, -0.1, -73.2817)
+label = "Station entrance"
+title = "Station"
+
+[node name="Roof" type="CSGBox3D" parent="Entrace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 198.582, 3.67474, -73.3031)
+visible = false
+material_override = ExtResource("12_lnoe6")
+size = Vector3(21.3, 0.1, 4.41143)

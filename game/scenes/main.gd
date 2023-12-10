@@ -39,6 +39,7 @@ func _change_zone(zone_name:String, spawnpoint_key:String="default"):
 		if (_previous_zone != null): 
 			_previous_zone.queue_free()
 		new_zone = Tools.load_zone(zone_name).instantiate()
+		new_zone.zone_name = zone_name
 	if (GameState.current_zone != null): 
 		GameState.player.interactions.disconnect("item_collected", GameState.current_zone.on_item_collected)
 		GameState.current_zone.disconnect("change_zone", _change_zone)
@@ -69,6 +70,7 @@ func _change_zone(zone_name:String, spawnpoint_key:String="default"):
 	GameState.current_zone.visible = true
 	if (GameState.messages.have_unread()):
 		_on_new_message()
+	GameState.current_zone.zone_post_start()
 
 func _spawn_player(spawnpoint_key:String):
 	for node in GameState.current_zone.find_children("*", "SpawnPoint", false, true):

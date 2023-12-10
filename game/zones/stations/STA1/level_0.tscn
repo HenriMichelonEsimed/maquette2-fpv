@@ -73,7 +73,6 @@
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_nhnkb")
-zone_name = "sta1_level_0"
 
 [node name="InteriorEnvironment" parent="." instance=ExtResource("2_da5ug")]
 
@@ -83,7 +82,7 @@ script = ExtResource("3_y7mth")
 key = "default"
 
 [node name="SpawnPointFromLevel1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0247, 0, 0.0083127)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.4896, 2, 0.008)
 script = ExtResource("3_y7mth")
 key = "level1"
 

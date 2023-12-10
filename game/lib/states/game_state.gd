@@ -67,7 +67,7 @@ func pause_game():
 func resume_game():
 	if (ui.menu.visible): return
 	call_deferred("_resume_game")
-	
+
 func _resume_game():
 	get_tree().paused = false
 	if (not use_joypad): Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

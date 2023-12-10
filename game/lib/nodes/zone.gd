@@ -2,7 +2,7 @@ class_name Zone extends Node3D
 
 signal change_zone(zone_name:String, spawnpoint_key:String)
 
-@export var zone_name:String
+var zone_name:String
 
 var state:ZoneState = null
 
@@ -43,6 +43,9 @@ func _ready():
 func _zone_ready():
 	pass
 
+func zone_post_start():
+	pass
+
 func on_zone_change_trigger(trigger:ZoneChangeTrigger):
 	change_zone.emit(trigger.zone_name, trigger.spawnpoint_key)
 	trigger.is_triggered = false
@@ -51,7 +54,7 @@ func check_quest_advance():
 	pass
 
 func on_item_dropped(item:Item, quantity:int):
-	var new_item = item.duplicate()
+	var new_item = item.duplicate(DUPLICATE_SCRIPTS)
 	new_item.position = GameState.player.global_position
 	if (item is ItemMultiple):
 		new_item.quantity = item.quantity if quantity==-1 else quantity
@@ -77,7 +80,7 @@ func on_item_collected(item:Item, quantity:int, force = false):
 	if (not force) and (not item.collect()):
 		return
 	GameState.player.interactions._on_collect_item_aera_body_exited(item)
-	var new_item:Item = item.duplicate()
+	var new_item:Item = item.duplicate(DUPLICATE_SCRIPTS)
 	new_item.remove_meta("storage")
 	new_item.disable()
 	if (quantity > 0 and (item is ItemMultiple) and (item.quantity != quantity)):

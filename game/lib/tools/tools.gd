@@ -49,6 +49,10 @@ static func load_zone(zone_name:String):
 		ResourceLoader.load_threaded_request(zone_path)
 	return ResourceLoader.load_threaded_get(zone_path)
 
+static func preload_zone(zone_name:String):
+	var zone_path = "res://zones/" + zone_name + ".tscn"
+	ResourceLoader.load_threaded_request(zone_path)
+
 static func load_dialog(parent:Node, dialog:String, on_close = null) -> Dialog:
 	var scene = load("res://scenes/ui/dialogs/" + dialog + "_dialog.tscn").instantiate()
 	parent.add_child(scene)

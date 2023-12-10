@@ -195,7 +195,8 @@ func _label_info_position():
 func _on_display_info(node:Node3D):
 	_displayed_node = node
 	var label:String = tr(str(_displayed_node))
-	if (label.is_empty()): return
+	if (label.is_empty()): 
+		label = str(node)
 	label_info.text = label
 	_label_info_position()
 	panel_info.visible = true
