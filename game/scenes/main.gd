@@ -25,11 +25,13 @@ func _ready():
 		GameState.current_item = null
 		GameState.item_use(item)
 	GameState.quests.start("main")
-	_change_zone(GameState.player_state.zone_name, "default")
+	_change_zone(GameState.player_state.zone_name)
 	if (GameState.player_state.position != Vector3.ZERO):
 		player.move(GameState.player_state.position, GameState.player_state.rotation)
 
-func _change_zone(zone_name:String, spawnpoint_key:String):
+func _change_zone(zone_name:String, spawnpoint_key:String="default"):
+	if (GameState.current_zone != null) and (zone_name == GameState.current_zone.zone_name): 
+		return
 	var new_zone:Zone
 	if (_previous_zone != null) and (_previous_zone.zone_name == zone_name):
 		new_zone = _previous_zone
@@ -39,7 +41,7 @@ func _change_zone(zone_name:String, spawnpoint_key:String):
 		new_zone = Tools.load_zone(zone_name).instantiate()
 	if (GameState.current_zone != null): 
 		GameState.player.interactions.disconnect("item_collected", GameState.current_zone.on_item_collected)
-		GameState.current_zone.disconnect("change_zone", _on_change_zone)
+		GameState.current_zone.disconnect("change_zone", _change_zone)
 		for node in GameState.current_zone.find_children("*", "Storage", true, true):
 			node.disconnect("open", _on_storage_open)
 		for node in GameState.current_zone.find_children("*", "Usable", true, true):
@@ -52,7 +54,7 @@ func _change_zone(zone_name:String, spawnpoint_key:String):
 	_previous_zone = GameState.current_zone
 	GameState.current_zone = new_zone
 	GameState.player_state.zone_name = zone_name
-	GameState.current_zone.connect("change_zone", _on_change_zone)
+	GameState.current_zone.connect("change_zone", _change_zone)
 	GameState.player.interactions.connect("item_collected", GameState.current_zone.on_item_collected)
 	add_child(GameState.current_zone)
 	_spawn_player(spawnpoint_key)
@@ -75,12 +77,6 @@ func _spawn_player(spawnpoint_key:String):
 			node.spawn()
 			break
 	_last_spawnpoint = spawnpoint_key
-
-func _on_change_zone(trigger:ZoneChangeTrigger):
-	if (trigger.zone_name == GameState.location.zone_name): 
-		return
-	_change_zone(trigger.zone_name, trigger.spawnpoint_key)
-	trigger.is_triggered = false
 
 func _on_new_message():
 	NotificationManager.notif("You have unread messages !")

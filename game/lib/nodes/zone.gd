@@ -1,7 +1,6 @@
-extends Node3D
-class_name Zone
+class_name Zone extends Node3D
 
-signal change_zone(trigger:ZoneChangeTrigger)
+signal change_zone(zone_name:String, spawnpoint_key:String)
 
 @export var zone_name:String
 
@@ -31,7 +30,7 @@ func _ready():
 		else:
 			add_child(item)
 	for trigger:Node in find_children("*", "ZoneChangeTrigger", true, true):
-		trigger.connect("triggered", on_zone_change)
+		trigger.connect("triggered", on_zone_change_trigger)
 	#var event = GameState.events_queue.getNextEvent(zone_name)
 	#while (event != null):
 	#	var node = get_node(event.target)
@@ -44,8 +43,9 @@ func _ready():
 func _zone_ready():
 	pass
 
-func on_zone_change(trigger:ZoneChangeTrigger):
-	change_zone.emit(trigger)
+func on_zone_change_trigger(trigger:ZoneChangeTrigger):
+	change_zone.emit(trigger.zone_name, trigger.spawnpoint_key)
+	trigger.is_triggered = false
 
 func check_quest_advance():
 	pass

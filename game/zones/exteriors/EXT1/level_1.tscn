@@ -36,6 +36,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -296.7, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298, 0, 0)
 
 [node name="SpawnPointDefault" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.4, 0.1, -73.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.4, 25.1844, -79.6)
 script = ExtResource("6_dbbhk")
 key = "default"

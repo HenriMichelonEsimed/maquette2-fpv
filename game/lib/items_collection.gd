@@ -10,6 +10,9 @@ func have(type:Item.ItemType, key:String) -> bool:
 	var result = _items.filter(func(it) : return it.type == type and it.key == key)
 	return result.size() > 0
 
+func have_or_using(type:Item.ItemType, key:String) -> bool:
+	return have(type, key) or ((GameState.current_item != null) and (GameState.current_item.type == type) and (GameState.current_item.key == key))
+
 func haveitem(item:Item) -> bool:
 	return have(item.type, item.key)
 
