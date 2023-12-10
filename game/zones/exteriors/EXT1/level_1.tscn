@@ -47,7 +47,7 @@ script = ExtResource("6_dbbhk")
 key = "default"
 
 [node name="mysterious_man_1" parent="." instance=ExtResource("8_ni65h")]
-transform = Transform3D(8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, 161.272, 0.168427, -73.2998)
+transform = Transform3D(8.74228e-08, 0, -1, 0, 1, 0, 1, 0, 8.74228e-08, 161.272, 7, -73.3)
 
 [node name="Entrace" type="Node3D" parent="."]
 
