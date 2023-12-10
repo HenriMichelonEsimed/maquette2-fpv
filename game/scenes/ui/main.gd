@@ -52,24 +52,25 @@ func _on_joypad_connection_changed(_id, connected):
 	set_shortcuts()
 	Dialog.refresh_shortcuts()
 
-func _unhandled_input(event):
+func _input(event):
 	if (not Dialog.dialogs_stack.is_empty()) or Dialog.ignore_input(): return
 	if (label_info.visible):
 		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
 			_label_info_position()
 			return
-	if (Input.is_action_just_pressed("menu") and not menu.visible):
-		menu_open()
-	elif (Input.is_action_just_pressed("cancel") and menu.visible):
-		menu_close()
-	elif (Input.is_action_just_pressed("quit")):
-		_on_save_before_quit_confirm(true)
-	elif Input.is_action_just_pressed("inventory"):
-		inventory_open()
-	elif  Input.is_action_just_pressed("terminal"):
-		terminal_open()
-	elif  Input.is_action_just_pressed("unuse"):
-		GameState.item_unuse()
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if (Input.is_action_just_released("menu") and not menu.visible):
+			menu_open()
+		elif (Input.is_action_just_released("cancel") and menu.visible):
+			menu_close()
+		elif (Input.is_action_just_released("quit")):
+			_on_save_before_quit_confirm(true)
+		elif Input.is_action_just_released("inventory"):
+			inventory_open()
+		elif  Input.is_action_just_released("terminal"):
+			terminal_open()
+		elif  Input.is_action_just_released("unuse"):
+			GameState.item_unuse()
 
 func pause_game():
 	if (not timer_notif.is_stopped()):
@@ -120,7 +121,6 @@ func npc_trade(_char:InteractiveCharacter):
 func npc_trade_end():
 	_talk_screen.trading = false
 	_talk_screen.player_text_list.grab_focus()
-	_trade_screen.close()
 
 func storage_open(node:Storage, on_storage_close:Callable):
 	var dlg = Tools.load_dialog(self, Tools.DIALOG_TRANSFERT_ITEMS, resume_game)

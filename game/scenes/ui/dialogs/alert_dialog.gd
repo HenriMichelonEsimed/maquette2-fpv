@@ -4,10 +4,11 @@ extends Dialog
 @onready var title:Label = $Panel/Content/VBoxContainer/Top/Label
 @onready var message:Label = $Panel/Content/VBoxContainer/Label
 
-func _unhandled_input(event):
+func _input(event):
 	if (Dialog.ignore_input()): return
-	if (Input.is_action_just_pressed("cancel") or Input.is_action_just_pressed("accept")):
-		close()
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if (Input.is_action_just_released("cancel") or Input.is_action_just_released("accept")):
+			close()
 
 func open(_title:String, _message:String, _free=true):
 	super._open()

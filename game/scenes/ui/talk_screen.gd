@@ -20,12 +20,13 @@ func open(_char:InteractiveCharacter):
 	Tools.show_character(talking_char, insert_point)
 	npc_name.text = str(_char)
 
-func _unhandled_input(_event):
+func _input(event):
 	if (Dialog.ignore_input() or trading): return
-	if (Input.is_action_just_pressed("cancel") and default_answer != -1):
-		_on_player_talk_item_clicked(default_answer, null, null)
-	elif Input.is_action_just_pressed("accept") and (player_text_list.get_selected_items().size() > 0):
-		_on_player_talk_item_clicked(player_text_list.get_selected_items()[0], null, null)
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if (Input.is_action_just_released("cancel") and default_answer != -1):
+			_on_player_talk_item_clicked(default_answer, null, null)
+		elif Input.is_action_just_released("accept") and (player_text_list.get_selected_items().size() > 0):
+			_on_player_talk_item_clicked(player_text_list.get_selected_items()[0], null, null)
 
 func talk(phrase:String, answers:Array):
 	npc_text.text = tr(phrase)
@@ -45,9 +46,9 @@ func talk(phrase:String, answers:Array):
 		player_text_list.add_item(tr(answer[0]), icon)
 		player_text_list.set_item_metadata(index, i)
 		player_text_list.set_item_tooltip_enabled(index, false)
-	player_text_list.grab_focus()
 	if (player_text_list.item_count > 0):
 		player_text_list.select(0)
+	player_text_list.grab_focus()
 
 func _on_player_talk_item_clicked(index, _at_position, _mouse_button_index):
 	talking_char.answer(player_text_list.get_item_metadata(index))

@@ -43,7 +43,7 @@ func r4():
 	var item = GameState.inventory.getitem(Item.ItemType.ITEM_QUEST, "ring_1")
 	if item != null:
 		return [
-			["No", d1],
+			["No", d1, true],
 			[tr("[Give %s]") % tr(item.label), 
 				[["Great ! Here's your ham sandwich. Where did you find my ring?", a2, item], [
 					["Behind the Administrator's desk", 

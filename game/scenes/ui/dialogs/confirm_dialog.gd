@@ -8,14 +8,15 @@ extends Dialog
 
 var _on_confirm:Callable
 
-func _unhandled_input(event):
+func _input(event):
 	if (Dialog.ignore_input()): return
-	if (Input.is_action_just_pressed("cancel")):
-		close()
-	elif Input.is_action_just_pressed("accept") and not button_no.has_focus() and not button_cancel.has_focus():
-		_on_button_yes_pressed()
-	elif Input.is_action_just_pressed("decline"):
-		_on_button_no_pressed()
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if (Input.is_action_just_released("cancel")):
+			close()
+		elif Input.is_action_just_released("accept") and not button_no.has_focus() and not button_cancel.has_focus():
+			_on_button_yes_pressed()
+		elif Input.is_action_just_released("decline"):
+			_on_button_no_pressed()
 
 func open(title:String, text:String, on_confirm):
 	super._open()

@@ -16,14 +16,15 @@ var storage:Storage
 var transfered_item:Item
 var on_storage_close:Callable
 
-func _unhandled_input(event):
+func _input(event):
 	if (Dialog.ignore_input()): return
-	if Input.is_action_just_pressed("cancel"):
-		close()
-	elif Input.is_action_just_pressed("accept") and (list_container.has_focus() or list_inventory.has_focus()):
-		_transfert()
-	elif Input.is_action_just_pressed("collect_all") and (list_container.has_focus() or list_inventory.has_focus()):
-		_on_button_all_pressed()
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if Input.is_action_just_released("cancel"):
+			close()
+		elif Input.is_action_just_released("accept") and (list_container.has_focus() or list_inventory.has_focus()):
+			_transfert()
+		elif Input.is_action_just_released("collect_all") and (list_container.has_focus() or list_inventory.has_focus()):
+			_on_button_all_pressed()
 
 func open(node:Storage, on_storage_close):
 	super._open()

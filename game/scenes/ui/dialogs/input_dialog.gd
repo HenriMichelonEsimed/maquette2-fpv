@@ -9,12 +9,13 @@ signal input(text)
 
 var _on_savegame_input:Callable
 
-func _unhandled_input(event):
+func _input(event):
 	if (Dialog.ignore_input()): return
-	if Input.is_action_just_pressed("cancel"):
-		close()
-	elif Input.is_action_just_pressed("accept"):
-		_on_button_ok_pressed()
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if Input.is_action_just_released("cancel"):
+			close()
+		elif Input.is_action_just_released("accept"):
+			_on_button_ok_pressed()
 		
 func open(title:String, text:String, on_savegame_input):
 	super._open()

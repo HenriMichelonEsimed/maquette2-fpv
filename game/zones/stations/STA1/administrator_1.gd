@@ -6,7 +6,7 @@ func ring_discussion(item:ItemQuest):
 	ring = item
 	var can_collect = GameState.quests.have_advpoint("lvl0_waiter_want_is_ring")
 	return [ "Hey, DON'T touch that ring !", [
-		["Ok ! Calm down...", _end],
+		["Ok ! Calm down...", _end, true],
 		["Isn't this ring the waiter's?", [
 			"Uh...well... maybe he put it there and forgot about it?", [
 				["Maybe. I'll show him.", ring_action]
@@ -26,7 +26,7 @@ func r3():
 			[
 				["Oh ok I see. But I am very hungry and very busy. If you can bring me a sandwich or a burger with ham I could help you", a3], [
 					["I'll look it up", _end],
-					["...in your dreams!", d1],
+					["...in your dreams!", d1, true],
 					r2d,
 					r2f
 			]
@@ -58,7 +58,7 @@ var r2a =["Why do you need one ?", [
 
 var r2c = [
 			["I'll look it up", _end],
-			["...in your dreams!", d1],
+			["...in your dreams!", d1, true],
 			r2d,
 			r2f,
 			r2f1,
@@ -75,7 +75,7 @@ func r2d():
 		return [tr("[Give %s]") % tr(item.label),
 		[
 			["Thank you ! Here is the access card", a1, item], [
-				["Thank you", _end]
+				["Thank you", _end, true]
 			]
 		]]
 

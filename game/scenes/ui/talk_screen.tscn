@@ -31,6 +31,7 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [node name="TalkScreen" type="Control"]
+process_mode = 4
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,8 +113,15 @@ text = "Text"
 autowrap_mode = 3
 
 [node name="Player" type="ItemList" parent="Panel/HBoxContainer/Talk"]
+process_mode = 3
 layout_mode = 2
 size_flags_vertical = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hovered_color = Color(0.796078, 0.796078, 0.796078, 1)
 theme_override_colors/font_selected_color = Color(1, 1, 0, 1)

@@ -10,9 +10,9 @@ var item_to_collect:Item = null
 var node_to_use:Usable = null
 var char_to_talk:InteractiveCharacter = null
 
-func _unhandled_input(event):
+func _input(event):
 	if ((event is InputEventMouseButton) and (event.button_index == MOUSE_BUTTON_LEFT)) or ((event is InputEventJoypadButton) and (event.button_index == JOY_BUTTON_A)) or ((event is InputEventKey) and (event.physical_keycode == KEY_ENTER)):
-		if (event.pressed):
+		if (not event.pressed):
 			action_use()
 
 func action_use():

@@ -66,21 +66,23 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_buy, Tools.SHORTCUT_ACCEPT)
 	Tools.set_shortcut_icon(button_back, Tools.SHORTCUT_CANCEL)
 
-func _unhandled_input(_event):
+func _input(event):
 	if (Dialog.ignore_input()): return
-	if Input.is_action_just_pressed("cancel"):
-		_on_button_back_pressed()
-		return
-	elif Input.is_action_just_pressed("accept"):
-		_on_buy_pressed()
-		return
-	state.tab = tabs.current_tab
-	if Input.is_action_just_pressed("ui_left"):
-		_prev_tab()
-	elif Input.is_action_just_pressed("ui_right"):
-		_next_tab()
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if Input.is_action_just_released("cancel"):
+			_on_button_back_pressed()
+			return
+		elif Input.is_action_just_released("accept"):
+			_on_buy_pressed()
+			return
+		state.tab = tabs.current_tab
+		if Input.is_action_just_released("ui_left"):
+			_prev_tab()
+		elif Input.is_action_just_released("ui_right"):
+			_next_tab()
 
 func _on_button_back_pressed():
+	close()
 	on_trade_end.call()
 
 func _on_list_tools_item_selected(index):

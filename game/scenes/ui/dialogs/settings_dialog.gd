@@ -6,10 +6,11 @@ extends Dialog
 @onready var button_close = $Background/Borders/Content/Top/ButtonClose
 @onready var button_save = $Background/Borders/Content/Panel/Borders/Settings/Bottom/ButtonSave
 
-func _unhandled_input(event):
+func _input(event):
 	if (Dialog.ignore_input()): return
-	if (Input.is_action_just_pressed("cancel")):
-		close()
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if (Input.is_action_just_released("cancel")):
+			close()
 
 func open():
 	super._open()

@@ -29,14 +29,15 @@ func _refresh():
 		list_saves.select(0)
 		_on_list_savegames_item_selected(0)
 
-func _unhandled_input(event):
+func _input(event):
 	if (Dialog.ignore_input()): return
-	if (Input.is_action_just_pressed("cancel")):
-		close()
-	elif (Input.is_action_just_pressed("accept") and list_saves.has_focus()):
-		_on_button_load_pressed()
-	elif (Input.is_action_just_pressed("delete") and list_saves.has_focus()):
-		_on_button_delete_pressed()
+	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if (Input.is_action_just_released("cancel")):
+			close()
+		elif (Input.is_action_just_released("accept") and list_saves.has_focus()):
+			_on_button_load_pressed()
+		elif (Input.is_action_just_released("delete") and list_saves.has_focus()):
+			_on_button_delete_pressed()
 
 func _on_list_savegames_item_selected(index):
 	savegame = list_saves.get_item_metadata(index)

@@ -1166,7 +1166,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933684, 0)
 shape = SubResource("CapsuleShape3D_iayoc")
 
 [node name="Interactions" parent="." instance=ExtResource("2_73o8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90177, -0.214329)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
 
 [node name="UnderWater" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
@@ -1658,7 +1658,7 @@ skin = SubResource("Skin_ude4f")
 surface_material_override/0 = ExtResource("8_57h57")
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="Character/RootNode/Skeleton3D"]
-transform = Transform3D(0.0997268, -0.0543836, 0.993528, -0.00551696, -0.99852, -0.0541032, 0.995, -8.57427e-05, -0.0998793, -0.291155, 0.852092, -0.0229876)
+transform = Transform3D(0.0997269, -0.0543836, 0.993528, -0.00551705, -0.99852, -0.0541032, 0.995, -8.57738e-05, -0.0998793, -0.291155, 0.852092, -0.0229876)
 bone_name = "mixamorig_RightHandMiddle1"
 bone_idx = 43
 

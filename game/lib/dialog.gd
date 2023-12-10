@@ -24,11 +24,12 @@ func _open():
 
 func close():
 	var back = dialogs_stack.pop_back()
-	if (dialogs_stack.is_empty()):
-		if (not GameState.ui.menu.visible):
-			GameState.resume_game()
-	else:
-		dialogs_stack.back().process_mode = PROCESS_MODE_WHEN_PAUSED
+	if (self == back):
+		if (dialogs_stack.is_empty()):
+			if (not GameState.ui.menu.visible):
+				GameState.resume_game()
+		else:
+			dialogs_stack.back().process_mode = PROCESS_MODE_WHEN_PAUSED
 	_ignore_input = true
 	queue_free()
 	if (_on_close != null):

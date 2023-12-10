@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/interactions.gd" id="1_xmd2g"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h1r03"]
-size = Vector3(0.8, 1.9, 1.2)
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xypx"]
+size = Vector3(0.6, 0.6, 2.5)
 
 [node name="Interactions" type="Area3D"]
 process_mode = 1
@@ -12,8 +12,8 @@ collision_mask = 60
 script = ExtResource("1_xmd2g")
 
 [node name="DetectionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, -0.35)
-shape = SubResource("BoxShape3D_h1r03")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.45058e-09, -1.25)
+shape = SubResource("BoxShape3D_5xypx")
 
 [connection signal="body_entered" from="." to="." method="_on_collect_item_aera_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_collect_item_aera_body_exited"]
