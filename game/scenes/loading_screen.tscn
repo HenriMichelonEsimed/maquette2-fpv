@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cphvnuadpmarj"]
+[gd_scene load_steps=4 format=3 uid="uid://cphvnuadpmarj"]
 
 [ext_resource type="Script" path="res://scenes/loading_screen.gd" id="1_dreky"]
-[ext_resource type="Texture2D" uid="uid://ca4rao8x7c1ml" path="res://assets/textures/loading_screen.png" id="1_spghj"]
+[ext_resource type="Texture2D" uid="uid://d1arfcbqtrsrs" path="res://assets/textures/menu_background.png" id="2_jtmdv"]
+[ext_resource type="StyleBox" uid="uid://cxtrro0p5q00e" path="res://assets/styles/menu_button.tres" id="3_bn84p"]
 
 [node name="LoadingScreen" type="Control"]
 layout_mode = 3
@@ -19,5 +20,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_spghj")
+texture = ExtResource("2_jtmdv")
 expand_mode = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -58.0
+offset_right = -26.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("3_bn84p")
+text = "Loading..."
