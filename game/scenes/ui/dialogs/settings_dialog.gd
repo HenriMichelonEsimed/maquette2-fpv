@@ -34,4 +34,6 @@ func _on_button_save_pressed():
 	GameState.settings.mouse_y_axis_inverted = myaxis.get_selected_id() == 1
 	if (GameState.game_started):
 		GameState.player.set_y_axis()
+	else:
+		StateSaver.saveState(GameState.settings, true)
 	close()

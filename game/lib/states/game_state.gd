@@ -25,14 +25,15 @@ func new_game():
 	settings = SettingsState.new()
 	messages = MessagesList.new()
 	quests = QuestsManager.new()
-
-func prepare_game(continue_last_game:bool):
-	new_game()
-	use_joypad = Input.get_connected_joypads().size() > 0
 	var os_lang = OS.get_locale_language()
 	for lang in Settings.langs:
 		if (lang == os_lang):
 			GameState.settings.lang = lang
+	StateSaver.loadState(settings, true)
+
+func prepare_game(continue_last_game:bool):
+	new_game()
+	use_joypad = Input.get_connected_joypads().size() > 0
 	TranslationServer.set_locale(GameState.settings.lang)
 	if (continue_last_game):
 		load_game(StateSaver.get_last())

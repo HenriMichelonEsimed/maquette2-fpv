@@ -19,7 +19,7 @@
 script = ExtResource("1_l6sw2")
 
 [node name="ExteriorEnvironnement" parent="." instance=ExtResource("2_ijih0")]
-day_time = 6.362
+day_time = 16.0
 day_of_year = 250
 
 [node name="dune_1" parent="." instance=ExtResource("1_k66sl")]

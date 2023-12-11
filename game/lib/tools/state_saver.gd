@@ -56,14 +56,19 @@ func set_path(savegame = null):
 func _format_name(text:String) -> String:
 	return text.replace("/", "_").replace(":", "_").replace("%", "_").replace("'", "_").replace("\"", "_")
 	
-func saveState(res:State):
-	DirAccess.make_dir_recursive_absolute(_path)
-	var timestamp = FileAccess.open(_path + timestamp_name, FileAccess.WRITE)
-	if (timestamp == null):
-		return false
-	timestamp.store_pascal_string(_last)
-	timestamp.close()
-	var filename = _path + "/" + _format_name(res.name) + default_ext
+func saveState(res:State, global:bool=false):
+	var filename:String
+	if (global):
+		DirAccess.make_dir_recursive_absolute(default_path)
+		filename = default_path + _format_name(res.name) + default_ext
+	else:
+		filename = _path + "/" + _format_name(res.name) + default_ext
+		DirAccess.make_dir_recursive_absolute(_path)
+		var timestamp = FileAccess.open(_path + timestamp_name, FileAccess.WRITE)
+		if (timestamp == null):
+			return false
+		timestamp.store_pascal_string(_last)
+		timestamp.close()
 	var file = FileAccess.open(filename, FileAccess.WRITE)
 	if (file == null): 
 		return false
@@ -116,9 +121,13 @@ func saveState(res:State):
 	file.close()
 	return true
 	
-func loadState(res:State):
+func loadState(res:State, global:bool=false):
 	var parent:Node = res.get("parent")
-	var filename = _path + "/" + _format_name(res.name) + default_ext
+	var filename:String
+	if (global):
+		filename = default_path + _format_name(res.name) + default_ext
+	else:
+		filename = _path + "/" + _format_name(res.name) + default_ext
 	var file = FileAccess.open(filename, FileAccess.READ)
 	if (file == null):
 		return null
