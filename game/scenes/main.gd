@@ -25,6 +25,7 @@ func _ready():
 		GameState.current_item = null
 		GameState.item_use(item)
 	GameState.quests.start("main")
+	GameState.player.set_y_axis()
 	_change_zone(GameState.player_state.zone_name)
 	if (GameState.player_state.position != Vector3.ZERO):
 		player.move(GameState.player_state.position, GameState.player_state.rotation)

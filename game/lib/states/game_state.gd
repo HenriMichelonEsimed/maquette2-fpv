@@ -5,11 +5,11 @@ signal saving_end()
 signal loading_start()
 signal loading_end()
 
-var player_state:PlayerState = PlayerState.new()
-var inventory = ItemsCollection.new()
-var settings = SettingsState.new()
-var messages = MessagesList.new()
-var quests = QuestsManager.new()
+var player_state:PlayerState
+var inventory:ItemsCollection
+var settings:SettingsState
+var messages:MessagesList
+var quests:QuestsManager
 
 var player:Player
 var ui:MainUI
@@ -17,15 +17,26 @@ var current_item:Item
 var current_zone:Zone
 var savegame_name:String
 var use_joypad:bool = false
+var game_started:bool = false
 
-func _ready():
+func new_game():
+	player_state = PlayerState.new()
+	inventory = ItemsCollection.new()
+	settings = SettingsState.new()
+	messages = MessagesList.new()
+	quests = QuestsManager.new()
+
+func start_game(continue_last_game:bool):
+	new_game()
 	use_joypad = Input.get_connected_joypads().size() > 0
 	var os_lang = OS.get_locale_language()
 	for lang in Settings.langs:
 		if (lang == os_lang):
 			GameState.settings.lang = lang
 	TranslationServer.set_locale(GameState.settings.lang)
-	load_game(StateSaver.get_last())
+	if (continue_last_game):
+		load_game(StateSaver.get_last())
+	GameState.game_started = true
 
 func save_game(savegame = null):
 	saving_start.emit()
@@ -42,7 +53,6 @@ func save_game(savegame = null):
 	StateSaver.saveState(settings)
 	StateSaver.saveState(MessagesState.new(messages))
 	StateSaver.saveState(QuestsState.new(quests))
-	
 	StateSaver.saveState(current_zone.state)
 	saving_end.emit()
 	

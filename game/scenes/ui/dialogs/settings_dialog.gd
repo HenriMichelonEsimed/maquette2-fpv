@@ -32,5 +32,6 @@ func _on_button_save_pressed():
 			TranslationServer.set_locale(lang)
 	GameState.settings.joypad_y_axis_inverted = yaxis.get_selected_id() == 1
 	GameState.settings.mouse_y_axis_inverted = myaxis.get_selected_id() == 1
-	GameState.player.set_y_axis()
+	if (GameState.game_started):
+		GameState.player.set_y_axis()
 	close()

@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cphvnuadpmarj"]
+
+[ext_resource type="Script" path="res://scenes/loading_screen.gd" id="1_dreky"]
+[ext_resource type="Texture2D" uid="uid://ca4rao8x7c1ml" path="res://assets/textures/loading_screen.png" id="1_spghj"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dreky")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_spghj")
+expand_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -12.5
+offset_right = 100.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false

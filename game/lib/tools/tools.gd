@@ -46,12 +46,16 @@ static func load_zone(zone_name:String):
 	var zone_path = "res://zones/" + zone_name + ".tscn"
 	var _dummy = []
 	if (ResourceLoader.load_threaded_get_status(zone_path, _dummy) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE):
-		ResourceLoader.load_threaded_request(zone_path)
+		ResourceLoader.load_threaded_request(zone_path, "", true)
 	return ResourceLoader.load_threaded_get(zone_path)
 
 static func preload_zone(zone_name:String):
 	var zone_path = "res://zones/" + zone_name + ".tscn"
-	ResourceLoader.load_threaded_request(zone_path)
+	return ResourceLoader.load_threaded_request(zone_path)
+
+static func preload_zone_status(zone_name:String, progress:Array) -> ResourceLoader.ThreadLoadStatus:
+	var zone_path = "res://zones/" + zone_name + ".tscn"
+	return ResourceLoader.load_threaded_get_status(zone_path, progress)
 
 static func load_dialog(parent:Node, dialog:String, on_close = null) -> Dialog:
 	var scene = load("res://scenes/ui/dialogs/" + dialog + "_dialog.tscn").instantiate()

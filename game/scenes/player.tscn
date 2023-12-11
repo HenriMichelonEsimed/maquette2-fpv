@@ -1175,7 +1175,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35, 0)
 shape = SubResource("BoxShape3D_o2dxl")
 
 [node name="Filter" type="MeshInstance3D" parent="UnderWater"]
-transform = Transform3D(1.01102, 0, 0, 0, 0.864768, 0, 0, 0, 0.913538, 0, 0, 0)
+transform = Transform3D(2.97554, 0, 0, 0, 2.67656, 0, 0, 0, 2.88546, 0, 0, -0.198189)
 visible = false
 mesh = SubResource("SphereMesh_donio")
 surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")

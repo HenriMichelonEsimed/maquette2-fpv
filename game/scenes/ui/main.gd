@@ -213,8 +213,7 @@ func _on_button_quit_pressed():
 func _on_save_before_quit_confirm(save:bool):
 	if (save): 
 		GameState.save_game()
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func _on_timer_notif_timeout():
 	label_notif.visible = false
