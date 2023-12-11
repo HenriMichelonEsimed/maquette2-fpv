@@ -79,7 +79,6 @@ func on_item_dropped(item:Item, quantity:int):
 func on_item_collected(item:Item, quantity:int, force = false):
 	if (not force) and (not item.collect()):
 		return
-	GameState.player.interactions._on_collect_item_aera_body_exited(item)
 	var new_item:Item = item.duplicate(DUPLICATE_SCRIPTS)
 	new_item.remove_meta("storage")
 	new_item.disable()

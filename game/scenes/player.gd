@@ -3,7 +3,7 @@ class_name Player extends CharacterBody3D
 @onready var camera:Camera3D = $Camera3D
 @onready var camera_pivot:Node3D = $Camera3D
 @onready var under_water_filter = $UnderWater/Filter
-@onready var interactions:Interactions = $Interactions
+@onready var interactions:Interactions = $Camera3D/RayCastInteractions
 @onready var raycast_to_floor:RayCast3D = $RayCastToFloor
 @onready var anim:AnimationPlayer = $Character/AnimationPlayer
 @onready var attach_item:Node3D = $Character/RootNode/Skeleton3D/HandAttachment/AttachmentPoint
@@ -15,7 +15,7 @@ var jump_speed:float = 5
 var mouse_sensitivity:float = 0.002
 var mouse_captured:bool = false
 var max_camera_angle_up:float = deg_to_rad(60)
-var max_camera_angle_down:float = -deg_to_rad(50)
+var max_camera_angle_down:float = -deg_to_rad(70)
 var look_up_action:String = "look_up"
 var look_down_action:String = "look_down"
 var mouse_y_axis:int = -1
@@ -24,7 +24,6 @@ var run:bool = false
 func _ready():
 	if (GameState.player_state.position != Vector3.ZERO):
 		_set_position()
-	interactions.player = self
 	set_y_axis()
 	anim.play("standing")
 	capture_mouse()

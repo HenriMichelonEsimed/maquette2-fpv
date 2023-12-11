@@ -1,53 +1,54 @@
-class_name Interactions extends Area3D
+class_name Interactions extends RayCast3D
 
-@export var player:Player
+@export var camera:Node3D
 
 signal display_info(node:Node3D)
 signal hide_info()
 signal item_collected(item:Item, quantity:int)
 
-var item_to_collect:Item = null
-var node_to_use:Usable = null
-var char_to_talk:InteractiveCharacter = null
+var target_node:Node3D = null
 
 func _input(event):
-	if ((event is InputEventMouseButton) and (event.button_index == MOUSE_BUTTON_LEFT)) or ((event is InputEventJoypadButton) and (event.button_index == JOY_BUTTON_A)) or ((event is InputEventKey) and (event.physical_keycode == KEY_ENTER)):
+	if (event is InputEventMouseMotion):
+		_next_body()
+	elif ((event is InputEventMouseButton) and (event.button_index == MOUSE_BUTTON_LEFT)) or ((event is InputEventJoypadButton) and (event.button_index == JOY_BUTTON_A)) or ((event is InputEventKey) and (event.physical_keycode == KEY_ENTER)):
 		if (not event.pressed):
 			action_use()
 
+func _next_body():
+	target_position.z = -1 + camera.rotation_degrees.x / 70
+	force_raycast_update()
+	if (is_colliding()):
+		_on_collect_item_aera_body_entered(get_collider())
+	else:
+		_on_collect_item_aera_body_exited()
+		
+func _process(delta):
+	_next_body()
+
 func action_use():
-	if (node_to_use != null):
-		node_to_use.use(true)
-	elif (item_to_collect != null):
-		item_collected.emit(item_to_collect, -1)
+	if (target_node is Item):
+		item_collected.emit(target_node, -1)
 		_next_body()
-	elif (char_to_talk != null):
-		player.look_at_char(char_to_talk)
-		char_to_talk.interact()
+	elif (target_node is Usable):
+		target_node.use(true)
+	elif (target_node is InteractiveCharacter):
+		target_node.interact()
 
 func _on_collect_item_aera_body_entered(node:Node):
 	if (node is Item):
-		item_to_collect = node
-		display_info.emit(node)
+		target_node = node
+		display_info.emit(target_node)
 	elif (node is Usable):
-		node_to_use = node
-		display_info.emit(node)
+		target_node = node
+		display_info.emit(target_node)
 	elif (node is Trigger):
 		node.trigger()
 	elif (node is InteractiveCharacter):
-		char_to_talk = node
-		display_info.emit(node)
+		target_node = node
+		display_info.emit(target_node)
 
-func _on_collect_item_aera_body_exited(node:Node):
-	if (node == item_to_collect):
-		item_to_collect = null
-	if (node == node_to_use):
-		node_to_use = null
-	if (node == char_to_talk):
-		char_to_talk = null
+func _on_collect_item_aera_body_exited():
+	target_node = null
 	hide_info.emit()
 
-func _next_body():
-	if (has_overlapping_bodies()):
-		var next = get_overlapping_bodies()[0]
-		_on_collect_item_aera_body_entered(next)
