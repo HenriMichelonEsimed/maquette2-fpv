@@ -171,13 +171,15 @@ offset_right = 84.0
 offset_bottom = 39.0
 auto_translate = false
 localize_numeral_system = false
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("1_ni5mw")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = ""
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("2_ur2r2")
-icon_size = 32
+icon_size = 24
 icon_name = "envelope"
 
 [node name="MenuClose" type="TextureRect" parent="."]
