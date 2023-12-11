@@ -98,5 +98,9 @@ static func set_shortcut_icon(button:Control, name:String):
 		button.icon = load_shortcut_icon(name)
 	elif (button is TextureRect):
 		button.texture = load_shortcut_icon(name)
-		
 
+static func reset_shortcut_icon(button:Control):
+	if (button is Button):
+		button.icon = null
+	elif (button is TextureRect):
+		button.texture = null

@@ -21,8 +21,7 @@ func _input(event):
 			action_use()
 			
 func _next_body():
-	target_position.z = -(1 + exp(-camera.rotation.x*2) / 7)
-	#print(target_position.z)
+	target_position.z = -(1.2 + exp(-camera.rotation.x*2) / 7)
 	force_raycast_update()
 	if (is_colliding()):
 		_on_collect_item_aera_body_entered(get_collider())
