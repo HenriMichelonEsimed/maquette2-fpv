@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://qe1usdxm7835"]
 
-[ext_resource type="Texture2D" uid="uid://e2tyb1pdryvf" path="res://assets/textures/menu_background.jpg" id="1_3axyl"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_4o88a"]
 [ext_resource type="StyleBox" uid="uid://cxtrro0p5q00e" path="res://assets/styles/menu_button.tres" id="2_bgaqr"]
+[ext_resource type="Texture2D" uid="uid://c700r1avxi57p" path="res://assets/textures/background.jpg" id="2_c28rs"]
 [ext_resource type="StyleBox" uid="uid://dkldklw6dth8q" path="res://assets/styles/menu_button_hover.tres" id="3_qr46t"]
 
 [node name="MainMenu" type="Control"]
@@ -21,7 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_3axyl")
+texture = ExtResource("2_c28rs")
 expand_mode = 2
 
 [node name="Menu" type="VBoxContainer" parent="."]
@@ -72,6 +72,7 @@ theme_override_styles/pressed = ExtResource("3_qr46t")
 theme_override_styles/focus = ExtResource("2_bgaqr")
 text = "Quit"
 
+[connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="pressed" from="Menu/ButtonContinue" to="." method="_on_button_continue_pressed"]
 [connection signal="pressed" from="Menu/ButtonNew" to="." method="_on_button_new_pressed"]
 [connection signal="pressed" from="Menu/ButtonSettings" to="." method="_on_button_settings_pressed"]

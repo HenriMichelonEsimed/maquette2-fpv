@@ -161,7 +161,7 @@ func display_notification(message:String):
 func _on_load_savegame(savegame:String):
 	menu.visible = false
 	GameState.load_game(savegame)
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/loading_screen.tscn")
 	
 func _on_savegame_input(savegame):
 	if (savegame != null):

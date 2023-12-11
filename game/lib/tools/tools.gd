@@ -51,11 +51,11 @@ static func load_zone(zone_name:String):
 
 static func preload_zone(zone_name:String):
 	var zone_path = "res://zones/" + zone_name + ".tscn"
-	return ResourceLoader.load_threaded_request(zone_path)
+	return ResourceLoader.load_threaded_request(zone_path, "", true)
 
-static func preload_zone_status(zone_name:String, progress:Array) -> ResourceLoader.ThreadLoadStatus:
+static func preload_zone_status(zone_name:String) -> ResourceLoader.ThreadLoadStatus:
 	var zone_path = "res://zones/" + zone_name + ".tscn"
-	return ResourceLoader.load_threaded_get_status(zone_path, progress)
+	return ResourceLoader.load_threaded_get_status(zone_path)
 
 static func load_dialog(parent:Node, dialog:String, on_close = null) -> Dialog:
 	var scene = load("res://scenes/ui/dialogs/" + dialog + "_dialog.tscn").instantiate()

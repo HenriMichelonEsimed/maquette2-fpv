@@ -26,7 +26,7 @@ func new_game():
 	messages = MessagesList.new()
 	quests = QuestsManager.new()
 
-func start_game(continue_last_game:bool):
+func prepare_game(continue_last_game:bool):
 	new_game()
 	use_joypad = Input.get_connected_joypads().size() > 0
 	var os_lang = OS.get_locale_language()
@@ -36,7 +36,6 @@ func start_game(continue_last_game:bool):
 	TranslationServer.set_locale(GameState.settings.lang)
 	if (continue_last_game):
 		load_game(StateSaver.get_last())
-	GameState.game_started = true
 
 func save_game(savegame = null):
 	saving_start.emit()
@@ -57,6 +56,7 @@ func save_game(savegame = null):
 	saving_end.emit()
 	
 func load_game(savegame = null):
+	GameState.prepare_game(false)
 	loading_start.emit()
 	StateSaver.set_path(savegame)
 	StateSaver.loadState(player_state)

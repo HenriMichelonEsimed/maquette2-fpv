@@ -29,6 +29,7 @@ func _ready():
 	_change_zone(GameState.player_state.zone_name)
 	if (GameState.player_state.position != Vector3.ZERO):
 		player.move(GameState.player_state.position, GameState.player_state.rotation)
+	GameState.game_started = true
 
 func _change_zone(zone_name:String, spawnpoint_key:String="default"):
 	if (GameState.current_zone != null) and (zone_name == GameState.current_zone.zone_name): 
