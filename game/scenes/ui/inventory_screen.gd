@@ -90,6 +90,8 @@ func _unhandled_input(event):
 		return
 
 func _input(event):
+	if (get_viewport().gui_get_focus_owner() == null):
+		_focus_current_tab()
 	if Input.is_action_just_pressed("ui_left"):
 		_set_tab(-1)
 	elif Input.is_action_just_pressed("ui_right"):

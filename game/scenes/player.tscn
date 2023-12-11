@@ -1184,10 +1184,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116028, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00478035, 1.69961, -0.136006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00478035, 1.69961, -0.236006)
 near = 0.2
 
 [node name="RayCastInteractions" type="RayCast3D" parent="Camera3D" node_paths=PackedStringArray("camera")]
+process_mode = 1
 target_position = Vector3(0, 0, -1.8)
 collision_mask = 44
 script = ExtResource("2_y1dc3")
@@ -1666,7 +1667,7 @@ bone_name = "mixamorig_RightHandMiddle1"
 bone_idx = 43
 
 [node name="AttachmentPoint" type="Node3D" parent="Character/RootNode/Skeleton3D/HandAttachment"]
-transform = Transform3D(1, -6.02085e-08, 0, 5.60467e-08, 1, -1.3576e-08, 4.47035e-08, -3.64835e-08, 1, -0.0093032, -0.00014466, 0.0375062)
+transform = Transform3D(1, -6.04341e-08, -8.9407e-08, 4.95347e-08, 1, -6.00139e-08, -4.47035e-08, -3.63307e-08, 1, -0.0095159, -0.00707895, 0.0353929)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
 reset_on_save = false

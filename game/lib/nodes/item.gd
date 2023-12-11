@@ -23,11 +23,9 @@ func _ready():
 
 func use():
 	disable()
-	position = Vector3.ZERO
 	rotate_y(deg_to_rad(180))
 
 func unuse():
-	position = Vector3.ZERO
 	rotation = Vector3.ZERO
 	enable()
 

@@ -8,15 +8,21 @@ signal item_collected(item:Item, quantity:int)
 
 var target_node:Node3D = null
 
-func _input(event):
+func _unhandled_input(event):
 	if (event is InputEventMouseMotion):
 		_next_body()
-	elif ((event is InputEventMouseButton) and (event.button_index == MOUSE_BUTTON_LEFT)) or ((event is InputEventJoypadButton) and (event.button_index == JOY_BUTTON_A)) or ((event is InputEventKey) and (event.physical_keycode == KEY_ENTER)):
-		if (not event.pressed):
+	elif ((event is InputEventMouseButton) and (event.button_index == MOUSE_BUTTON_LEFT)):
+		if (event.pressed):
 			action_use()
 
+func _input(event):
+	if ((event is InputEventJoypadButton) and (event.button_index == JOY_BUTTON_A)) or ((event is InputEventKey) and (event.physical_keycode == KEY_ENTER)):
+		if (not event.pressed):
+			action_use()
+			
 func _next_body():
-	target_position.z = -1 + camera.rotation_degrees.x / 70
+	target_position.z = -(1 + exp(-camera.rotation.x*2) / 7)
+	#print(target_position.z)
 	force_raycast_update()
 	if (is_colliding()):
 		_on_collect_item_aera_body_entered(get_collider())
@@ -27,6 +33,7 @@ func _process(delta):
 	_next_body()
 
 func action_use():
+	if (target_node == null): return
 	if (target_node is Item):
 		item_collected.emit(target_node, -1)
 		_next_body()
@@ -34,6 +41,7 @@ func action_use():
 		target_node.use(true)
 	elif (target_node is InteractiveCharacter):
 		target_node.interact()
+		target_node = null
 
 func _on_collect_item_aera_body_entered(node:Node):
 	if (node is Item):

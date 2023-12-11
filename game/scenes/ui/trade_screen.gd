@@ -60,7 +60,7 @@ func open(_char:InteractiveCharacter, _on_trade_end):
 	if (item_credits != null):
 		credits = item_credits.quantity
 	_refresh()
-	_hide_empty_tabs()
+	print(list_consumables.has_focus())
 
 func set_shortcuts():
 	Tools.set_shortcut_icon(button_buy, Tools.SHORTCUT_ACCEPT)
@@ -69,6 +69,8 @@ func set_shortcuts():
 func _input(event):
 	if (Dialog.ignore_input()): return
 	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
+		if (get_viewport().gui_get_focus_owner() == null):
+			_focus_current_tab()
 		if Input.is_action_just_released("cancel"):
 			_on_button_back_pressed()
 			return
@@ -190,10 +192,10 @@ func _buy(quantity:int=0):
 
 func _focus_current_tab():
 	list = list_content[tab_order[tabs.current_tab]]
-	list.grab_focus()
 	if (list.item_count > 0) and not list.is_anything_selected():
 		list.select(0)
 		list.item_selected.emit(0)
+	list.grab_focus()
 
 func _on_tabs_tab_selected(tab):
 	if (prev_tab == tab): return

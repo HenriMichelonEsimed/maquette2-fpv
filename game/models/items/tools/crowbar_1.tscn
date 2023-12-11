@@ -53,7 +53,7 @@ price = 10.0
 preview_scale = 0.8
 
 [node name="Plane" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0636392, -2.08616e-08, 0.0771366, 0.0771366, 5.96047e-09, -0.0636392, 2.98023e-09, 0.1, 1.78814e-08, 0, 0, 0)
+transform = Transform3D(0.0636392, -2.08616e-08, 0.0771366, 0.0771366, 5.96047e-09, -0.0636392, 2.98023e-09, 0.1, 1.78814e-08, 0, -0.0699572, -3.72529e-09)
 mesh = SubResource("ArrayMesh_14pip")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_grbpw")

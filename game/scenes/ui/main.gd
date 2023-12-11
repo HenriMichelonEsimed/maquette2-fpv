@@ -116,7 +116,6 @@ func npc_trade(_char:InteractiveCharacter):
 	_talk_screen.trading = true
 	_trade_screen = Tools.load_screen(self, Tools.SCREEN_NPC_TRADE)
 	_trade_screen.open(_char, npc_trade_end)
-	_talk_screen.release_focus()
 
 func npc_trade_end():
 	_talk_screen.trading = false
