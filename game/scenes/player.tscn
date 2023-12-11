@@ -1181,7 +1181,8 @@ mesh = SubResource("SphereMesh_donio")
 surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")
 
 [node name="RayCastToFloor" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116028, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983706, 0)
+target_position = Vector3(0, -1.5, -1.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00478035, 1.69961, -0.236006)

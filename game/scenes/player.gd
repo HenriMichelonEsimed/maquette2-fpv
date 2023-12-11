@@ -15,11 +15,10 @@ var jump_speed:float = 5
 var mouse_sensitivity:float = 0.002
 var mouse_captured:bool = false
 var max_camera_angle_up:float = deg_to_rad(60)
-var max_camera_angle_down:float = -deg_to_rad(60)
+var max_camera_angle_down:float = -deg_to_rad(75)
 var look_up_action:String = "look_up"
 var look_down_action:String = "look_down"
 var mouse_y_axis:int = -1
-var run:bool = false
 
 func _ready():
 	if (GameState.player_state.position != Vector3.ZERO):
@@ -45,8 +44,6 @@ func _unhandled_input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		camera_pivot.rotate_x(event.relative.y * mouse_sensitivity * mouse_y_axis)
 		camera_pivot.rotation.x = clampf(camera_pivot.rotation.x, max_camera_angle_down, max_camera_angle_up)
-	elif event is InputEventKey or event is InputEventJoypadButton:
-		run = Input.is_action_just_pressed("run")
 
 func _physics_process(delta):
 	if mouse_captured:
@@ -61,6 +58,7 @@ func _physics_process(delta):
 		velocity.y += -gravity * delta
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backwards")
 	var direction = transform.basis * Vector3(input.x, 0, input.y)
+	var run = Input.is_action_pressed("run")
 	var speed = running_speed if run else walking_speed
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed

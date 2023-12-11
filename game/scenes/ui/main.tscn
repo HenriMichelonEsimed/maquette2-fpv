@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cc25hf7gi6i13"]
+[gd_scene load_steps=15 format=3 uid="uid://cc25hf7gi6i13"]
 
 [ext_resource type="Script" path="res://scenes/ui/main.gd" id="1_ghhs3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="1_ni5mw"]
@@ -11,6 +11,7 @@
 [ext_resource type="StyleBox" uid="uid://37edqfqkfson" path="res://assets/styles/notif_label.tres" id="7_esqke"]
 [ext_resource type="StyleBox" uid="uid://dkldklw6dth8q" path="res://assets/styles/menu_button_hover.tres" id="8_5gish"]
 [ext_resource type="PackedScene" uid="uid://r3fibn5pmeaq" path="res://scenes/ui/tool_panel.tscn" id="8_qxtma"]
+[ext_resource type="Texture2D" uid="uid://cw8xc1ad8lbdr" path="res://assets/textures/controllers/buttons/keyboard/menu.png" id="10_pjl1y"]
 [ext_resource type="Texture2D" uid="uid://2ch1mmloia32" path="res://assets/textures/crosshair.svg" id="12_qnr10"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f6dah"]
@@ -94,7 +95,7 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("7_esqke")
 text = "Notif"
 horizontal_alignment = 1
@@ -105,7 +106,7 @@ process_mode = 1
 wait_time = 5.0
 one_shot = true
 
-[node name="MenuIcon" type="TextureRect" parent="HUD"]
+[node name="MenuOpen" type="TextureRect" parent="HUD"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -129,7 +130,7 @@ theme_override_constants/shadow_offset_x = 1
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = ExtResource("4_rpld4")
 text = "Infos"
 horizontal_alignment = 1
@@ -144,6 +145,48 @@ offset_bottom = 42.0
 
 [node name="PanelTool" parent="HUD" instance=ExtResource("8_qxtma")]
 layout_mode = 1
+
+[node name="CrossHair" type="TextureRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0.501961)
+self_modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_qnr10")
+
+[node name="Messages" type="Label" parent="HUD"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = -1.0
+offset_right = 84.0
+offset_bottom = 39.0
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 32
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_ur2r2")
+icon_size = 32
+icon_name = "envelope"
+
+[node name="MenuClose" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+texture = ExtResource("10_pjl1y")
 
 [node name="Menu" type="VBoxContainer" parent="."]
 process_mode = 2
@@ -301,28 +344,6 @@ text = ""
 script = ExtResource("5_utbrf")
 icon_size = 40
 icon_name = "person-walking-arrow-right"
-
-[node name="MenuIcon" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(1, 1, 1, 0.501961)
-self_modulate = Color(1, 1, 1, 0.501961)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("12_qnr10")
 
 [connection signal="timeout" from="LabelSaving/Timer" to="." method="_on_saving_timer_timeout"]
 [connection signal="timeout" from="HUD/LabelNotification/Timer" to="." method="_on_timer_notif_timeout"]

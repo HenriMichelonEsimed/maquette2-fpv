@@ -9,12 +9,13 @@ class_name MainUI extends Control
 @onready var focused_button:Button = $Menu/MainMenu/ButtonInventory
 @onready var label_notif:Label = $HUD/LabelNotification
 @onready var timer_notif:Timer = $HUD/LabelNotification/Timer
-@onready var icon_menu_open = $HUD/MenuIcon
-@onready var icon_menu_close = $MenuIcon
+@onready var icon_menu_open = $HUD/MenuOpen
+@onready var icon_menu_close = $MenuClose
 @onready var icon_use = $HUD/LabelInfo/Icon
 @onready var button_iventory = $Menu/MainMenu/ButtonInventory
 @onready var button_terminal = $Menu/MainMenu/ButtonTerminal
 @onready var panel_item = $HUD/PanelTool
+@onready var icon_message = $HUD/Messages
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
@@ -30,10 +31,12 @@ func _ready():
 	panel_info.visible = false
 	menu.visible = false
 	label_notif.visible = false
-	icon_menu_close.visible = false
 	panel_item.visible = false
+	icon_menu_close.visible = false
+	icon_message.visible = false
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
+	GameState.messages.connect("new_message", on_message)
 	player.interactions.connect("display_info", _on_display_info)
 	player.interactions.connect("hide_info", hide_info)
 	Input.connect("joy_connection_changed", _on_joypad_connection_changed)
@@ -90,13 +93,12 @@ func menu_open():
 	GameState.pause_game()
 	menu.visible = true
 	icon_menu_close.visible = true
-	icon_menu_open.visible = false
 	focused_button.grab_focus()
 
 func menu_close(_dummy=null):
 	menu.visible = false
 	icon_menu_close.visible = false
-	icon_menu_open.visible = true
+	on_message()
 	GameState.resume_game()
 	
 func npc_talk(_char:InteractiveCharacter, phrase:String, answers:Array):
@@ -216,3 +218,6 @@ func _on_save_before_quit_confirm(save:bool):
 
 func _on_timer_notif_timeout():
 	label_notif.visible = false
+
+func on_message():
+	icon_message.visible = GameState.messages.have_unread()

@@ -81,6 +81,7 @@ func _spawn_player(spawnpoint_key:String):
 	_last_spawnpoint = spawnpoint_key
 
 func _on_new_message():
+	ui.on_message()
 	NotificationManager.notif("You have unread messages !")
 
 func _on_storage_open(node:Storage):
