@@ -25,6 +25,8 @@ CraftingRecipes="*res://lib/craft_recipes.gd"
 
 [display]
 
+window/size/viewport_width=1280
+window/size/viewport_height=600
 window/size/mode=3
 window/size/initial_position_type=0
 

@@ -45,14 +45,19 @@ func _unhandled_input(event):
 		camera_pivot.rotate_x(event.relative.y * mouse_sensitivity * mouse_y_axis)
 		camera_pivot.rotation.x = clampf(camera_pivot.rotation.x, max_camera_angle_down, max_camera_angle_up)
 
-func _physics_process(delta):
+var look_dir:Vector2 = Vector2.ZERO
+func _process(delta):
 	if mouse_captured:
 		var joypad_dir: Vector2 = Input.get_vector("look_left", "look_right", look_up_action, look_down_action)
 		if joypad_dir.length() > 0:
-			var look_dir = joypad_dir * delta
-			rotate_y(-look_dir.x)
+			look_dir = joypad_dir * delta
 			camera.rotate_x(-look_dir.y)
 			camera.rotation.x = clamp(camera.rotation.x - look_dir.y,  max_camera_angle_down, max_camera_angle_up)
+		else:
+			look_dir = Vector2.ZERO
+	if (look_dir != Vector2.ZERO):
+		var smooth_dir = lerp(0.0, -look_dir.x*2, 1.0)
+		rotate_y(smooth_dir)
 	var on_floor = is_on_floor_only() 
 	if not on_floor:
 		velocity.y += -gravity * delta
