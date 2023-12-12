@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://b06w3wkgfoh6i"]
 
-[ext_resource type="Script" path="res://models/items/tools/crowbar_1.gd" id="1_3gffe"]
+[ext_resource type="Script" path="res://lib/nodes/item_tool.gd" id="1_ny01v"]
 [ext_resource type="Material" uid="uid://dushpwnfsy7nv" path="res://assets/materials/colors_outline/grey_3.tres" id="2_grbpw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ev0v7"]
@@ -46,7 +46,7 @@ size = Vector3(1.20325, 0.232068, 0.0582031)
 [node name="crowbar_1" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0262109, -0.00139391)
 collision_mask = 0
-script = ExtResource("1_3gffe")
+script = ExtResource("1_ny01v")
 key = "crowbar_1"
 label = "Crowbar"
 price = 10.0

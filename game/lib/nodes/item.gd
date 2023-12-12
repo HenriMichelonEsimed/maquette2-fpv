@@ -25,9 +25,12 @@ func _ready():
 func use():
 	disable()
 	position = Vector3.ZERO
+	scale = Vector3(100.0,100.0,100.0)
+	rotate_y(deg_to_rad(180))
 
 func unuse():
 	rotation = original_rotation
+	scale = Vector3.ZERO
 	enable()
 
 func collect():

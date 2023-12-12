@@ -833,12 +833,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 19.45,
 [node name="waiter_1" parent="Canteen" instance=ExtResource("62_ilvco")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 10.15, 0, 2.3)
 
-[node name="soft_drink_1" parent="Canteen" instance=ExtResource("66_lg42s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2473, 0.763703, 4.64566)
-
-[node name="soft_drink_2" parent="Canteen" instance=ExtResource("66_lg42s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.3465, 0.763703, 7.25035)
-
 [node name="plate_1" parent="Canteen" instance=ExtResource("67_gyirs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6363, 0.764, 7.05491)
 
@@ -873,3 +867,9 @@ color = Color(1, 1, 0.792157, 1)
 [node name="OmniLightBar2" parent="." instance=ExtResource("12_62s51")]
 transform = Transform3D(-2.78181e-08, 0, -1, 0, 1, 0, 1, 0, -2.78181e-08, 17.1465, 1.46047, -9.2)
 color = Color(1, 1, 0.792157, 1)
+
+[node name="soft_drink_1" parent="." instance=ExtResource("66_lg42s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.8, 0.761249, -10.6)
+
+[node name="soft_drink_2" parent="." instance=ExtResource("66_lg42s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8215, 0.761249, -8.07785)
