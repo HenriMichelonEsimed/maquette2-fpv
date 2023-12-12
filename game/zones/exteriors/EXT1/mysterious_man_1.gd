@@ -15,7 +15,7 @@ func _init():
 	])
 	super(
 		["Hello", [
-			["Hello, nice to meet you", d1]
+			[tr("Hello, pleased to meet you my name is %s") % GameState.player_state.nickname, d1]
 		]]
 	)
 

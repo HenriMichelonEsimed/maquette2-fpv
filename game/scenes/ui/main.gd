@@ -5,7 +5,6 @@ class_name MainUI extends Control
 @onready var label_saving:Label = $LabelSaving
 @onready var time_saving:Timer = $LabelSaving/Timer
 @onready var label_info:Label = $HUD/LabelInfo
-@onready var panel_info:Label = $HUD/LabelInfo
 @onready var focused_button:Button = $Menu/MainMenu/ButtonInventory
 @onready var label_notif:Label = $HUD/LabelNotification
 @onready var timer_notif:Timer = $HUD/LabelNotification/Timer
@@ -16,6 +15,7 @@ class_name MainUI extends Control
 @onready var button_terminal = $Menu/MainMenu/ButtonTerminal
 @onready var panel_item = $HUD/PanelTool
 @onready var icon_message = $HUD/Messages
+@onready var crosshair = $HUD/CrossHair
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
@@ -28,7 +28,7 @@ var _trade_screen:Dialog
 func _ready():
 	blur.visible = false
 	label_saving.visible = false
-	panel_info.visible = false
+	label_info.visible = false
 	menu.visible = false
 	label_notif.visible = false
 	panel_item.visible = false
@@ -56,10 +56,6 @@ func _on_joypad_connection_changed(_id, _connected):
 
 func _input(event):
 	if (not Dialog.dialogs_stack.is_empty()) or Dialog.ignore_input(): return
-	if (label_info.visible):
-		if (event is InputEventMouseMotion) or (Input.is_action_pressed("look_left") or (Input.is_action_pressed("look_right"))):
-			_label_info_position()
-			return
 	if ((event is InputEventJoypadButton) or (event is InputEventKey)) and (not event.pressed):
 		if (Input.is_action_just_released("menu") and not menu.visible):
 			menu_open()
@@ -187,10 +183,9 @@ func _on_saving_timer_timeout():
 	label_saving.visible = false
 	
 func _label_info_position():
-	var pos:Vector3 = _displayed_node.global_position
-	#pos.y = player.global_position.y + 1.5
-	panel_info.position = player.camera.unproject_position(pos)
-	label_info.position.y = (size.y - label_info.size.y)/2
+	label_info.position = crosshair.position
+	label_info.position.y += 30
+	label_info.position.x += 40
 	
 func _on_display_info(node:Node3D):
 	_displayed_node = node
@@ -199,10 +194,10 @@ func _on_display_info(node:Node3D):
 		label = str(node)
 	label_info.text = label
 	_label_info_position()
-	panel_info.visible = true
+	label_info.visible = true
 
 func hide_info():
-	panel_info.visible = false
+	label_info.visible = false
 	label_info.text = ''
 
 func _on_button_quit_pressed():

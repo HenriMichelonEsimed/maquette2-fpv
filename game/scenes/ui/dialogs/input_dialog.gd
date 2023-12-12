@@ -3,7 +3,7 @@ extends Dialog
 signal input(text)
 
 @onready var label_title = $Panel/Content/VBoxContainer/Top/Label
-@onready var edit = $Panel/Content/VBoxContainer/Edit
+@onready var edit:LineEdit = $Panel/Content/VBoxContainer/Edit
 @onready var button_cancel = $Panel/Content/VBoxContainer/Top/ButtonCancel
 @onready var button_ok = $Panel/Content/VBoxContainer/Bottom/ButtonOk
 
@@ -22,7 +22,6 @@ func open(title:String, text:String, on_savegame_input):
 	_on_savegame_input = on_savegame_input
 	label_title.text = tr(title)
 	edit.text = tr(text)
-	edit.select_all()
 	edit.grab_focus()
 
 func set_shortcuts():

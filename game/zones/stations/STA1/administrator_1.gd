@@ -150,7 +150,8 @@ func r4():
 func _init():
 	d1.append_array(["How can I help you ?", [
 		["Who are you ?", [
-			"I am the administrator of this station", [["Nice to meet you", d1]]
+			"I am the administrator of this station", 
+				[[tr("Hello, pleased to meet you my name is %s") % GameState.player_state.nickname, d1]]
 		]],
 		r4,
 		["Bye", _end, true]

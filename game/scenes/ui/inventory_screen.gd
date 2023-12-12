@@ -68,33 +68,31 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_craft, Tools.SHORTCUT_CRAFT)
 	Tools.set_shortcut_icon(button_stopcraft, Tools.SHORTCUT_CANCEL)
 
-func _unhandled_input(event):
+func _input(event):
 	if (Dialog.ignore_input()): return
-	if Input.is_action_just_pressed("cancel"):
+	if Input.is_action_just_released("cancel"):
 		if panel_crafting.visible:
 			_on_button_stop_craft_pressed()
 		else:
 			_on_button_back_pressed()
 		return
-	if Input.is_action_just_pressed("delete"):
+	if Input.is_action_just_released("delete"):
 		_on_drop_pressed()
 		return
-	if Input.is_action_just_pressed("accept"):
+	if Input.is_action_just_released("accept"):
 		_on_use_pressed()
 		return
-	if Input.is_action_just_pressed("craft"):
+	if Input.is_action_just_released("craft"):
 		if panel_crafting.visible and (crafting_target != null):
 			_on_crafting_pressed()
 		else:
 			_on_craft_pressed()
 		return
-
-func _input(event):
 	if (get_viewport().gui_get_focus_owner() == null):
 		_focus_current_tab()
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_released("ui_left"):
 		_set_tab(-1)
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_just_released("ui_right"):
 		_set_tab(1)
 
 func list_focused():
@@ -278,5 +276,5 @@ func _on_crafting_pressed():
 
 func _on_use_pressed():
 	if (item == null): return
-	item_use.emit(item)
 	_on_button_back_pressed()
+	item_use.emit(item)

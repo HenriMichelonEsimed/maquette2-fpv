@@ -51,12 +51,9 @@ func set_y_axis():
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and mouse_captured:
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		mouse_y_rotation = event.relative.x * mouse_sensitivity
 		camera_pivot.rotate_x(event.relative.y * mouse_sensitivity * mouse_y_axis)
 		camera_pivot.rotation.x = clampf(camera_pivot.rotation.x, max_camera_angle_down, max_camera_angle_up)
 
-var joypad_y_rotation:float = 0.0
-var mouse_y_rotation:float = 0.0
 func _process(delta):
 	if mouse_captured:
 		var joypad_dir: Vector2 = Input.get_vector("look_left", "look_right", look_up_action, look_down_action)

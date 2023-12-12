@@ -92,6 +92,7 @@ text = "XXX"
 alignment = 1
 max_length = 30
 deselect_on_focus_loss_enabled = false
+select_all_on_focus = true
 
 [node name="Bottom" type="HBoxContainer" parent="Panel/Content/VBoxContainer"]
 layout_mode = 2

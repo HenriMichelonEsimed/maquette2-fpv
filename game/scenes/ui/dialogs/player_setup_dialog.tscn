@@ -134,6 +134,7 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../HBoxContainer/Check1")
 focus_next = NodePath("../../HBoxContainer/Check1")
 focus_previous = NodePath("../../../../../Top/ButtonClose")
+select_all_on_focus = true
 
 [node name="Label2" type="Label" parent="Background/Borders/Content/Panel/Margin/Form"]
 layout_mode = 2
@@ -277,6 +278,10 @@ script = ExtResource("3_0vtf4")
 icon_size = 32
 icon_name = "check"
 
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="Background/Borders/Content/Top/ButtonClose" to="." method="close"]
@@ -284,3 +289,4 @@ icon_name = "check"
 [connection signal="toggled" from="Background/Borders/Content/Panel/Margin/Form/HBoxContainer/Check2" to="." method="_on_check_2_toggled"]
 [connection signal="focus_entered" from="Background/Borders/Content/Panel/Margin/Form/Char/Panel1" to="." method="_on_panel_1_focus_entered"]
 [connection signal="pressed" from="Background/Borders/Content/Panel/Margin/Form/Buttons/ButtonSave" to="." method="_on_button_save_pressed"]
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

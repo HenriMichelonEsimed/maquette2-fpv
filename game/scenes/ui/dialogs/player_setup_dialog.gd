@@ -14,6 +14,10 @@ var style_1:StyleBoxFlat
 var style_2:StyleBoxFlat
 var color_selected = Color(0, 0, 0, 80)
 var color_unselected = Color(0, 0, 0, 0)
+var anim_1:AnimationPlayer
+var anim_2:AnimationPlayer
+var anims = [Consts.ANIM_WALKING,  Consts.ANIM_RUNNING, Consts.ANIM_JUMPING, Consts.ANIM_CROUCHED_WALKING]
+var current_anim = 0
 
 func _input(event):
 	if (Dialog.ignore_input()): return
@@ -25,16 +29,18 @@ func open():
 	super._open()
 	GameState.prepare_game(false)
 	edit_name.text = tr(GameState.player_state.nickname)
+	anim_1 = player_1.get_node("AnimationPlayer")
+	anim_2 = player_2.get_node("AnimationPlayer")
 	style_1 = panel_1.get_theme_stylebox("panel").duplicate()
 	style_1.bg_color = color_unselected
 	panel_1.add_theme_stylebox_override("panel", style_1)
 	style_2 = panel_2.get_theme_stylebox("panel").duplicate()
 	style_2.bg_color = color_unselected
 	panel_2.add_theme_stylebox_override("panel", style_2)
-	player_1.get_node("AnimationPlayer").play(Consts.ANIM_WALKING)
-	player_2.get_node("AnimationPlayer").play(Consts.ANIM_WALKING)
+	_on_animation_timer_timeout()
 	check_1.button_pressed = false
 	check_2.button_pressed = true
+	edit_name.select_all_on_focus = true
 	edit_name.grab_focus()
 
 func set_shortcuts():
@@ -65,3 +71,10 @@ func _on_check_2_toggled(toggled_on):
 		check_1.button_pressed = false
 	else:
 		style_2.bg_color = color_unselected
+
+func _on_animation_timer_timeout():
+	print(current_anim)
+	anim_1.play(anims[current_anim])
+	anim_2.play(anims[current_anim])
+	current_anim = current_anim + 1
+	if (current_anim == 4) : current_anim = 0
