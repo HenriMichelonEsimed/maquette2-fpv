@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scenes/ui/dialogs/player_setup_dialog.gd" id="1_2mmi8"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_8ny0v"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="3_0vtf4"]
-[ext_resource type="PackedScene" uid="uid://dboialknk0g54" path="res://models/chars/player_1/player_1.tscn" id="4_ktjag"]
 [ext_resource type="StyleBox" uid="uid://b8soysnx7tbpf" path="res://assets/styles/panel_char_select.tres" id="4_yp6xm"]
+[ext_resource type="PackedScene" uid="uid://8qlqjcdvnmkd" path="res://models/chars/player_3/player_3.tscn" id="5_h4b8m"]
 [ext_resource type="PackedScene" uid="uid://bnb0mlytfnhre" path="res://models/chars/player_2/player_2.tscn" id="5_vv4ll"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inncu"]
@@ -191,12 +191,12 @@ size = Vector2i(200, 400)
 render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
-transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 0, -5.8)
+transform = Transform3D(1, -5.46736e-08, 8.1057e-08, -8.1057e-08, -0.927184, 0.374606, 5.46736e-08, -0.374606, -0.927184, 0, 0, -5.8)
 
 [node name="Camera3D" type="Camera3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
 transform = Transform3D(-0.898794, -0.113459, 0.423434, 0, 0.965926, 0.258819, -0.438371, 0.232625, -0.868168, 0.9, 1.7, -2)
 keep_aspect = 0
-fov = 29.0
+fov = 27.5
 near = 0.01
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
@@ -206,8 +206,8 @@ material = SubResource("StandardMaterial3D_6qkel")
 
 [node name="InsertPoint" type="Node3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
 
-[node name="Character" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView/InsertPoint" instance=ExtResource("4_ktjag")]
-transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 0, 0.2, 0)
+[node name="Character" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView/InsertPoint" instance=ExtResource("5_h4b8m")]
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 0, 0.3, 0)
 
 [node name="Panel2" type="Panel" parent="Background/Borders/Content/Panel/Margin/Form/Char"]
 layout_mode = 2
@@ -239,7 +239,7 @@ size = Vector2i(200, 400)
 render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
-transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 0, -5.8)
+transform = Transform3D(1, -6.865e-08, 8.53834e-08, -8.53834e-08, -0.976672, 0.214735, 6.865e-08, -0.214735, -0.976672, 0, 0, -5.8)
 
 [node name="Camera3D" type="Camera3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
 transform = Transform3D(-0.898794, -0.113459, 0.423434, 0, 0.965926, 0.258819, -0.438371, 0.232625, -0.868168, 0.9, 1.7, -2)
@@ -254,7 +254,7 @@ material = SubResource("StandardMaterial3D_6qkel")
 [node name="InsertPoint" type="Node3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
 
 [node name="Character" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView/InsertPoint" instance=ExtResource("5_vv4ll")]
-transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 0, 0.2, 0)
+transform = Transform3D(-0.939693, 0, -0.34202, 0, 1, 0, 0.34202, 0, -0.939693, 0, 0.2, 0)
 
 [node name="Buttons" type="HBoxContainer" parent="Background/Borders/Content/Panel/Margin/Form"]
 layout_mode = 2

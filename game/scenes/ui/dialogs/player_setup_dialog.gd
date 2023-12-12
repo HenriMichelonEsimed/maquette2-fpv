@@ -48,7 +48,7 @@ func _on_button_save_pressed():
 		GameState.player_state.char = "player_2"
 	else:
 		GameState.player_state.sex = false
-		GameState.player_state.char = "player_1"
+		GameState.player_state.char = "player_3"
 	GameState.player_state.nickname = edit_name.text
 	get_tree().change_scene_to_file("res://scenes/loading_screen.tscn")
 
