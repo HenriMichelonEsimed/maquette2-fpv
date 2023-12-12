@@ -8,6 +8,7 @@ const DIALOG_SETTINGS = "settings"
 const DIALOG_INPUT = "input"
 const DIALOG_CONFIRM = "confirm"
 const DIALOG_ALERT = "alert"
+const DIALOG_PLAYER_SETUP = "player_setup"
 
 const SCREEN_INVENTORY = "inventory"
 const SCREEN_TERMINAL = "terminal"
@@ -38,13 +39,19 @@ static func load_shortcut_icon(name:String):
 	if GameState.use_joypad:
 		controller = CONTROLLER_PS if GameState.use_joypad_ps else CONTROLLER_XBOX 
 	return load("res://assets/textures/controllers/buttons/" + controller + "/" + name + ".png")
-	
+
 static func load_item(type:int,name:String):
 	var item = load("res://models/items/" + ITEMS_PATH[type] + "/" + name + ".tscn")
 	if (item != null):
 		return item.instantiate()
 	return null
-	
+
+static func load_char(_char:String):
+	var item = load("res://models/chars/" + _char + "/" + _char + ".tscn")
+	if (item != null):
+		return item.instantiate()
+	return null
+
 static func load_zone(zone_name:String):
 	var zone_path = "res://zones/" + zone_name + ".tscn"
 	var _dummy = []

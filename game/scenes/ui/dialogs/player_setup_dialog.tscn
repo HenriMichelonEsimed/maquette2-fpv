@@ -1,0 +1,252 @@
+[gd_scene load_steps=12 format=3 uid="uid://dax5aoql2hkmm"]
+
+[ext_resource type="Script" path="res://scenes/ui/dialogs/player_setup_dialog.gd" id="1_2mmi8"]
+[ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_8ny0v"]
+[ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="3_0vtf4"]
+[ext_resource type="PackedScene" uid="uid://dboialknk0g54" path="res://models/chars/player_1/player_1.tscn" id="4_ktjag"]
+[ext_resource type="StyleBox" uid="uid://b8soysnx7tbpf" path="res://assets/styles/panel_char_select.tres" id="4_yp6xm"]
+[ext_resource type="PackedScene" uid="uid://bnb0mlytfnhre" path="res://models/chars/player_2/player_2.tscn" id="5_vv4ll"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inncu"]
+content_margin_top = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f4iul"]
+bg_color = Color(0, 0, 0, 0.568627)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Environment" id="Environment_f1hi3"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="World3D" id="World3D_q87qu"]
+environment = SubResource("Environment_f1hi3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qkel"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="PlayerSetupDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.5
+offset_top = -286.5
+offset_right = 285.5
+offset_bottom = 286.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2mmi8")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Borders" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Content" type="VBoxContainer" parent="Background/Borders"]
+layout_mode = 2
+
+[node name="Top" type="HBoxContainer" parent="Background/Borders/Content"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Background/Borders/Content/Top"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/Borders/Content/Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_inncu")
+text = "Player creation"
+horizontal_alignment = 1
+
+[node name="ButtonClose" type="Button" parent="Background/Borders/Content/Top"]
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Close"
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+theme_override_fonts/font = ExtResource("2_8ny0v")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("3_0vtf4")
+icon_size = 32
+icon_name = "xmark"
+
+[node name="Panel" type="Panel" parent="Background/Borders/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_f4iul")
+
+[node name="Margin" type="MarginContainer" parent="Background/Borders/Content/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Form" type="VBoxContainer" parent="Background/Borders/Content/Panel/Margin"]
+layout_mode = 2
+
+[node name="Name" type="HBoxContainer" parent="Background/Borders/Content/Panel/Margin/Form"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/Borders/Content/Panel/Margin/Form/Name"]
+layout_mode = 2
+text = "Your name :"
+
+[node name="EditName" type="LineEdit" parent="Background/Borders/Content/Panel/Margin/Form/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label2" type="Label" parent="Background/Borders/Content/Panel/Margin/Form"]
+layout_mode = 2
+text = "Character :"
+
+[node name="Char" type="HBoxContainer" parent="Background/Borders/Content/Panel/Margin/Form"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Panel1" type="Panel" parent="Background/Borders/Content/Panel/Margin/Form/Char"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("4_yp6xm")
+
+[node name="Player1" type="SubViewportContainer" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1"]
+layout_mode = 2
+offset_left = 35.0
+offset_top = 0.5
+offset_right = 235.0
+offset_bottom = 400.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3DView" type="SubViewport" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1"]
+own_world_3d = true
+world_3d = SubResource("World3D_q87qu")
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 1
+screen_space_aa = 1
+size = Vector2i(200, 400)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
+transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 3.6, -5.8)
+
+[node name="Camera3D" type="Camera3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
+transform = Transform3D(-0.898794, -0.113459, 0.423434, 0, 0.965926, 0.258819, -0.438371, 0.232625, -0.868168, 0.9, 1.7, -2)
+keep_aspect = 0
+fov = 29.0
+near = 0.01
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
+size = Vector3(100, 0.1, 100)
+material = SubResource("StandardMaterial3D_6qkel")
+
+[node name="InsertPoint" type="Node3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
+
+[node name="Character" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView/InsertPoint" instance=ExtResource("4_ktjag")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.2, 0)
+
+[node name="Panel2" type="Panel" parent="Background/Borders/Content/Panel/Margin/Form/Char"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("4_yp6xm")
+
+[node name="Player2" type="SubViewportContainer" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 100.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="3DView" type="SubViewport" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2"]
+own_world_3d = true
+world_3d = SubResource("World3D_q87qu")
+transparent_bg = true
+handle_input_locally = false
+msaa_3d = 1
+screen_space_aa = 1
+size = Vector2i(200, 400)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
+transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 3.6, -5.8)
+
+[node name="Camera3D" type="Camera3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
+transform = Transform3D(-0.898794, -0.113459, 0.423434, 0, 0.965926, 0.258819, -0.438371, 0.232625, -0.868168, 0.9, 1.7, -2)
+keep_aspect = 0
+fov = 26.5
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.05133, 0)
+size = Vector3(100, 0.1, 100)
+material = SubResource("StandardMaterial3D_6qkel")
+
+[node name="InsertPoint" type="Node3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
+
+[node name="Character" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView/InsertPoint" instance=ExtResource("5_vv4ll")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.2, 0)
+
+[node name="Buttons" type="HBoxContainer" parent="Background/Borders/Content/Panel/Margin/Form"]
+layout_mode = 2
+alignment = 2
+
+[node name="ButtonSave" type="Button" parent="Background/Borders/Content/Panel/Margin/Form/Buttons"]
+layout_mode = 2
+localize_numeral_system = false
+tooltip_text = "Apply"
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../myaxis/OptionButton")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath("../../../../../Top/ButtonClose")
+focus_previous = NodePath("../../myaxis/OptionButton")
+theme_override_fonts/font = ExtResource("2_8ny0v")
+theme_override_font_sizes/font_size = 32
+text = ""
+script = ExtResource("3_0vtf4")
+icon_size = 32
+icon_name = "check"
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="pressed" from="Background/Borders/Content/Top/ButtonClose" to="." method="close"]
+[connection signal="focus_entered" from="Background/Borders/Content/Panel/Margin/Form/Char/Panel1" to="." method="_on_panel_1_focus_entered"]

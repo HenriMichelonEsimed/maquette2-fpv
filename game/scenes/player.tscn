@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://brxw56b4csscj"]
+[gd_scene load_steps=8 format=3 uid="uid://brxw56b4csscj"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_wfnqh"]
-[ext_resource type="PackedScene" uid="uid://bnb0mlytfnhre" path="res://models/chars/player_2/player_2.tscn" id="2_ic6l2"]
 [ext_resource type="Script" path="res://scenes/interactions.gd" id="2_y1dc3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_esp6a"]
@@ -25,8 +24,6 @@ albedo_color = Color(0, 0.886275, 0.886275, 0.52549)
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 512
 script = ExtResource("1_wfnqh")
-
-[node name="Character" parent="." instance=ExtResource("2_ic6l2")]
 
 [node name="CollisionShape1" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34504, -0.267791)
@@ -56,7 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983706, 0)
 target_position = Vector3(0, -1.5, -1.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00478035, 1.69961, -0.236006)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00478035, 1.61966, -0.236006)
 near = 0.2
 
 [node name="RayCastInteractions" type="RayCast3D" parent="Camera3D" node_paths=PackedStringArray("camera")]

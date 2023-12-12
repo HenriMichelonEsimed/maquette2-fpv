@@ -6,6 +6,9 @@ var position:Vector3 = Vector3.ZERO
 var rotation:Vector3 = Vector3.ZERO
 var current_item_type:Item.ItemType = Item.ItemType.ITEM_UNKNOWN
 var current_item_key:String = ""
+var nickname:String = "Player"
+var sex:bool = true
+var char:String = "player_2"
 
 func _init():
 	super("player")

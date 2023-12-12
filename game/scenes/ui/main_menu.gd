@@ -45,8 +45,11 @@ func _on_button_continue_pressed():
 	get_tree().change_scene_to_packed(loading_screen)
 
 func _on_button_new_pressed():
-	GameState.prepare_game(false)
-	get_tree().change_scene_to_packed(loading_screen)
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_PLAYER_SETUP, func():button_new.grab_focus())
+	dlg.open()
+	#GameState.prepare_game(false)
+	#GameState.player_state.char = "player_2"
+	#get_tree().change_scene_to_packed(loading_screen)
 
 func _on_button_continue_focus_entered():
 	Tools.set_shortcut_icon(button_continue, Tools.SHORTCUT_ACCEPT)

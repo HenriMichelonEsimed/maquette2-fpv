@@ -5,10 +5,10 @@ class_name Player extends CharacterBody3D
 @onready var under_water_filter = $UnderWater/Filter
 @onready var interactions:Interactions = $Camera3D/RayCastInteractions
 @onready var raycast_to_floor:RayCast3D = $RayCastToFloor
-@onready var anim:AnimationPlayer = $Character/AnimationPlayer
-@onready var attach_item:Node3D = $Character/RootNode/Skeleton3D/HandAttachment/AttachmentPoint
 
-
+var character:Node3D
+var anim:AnimationPlayer
+var attach_item:Node3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var walking_speed:float = 5
@@ -26,8 +26,15 @@ func _ready():
 	if (GameState.player_state.position != Vector3.ZERO):
 		_set_position()
 	set_y_axis()
-	anim.play(Consts.ANIM_STANDING)
+	set_char()
 	capture_mouse()
+
+func set_char():
+	character = Tools.load_char(GameState.player_state.char)
+	add_child(character)
+	anim = character.get_node("AnimationPlayer")
+	attach_item = character.get_node("RootNode/Skeleton3D/HandAttachment/AttachmentPoint")
+	anim.play(Consts.ANIM_STANDING)
 
 func set_y_axis():
 	if (GameState.settings.mouse_y_axis_inverted):
