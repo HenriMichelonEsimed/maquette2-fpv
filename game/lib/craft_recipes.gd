@@ -3,8 +3,8 @@ extends Node
 var recipes = {}
 var ingredients:Dictionary = {}
 
-func add_recipe(recipe:String, ingredients:Array):
-	recipes[recipe] = ingredients
+func add_recipe(recipe:String, _ingredients:Array):
+	recipes[recipe] = _ingredients
 	_refresh()
 
 func _refresh():

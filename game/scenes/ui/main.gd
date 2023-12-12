@@ -50,7 +50,7 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_iventory, Tools.SHORTCUT_INVENTORY)
 	Tools.set_shortcut_icon(button_terminal, Tools.SHORTCUT_TERMINAL)
 
-func _on_joypad_connection_changed(_id, connected):
+func _on_joypad_connection_changed(_id, _connected):
 	set_shortcuts()
 	Dialog.refresh_shortcuts()
 

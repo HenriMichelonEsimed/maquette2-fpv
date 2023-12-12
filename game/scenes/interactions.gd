@@ -28,7 +28,7 @@ func _next_body():
 	else:
 		_on_collect_item_aera_body_exited()
 		
-func _process(delta):
+func _process(_delta):
 	_next_body()
 
 func action_use():

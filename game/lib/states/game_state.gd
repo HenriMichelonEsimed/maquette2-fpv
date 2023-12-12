@@ -108,12 +108,12 @@ func item_unuse():
 	inventory.add(current_item.dup())
 	current_item = null
 
-func _on_joypad_connection_changed(_id, connected):
+func _on_joypad_connection_changed(_id, _connected):
 	use_joypad = Input.get_connected_joypads().size() > 0
 	if (use_joypad):
-		var name = Input.get_joy_name(0)
-		use_joypad_ps = name.contains("PS")
-		use_joypad_xbox = name.contains("XBox")
+		var joyname = Input.get_joy_name(0)
+		use_joypad_ps = joyname.contains("PS")
+		use_joypad_xbox = joyname.contains("XBox")
 
 class InventoryState extends State:
 	var inventory:ItemsCollection

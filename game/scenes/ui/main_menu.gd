@@ -25,7 +25,7 @@ func _on_resized():
 		menu.position.x = vsize.x - (vsize.x / 4) - menu.size.x
 		menu.position.y = (vsize.y -  menu.size.y) / 2
 
-func _on_joypad_connection_changed(_id, connected):
+func _on_joypad_connection_changed(_id, _connected):
 	Dialog.refresh_shortcuts()
 
 func _menu_disable():
