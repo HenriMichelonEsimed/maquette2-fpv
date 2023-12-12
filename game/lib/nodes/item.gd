@@ -18,26 +18,34 @@ var original_rotation:Vector3
 func _ready():
 	label = tr(label)
 	set_collision_layer_value(Consts.LAYER_WORLD, false)
+	set_collision_mask_value(Consts.LAYER_WORLD, true)
 	original_rotation = rotation
 	enable()
 
 func use():
 	disable()
-	rotate_y(deg_to_rad(180))
+	position = Vector3.ZERO
 
 func unuse():
-	rotation = Vector3.ZERO
+	rotation = original_rotation
 	enable()
 
 func collect():
 	return true
 
+func dup():
+	var d = duplicate(DUPLICATE_SCRIPTS)
+	d.original_rotation = original_rotation
+	return d
+
 func disable():
 	set_collision_layer_value(Consts.LAYER_ITEM, false)
 	
 func enable():
-	rotation = original_rotation
 	set_collision_layer_value(Consts.LAYER_ITEM, true)
+
+func is_enabled():
+	return get_collision_layer_value(Consts.LAYER_ITEM)
 	
 func _to_string():
 	return label

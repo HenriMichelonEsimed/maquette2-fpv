@@ -211,7 +211,7 @@ func _clear_crafting():
 
 func _on_craft_pressed():
 	if (item == null) or crafting_items.find(item) != -1: return
-	var craft_item = item.duplicate(DUPLICATE_SCRIPTS)
+	var craft_item = item.dup()
 	if item is ItemUnique:
 		item_content.visible = false
 	else:

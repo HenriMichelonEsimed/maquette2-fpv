@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://brxw56b4csscj"]
+[gd_scene load_steps=26 format=3 uid="uid://brxw56b4csscj"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_wfnqh"]
 [ext_resource type="Script" path="res://scenes/interactions.gd" id="2_y1dc3"]
@@ -15,9 +15,12 @@
 [ext_resource type="Animation" uid="uid://ds1csqxlw26wr" path="res://models/chars/player/anims/t-pose.anim" id="14_oilg5"]
 [ext_resource type="Animation" uid="uid://qeogd7hwud5e" path="res://models/chars/player/anims/walking.anim" id="15_xeuk8"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iayoc"]
-radius = 0.433409
-height = 1.84745
+[sub_resource type="BoxShape3D" id="BoxShape3D_esp6a"]
+custom_solver_bias = 1.0
+size = Vector3(0.75, 1.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jqj4e"]
+size = Vector3(0.4, 0.7, 0.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2dxl"]
 size = Vector3(1, 12.7, 1)
@@ -1161,9 +1164,13 @@ _data = {
 collision_layer = 512
 script = ExtResource("1_wfnqh")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.933684, 0)
-shape = SubResource("CapsuleShape3D_iayoc")
+[node name="CollisionShape1" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.34504, -0.267791)
+shape = SubResource("BoxShape3D_esp6a")
+
+[node name="CollisionShape2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.352997, -0.0547755)
+shape = SubResource("BoxShape3D_jqj4e")
 
 [node name="UnderWater" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
@@ -1196,7 +1203,7 @@ script = ExtResource("2_y1dc3")
 camera = NodePath("..")
 
 [node name="Character" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0217478, 0)
 
 [node name="RootNode" type="Node3D" parent="Character"]
 
@@ -1668,7 +1675,7 @@ bone_name = "mixamorig_RightHandMiddle1"
 bone_idx = 43
 
 [node name="AttachmentPoint" type="Node3D" parent="Character/RootNode/Skeleton3D/HandAttachment"]
-transform = Transform3D(1, -6.04341e-08, -8.9407e-08, 4.95347e-08, 1, -6.00139e-08, -4.47035e-08, -3.63307e-08, 1, -0.0095159, -0.00707895, 0.0353929)
+transform = Transform3D(-4.37114e-08, 1, 0, 1, 4.37114e-08, 8.74228e-08, 8.74228e-08, 3.82137e-15, -1, -0.0095159, -0.00707877, 0.0353929)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
 reset_on_save = false

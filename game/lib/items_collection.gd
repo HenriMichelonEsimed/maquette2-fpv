@@ -29,7 +29,7 @@ func new(type:int,_name:String, qty:int=1):
 			add(item)
 		else:
 			for i in range(0, qty):
-				add(item.duplicate(DUPLICATE_SCRIPTS))
+				add(item.dup())
 
 func add(item:Item):
 	if add_multiples and (item is ItemMultiple):
@@ -54,9 +54,9 @@ func remove(item:Item):
 func transfert_to(coll:ItemsCollection, type:int, key:String):
 	var item = getitem(type, key)
 	if (item != null):
-		item = item.duplicate(DUPLICATE_SCRIPTS)
+		item = item.dup()
 		item.quantity = 1
-		coll.add(item.duplicate(DUPLICATE_SCRIPTS))
+		coll.add(item.dup())
 		remove(item)
 
 func getall() -> Array[Item]:

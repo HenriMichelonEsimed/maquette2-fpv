@@ -44,8 +44,9 @@ func action_use():
 
 func _on_collect_item_aera_body_entered(node:Node):
 	if (node is Item):
-		target_node = node
-		display_info.emit(target_node)
+		if (node.is_enabled()):
+			target_node = node
+			display_info.emit(target_node)
 	elif (node is Usable):
 		target_node = node
 		display_info.emit(target_node)

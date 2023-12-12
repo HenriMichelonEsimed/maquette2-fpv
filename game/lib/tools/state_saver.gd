@@ -49,6 +49,9 @@ func savegame_exists(savegame:String):
 func delete(savegame:String):
 	OS.move_to_trash(ProjectSettings.globalize_path(default_path + _format_name(savegame)))
 
+func reset_path():
+	_path = ""
+
 func set_path(savegame = null):
 	_last = autosave_path if savegame == null else _format_name(savegame)
 	_path = default_path + _last
@@ -126,6 +129,8 @@ func loadState(res:State, global:bool=false):
 	var filename:String
 	if (global):
 		filename = default_path + _format_name(res.name) + default_ext
+	elif _path.is_empty():
+		return null
 	else:
 		filename = _path + "/" + _format_name(res.name) + default_ext
 	var file = FileAccess.open(filename, FileAccess.READ)

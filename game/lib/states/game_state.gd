@@ -31,6 +31,7 @@ func new_game():
 	settings = SettingsState.new()
 	messages = MessagesList.new()
 	quests = QuestsManager.new()
+	StateSaver.reset_path()
 	var os_lang = OS.get_locale_language()
 	for lang in Settings.langs:
 		if (lang == os_lang):
@@ -91,12 +92,12 @@ func _resume_game():
 	
 func item_use(item:Item):
 	item_unuse()
-	current_item = item.duplicate()
+	current_item = item.dup()
 	if (item is ItemMultiple):
 		current_item.quantity = 1
 	inventory.remove(current_item)
-	player.handle_item()
 	ui.panel_item.use()
+	player.handle_item()
 	current_item.use()
 
 func item_unuse():
@@ -104,7 +105,7 @@ func item_unuse():
 	player.unhandle_item()
 	ui.panel_item.unuse()
 	current_item.unuse()
-	inventory.add(current_item.duplicate())
+	inventory.add(current_item.dup())
 	current_item = null
 
 func _on_joypad_connection_changed(_id, connected):
