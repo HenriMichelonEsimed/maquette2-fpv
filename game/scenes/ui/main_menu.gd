@@ -6,7 +6,6 @@ extends Control
 @onready var button_input:Button = $Menu/ButtonController
 @onready var button_new:Button = $Menu/ButtonNew
 @onready var menu = $Menu
-@onready var loading_screen = preload("res://scenes/loading_screen.tscn")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -29,27 +28,49 @@ func _on_resized():
 func _on_joypad_connection_changed(_id, connected):
 	Dialog.refresh_shortcuts()
 
+func _menu_disable():
+	for n in menu.get_children(): 
+		n.disabled = true
+		n.focus_mode = FOCUS_NONE
+	
+func _menu_enable():
+	for n in menu.get_children(): 
+		n.disabled = false
+		n.focus_mode = FOCUS_ALL
+
 func _on_button_settings_pressed():
-	var dlg = Tools.load_dialog(self, Tools.DIALOG_SETTINGS, func():button_settings.grab_focus())
+	_menu_disable()
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_SETTINGS, _on_settings_closed)
 	dlg.open()
 
+func _on_settings_closed():
+	button_settings.grab_focus()
+	_menu_enable()
+
 func _on_button_controller_pressed():
-	var dlg = Tools.load_screen(self, Tools.SCREEN_CONTROLLER, func():button_input.grab_focus())
+	_menu_disable()
+	var dlg = Tools.load_screen(self, Tools.SCREEN_CONTROLLER, _on_controller_closed)
 	dlg.open()
-	
+
+func _on_controller_closed():
+	button_input.grab_focus()
+	_menu_enable()
+
 func _on_button_quit_pressed():
 	get_tree().quit()
 
 func _on_button_continue_pressed():
 	GameState.prepare_game(true)
-	get_tree().change_scene_to_packed(loading_screen)
+	get_tree().change_scene_to_file("res://scenes/loading_screen.tscn")
 
 func _on_button_new_pressed():
-	var dlg = Tools.load_dialog(self, Tools.DIALOG_PLAYER_SETUP, func():button_new.grab_focus())
+	_menu_disable()
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_PLAYER_SETUP, _on_new_closed)
 	dlg.open()
-	#GameState.prepare_game(false)
-	#GameState.player_state.char = "player_2"
-	#get_tree().change_scene_to_packed(loading_screen)
+
+func _on_new_closed():
+	button_new.grab_focus()
+	_menu_enable()
 
 func _on_button_continue_focus_entered():
 	Tools.set_shortcut_icon(button_continue, Tools.SHORTCUT_ACCEPT)

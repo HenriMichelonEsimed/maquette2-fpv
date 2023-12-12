@@ -88,6 +88,9 @@ tooltip_text = "Close"
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Panel/Margin/Form/Name/EditName")
+focus_next = NodePath("../../Panel/Margin/Form/Name/EditName")
+focus_previous = NodePath("../../Panel/Margin/Form/Buttons/ButtonSave")
 theme_override_fonts/font = ExtResource("2_8ny0v")
 theme_override_font_sizes/font_size = 32
 text = ""
@@ -125,10 +128,38 @@ text = "Your name :"
 [node name="EditName" type="LineEdit" parent="Background/Borders/Content/Panel/Margin/Form/Name"]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../../../../Top/ButtonClose")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../HBoxContainer/Check1")
+focus_next = NodePath("../../HBoxContainer/Check1")
+focus_previous = NodePath("../../../../../Top/ButtonClose")
 
 [node name="Label2" type="Label" parent="Background/Borders/Content/Panel/Margin/Form"]
 layout_mode = 2
 text = "Character :"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/Borders/Content/Panel/Margin/Form"]
+layout_mode = 2
+alignment = 1
+
+[node name="Check1" type="CheckButton" parent="Background/Borders/Content/Panel/Margin/Form/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath("../../Name/EditName")
+focus_neighbor_right = NodePath("../Check2")
+focus_neighbor_bottom = NodePath("../../Buttons/ButtonSave")
+focus_next = NodePath("../Check2")
+focus_previous = NodePath("../../Name/EditName")
+
+[node name="Check2" type="CheckButton" parent="Background/Borders/Content/Panel/Margin/Form/HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Check1")
+focus_neighbor_top = NodePath("../../Name/EditName")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath("../../Buttons/ButtonSave")
+focus_next = NodePath("../../Buttons/ButtonSave")
+focus_previous = NodePath("../Check1")
 
 [node name="Char" type="HBoxContainer" parent="Background/Borders/Content/Panel/Margin/Form"]
 layout_mode = 2
@@ -160,7 +191,7 @@ size = Vector2i(200, 400)
 render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
-transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 3.6, -5.8)
+transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 0, -5.8)
 
 [node name="Camera3D" type="Camera3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
 transform = Transform3D(-0.898794, -0.113459, 0.423434, 0, 0.965926, 0.258819, -0.438371, 0.232625, -0.868168, 0.9, 1.7, -2)
@@ -176,7 +207,7 @@ material = SubResource("StandardMaterial3D_6qkel")
 [node name="InsertPoint" type="Node3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView"]
 
 [node name="Character" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel1/Player1/3DView/InsertPoint" instance=ExtResource("4_ktjag")]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0.2, 0)
+transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 0, 0.2, 0)
 
 [node name="Panel2" type="Panel" parent="Background/Borders/Content/Panel/Margin/Form/Char"]
 layout_mode = 2
@@ -208,7 +239,7 @@ size = Vector2i(200, 400)
 render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
-transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 3.6, -5.8)
+transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 0, -5.8)
 
 [node name="Camera3D" type="Camera3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
 transform = Transform3D(-0.898794, -0.113459, 0.423434, 0, 0.965926, 0.258819, -0.438371, 0.232625, -0.868168, 0.9, 1.7, -2)
@@ -223,7 +254,7 @@ material = SubResource("StandardMaterial3D_6qkel")
 [node name="InsertPoint" type="Node3D" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView"]
 
 [node name="Character" parent="Background/Borders/Content/Panel/Margin/Form/Char/Panel2/Player2/3DView/InsertPoint" instance=ExtResource("5_vv4ll")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.2, 0)
+transform = Transform3D(-0.939693, 0, 0.34202, 0, 1, 0, -0.34202, 0, -0.939693, 0, 0.2, 0)
 
 [node name="Buttons" type="HBoxContainer" parent="Background/Borders/Content/Panel/Margin/Form"]
 layout_mode = 2
@@ -234,11 +265,11 @@ layout_mode = 2
 localize_numeral_system = false
 tooltip_text = "Apply"
 focus_neighbor_left = NodePath(".")
-focus_neighbor_top = NodePath("../../myaxis/OptionButton")
+focus_neighbor_top = NodePath("../../HBoxContainer/Check2")
 focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath(".")
 focus_next = NodePath("../../../../../Top/ButtonClose")
-focus_previous = NodePath("../../myaxis/OptionButton")
+focus_previous = NodePath("../../HBoxContainer/Check2")
 theme_override_fonts/font = ExtResource("2_8ny0v")
 theme_override_font_sizes/font_size = 32
 text = ""
@@ -249,4 +280,7 @@ icon_name = "check"
 [connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
 [connection signal="pressed" from="Background/Borders/Content/Top/ButtonClose" to="." method="close"]
+[connection signal="toggled" from="Background/Borders/Content/Panel/Margin/Form/HBoxContainer/Check1" to="." method="_on_check_1_toggled"]
+[connection signal="toggled" from="Background/Borders/Content/Panel/Margin/Form/HBoxContainer/Check2" to="." method="_on_check_2_toggled"]
 [connection signal="focus_entered" from="Background/Borders/Content/Panel/Margin/Form/Char/Panel1" to="." method="_on_panel_1_focus_entered"]
+[connection signal="pressed" from="Background/Borders/Content/Panel/Margin/Form/Buttons/ButtonSave" to="." method="_on_button_save_pressed"]
