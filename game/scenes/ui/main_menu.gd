@@ -3,6 +3,7 @@ extends Control
 @onready var button_quit:Button = $Menu/ButtonQuit
 @onready var button_continue:Button = $Menu/ButtonContinue
 @onready var button_settings:Button = $Menu/ButtonSettings
+@onready var button_input:Button = $Menu/ButtonController
 @onready var button_new:Button = $Menu/ButtonNew
 @onready var menu = $Menu
 @onready var loading_screen = preload("res://scenes/loading_screen.tscn")
@@ -12,6 +13,7 @@ func _ready():
 	GameState.game_started = false
 	GameState.prepare_game(false)
 	Tools.preload_zone(GameState.player_state.zone_name)
+	Input.connect("joy_connection_changed", _on_joypad_connection_changed)
 	if (StateSaver.get_savegames().is_empty()):
 		button_continue.disabled = true
 		button_new.grab_focus()
@@ -24,10 +26,17 @@ func _on_resized():
 		menu.position.x = vsize.x - (vsize.x / 4) - menu.size.x
 		menu.position.y = (vsize.y -  menu.size.y) / 2
 
+func _on_joypad_connection_changed(_id, connected):
+	Dialog.refresh_shortcuts()
+
 func _on_button_settings_pressed():
 	var dlg = Tools.load_dialog(self, Tools.DIALOG_SETTINGS, func():button_settings.grab_focus())
 	dlg.open()
 
+func _on_button_controller_pressed():
+	var dlg = Tools.load_screen(self, Tools.SCREEN_CONTROLLER, func():button_input.grab_focus())
+	dlg.open()
+	
 func _on_button_quit_pressed():
 	get_tree().quit()
 
@@ -62,3 +71,9 @@ func _on_button_new_focus_exited():
 
 func _on_button_continue_focus_exited():
 	Tools.reset_shortcut_icon(button_continue)
+
+func _on_button_controller_focus_entered():
+	Tools.set_shortcut_icon(button_input, Tools.SHORTCUT_ACCEPT)
+
+func _on_button_controller_focus_exited():
+	Tools.reset_shortcut_icon(button_input)

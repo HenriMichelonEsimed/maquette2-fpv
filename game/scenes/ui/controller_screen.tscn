@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dyo0oqi11x0js" path="res://assets/textures/controllers/keyboard.png" id="2_3vvj2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jwnfm"]
-bg_color = Color(0, 0, 0, 0.501961)
+bg_color = Color(0, 0, 0, 0.639216)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4

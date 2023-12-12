@@ -51,7 +51,6 @@ func set_shortcuts():
 	Tools.set_shortcut_icon(button_terminal, Tools.SHORTCUT_TERMINAL)
 
 func _on_joypad_connection_changed(_id, connected):
-	GameState.use_joypad = connected
 	set_shortcuts()
 	Dialog.refresh_shortcuts()
 

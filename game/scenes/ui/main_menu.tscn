@@ -73,6 +73,17 @@ theme_override_styles/focus = ExtResource("3_51ent")
 text = "Settings"
 alignment = 2
 
+[node name="ButtonController" type="Button" parent="Menu"]
+custom_minimum_size = Vector2(250, 52)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("3_51ent")
+theme_override_styles/hover = ExtResource("3_qr46t")
+theme_override_styles/pressed = ExtResource("3_qr46t")
+theme_override_styles/disabled = ExtResource("3_51ent")
+theme_override_styles/focus = ExtResource("3_51ent")
+text = "Controls"
+alignment = 2
+
 [node name="ButtonQuit" type="Button" parent="Menu"]
 custom_minimum_size = Vector2(250, 52)
 layout_mode = 2
@@ -94,6 +105,9 @@ alignment = 2
 [connection signal="focus_entered" from="Menu/ButtonSettings" to="." method="_on_button_settings_focus_entered"]
 [connection signal="focus_exited" from="Menu/ButtonSettings" to="." method="_on_button_settings_focus_exited"]
 [connection signal="pressed" from="Menu/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="focus_entered" from="Menu/ButtonController" to="." method="_on_button_controller_focus_entered"]
+[connection signal="focus_exited" from="Menu/ButtonController" to="." method="_on_button_controller_focus_exited"]
+[connection signal="pressed" from="Menu/ButtonController" to="." method="_on_button_controller_pressed"]
 [connection signal="focus_entered" from="Menu/ButtonQuit" to="." method="_on_button_quit_focus_entered"]
 [connection signal="focus_exited" from="Menu/ButtonQuit" to="." method="_on_button_quit_focus_exited"]
 [connection signal="pressed" from="Menu/ButtonQuit" to="." method="_on_button_quit_pressed"]

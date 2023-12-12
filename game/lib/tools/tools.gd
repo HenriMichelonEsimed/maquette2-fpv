@@ -17,6 +17,7 @@ const SCREEN_NPC_TRADE = "trade"
 
 const CONTROLLER_KEYBOARD = "keyboard"
 const CONTROLLER_XBOX = "xbox"
+const CONTROLLER_PS = "ps"
 
 const SHORTCUT_DROP = "drop"
 const SHORTCUT_DELETE = "drop"
@@ -33,7 +34,9 @@ const SHORTCUT_ACCEPT = "accept"
 const ITEMS_PATH = [ 'tools', 'consum', 'misc', 'quest']
 
 static func load_shortcut_icon(name:String):
-	var controller = CONTROLLER_XBOX if GameState.use_joypad else CONTROLLER_KEYBOARD
+	var controller = CONTROLLER_KEYBOARD
+	if GameState.use_joypad:
+		controller = CONTROLLER_PS if GameState.use_joypad_ps else CONTROLLER_XBOX 
 	return load("res://assets/textures/controllers/buttons/" + controller + "/" + name + ".png")
 	
 static func load_item(type:int,name:String):

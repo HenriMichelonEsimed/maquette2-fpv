@@ -9,7 +9,10 @@ func open():
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
 	if (GameState.use_joypad):
-		$Panel/TextureRect.texture = Tools.load_controller_texture(Tools.CONTROLLER_XBOX)
+		if (GameState.use_joypad_ps):
+			$Panel/TextureRect.texture = Tools.load_controller_texture(Tools.CONTROLLER_PS)
+		else:
+			$Panel/TextureRect.texture = Tools.load_controller_texture(Tools.CONTROLLER_XBOX)
 	
 func _input(event):
 	if Input.is_anything_pressed():

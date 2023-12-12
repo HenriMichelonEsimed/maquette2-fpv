@@ -17,7 +17,13 @@ var current_item:Item
 var current_zone:Zone
 var savegame_name:String
 var use_joypad:bool = false
+var use_joypad_ps:bool = false
+var use_joypad_xbox:bool = false
 var game_started:bool = false
+
+func _ready():
+	_on_joypad_connection_changed(0, 0)
+	Input.connect("joy_connection_changed", _on_joypad_connection_changed)
 
 func new_game():
 	player_state = PlayerState.new()
@@ -33,7 +39,6 @@ func new_game():
 
 func prepare_game(continue_last_game:bool):
 	new_game()
-	use_joypad = Input.get_connected_joypads().size() > 0
 	TranslationServer.set_locale(GameState.settings.lang)
 	if (continue_last_game):
 		load_game(StateSaver.get_last())
@@ -101,6 +106,13 @@ func item_unuse():
 	current_item.unuse()
 	inventory.add(current_item.duplicate())
 	current_item = null
+
+func _on_joypad_connection_changed(_id, connected):
+	use_joypad = Input.get_connected_joypads().size() > 0
+	if (use_joypad):
+		var name = Input.get_joy_name(0)
+		use_joypad_ps = name.contains("PS")
+		use_joypad_xbox = name.contains("XBox")
 
 class InventoryState extends State:
 	var inventory:ItemsCollection
