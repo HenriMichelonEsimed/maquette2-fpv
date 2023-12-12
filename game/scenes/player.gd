@@ -8,6 +8,8 @@ class_name Player extends CharacterBody3D
 @onready var anim:AnimationPlayer = $Character/AnimationPlayer
 @onready var attach_item:Node3D = $Character/RootNode/Skeleton3D/HandAttachment/AttachmentPoint
 
+
+
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var walking_speed:float = 5
 var running_speed:float = 8
@@ -24,7 +26,7 @@ func _ready():
 	if (GameState.player_state.position != Vector3.ZERO):
 		_set_position()
 	set_y_axis()
-	anim.play("standing")
+	anim.play(Consts.ANIM_STANDING)
 	capture_mouse()
 
 func set_y_axis():
@@ -67,10 +69,10 @@ func _process(delta):
 	velocity.z = direction.z * speed
 	if direction != Vector3.ZERO:
 		if run:
-			if (anim.current_animation != "running"):
-				anim.play("running")
+			if (anim.current_animation != Consts.ANIM_RUNNING):
+				anim.play(Consts.ANIM_RUNNING)
 		else:
-			anim.play("walking")
+			anim.play(Consts.ANIM_WALKING)
 		if !anim.is_playing():
 			anim.play()
 		for index in range(get_slide_collision_count()):
@@ -81,7 +83,7 @@ func _process(delta):
 			if collider.is_in_group("stairs"):
 				velocity.y = 1.5
 	else:
-		anim.play("standing")
+		anim.play(Consts.ANIM_STANDING)
 	move_and_slide()
 	if on_floor and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed

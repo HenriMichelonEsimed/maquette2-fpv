@@ -330,6 +330,24 @@ script = ExtResource("5_utbrf")
 icon_size = 40
 icon_name = "keyboard"
 
+[node name="ButtonKeymaps" type="Button" parent="Menu/SubMenu/ButtonKeymaps"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+localize_numeral_system = false
+focus_neighbor_left = NodePath("../ButtonSettings")
+focus_neighbor_top = NodePath("../../MainMenu/ButtonTerminal")
+focus_neighbor_right = NodePath("../ButtonQuit")
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = ExtResource("5_vw41v")
+theme_override_styles/hover = ExtResource("8_5gish")
+theme_override_styles/pressed = ExtResource("8_5gish")
+theme_override_styles/focus = ExtResource("8_5gish")
+text = ""
+script = ExtResource("5_utbrf")
+icon_size = 40
+icon_name = "keyboard"
+
 [node name="ButtonQuit" type="Button" parent="Menu/SubMenu"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -356,4 +374,5 @@ icon_name = "person-walking-arrow-right"
 [connection signal="pressed" from="Menu/SubMenu/ButtonLoad" to="." method="load_savegame_open"]
 [connection signal="pressed" from="Menu/SubMenu/ButtonSettings" to="." method="settings_open"]
 [connection signal="pressed" from="Menu/SubMenu/ButtonKeymaps" to="." method="display_keymaps"]
+[connection signal="pressed" from="Menu/SubMenu/ButtonKeymaps/ButtonKeymaps" to="." method="display_keymaps"]
 [connection signal="pressed" from="Menu/SubMenu/ButtonQuit" to="." method="_on_button_quit_pressed"]

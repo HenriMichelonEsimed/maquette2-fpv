@@ -9,3 +9,7 @@ enum {
 	LAYER_CHARACTER = 6,
 	LAYER_PLAYER = 10
 }
+
+const ANIM_STANDING = "default/standing"
+const ANIM_WALKING = "default/walking"
+const ANIM_RUNNING = "default/running"

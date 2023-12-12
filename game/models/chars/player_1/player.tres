@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dvll43fob3gnl"]
+
+[ext_resource type="Material" uid="uid://d0tv48xiixsfg" path="res://assets/materials/vfx/outline_fine.tres" id="1_lvxed"]
+[ext_resource type="Shader" path="res://assets/shaders/cel-shader-base.gdshader" id="2_msfju"]
+[ext_resource type="Texture2D" uid="uid://hn1mjnguw62i" path="res://models/chars/player_1/textures/casual_man_color.png" id="3_vglkj"]
+
+[resource]
+render_priority = 0
+next_pass = ExtResource("1_lvxed")
+shader = ExtResource("2_msfju")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0, 0, 0, 0.501961)
+shader_parameter/fresnel = Color(0, 0, 0, 0.301961)
+shader_parameter/base_texture = ExtResource("3_vglkj")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
