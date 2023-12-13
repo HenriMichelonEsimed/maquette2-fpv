@@ -70,7 +70,7 @@ func set_shortcuts():
 
 func _input(event):
 	if (Dialog.ignore_input()): return
-	if Input.is_action_just_released("cancel"):
+	if Input.is_action_just_pressed("cancel"):
 		if panel_crafting.visible:
 			_on_button_stop_craft_pressed()
 		else:
@@ -82,7 +82,7 @@ func _input(event):
 	if Input.is_action_just_released("accept"):
 		_on_use_pressed()
 		return
-	if Input.is_action_just_released("craft"):
+	if Input.is_action_just_pressed("craft"):
 		if panel_crafting.visible and (crafting_target != null):
 			_on_crafting_pressed()
 		else:
@@ -90,9 +90,9 @@ func _input(event):
 		return
 	if (get_viewport().gui_get_focus_owner() == null):
 		_focus_current_tab()
-	if Input.is_action_just_released("ui_left"):
+	if Input.is_action_just_pressed("ui_left"):
 		_set_tab(-1)
-	elif Input.is_action_just_released("ui_right"):
+	elif Input.is_action_just_pressed("ui_right"):
 		_set_tab(1)
 
 func list_focused():
@@ -179,12 +179,17 @@ func _refresh():
 	_fill_lists()
 	_focus_current_tab()
 
-func _focus_current_tab():
+func _focus_current_tab(index:int=0):
 	list = list_content[tab_order[tabs.current_tab]]
 	list.grab_focus()
-	if (list.item_count > 0) and not list.is_anything_selected():
-		list.select(0)
-		list.item_selected.emit(0)	
+	if (list.item_count > 0):
+		if not list.is_anything_selected():
+			if (index > (list.item_count-1)):
+				index = list.item_count-1
+			list.select(index)
+			list.item_selected.emit(index)
+	else:
+		item = null
 
 func _on_tabs_tab_selected(tab):
 	if (prev_tab == tab): return
@@ -210,6 +215,8 @@ func _clear_crafting():
 
 func _on_craft_pressed():
 	if (item == null) or crafting_items.find(item) != -1: return
+	list = list_content[tab_order[tabs.current_tab]]
+	var index = list.get_selected_items()[0]
 	var craft_item = item.dup()
 	if item is ItemUnique:
 		item_content.visible = false
@@ -241,7 +248,7 @@ func _on_craft_pressed():
 					else:
 						button_craft.disabled = true
 	button_addcraft.disabled = not button_craft.disabled
-	_focus_current_tab()
+	_focus_current_tab(index)
 
 func _on_button_stop_craft_pressed():
 	_clear_crafting()
