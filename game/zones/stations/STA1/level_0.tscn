@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://b4qb1w1k508q8"]
+[gd_scene load_steps=76 format=3 uid="uid://b4qb1w1k508q8"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_nhnkb"]
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="2_da5ug"]
@@ -7,8 +7,11 @@
 [ext_resource type="Material" uid="uid://0i03pa3hg4af" path="res://assets/materials/colors/grey_2.tres" id="5_y7dxe"]
 [ext_resource type="PackedScene" uid="uid://csjk6vsuelqa0" path="res://models/interiors/architecture/walls/wall_1_10x1.tscn" id="6_emcj4"]
 [ext_resource type="PackedScene" uid="uid://dootfr4obe6ab" path="res://models/interiors/architecture/walls/wall_1_10x_3_8.tscn" id="7_6nygt"]
+[ext_resource type="Script" path="res://lib/nodes/floor.gd" id="8_fw5ju"]
 [ext_resource type="PackedScene" uid="uid://bcotsi5p4ppc8" path="res://models/props/sofa_waiting_room_1.tscn" id="8_i1glk"]
+[ext_resource type="AudioStream" uid="uid://4vi5quts8ebp" path="res://assets/audio/walking_concrete.mp3" id="9_d0lva"]
 [ext_resource type="PackedScene" uid="uid://di32jih3lkq5r" path="res://models/interiors/architecture/stairs/stairs_1_4x1.tscn" id="9_ijrxn"]
+[ext_resource type="AudioStream" uid="uid://cr4xb585smign" path="res://assets/audio/running_concrete.mp3" id="10_3mlaw"]
 [ext_resource type="Material" uid="uid://i6210e70wjx" path="res://assets/materials/colors_outline/blue_3.tres" id="10_wwvca"]
 [ext_resource type="PackedScene" uid="uid://blttosmy6qdp7" path="res://models/interiors/lights/omni_floor_light_bar.tscn" id="11_fl41p"]
 [ext_resource type="PackedScene" uid="uid://4lmengs27td1" path="res://models/interiors/lights/omni_light_bar.tscn" id="12_62s51"]
@@ -70,6 +73,8 @@
 [ext_resource type="PackedScene" uid="uid://bwtx063iwvcwk" path="res://models/items/consum/pizza_1.tscn" id="68_gv5xe"]
 [ext_resource type="PackedScene" uid="uid://jwsc6s8f34c" path="res://models/items/consum/orange_1.tscn" id="69_55hf5"]
 [ext_resource type="PackedScene" uid="uid://b46p0edylt8ri" path="res://models/items/consum/pickle_1.tscn" id="70_n5n7h"]
+[ext_resource type="AudioStream" uid="uid://03358yy1h53a" path="res://assets/audio/walking_hall.mp3" id="74_a5ocu"]
+[ext_resource type="AudioStream" uid="uid://dxudwgoqqgg6x" path="res://assets/audio/running_hall.mp3" id="75_w27d3"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_nhnkb")
@@ -111,6 +116,17 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -5, 0, 4
 [node name="wall_1_10x3_10" parent="Entrace/Walls" instance=ExtResource("7_6nygt")]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 5, 0, 4.76837e-07)
 
+[node name="Floor2" type="Node3D" parent="Entrace"]
+script = ExtResource("8_fw5ju")
+sound_walking = ExtResource("9_d0lva")
+sound_running = ExtResource("10_3mlaw")
+
+[node name="Floor" type="CSGBox3D" parent="Entrace/Floor2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+use_collision = true
+size = Vector3(10, 0.1, 10)
+material = ExtResource("10_wwvca")
+
 [node name="sofa_waiting_room_1" parent="Entrace" instance=ExtResource("8_i1glk")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.67405, 0, -2)
 
@@ -119,12 +135,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.6663
 
 [node name="stairs_1_4x1" parent="Entrace" instance=ExtResource("9_ijrxn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.25)
-
-[node name="Floor" type="CSGBox3D" parent="Entrace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
-use_collision = true
-size = Vector3(10, 0.1, 10)
-material = ExtResource("10_wwvca")
 
 [node name="OmniFloorLightBar" parent="Entrace" instance=ExtResource("11_fl41p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, -0.05, 1.2)
@@ -380,12 +390,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -10.3)
 
 [node name="stairs_1_4x2" parent="Hall" instance=ExtResource("19_m4j4v")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.7, 0, -10)
-
-[node name="Floor" type="CSGBox3D" parent="Hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.68561, -0.05, -15.3865)
-use_collision = true
-size = Vector3(37.4271, 0.1, 20.7507)
-material = ExtResource("10_wwvca")
 
 [node name="ficus_1" parent="Hall" instance=ExtResource("20_j4hll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2, 0, -10.3)
@@ -873,3 +877,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.25, 0.761249, 4.6)
 
 [node name="soft_drink_2" parent="Canteen" instance=ExtResource("66_lg42s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2715, 0.761249, 7.12215)
+
+[node name="MainFloor" type="Node3D" parent="."]
+script = ExtResource("8_fw5ju")
+sound_walking = ExtResource("74_a5ocu")
+sound_running = ExtResource("75_w27d3")
+
+[node name="Floor" type="CSGBox3D" parent="MainFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28561, -0.05, -5.1865)
+use_collision = true
+size = Vector3(37.4271, 0.1, 20.7507)
+material = ExtResource("10_wwvca")

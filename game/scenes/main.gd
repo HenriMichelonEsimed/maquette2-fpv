@@ -9,14 +9,6 @@ var _last_spawnpoint:String
 func _ready():
 	GameState.player = player
 	GameState.ui = ui
-	if get_viewport().size.x <= 1280:
-		get_viewport().content_scale_factor = 0.6
-	elif get_viewport().size.x <= 1680:
-		get_viewport().content_scale_factor = 0.8
-	if get_viewport().size.x > 1920:
-		get_viewport().content_scale_factor = 2.2
-	elif get_viewport().size.x >= 7680 :
-		get_viewport().content_scale_factor = 3
 	NotificationManager.connect("new_notification", GameState.ui.display_notification)
 	GameState.messages.connect("new_message", _on_new_message)
 	player.connect("update_oxygen", update_oxygen)

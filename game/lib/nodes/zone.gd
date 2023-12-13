@@ -69,7 +69,7 @@ func on_item_dropped(item:Item, quantity:int):
 			new_item.position = drop_point.position
 		new_item.disable()
 	else:
-		new_item.global_position = GameState.player.get_floor_collision()
+		new_item.global_position = GameState.player.get_drop_collision()
 		new_item.rotation = new_item.original_rotation
 		add_child(new_item)
 		new_item.enable()

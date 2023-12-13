@@ -4,13 +4,19 @@ class_name Player extends CharacterBody3D
 @onready var camera_pivot:Node3D = $Camera3D
 @onready var under_water_filter = $UnderWater/Filter
 @onready var interactions:Interactions = $Camera3D/RayCastInteractions
-@onready var raycast_to_floor:RayCast3D = $RayCastToFloor
+@onready var raycast_drop:RayCast3D = $RayCastDrop
+@onready var raycast_floor:RayCast3D = $RayCastFloor
+@onready var audio:AudioStreamPlayer3D = $AudioStreamPlayer
 
 signal update_oxygen()
 
 var character:Node3D
 var anim:AnimationPlayer
 var attach_item:Node3D
+
+var sound_walking:AudioStream
+var sound_running:AudioStream
+var current_floor:Floor
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var walking_speed:float = 5
@@ -25,11 +31,13 @@ var look_down_action:String = "look_down"
 var mouse_y_axis:int = -1
 
 func _ready():
+	audio.stream = null
 	if (GameState.player_state.position != Vector3.ZERO):
 		_set_position()
 	set_y_axis()
 	set_char()
 	capture_mouse()
+	update_floor()
 
 func set_char():
 	character = Tools.load_char(GameState.player_state.char)
@@ -81,13 +89,23 @@ func _process(delta):
 		GameState.oxygen -= 10.0 * delta
 		update_oxygen.emit()
 	elif direction != Vector3.ZERO:
+		update_floor()
 		if run:
 			if (anim.current_animation != Consts.ANIM_RUNNING):
 				anim.play(Consts.ANIM_RUNNING)
+			if (audio.stream != sound_running):
+				audio.stream = sound_running
+				print("play run")
 		else:
 			anim.play(Consts.ANIM_WALKING)
-		if !anim.is_playing():
+			if (audio.stream != sound_walking):
+				audio.stream = sound_walking
+				print("play walk")
+		if (not anim.is_playing()):
 			anim.play()
+		if (not audio.playing) :
+			audio.play()
+			print("play")
 		for index in range(get_slide_collision_count()):
 			var collision = get_slide_collision(index)
 			var collider = collision.get_collider()
@@ -96,6 +114,7 @@ func _process(delta):
 			if collider.is_in_group("stairs"):
 				velocity.y = 1.5
 	else:
+		audio.stop()
 		anim.play(Consts.ANIM_STANDING)
 	move_and_slide()
 	if on_floor and Input.is_action_just_pressed("jump"):
@@ -111,9 +130,23 @@ func handle_item():
 func unhandle_item():
 	attach_item.remove_child(GameState.current_item)
 	
-func get_floor_collision():
-	raycast_to_floor.force_raycast_update()
-	return raycast_to_floor.get_collision_point()
+func get_drop_collision():
+	raycast_drop.force_raycast_update()
+	return raycast_drop.get_collision_point()
+
+func update_floor():
+	raycast_floor.force_raycast_update()
+	if (raycast_floor.is_colliding()):
+		var floor = raycast_floor.get_collider().get_parent()
+		if (floor != current_floor) and (floor != null) and (floor is Floor):
+			var play = audio.playing
+			print(floor)
+			sound_running = floor.sound_running
+			sound_walking = floor.sound_walking
+			audio.stream = sound_walking
+			current_floor = floor
+			if (play):
+				audio.play()
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

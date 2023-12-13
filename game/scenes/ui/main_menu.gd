@@ -8,6 +8,14 @@ extends Control
 @onready var menu = $Menu
 
 func _ready():
+	if get_viewport().size.x <= 1280:
+		get_viewport().content_scale_factor = 0.6
+	elif get_viewport().size.x <= 1680:
+		get_viewport().content_scale_factor = 0.8
+	if get_viewport().size.x > 1920:
+		get_viewport().content_scale_factor = 2.2
+	elif get_viewport().size.x >= 7680 :
+		get_viewport().content_scale_factor = 3
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	Dialog.dialogs_stack.clear()
 	get_tree().paused = false

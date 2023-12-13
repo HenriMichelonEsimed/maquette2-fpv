@@ -41,7 +41,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="ButtonContinue" type="Button" parent="Menu"]
-custom_minimum_size = Vector2(250, 52)
+custom_minimum_size = Vector2(280, 52)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_51ent")
 theme_override_styles/hover = ExtResource("3_qr46t")
@@ -52,7 +52,7 @@ text = "Continue"
 alignment = 2
 
 [node name="ButtonNew" type="Button" parent="Menu"]
-custom_minimum_size = Vector2(250, 52)
+custom_minimum_size = Vector2(280, 52)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_51ent")
 theme_override_styles/hover = ExtResource("3_qr46t")
@@ -63,7 +63,7 @@ text = "New game"
 alignment = 2
 
 [node name="ButtonSettings" type="Button" parent="Menu"]
-custom_minimum_size = Vector2(250, 52)
+custom_minimum_size = Vector2(280, 52)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_51ent")
 theme_override_styles/hover = ExtResource("3_qr46t")
@@ -74,7 +74,7 @@ text = "Settings"
 alignment = 2
 
 [node name="ButtonController" type="Button" parent="Menu"]
-custom_minimum_size = Vector2(250, 52)
+custom_minimum_size = Vector2(280, 52)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_51ent")
 theme_override_styles/hover = ExtResource("3_qr46t")
@@ -85,7 +85,7 @@ text = "Controls"
 alignment = 2
 
 [node name="ButtonQuit" type="Button" parent="Menu"]
-custom_minimum_size = Vector2(250, 52)
+custom_minimum_size = Vector2(280, 52)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("3_51ent")
 theme_override_styles/hover = ExtResource("3_qr46t")
