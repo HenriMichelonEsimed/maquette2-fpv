@@ -35,6 +35,7 @@ func _ready():
 	set_collision_layer_value(Consts.LAYER_CHARACTER, true)
 
 func interact(new_disc=null):
+	GameState.player.look_at_char(self)
 	var disc = discussion
 	if (new_disc != null):
 		disc = new_disc

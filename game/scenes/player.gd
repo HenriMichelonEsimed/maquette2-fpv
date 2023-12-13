@@ -145,9 +145,9 @@ func look_at_node(node:Node3D):
 	look_at(pos)
 
 func look_at_char(_char:CharacterBody3D):
-	var pos:Vector3 = _char.global_position
-	pos.y = position.y
-	look_at(pos)
-	pos = global_position
+	#var pos:Vector3 = _char.global_position
+	#pos.y = position.y
+	#look_at(pos)
+	var pos = global_position
 	pos.y = position.y
 	_char.look_at(pos)
