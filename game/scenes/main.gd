@@ -19,6 +19,7 @@ func _ready():
 		get_viewport().content_scale_factor = 3
 	NotificationManager.connect("new_notification", GameState.ui.display_notification)
 	GameState.messages.connect("new_message", _on_new_message)
+	player.connect("update_oxygen", update_oxygen)
 	TranslationServer.set_locale(GameState.settings.lang)
 	if (GameState.current_item != null):
 		var item = GameState.current_item
@@ -98,5 +99,7 @@ func _on_usable_unlock(success:bool):
 	elif (GameState.current_item != null):
 		NotificationManager.notif(tr("Nothing happens with '%s'") % tr(str(GameState.current_item)))
 
-func _quit():
-	get_tree().quit()
+func update_oxygen():
+	if (GameState.oxygen <= 0):
+		GameState.pause_game()
+		Tools.load_screen(self, Tools.SCREEN_GAMEOVER).open()

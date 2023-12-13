@@ -6,6 +6,8 @@ class_name Player extends CharacterBody3D
 @onready var interactions:Interactions = $Camera3D/RayCastInteractions
 @onready var raycast_to_floor:RayCast3D = $RayCastToFloor
 
+signal update_oxygen()
+
 var character:Node3D
 var anim:AnimationPlayer
 var attach_item:Node3D
@@ -72,9 +74,12 @@ func _process(delta):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	if (under_water_filter.visible):
-		anim.play(Consts.ANIM_SWIMMING)
-		if (camera.rotation.x > 0):
+		if (anim.current_animation != Consts.ANIM_SWIMMING):
+			anim.play(Consts.ANIM_SWIMMING)
+		if (camera.rotation.x > 0) and (direction != Vector3.ZERO):
 			velocity.y += gravity * delta + camera.rotation.x * delta
+		GameState.oxygen -= 10.0 * delta
+		update_oxygen.emit()
 	elif direction != Vector3.ZERO:
 		if run:
 			if (anim.current_animation != Consts.ANIM_RUNNING):
@@ -121,12 +126,14 @@ func release_mouse() -> void:
 func _on_under_water_body_entered(_body):
 	under_water_filter.visible = true
 	character.rotate_x(deg_to_rad(-90))
-	character.position = Vector3(0.0, 1.62, 1.62)
+	character.position = Vector3(0.0, 0.55, 1.6)
 
 func _on_under_water_body_exited(_body):
 	under_water_filter.visible = false
 	character.rotate_x(deg_to_rad(90))
 	character.position = Vector3.ZERO
+	GameState.oxygen = 100.0
+	update_oxygen.emit()
 
 func _set_position():
 	position = GameState.player_state.position

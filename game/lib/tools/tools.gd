@@ -13,6 +13,7 @@ const DIALOG_PLAYER_SETUP = "player_setup"
 const SCREEN_INVENTORY = "inventory"
 const SCREEN_TERMINAL = "terminal"
 const SCREEN_CONTROLLER = "controller"
+const SCREEN_GAMEOVER = "gameover"
 const SCREEN_NPC_TALK = "talk"
 const SCREEN_NPC_TRADE = "trade"
 

@@ -9,6 +9,7 @@ extends Control
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().paused = false
 	GameState.game_started = false
 	GameState.prepare_game(false)
 	Tools.preload_zone(GameState.player_state.zone_name)

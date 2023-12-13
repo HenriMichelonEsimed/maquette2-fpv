@@ -16,6 +16,8 @@ class_name MainUI extends Control
 @onready var panel_item = $HUD/PanelTool
 @onready var icon_message = $HUD/Messages
 @onready var crosshair = $HUD/CrossHair
+@onready var panel_oxygen = $HUD/PanelOxygen
+@onready var value_oxygen = $HUD/PanelOxygen/Oxygen
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
@@ -34,11 +36,13 @@ func _ready():
 	panel_item.visible = false
 	icon_menu_close.visible = false
 	icon_message.visible = false
+	panel_oxygen.visible = false
 	GameState.connect("saving_start", _on_saving_start)
 	GameState.connect("saving_end", _on_saving_end)
 	GameState.messages.connect("new_message", on_message)
 	player.interactions.connect("display_info", _on_display_info)
 	player.interactions.connect("hide_info", hide_info)
+	player.connect("update_oxygen", update_oxygen)
 	Input.connect("joy_connection_changed", _on_joypad_connection_changed)
 	set_shortcuts()
 
@@ -181,7 +185,14 @@ func _on_saving_end():
 
 func _on_saving_timer_timeout():
 	label_saving.visible = false
-	
+
+func update_oxygen():
+	if (GameState.oxygen < 100.0):
+		panel_oxygen.visible = true
+		value_oxygen.value = GameState.oxygen
+	else:
+		panel_oxygen.visible = false
+
 func _label_info_position():
 	label_info.position = crosshair.position
 	label_info.position.y += 30

@@ -29,6 +29,7 @@ CraftingRecipes="*res://lib/craft_recipes.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=600
+window/size/mode=3
 window/size/initial_position_type=0
 
 [editor_plugins]
@@ -222,7 +223,6 @@ locale/translations=PackedStringArray("res://assets/i18n/items.fr.translation", 
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
-anti_aliasing/quality/msaa_2d=1
 anti_aliasing/quality/msaa_3d=1
 anti_aliasing/quality/screen_space_aa=1
 

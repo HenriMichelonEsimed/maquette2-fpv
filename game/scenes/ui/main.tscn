@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cc25hf7gi6i13"]
+[gd_scene load_steps=16 format=3 uid="uid://cc25hf7gi6i13"]
 
 [ext_resource type="Script" path="res://scenes/ui/main.gd" id="1_ghhs3"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="1_ni5mw"]
@@ -17,6 +17,22 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f6dah"]
 shader = ExtResource("7_4jbex")
 shader_parameter/amount = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmmbd"]
+bg_color = Color(0.188235, 0.639216, 0.901961, 0.501961)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
 
 [node name="Main" type="Control"]
 process_mode = 3
@@ -56,7 +72,7 @@ grow_vertical = 0
 auto_translate = false
 localize_numeral_system = false
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("1_ni5mw")
 theme_override_font_sizes/font_size = 48
 text = ""
@@ -181,6 +197,52 @@ vertical_alignment = 1
 script = ExtResource("2_ur2r2")
 icon_size = 24
 icon_name = "envelope"
+
+[node name="PanelOxygen" type="Control" parent="HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -223.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Oxygen" type="ProgressBar" parent="HUD/PanelOxygen"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_top = 6.0
+offset_right = -49.0
+offset_bottom = 36.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_qmmbd")
+value = 50.0
+show_percentage = false
+
+[node name="FontAwesome" type="Label" parent="HUD/PanelOxygen"]
+layout_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -37.0
+offset_top = 8.0
+offset_right = -7.0
+offset_bottom = 32.0
+grow_horizontal = 0
+auto_translate = false
+localize_numeral_system = false
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("1_ni5mw")
+theme_override_font_sizes/font_size = 24
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_ur2r2")
+icon_size = 24
+icon_name = "lungs"
 
 [node name="MenuClose" type="TextureRect" parent="."]
 process_mode = 4

@@ -20,6 +20,7 @@ var use_joypad:bool = false
 var use_joypad_ps:bool = false
 var use_joypad_xbox:bool = false
 var game_started:bool = false
+var oxygen:float = 100.0
 
 func _ready():
 	_on_joypad_connection_changed(0, 0)
