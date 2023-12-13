@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://2trbhug7jt37"]
+[gd_scene load_steps=18 format=3 uid="uid://2trbhug7jt37"]
 
 [ext_resource type="Script" path="res://lib/nodes/storage.gd" id="1_6dtt3"]
+[ext_resource type="AudioStream" uid="uid://ipsqpqtyxc46" path="res://assets/audio/locker.mp3" id="2_crfg0"]
 [ext_resource type="Material" uid="uid://dhvs0s34tg7bf" path="res://assets/materials/colors_outline/white_1.tres" id="2_l40mm"]
 [ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="3_er1eo"]
 [ext_resource type="Material" uid="uid://dushpwnfsy7nv" path="res://assets/materials/colors_outline/grey_3.tres" id="4_uhlni"]
@@ -183,6 +184,7 @@ _data = {
 [node name="locker_1" type="StaticBody3D"]
 script = ExtResource("1_6dtt3")
 label = "Locker"
+sound = ExtResource("2_crfg0")
 
 [node name="School Locker" type="Node3D" parent="."]
 

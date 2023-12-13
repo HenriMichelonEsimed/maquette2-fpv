@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://qe1usdxm7835"]
+[gd_scene load_steps=8 format=3 uid="uid://qe1usdxm7835"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_4o88a"]
 [ext_resource type="Texture2D" uid="uid://d1arfcbqtrsrs" path="res://assets/textures/menu_background.png" id="2_6d6vn"]
 [ext_resource type="StyleBox" uid="uid://d2cvvq2tgimvd" path="res://assets/styles/main_menu_button.tres" id="3_51ent"]
 [ext_resource type="StyleBox" uid="uid://dkldklw6dth8q" path="res://assets/styles/menu_button_hover.tres" id="3_qr46t"]
+[ext_resource type="AudioStream" uid="uid://dlxf27x7m7xut" path="res://assets/audio/musics/this-minimal-technology-pure-12327.mp3" id="5_req0w"]
+[ext_resource type="StyleBox" uid="uid://bm8kk2b6bomhn" path="res://assets/styles/title_and_logo.tres" id="6_6unib"]
+[ext_resource type="Texture2D" uid="uid://cmor57dwpse7f" path="res://icon.svg" id="6_gpv6n"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -94,6 +97,50 @@ theme_override_styles/disabled = ExtResource("3_51ent")
 theme_override_styles/focus = ExtResource("3_51ent")
 text = "Quit"
 alignment = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_req0w")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -85.0
+offset_top = 20.0
+offset_right = 85.0
+offset_bottom = 166.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("6_6unib")
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_gpv6n")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -118.0
+offset_top = 180.0
+offset_right = 118.0
+offset_bottom = 218.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 29
+text = "Dawn - Mockup"
+horizontal_alignment = 1
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="focus_entered" from="Menu/ButtonContinue" to="." method="_on_button_continue_focus_entered"]

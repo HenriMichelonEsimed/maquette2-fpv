@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://b220eqngku3ud"]
+[gd_scene load_steps=12 format=3 uid="uid://b220eqngku3ud"]
 
 [ext_resource type="Script" path="res://lib/nodes/usable.gd" id="1_wv738"]
 [ext_resource type="Material" uid="uid://i6210e70wjx" path="res://assets/materials/colors_outline/blue_3.tres" id="2_0jxc2"]
+[ext_resource type="AudioStream" uid="uid://bcg8errkgcggl" path="res://assets/audio/sliding-doors.mp3" id="2_cx2xi"]
 [ext_resource type="Material" uid="uid://dagexq7kk3gp5" path="res://assets/materials/colors_outline/orange_1.tres" id="3_hoqgb"]
 [ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="4_r1oxt"]
 [ext_resource type="Material" uid="uid://58q4qbowjp50" path="res://assets/materials/colors/blue_1.tres" id="5_fldp6"]
@@ -73,6 +74,7 @@ _data = {
 [node name="SlidingDoor1" type="StaticBody3D"]
 script = ExtResource("1_wv738")
 label = "Door"
+sound = ExtResource("2_cx2xi")
 
 [node name="RightDoor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.25, 0)

@@ -10,7 +10,7 @@ func open():
 	size.y = size.x / ratio
 	position.x = (vsize.x - size.x) / 2
 	position.y = (vsize.y - size.y) / 2
-	label.text = tr("YOU_DIED_F") if GameState.player_state.sex else tr("YOU_DIED_M")
+	label.text = tr(" You died !") if GameState.player_state.sex else tr("You died !")
 	
 func _input(event):
 	if Input.is_action_just_released("cancel"):

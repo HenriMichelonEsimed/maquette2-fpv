@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd26byrdddw8w"]
+[gd_scene load_steps=8 format=3 uid="uid://cd26byrdddw8w"]
 
 [ext_resource type="Script" path="res://scenes/ui/dialogs/settings_dialog.gd" id="1_xw1kv"]
 [ext_resource type="FontFile" uid="uid://cave61j52xeuh" path="res://addons/fontawesome/fonts/fa-solid-900.woff2" id="2_8qfac"]
 [ext_resource type="Script" path="res://addons/fontawesome/FontAwesomeButton.gd" id="3_6a7vi"]
-[ext_resource type="Texture2D" uid="uid://craxnu4witrah" path="res://assets/i18n/flags/en_UK.png" id="4_4gqkq"]
 [ext_resource type="Texture2D" uid="uid://cqev6dyrcil3u" path="res://assets/i18n/flags/en_US.png" id="5_ixg0v"]
 [ext_resource type="Texture2D" uid="uid://d1ofj5irt7sgg" path="res://assets/i18n/flags/fr.png" id="6_3fah8"]
 
@@ -123,16 +122,13 @@ focus_neighbor_right = NodePath(".")
 focus_neighbor_bottom = NodePath("../../yaxis/OptionButton")
 focus_next = NodePath("../../yaxis/OptionButton")
 focus_previous = NodePath("../../../../../Top/ButtonClose")
-item_count = 3
-popup/item_0/text = "English (UK)"
-popup/item_0/icon = ExtResource("4_4gqkq")
+item_count = 2
+popup/item_0/text = "English (US)"
+popup/item_0/icon = ExtResource("5_ixg0v")
 popup/item_0/id = 1
-popup/item_1/text = "English (US)"
-popup/item_1/icon = ExtResource("5_ixg0v")
-popup/item_1/id = 2
-popup/item_2/text = "French"
-popup/item_2/icon = ExtResource("6_3fah8")
-popup/item_2/id = 0
+popup/item_1/text = "French"
+popup/item_1/icon = ExtResource("6_3fah8")
+popup/item_1/id = 0
 
 [node name="yaxis" type="HBoxContainer" parent="Background/Borders/Content/Panel/Borders/Settings"]
 layout_mode = 2

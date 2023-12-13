@@ -5,11 +5,13 @@ signal unlock(success:bool)
 
 @export var label:String
 @export var title:String
+@export var sound:AudioStream
 
 var save:bool
 var is_used:bool = false
 var unlocked:bool = false
 var _animation:AnimationPlayer
+var audio:AudioStreamPlayer3D
 
 func _init(_save:bool = true):
 	save = _save
@@ -24,6 +26,13 @@ func _ready():
 	_animation = find_child("AnimationPlayer")
 	if (_animation != null):
 		_animation.connect("animation_finished", _on_animation_finished)
+	if (sound != null):
+		audio = AudioStreamPlayer3D.new()
+		audio.stream = sound
+		audio.max_distance = 5
+		audio.bus = "Effects"
+		audio.volume_db = 35
+		add_child(audio)
 
 func _check_item_use(message_locked:String, message_unlocked:String, tools_to_use:Array) -> bool:
 	if (unlocked): return true
@@ -59,6 +68,8 @@ func use(_byplayer:bool=false, startup:bool=false):
 		if (not startup and not _check_use()) :
 			return
 	is_used = !is_used
+	if (audio != null) and (not startup):
+		audio.play()
 	if (is_used):
 		if (_animation != null):
 			_animation.play("use")
