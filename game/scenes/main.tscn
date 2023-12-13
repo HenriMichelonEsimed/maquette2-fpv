@@ -13,3 +13,8 @@ transform = Transform3D(0.999639, 0, 0.026875, 0, 1, 0, -0.026875, 0, 0.999639, 
 [node name="MainUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_g84p1")]
 mouse_filter = 2
 player = NodePath("../Player")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
+process_mode = 3
+volume_db = 60.0
+bus = &"Effects"

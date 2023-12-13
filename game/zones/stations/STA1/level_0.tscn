@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://b4qb1w1k508q8"]
+[gd_scene load_steps=74 format=3 uid="uid://b4qb1w1k508q8"]
 
 [ext_resource type="Script" path="res://zones/stations/STA1/level_0.gd" id="1_nhnkb"]
 [ext_resource type="PackedScene" uid="uid://b0gkievars6dd" path="res://scenes/environment/interior.tscn" id="2_da5ug"]
@@ -9,9 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dootfr4obe6ab" path="res://models/interiors/architecture/walls/wall_1_10x_3_8.tscn" id="7_6nygt"]
 [ext_resource type="Script" path="res://lib/nodes/floor.gd" id="8_fw5ju"]
 [ext_resource type="PackedScene" uid="uid://bcotsi5p4ppc8" path="res://models/props/sofa_waiting_room_1.tscn" id="8_i1glk"]
-[ext_resource type="AudioStream" uid="uid://4vi5quts8ebp" path="res://assets/audio/walking_concrete.mp3" id="9_d0lva"]
 [ext_resource type="PackedScene" uid="uid://di32jih3lkq5r" path="res://models/interiors/architecture/stairs/stairs_1_4x1.tscn" id="9_ijrxn"]
-[ext_resource type="AudioStream" uid="uid://cr4xb585smign" path="res://assets/audio/running_concrete.mp3" id="10_3mlaw"]
+[ext_resource type="AudioStream" uid="uid://djp24vk5npafm" path="res://assets/audio/indoor/walking.mp3" id="9_krxwd"]
 [ext_resource type="Material" uid="uid://i6210e70wjx" path="res://assets/materials/colors_outline/blue_3.tres" id="10_wwvca"]
 [ext_resource type="PackedScene" uid="uid://blttosmy6qdp7" path="res://models/interiors/lights/omni_floor_light_bar.tscn" id="11_fl41p"]
 [ext_resource type="PackedScene" uid="uid://4lmengs27td1" path="res://models/interiors/lights/omni_light_bar.tscn" id="12_62s51"]
@@ -73,8 +72,7 @@
 [ext_resource type="PackedScene" uid="uid://bwtx063iwvcwk" path="res://models/items/consum/pizza_1.tscn" id="68_gv5xe"]
 [ext_resource type="PackedScene" uid="uid://jwsc6s8f34c" path="res://models/items/consum/orange_1.tscn" id="69_55hf5"]
 [ext_resource type="PackedScene" uid="uid://b46p0edylt8ri" path="res://models/items/consum/pickle_1.tscn" id="70_n5n7h"]
-[ext_resource type="AudioStream" uid="uid://03358yy1h53a" path="res://assets/audio/walking_hall.mp3" id="74_a5ocu"]
-[ext_resource type="AudioStream" uid="uid://dxudwgoqqgg6x" path="res://assets/audio/running_hall.mp3" id="75_w27d3"]
+[ext_resource type="AudioStream" uid="uid://bqfsv1fjjvahs" path="res://assets/audio/indoor/running.mp3" id="75_w27d3"]
 
 [node name="Level0" type="Node3D"]
 script = ExtResource("1_nhnkb")
@@ -116,12 +114,12 @@ transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -5, 0, 4
 [node name="wall_1_10x3_10" parent="Entrace/Walls" instance=ExtResource("7_6nygt")]
 transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 5, 0, 4.76837e-07)
 
-[node name="Floor2" type="Node3D" parent="Entrace"]
+[node name="EntraceFloor" type="Node3D" parent="Entrace"]
 script = ExtResource("8_fw5ju")
-sound_walking = ExtResource("9_d0lva")
-sound_running = ExtResource("10_3mlaw")
+sound_walking = ExtResource("9_krxwd")
+sound_running = ExtResource("75_w27d3")
 
-[node name="Floor" type="CSGBox3D" parent="Entrace/Floor2"]
+[node name="Floor" type="CSGBox3D" parent="Entrace/EntraceFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 use_collision = true
 size = Vector3(10, 0.1, 10)
@@ -880,7 +878,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2715, 0.761249, 7.12215)
 
 [node name="MainFloor" type="Node3D" parent="."]
 script = ExtResource("8_fw5ju")
-sound_walking = ExtResource("74_a5ocu")
+sound_walking = ExtResource("9_krxwd")
 sound_running = ExtResource("75_w27d3")
 
 [node name="Floor" type="CSGBox3D" parent="MainFloor"]

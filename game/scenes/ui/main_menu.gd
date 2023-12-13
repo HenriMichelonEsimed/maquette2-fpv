@@ -13,7 +13,7 @@ func _ready():
 	elif get_viewport().size.x <= 1680:
 		get_viewport().content_scale_factor = 0.8
 	if get_viewport().size.x > 1920:
-		get_viewport().content_scale_factor = 2.2
+		get_viewport().content_scale_factor = 2.1
 	elif get_viewport().size.x >= 7680 :
 		get_viewport().content_scale_factor = 3
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

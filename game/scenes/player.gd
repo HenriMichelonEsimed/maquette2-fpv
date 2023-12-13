@@ -16,6 +16,7 @@ var attach_item:Node3D
 
 var sound_walking:AudioStream
 var sound_running:AudioStream
+@onready var sound_swimming:AudioStream = load("res://assets/audio/water/swimming.mp3")
 var current_floor:Floor
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -29,6 +30,7 @@ var max_camera_angle_down:float = -deg_to_rad(75)
 var look_up_action:String = "look_up"
 var look_down_action:String = "look_down"
 var mouse_y_axis:int = -1
+var previous_position:Vector3
 
 func _ready():
 	audio.stream = null
@@ -84,10 +86,18 @@ func _process(delta):
 	if (under_water_filter.visible):
 		if (anim.current_animation != Consts.ANIM_SWIMMING):
 			anim.play(Consts.ANIM_SWIMMING)
+		if (audio.stream != sound_swimming):
+			audio.stream = sound_swimming
 		if (camera.rotation.x > 0) and (direction != Vector3.ZERO):
 			velocity.y += gravity * delta + camera.rotation.x * delta
-		GameState.oxygen -= 10.0 * delta
 		update_oxygen.emit()
+		if (not audio.playing) :
+			audio.play()
+		if (audio.stream_paused):
+			audio.stream_paused = false
+		GameState.oxygen -= 10.0 * delta
+		if (GameState.oxygen <= 0):
+			audio.stop()
 	elif direction != Vector3.ZERO:
 		update_floor()
 		if run:
@@ -95,17 +105,16 @@ func _process(delta):
 				anim.play(Consts.ANIM_RUNNING)
 			if (audio.stream != sound_running):
 				audio.stream = sound_running
-				print("play run")
 		else:
 			anim.play(Consts.ANIM_WALKING)
 			if (audio.stream != sound_walking):
 				audio.stream = sound_walking
-				print("play walk")
 		if (not anim.is_playing()):
 			anim.play()
 		if (not audio.playing) :
 			audio.play()
-			print("play")
+		if (audio.stream_paused):
+			audio.stream_paused = false
 		for index in range(get_slide_collision_count()):
 			var collision = get_slide_collision(index)
 			var collider = collision.get_collider()
@@ -114,9 +123,13 @@ func _process(delta):
 			if collider.is_in_group("stairs"):
 				velocity.y = 1.5
 	else:
-		audio.stop()
+		audio.stream_paused = true
 		anim.play(Consts.ANIM_STANDING)
+	previous_position = position
 	move_and_slide()
+	if (previous_position == position):
+		audio.stream_paused = true
+		anim.play(Consts.ANIM_STANDING)
 	if on_floor and Input.is_action_just_pressed("jump"):
 		velocity.y = jump_speed
 
@@ -140,13 +153,15 @@ func update_floor():
 		var floor = raycast_floor.get_collider().get_parent()
 		if (floor != current_floor) and (floor != null) and (floor is Floor):
 			var play = audio.playing
-			print(floor)
 			sound_running = floor.sound_running
 			sound_walking = floor.sound_walking
 			audio.stream = sound_walking
 			current_floor = floor
 			if (play):
 				audio.play()
+
+func mute():
+	audio.stop()
 
 func capture_mouse() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

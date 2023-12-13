@@ -2,6 +2,9 @@ extends Node3D
 
 @onready var player:Player = $Player
 @onready var ui:MainUI = $MainUI
+@onready var audio:AudioStreamPlayer3D = $AudioStreamPlayer
+@onready var sound_drowning_man:AudioStream = load("res://assets/audio/water/drowning_man.mp3")
+@onready var sound_drowning_female:AudioStream = load("res://assets/audio/water/drowning_female.mp3")
 
 var _previous_zone:Zone
 var _last_spawnpoint:String
@@ -93,5 +96,8 @@ func _on_usable_unlock(success:bool):
 
 func update_oxygen():
 	if (GameState.oxygen <= 0):
+		audio.stream = sound_drowning_female if GameState.player_state.sex else sound_drowning_man
+		audio.play()
 		GameState.pause_game()
 		Tools.load_screen(self, Tools.SCREEN_GAMEOVER).open()
+

@@ -78,6 +78,7 @@ func load_game(savegame = null):
 
 func pause_game():
 	if (ui.menu.visible): return
+	player.mute()
 	get_tree().paused = true
 	if (not use_joypad): Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	ui.pause_game()
