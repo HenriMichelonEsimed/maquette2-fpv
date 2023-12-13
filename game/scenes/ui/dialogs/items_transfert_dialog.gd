@@ -93,9 +93,6 @@ func container_to_inventory(item:Item,quantity:int=-1,refresh:bool=true):
 		_refresh()
 
 func _refresh():
-	if (storage.get_items().is_empty()):
-		close()
-		return
 	list_container.clear()
 	list_inventory.clear()
 	for item:Item in storage.get_items():
