@@ -78,7 +78,7 @@ func _process(delta):
 			anim.play(Consts.ANIM_SWIMMING)
 		if (camera.rotation.x > 0) and (direction != Vector3.ZERO):
 			velocity.y += gravity * delta + camera.rotation.x * delta
-		GameState.oxygen -= 50.0 * delta
+		GameState.oxygen -= 10.0 * delta
 		update_oxygen.emit()
 	elif direction != Vector3.ZERO:
 		if run:
