@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk8gadpr7iaj7"]
+[gd_scene load_steps=10 format=3 uid="uid://bk8gadpr7iaj7"]
 
 [ext_resource type="Material" uid="uid://b6awcsaw8vopt" path="res://assets/materials/colors_outline/grey_1.tres" id="1_epa6l"]
+[ext_resource type="Script" path="res://lib/nodes/moveable_prop.gd" id="1_y831t"]
 [ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_spec_1.tres" id="2_p2mbm"]
+[ext_resource type="AudioStream" uid="uid://vx4jw77p3qg7" path="res://assets/audio/chair-falling.mp3" id="2_vw6we"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_piyo4"]
 resource_name = "chair_2_metal"
@@ -77,8 +79,10 @@ size = Vector3(0.511963, 0.919232, 0.55545)
 [node name="Desk_chair_2" type="RigidBody3D"]
 collision_layer = 64
 collision_mask = 577
-mass = 2.0
-can_sleep = false
+mass = 5.0
+inertia = Vector3(5, 0, 5)
+script = ExtResource("1_y831t")
+sound = ExtResource("2_vw6we")
 
 [node name="Chair" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00806191, 0)

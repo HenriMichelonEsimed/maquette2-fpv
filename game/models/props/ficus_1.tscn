@@ -1,6 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://mdwcscr1ttf5"]
+[gd_scene load_steps=17 format=3 uid="uid://mdwcscr1ttf5"]
 
+[ext_resource type="Script" path="res://lib/nodes/moveable_prop.gd" id="1_7l5u4"]
 [ext_resource type="Material" uid="uid://d0kb46n56bp8v" path="res://assets/materials/colors/brow_1.tres" id="1_josl2"]
+[ext_resource type="AudioStream" uid="uid://cdumauc8lyuom" path="res://assets/audio/ceramic_rolling.mp3" id="2_alsbh"]
 [ext_resource type="Material" uid="uid://cq2sd4g3v3kwd" path="res://assets/materials/colors_outline/green_1.tres" id="2_xmc3f"]
 [ext_resource type="Material" uid="uid://cetae4vnecs74" path="res://assets/materials/colors_outline/white_spec_1.tres" id="3_gdkfd"]
 
@@ -109,14 +111,18 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0tej5")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ai3cx"]
-height = 1.40306
-radius = 0.294089
+height = 0.793862
+radius = 0.262769
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_l0s0n"]
+height = 0.576538
+radius = 0.11388
 
 [node name="ficus_1" type="RigidBody3D"]
-collision_layer = 64
-collision_mask = 577
 mass = 20.0
-can_sleep = false
+inertia = Vector3(20, 0, 20)
+script = ExtResource("1_7l5u4")
+sound = ExtResource("2_alsbh")
 
 [node name="Animated indoor ficus in a concrete pot" type="Node3D" parent="."]
 
@@ -136,5 +142,9 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_gdkfd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996654, 0)
 shape = SubResource("CylinderShape3D_ai3cx")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305394, 0)
+shape = SubResource("CylinderShape3D_l0s0n")

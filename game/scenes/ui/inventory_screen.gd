@@ -87,7 +87,7 @@ func _input(event):
 			_on_crafting_pressed()
 		else:
 			_on_craft_pressed()
-		return
+		return 
 	if (get_viewport().gui_get_focus_owner() == null):
 		_focus_current_tab()
 	if Input.is_action_just_pressed("ui_left"):
