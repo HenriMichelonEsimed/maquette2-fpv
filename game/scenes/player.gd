@@ -71,10 +71,12 @@ func _process(delta):
 	var speed = running_speed if run else walking_speed
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
-	if direction != Vector3.ZERO:
-		if (under_water_filter.visible):
-			anim.play(Consts.ANIM_SWIMMING)
-		elif run:
+	if (under_water_filter.visible):
+		anim.play(Consts.ANIM_SWIMMING)
+		if (camera.rotation.x > 0):
+			velocity.y += gravity * delta + camera.rotation.x * delta
+	elif direction != Vector3.ZERO:
+		if run:
 			if (anim.current_animation != Consts.ANIM_RUNNING):
 				anim.play(Consts.ANIM_RUNNING)
 		else:
