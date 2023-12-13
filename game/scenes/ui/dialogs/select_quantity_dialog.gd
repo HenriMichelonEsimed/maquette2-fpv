@@ -6,7 +6,6 @@ extends Dialog
 @onready var button_drop:Button = $Content/Body/Buttons/ButtonDrop
 @onready var button_cancel:Button = $Content/Body/Top/ButtonCancel
 
-var _slide_pressed:int = 0
 var quantity_tostring:Callable
 var quantity:Callable
 
@@ -20,20 +19,6 @@ func _input(event):
 			if Input.is_action_just_released("accept"):
 				_on_button_drop_pressed()
 				return
-			if (_slide_pressed > 10):
-				if Input.is_action_just_released("ui_left"):
-					slider_quantity.value -= 2
-				elif Input.is_action_just_released("ui_right"):
-					slider_quantity.value += 2
-			else :
-				if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
-					_slide_pressed += 1
-			if Input.is_action_just_released("ui_left"):
-				slider_quantity.value -= 1
-				_slide_pressed = 0
-			elif Input.is_action_just_released("ui_right"):
-				slider_quantity.value += 1
-				_slide_pressed = 0
 
 func open(item:Item, all:bool, qty:Callable, label:String="Transfert", qty_str:Callable=_quantity_tostring):
 	super._open()

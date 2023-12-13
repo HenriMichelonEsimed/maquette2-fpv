@@ -32,7 +32,7 @@ shadow_opacity = 0.75
 shadow_blur = 5.0
 
 [node name="Moon" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.995978, 0, 0.0895896, 0.0189377, -0.977404, -0.210533, 0.0875652, 0.211383, -0.973473, 0, 0, 0)
+transform = Transform3D(0.995978, 0, 0.0895896, 0.0189377, -0.977404, -0.210533, 0.0875651, 0.211383, -0.973473, 0, 0, 0)
 rotation_order = 4
 light_color = Color(1, 1, 0.6, 1)
 light_energy = 0.0

@@ -73,7 +73,6 @@ func _on_check_2_toggled(toggled_on):
 		style_2.bg_color = color_unselected
 
 func _on_animation_timer_timeout():
-	print(current_anim)
 	anim_1.play(anims[current_anim])
 	anim_2.play(anims[current_anim])
 	current_anim = current_anim + 1

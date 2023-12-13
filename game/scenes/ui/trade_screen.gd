@@ -60,7 +60,6 @@ func open(_char:InteractiveCharacter, _on_trade_end):
 	if (item_credits != null):
 		credits = item_credits.quantity
 	_refresh()
-	print(list_consumables.has_focus())
 
 func set_shortcuts():
 	Tools.set_shortcut_icon(button_buy, Tools.SHORTCUT_ACCEPT)

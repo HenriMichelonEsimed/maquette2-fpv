@@ -9,6 +9,7 @@ extends Control
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Dialog.dialogs_stack.clear()
 	get_tree().paused = false
 	GameState.game_started = false
 	GameState.prepare_game(false)

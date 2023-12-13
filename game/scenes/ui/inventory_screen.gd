@@ -143,6 +143,7 @@ func _item_details(_item:Item, index):
 	item_title.text = item.label
 	Tools.show_item(_item, node_3d)
 	item_content.visible = true
+	button_addcraft.disabled = not button_craft.disabled
 
 func _set_tab(diff:int):
 	state.tab = tabs.current_tab
@@ -239,6 +240,7 @@ func _on_craft_pressed():
 						label_recipe.text = tr(str(crafting_target))
 					else:
 						button_craft.disabled = true
+	button_addcraft.disabled = not button_craft.disabled
 	_focus_current_tab()
 
 func _on_button_stop_craft_pressed():

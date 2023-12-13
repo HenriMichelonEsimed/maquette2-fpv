@@ -57,12 +57,12 @@ static func load_zone(zone_name:String):
 	var zone_path = "res://zones/" + zone_name + ".tscn"
 	var _dummy = []
 	if (ResourceLoader.load_threaded_get_status(zone_path, _dummy) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE):
-		ResourceLoader.load_threaded_request(zone_path, "", true)
+		ResourceLoader.load_threaded_request(zone_path, "", true, ResourceLoader.CACHE_MODE_IGNORE)
 	return ResourceLoader.load_threaded_get(zone_path)
 
 static func preload_zone(zone_name:String):
 	var zone_path = "res://zones/" + zone_name + ".tscn"
-	return ResourceLoader.load_threaded_request(zone_path, "", true)
+	return ResourceLoader.load_threaded_request(zone_path, "", true, ResourceLoader.CACHE_MODE_IGNORE)
 
 static func preload_zone_status(zone_name:String) -> ResourceLoader.ThreadLoadStatus:
 	var zone_path = "res://zones/" + zone_name + ".tscn"
