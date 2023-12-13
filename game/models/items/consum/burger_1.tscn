@@ -268,7 +268,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ygjjo"]
 height = 0.0906442
-radius = 0.0860986
+radius = 0.094927
 
 [node name="burger_1" type="StaticBody3D"]
 script = ExtResource("1_wwggc")

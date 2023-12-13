@@ -12,6 +12,7 @@ enum {
 
 const ANIM_STANDING = "default/standing"
 const ANIM_WALKING = "default/walking"
+const ANIM_SWIMMING = "default/swimming"
 const ANIM_RUNNING = "default/running"
 const ANIM_JUMPING = "default/jumping"
 const ANIM_CROUCHED_WALKING = "default/crouched_walking"

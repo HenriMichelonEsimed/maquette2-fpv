@@ -56,7 +56,7 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1ao41"]
-size = Vector3(0.110352, 0.0483398, 0.0947266)
+size = Vector3(0.198425, 0.0822754, 0.232544)
 
 [node name="grilled_ham_sandwich_1" type="StaticBody3D"]
 script = ExtResource("1_gimwf")
@@ -73,5 +73,5 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_skiiq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00537109, 0.0248369, -0.00634766)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000762878, 0.0418047, -0.00531006)
 shape = SubResource("BoxShape3D_1ao41")

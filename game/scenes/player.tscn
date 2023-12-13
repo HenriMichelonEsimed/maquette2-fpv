@@ -11,7 +11,7 @@ size = Vector3(0.75, 1.2, 1)
 size = Vector3(0.4, 0.7, 0.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o2dxl"]
-size = Vector3(1, 12.7, 1)
+size = Vector3(1, 0.206983, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_donio"]
 
@@ -39,11 +39,11 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="DetectionShape" type="CollisionShape3D" parent="UnderWater"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.35, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0835507, -0.618425)
 shape = SubResource("BoxShape3D_o2dxl")
 
 [node name="Filter" type="MeshInstance3D" parent="UnderWater"]
-transform = Transform3D(2.97554, 0, 0, 0, 2.67656, 0, 0, 0, 2.88546, 0, 0, -0.198189)
+transform = Transform3D(1.72732, 0, 0, 0, 1.19059, 0, 0, 0, 1.44438, 0, -0.135355, -0.691321)
 visible = false
 mesh = SubResource("SphereMesh_donio")
 surface_material_override/0 = SubResource("StandardMaterial3D_u8jjs")
@@ -53,8 +53,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983706, 0)
 target_position = Vector3(0, -1.5, -1.5)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00478035, 1.61966, -0.236006)
-near = 0.2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62, -0.236)
+near = 0.02
 
 [node name="RayCastInteractions" type="RayCast3D" parent="Camera3D" node_paths=PackedStringArray("camera")]
 process_mode = 1

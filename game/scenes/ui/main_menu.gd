@@ -44,8 +44,8 @@ func _on_button_settings_pressed():
 	dlg.open()
 
 func _on_settings_closed():
-	button_settings.grab_focus()
 	_menu_enable()
+	button_settings.grab_focus()
 
 func _on_button_controller_pressed():
 	_menu_disable()
@@ -53,8 +53,8 @@ func _on_button_controller_pressed():
 	dlg.open()
 
 func _on_controller_closed():
-	button_input.grab_focus()
 	_menu_enable()
+	button_input.grab_focus()
 
 func _on_button_quit_pressed():
 	get_tree().quit()
@@ -69,8 +69,8 @@ func _on_button_new_pressed():
 	dlg.open()
 
 func _on_new_closed():
-	button_new.grab_focus()
 	_menu_enable()
+	button_new.grab_focus()
 
 func _on_button_continue_focus_entered():
 	Tools.set_shortcut_icon(button_continue, Tools.SHORTCUT_ACCEPT)

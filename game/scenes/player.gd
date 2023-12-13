@@ -72,7 +72,9 @@ func _process(delta):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	if direction != Vector3.ZERO:
-		if run:
+		if (under_water_filter.visible):
+			anim.play(Consts.ANIM_SWIMMING)
+		elif run:
 			if (anim.current_animation != Consts.ANIM_RUNNING):
 				anim.play(Consts.ANIM_RUNNING)
 		else:
@@ -116,9 +118,13 @@ func release_mouse() -> void:
 
 func _on_under_water_body_entered(_body):
 	under_water_filter.visible = true
+	character.rotate_x(deg_to_rad(-90))
+	character.position = Vector3(0.0, 1.62, 1.62)
 
 func _on_under_water_body_exited(_body):
 	under_water_filter.visible = false
+	character.rotate_x(deg_to_rad(90))
+	character.position = Vector3.ZERO
 
 func _set_position():
 	position = GameState.player_state.position

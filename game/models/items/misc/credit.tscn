@@ -45,8 +45,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_mypwe")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_h1j5u"]
-height = 0.0100162
-radius = 0.0137363
+height = 0.0166862
+radius = 0.0229936
 
 [node name="credit" type="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00231934, 0)

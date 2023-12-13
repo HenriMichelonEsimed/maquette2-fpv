@@ -147,7 +147,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_vk6rp")
 surface_material_override/0 = SubResource("ShaderMaterial_coirj")
 
 [node name="HandAttachment" type="BoneAttachment3D" parent="RootNode/Skeleton3D" index="5"]
-transform = Transform3D(-0.261234, -0.263891, 0.928503, -0.0292081, -0.959303, -0.280863, 0.964833, -0.100491, 0.242895, -35.1097, -1.15244, -21.9503)
+transform = Transform3D(-0.261235, -0.263892, 0.928503, -0.0292079, -0.959303, -0.280864, 0.964833, -0.100491, 0.242896, -35.1098, -1.1524, -21.9503)
 bone_name = "mixamorig_RightHandMiddle1"
 bone_idx = 43
 

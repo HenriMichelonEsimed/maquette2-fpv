@@ -57,7 +57,7 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qfqac"]
-size = Vector3(0.0683899, 0.0502319, 0.117432)
+size = Vector3(0.113477, 0.0641937, 0.140198)
 
 [node name="pickles_1" type="StaticBody3D"]
 script = ExtResource("1_2nl2a")
@@ -74,5 +74,5 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_55u4s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0106964, 0.0235901, -0.00231934)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00162963, 0.030571, -0.00308232)
 shape = SubResource("BoxShape3D_qfqac")
