@@ -83,6 +83,7 @@ func _hide_all():
 	label_current.visible = false
 	list_notifications.visible = false
 	displayMessage = false
+	button_home.disabled = false	
 
 func _on_button_quests_pressed():
 	_hide_all()
@@ -90,25 +91,25 @@ func _on_button_quests_pressed():
 	currentButton = button_quests
 	list_quests.visible = true
 	label_current.visible = true
-	list_quests.grab_focus()
+	button_quests.grab_focus()
 
 func _on_button_list_messages_pressed():
 	_hide_all()
 	label_current.text = tr("Messages")
 	currentButton = button_messages
-	list_messages.grab_focus()
 	list_messages.visible = true
 	label_current.visible = true
 	if (list_messages.item_count > 0) and list_messages.get_selected_items().is_empty():
 		list_messages.select(0)
+	list_messages.grab_focus()
 
 func _on_button_notifications_pressed():
 	_hide_all()
 	label_current.text = tr("Notifications")
 	currentButton = button_notifications
-	list_notifications.grab_focus()
 	list_notifications.visible = true
 	label_current.visible = true
+	button_notifications.grab_focus()
 
 func _on_button_home_term_pressed():
 	_hide_all()
@@ -131,6 +132,7 @@ func _on_list_messages_item_clicked(index, _at_position, _mouse_button_index):
 	label_message2.visible = GameState.messages.have_unread()
 	_update()
 	displayMessage = true
+	button_home.disabled = true
 
 
 func _on_icon_close_pressed():

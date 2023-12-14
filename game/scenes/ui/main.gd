@@ -13,11 +13,12 @@ class_name MainUI extends Control
 @onready var icon_use = $HUD/LabelInfo/Icon
 @onready var button_iventory = $Menu/MainMenu/ButtonInventory
 @onready var button_terminal = $Menu/MainMenu/ButtonTerminal
+@onready var button_save = $Menu/SubMenu/ButtonSave
 @onready var panel_item = $HUD/PanelTool
 @onready var icon_message = $HUD/Messages
 @onready var crosshair = $HUD/CrossHair
-@onready var panel_oxygen = $HUD/PanelOxygen
-@onready var value_oxygen = $HUD/PanelOxygen/Oxygen
+@onready var panel_oxygen = $HUD/Oxygen
+@onready var value_oxygen = $HUD/Oxygen
 @onready var menu = $Menu
 @onready var hud = $HUD
 @onready var blur = $Blur
@@ -144,7 +145,7 @@ func settings_open():
 	dlg.open()
 
 func savegame_open():
-	var dlg = Tools.load_dialog(self, Tools.DIALOG_INPUT)
+	var dlg = Tools.load_dialog(self, Tools.DIALOG_INPUT, func():button_save.grab_focus())
 	dlg.open("Save game", StateSaver.get_last_savegame(), _on_savegame_input)
 
 func display_keymaps():

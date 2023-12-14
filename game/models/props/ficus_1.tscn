@@ -125,6 +125,7 @@ script = ExtResource("1_7l5u4")
 sound = ExtResource("2_alsbh")
 
 [node name="Animated indoor ficus in a concrete pot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00229847, 0)
 
 [node name="ground_001" type="MeshInstance3D" parent="Animated indoor ficus in a concrete pot"]
 mesh = SubResource("ArrayMesh_nk06o")
@@ -142,9 +143,9 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("3_gdkfd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996654, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.998952, 0)
 shape = SubResource("CylinderShape3D_ai3cx")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.305394, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.307692, 0)
 shape = SubResource("CylinderShape3D_l0s0n")
