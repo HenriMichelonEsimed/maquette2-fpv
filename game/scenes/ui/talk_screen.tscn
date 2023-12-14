@@ -75,7 +75,7 @@ size = Vector2i(200, 600)
 render_target_update_mode = 4
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Panel/HBoxContainer/Char/ViewContent/3DView"]
-transform = Transform3D(1, -8.88178e-15, -4.37114e-08, 2.18557e-08, -0.866025, 0.5, -3.78552e-08, -0.5, -0.866025, 0, 3.6, -5.8)
+transform = Transform3D(0.580694, 0.721195, 0.377719, 0.814011, -0.506677, -0.284015, -0.0134488, 0.472394, -0.881285, 0.8, 1.5, -5.8)
 
 [node name="Camera3D" type="Camera3D" parent="Panel/HBoxContainer/Char/ViewContent/3DView"]
 transform = Transform3D(-0.898794, -0.113459, 0.423434, 0, 0.965926, 0.258819, -0.438371, 0.232625, -0.868168, 0.9, 1.7, -2)
@@ -88,6 +88,7 @@ size = Vector3(100, 0.1, 100)
 material = SubResource("StandardMaterial3D_s4qg7")
 
 [node name="InsertPoint" type="Node3D" parent="Panel/HBoxContainer/Char/ViewContent/3DView"]
+transform = Transform3D(0.979575, 0.0175251, -0.200313, 0, 0.996195, 0.0871557, 0.201078, -0.0853756, 0.975848, 0, 0, 0)
 
 [node name="Talk" type="VBoxContainer" parent="Panel/HBoxContainer"]
 layout_mode = 2
