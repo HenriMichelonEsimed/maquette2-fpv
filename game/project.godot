@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Dawn - Maquette"
+config/name="Maquette 2 - FPV"
 config/version="0"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")

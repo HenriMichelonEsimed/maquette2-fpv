@@ -126,22 +126,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("6_gpv6n")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -118.0
-offset_top = 180.0
-offset_right = 118.0
-offset_bottom = 218.0
-grow_horizontal = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 16
-theme_override_font_sizes/font_size = 29
-text = "Dawn - Mockup"
-horizontal_alignment = 1
-
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="focus_entered" from="Menu/ButtonContinue" to="." method="_on_button_continue_focus_entered"]
 [connection signal="focus_exited" from="Menu/ButtonContinue" to="." method="_on_button_continue_focus_exited"]
