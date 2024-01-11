@@ -32,7 +32,6 @@ CraftingRecipes="*res://lib/craft_recipes.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=600
 window/size/mode=4
-window/size/initial_position_type=0
 mouse_cursor/custom_image="res://assets/cursors/cursor_default.png"
 
 [editor]
