@@ -29,10 +29,16 @@ CraftingRecipes="*res://lib/craft_recipes.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=600
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/mode=4
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://assets/cursors/cursor_default.png"
+
+[dotnet]
+
+project/assembly_name="Maquette 2 - FPV"
 
 [editor]
 
@@ -229,7 +235,6 @@ locale/translations=PackedStringArray("res://assets/i18n/items.fr.translation", 
 [rendering]
 
 textures/vram_compression/import_etc2_astc=true
-anti_aliasing/quality/msaa_3d=1
 anti_aliasing/quality/screen_space_aa=1
 
 [shader_globals]
